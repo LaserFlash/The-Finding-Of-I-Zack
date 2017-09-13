@@ -14,53 +14,73 @@ JUnit will be used for all of our testing.
 Library Discussion
 
 Saving/loading/info
-    Author: Jesse
+
+Author: Jesse
+
 Reviewer: Theo
+
 Tester: Bryn
-Take the current state of all elements  in the game and save them to a file and also handle loading from a file.
+
+    Take the current state of all elements in the game and save them to a file and also handle loading from a file.
 
 
 
 
 Items
-Author: Ryan.
-Reviewer: Jesse.
-Tester: Theo.
+
+Author: Ryan
+
+Reviewer: Jesse
+
+Tester: Theo
+
     Effect on player
     Position in game
     Maybe like a weight/size thing maybe?
     Health pickups
 
 Entities
-    Author: Ben
-    Reviewer: Ryan
+
+Author: Ben
+
+Reviewer: Ryan
+
 Tester: Jesse
-Health
+
+    Health
     Position
     Behaviour - (This is it’s own library)
     Player
     Different enemy flavours, just cabbage things/bosses
 
 View
-    Author: Bryn
+Author: Bryn
+
 Reviewer: Ben
+
 Tester: Ryan
+
     Throws everything together
     JFrame or whatever
-Lots of panels
-Open menu pause menu etc.
-Show player score/health/equipped items
+    Lots of panels
+    Open menu pause menu etc.
+    Show player score/health/equipped items
     
 Behaviour
-    Author: Theo
-    Reviewer: Bryn
+
+Author: Theo
+
+Reviewer: Bryn
+
 Tester: Ben
+
     AI movements etc.
     Keyboard input for player
     Collisions with walls/obstaTester:cles 
 
 
 Other things to do
+
     Make it all pretty
     Make a story
     Add some phat beats maybe
