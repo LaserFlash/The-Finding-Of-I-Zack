@@ -23,9 +23,9 @@ Take the current state of all elements  in the game and save them to a file and 
 
 
 Items
-    Author: Ryan
-Reviewer: Jesse
-Tester: Theo
+Author: Ryan.
+Reviewer: Jesse.
+Tester: Theo.
     Effect on player
     Position in game
     Maybe like a weight/size thing maybe?
