@@ -38,7 +38,7 @@ Tester: Theo
     Rooms(item locations etc.)
 
 
-Entities/Items
+TheFindingOfIZack.Entities/TheFindingOfIZack.Entities.Items
 
 Author: Ben
 
@@ -51,7 +51,7 @@ Tester: Jesse
     Behaviour - (This is its own library)
     Player
     Different enemy flavours, just cabbage things/bosses
-    Items   (Effect on player
+    TheFindingOfIZack.Entities.Items   (Effect on player
             Position in game
             Maybe like a weight/size thing maybe?
             Health pickups)
