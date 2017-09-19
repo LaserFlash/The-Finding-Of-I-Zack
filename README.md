@@ -26,7 +26,7 @@ Tester: Bryn
 
 
 
-Items
+The World or whatever?
 
 Author: Ryan
 
@@ -34,12 +34,11 @@ Reviewer: Jesse
 
 Tester: Theo
 
-    Effect on player
-    Position in game
-    Maybe like a weight/size thing maybe?
-    Health pickups
+    Levels
+    Rooms(item locations etc.)
 
-Entities
+
+Entities/Items
 
 Author: Ben
 
@@ -49,9 +48,13 @@ Tester: Jesse
 
     Health
     Position
-    Behaviour - (This is it’s own library)
+    Behaviour - (This is its own library)
     Player
     Different enemy flavours, just cabbage things/bosses
+    Items   (Effect on player
+            Position in game
+            Maybe like a weight/size thing maybe?
+            Health pickups)
 
 View
 Author: Bryn
