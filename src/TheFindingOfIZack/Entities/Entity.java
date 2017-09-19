@@ -1,5 +1,5 @@
 package TheFindingOfIZack.Entities;
-import TheFindingOfIZack.Entities.Items.Item;
+import TheFindingOfIZack.Items.Item;
 import javax.xml.stream.Location;
 import java.util.List;
 import java.util.ArrayList;
