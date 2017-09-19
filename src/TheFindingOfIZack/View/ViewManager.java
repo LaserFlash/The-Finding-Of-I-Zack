@@ -1,6 +1,6 @@
-package View;
+package TheFindingOfIZack.View;
 
-import Controller.GameController;
+import TheFindingOfIZack.Controller.GameController;
 
 import java.util.Observable;
 
