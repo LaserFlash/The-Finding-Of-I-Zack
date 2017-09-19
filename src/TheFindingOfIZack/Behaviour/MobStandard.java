@@ -3,7 +3,7 @@ package TheFindingOfIZack.Behaviour;
 /**
  * Created by gordontheo on 19/09/17.
  */
-public class MobStandard extends MobEnemy implements Behaviour {
+public class MobStandard extends MobEnemy {
     @Override
     public void step(){
         //performs Mod specific step

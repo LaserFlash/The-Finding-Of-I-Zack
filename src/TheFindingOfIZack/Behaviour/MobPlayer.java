@@ -5,7 +5,7 @@ import javax.xml.stream.Location;
 /**
  * Created by gordontheo on 19/09/17.
  */
-public class MobPlayer implements Behaviour{
+public class MobPlayer {
     private Location location;
 
     /**
