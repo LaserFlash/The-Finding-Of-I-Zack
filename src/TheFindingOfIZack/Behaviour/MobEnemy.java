@@ -5,7 +5,7 @@ import javax.xml.stream.Location;
 /**
  * Created by gordontheo on 19/09/17.
  */
-public class MobEnemy implements Behaviour {
+public class MobEnemy {
     Location location;
 
     /**
