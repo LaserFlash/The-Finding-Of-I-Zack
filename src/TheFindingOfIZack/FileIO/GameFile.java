@@ -33,6 +33,7 @@ public class GameFile {
     public GameFile(){
 
         encoding = new Huffman(this);
+        fileState = FILE_STATE.DECODED;
 
         try {
             br = new BufferedReader(new FileReader(new File("text.txt")));
@@ -47,8 +48,7 @@ public class GameFile {
      */
     public boolean isEOF() {
         boolean result = false;
-        try
-        {
+        try {
             result = br.ready();
         }
         catch (IOException e)
