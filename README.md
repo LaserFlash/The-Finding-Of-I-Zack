@@ -48,7 +48,7 @@ Tester: Jesse
 
     Health
     Position
-    Behaviour - (This is its own library)
+    TheFindingOfIZack.Behaviour - (This is its own library)
     Player
     Different enemy flavours, just cabbage things/bosses
     TheFindingOfIZack.Items   (Effect on player
@@ -69,7 +69,7 @@ Tester: Ryan
     Open menu pause menu etc.
     Show player score/health/equipped items
     
-Behaviour
+TheFindingOfIZack.Behaviour
 
 Author: Theo
 
