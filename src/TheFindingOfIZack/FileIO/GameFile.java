@@ -1,9 +1,6 @@
 package TheFindingOfIZack.FileIO;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 
 /**
  *  This class captures the notion of a GameFile. The file itself will be
@@ -30,6 +27,23 @@ public class GameFile {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     *  This method returns true if the end of the file has been reached
+     *  @return true if EOF, false otherwise
+     */
+    public boolean isEOF() {
+        boolean result = false;
+        try
+        {
+            result = br.ready();
+        }
+        catch (IOException e)
+        {
+            System.err.println(e);
+        }
+        return result;
     }
 
     /**
