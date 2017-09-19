@@ -1,10 +1,4 @@
-package FileIO;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Scanner;
+package TheFindingOfIZack.FileIO;
 
 /**
  *  This class captures the notion of Loading a game file, it deals with

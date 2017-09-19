@@ -1,9 +1,4 @@
-package FileIO;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+package TheFindingOfIZack.FileIO;
 
 /**
  *  This class captures the notion of Saving a GameFile, it deals with storing

@@ -1,4 +1,4 @@
-package FileIO;
+package TheFindingOfIZack.FileIO;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.io.FileReader;
  *  and write to that file.
  *
  *  This class handles the various exceptions and errors and exceptions that may be
- *  encountered when reading a file. Abstracting the technical details of FileIO
+ *  encountered when reading a file. Abstracting the technical details of TheFindingOfIZack.FileIO
  */
 public class GameFile {
 
@@ -33,11 +33,11 @@ public class GameFile {
     }
 
     /**
-     *  This method displays an a FileIO error appropriately
+     *  This method displays an a TheFindingOfIZack.FileIO error appropriately
      * @param str the error to be displayed
      */
     private static void fileError(String str){
-        System.err.print("FileIO Error: " + str + "\n");
+        System.err.print("TheFindingOfIZack.FileIO Error: " + str + "\n");
     }
 
     /**
