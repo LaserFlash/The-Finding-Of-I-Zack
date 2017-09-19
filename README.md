@@ -26,7 +26,7 @@ Tester: Bryn
 
 
 
-The World or whatever?
+The TheFindingOfIZack.World or whatever?
 
 Author: Ryan
 
@@ -56,7 +56,7 @@ Tester: Jesse
             Maybe like a weight/size thing maybe?
             Health pickups)
 
-View
+TheFindingOfIZack.View
 Author: Bryn
 
 Reviewer: Ben
