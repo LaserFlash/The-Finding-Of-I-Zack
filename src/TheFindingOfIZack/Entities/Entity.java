@@ -9,10 +9,10 @@ import java.util.ArrayList;
  */
 public class Entity {
 
-    private int health;
-    private Location location;
+    protected int health;
+    protected Location location;
 
-    private List<Item> items;
+    protected List<Item> items;
 
     public Entity(int health, Location location) {
         this.health = health;
