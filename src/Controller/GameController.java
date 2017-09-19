@@ -8,4 +8,4 @@ public class GameController implements java.awt.event.ActionListener{
     public void actionPerformed(ActionEvent actionEvent) {
         throw new NotImplementedException();
     }
-}Excpetions
+}
