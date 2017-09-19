@@ -1,7 +1,6 @@
 package TheFindingOfIZack.Entities;
 import TheFindingOfIZack.Items.Item;
-import javax.xml.stream.Location;
-import java.util.List;
+
 import java.util.ArrayList;
 
 /**
@@ -10,11 +9,11 @@ import java.util.ArrayList;
 public class Entity {
 
     protected int health;
-    protected Location location;
+    protected Point location;
 
-    protected List<Item> items;
+    protected ArrayList<Item> items;
 
-    public Entity(int health, Location location) {
+    public Entity(int health, Point location) {
         this.health = health;
         this.location = location;
         this.items = new ArrayList<Item>();
