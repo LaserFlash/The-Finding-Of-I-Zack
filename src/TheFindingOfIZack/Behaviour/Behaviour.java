@@ -1,4 +1,4 @@
-package Behaviour;
+package TheFindingOfIZack.Behaviour;
 
 import javax.xml.stream.Location;
 
