@@ -48,7 +48,7 @@ Tester: Jesse
 
     Health
     Position
-    Behaviour - (This is it’s own library)
+    Behaviour - (This is its own library)
     Player
     Different enemy flavours, just cabbage things/bosses
     Items   (Effect on player
