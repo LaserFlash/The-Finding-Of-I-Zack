@@ -12,6 +12,7 @@ import java.util.Observable;
 public class Game extends Observable{
 
     private Player player;
+    private Level currentLevel;
 
 
     /**
@@ -53,6 +54,15 @@ public class Game extends Observable{
 
         return this.player;
     }
+
+    /**
+     * updates all of the components within the game
+     */
+    public void updateGame(){
+
+
+    }
+
 
 
 
