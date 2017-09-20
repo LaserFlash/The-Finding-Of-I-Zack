@@ -12,6 +12,13 @@ public abstract class Room extends Drawable{
 
 
 
+public void draw(Graphics g);
+
+
+
+
+
+
 
 
 }
