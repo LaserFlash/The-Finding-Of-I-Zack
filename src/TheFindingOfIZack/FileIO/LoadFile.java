@@ -10,6 +10,7 @@ import TheFindingOfIZack.World.Game;
 public class LoadFile {
 
     private GameFile gameFile;
+    private Game game;
 
     public LoadFile(GameFile gf) {
         gameFile = gf;

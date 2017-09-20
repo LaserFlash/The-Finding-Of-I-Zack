@@ -1,5 +1,7 @@
 package TheFindingOfIZack.FileIO;
 
+import TheFindingOfIZack.World.Game;
+
 /**
  *  This class captures the notion of Saving a GameFile, it deals with storing
  *  all of the different components of a Game, and translating them all into a
@@ -8,9 +10,10 @@ package TheFindingOfIZack.FileIO;
  */
 public class SaveFile {
 
-    GameFile gameFile = new GameFile();
+    private GameFile gameFile = new GameFile();
+    private Game game;
 
-    public SaveFile(){
+    public SaveFile(Game g){
 
     }
 }
