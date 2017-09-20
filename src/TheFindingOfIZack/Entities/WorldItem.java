@@ -1,13 +1,14 @@
 package TheFindingOfIZack.Entities;
 
 import javax.xml.stream.Location;
+import java.awt.*;
 
 /**
- * Created by allanbenj1 on 19/09/17.
+ * Created by Ben Allan
  */
 public class WorldItem extends Entity {
 
-    public WorldItem(int health, Location location) {
+    public WorldItem(int health, Point location) {
         super(health, location);
     }
 
