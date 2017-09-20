@@ -1,6 +1,5 @@
 package TheFindingOfIZack.Entities;
 
-import javax.xml.stream.Location;
 import java.awt.*;
 
 /**
