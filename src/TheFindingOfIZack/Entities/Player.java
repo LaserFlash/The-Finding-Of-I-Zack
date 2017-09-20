@@ -13,4 +13,6 @@ public class Player extends Entity {
     public Player(int health, Point location) {
         super(health, location);
     }
+
+
 }

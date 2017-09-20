@@ -1,10 +1,15 @@
 package TheFindingOfIZack.World;
 
+import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.FileIO.GameFile;
+
+import java.util.Observable;
+
 /**
  * Created by fieldryan on 19/09/17.
  * Stores all the objects within the game world
  */
-public class Game {
+public class Game extends Observable{
 
     private Player player;
 
@@ -45,6 +50,7 @@ public class Game {
      * @return the the player object
      */
     public Player getPlayer(){
+
         return this.player;
     }
 
