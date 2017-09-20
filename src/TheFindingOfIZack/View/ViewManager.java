@@ -1,7 +1,6 @@
 package TheFindingOfIZack.View;
 
 import TheFindingOfIZack.Controller.GameController;
-
 import java.util.Observable;
 
 public class ViewManager implements java.util.Observer {
