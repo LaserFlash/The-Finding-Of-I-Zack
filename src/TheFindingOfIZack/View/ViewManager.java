@@ -15,11 +15,12 @@ public class ViewManager implements java.util.Observer {
      * @param controller
      */
     public ViewManager(GameController controller){
-
+        //Create key bindings
     }
 
     @Override
     public void update(Observable observable, Object o) {
-
+        //Draw stuff here
+        //Or find what needs to be drawn
     }
 }
