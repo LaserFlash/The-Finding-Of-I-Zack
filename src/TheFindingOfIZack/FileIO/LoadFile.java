@@ -1,5 +1,7 @@
 package TheFindingOfIZack.FileIO;
 
+import TheFindingOfIZack.World.Game;
+
 /**
  *  This class captures the notion of Loading a game file, it deals with
  *  interpreting the GameFile, and recreating the game that was stored.
@@ -7,9 +9,9 @@ package TheFindingOfIZack.FileIO;
  */
 public class LoadFile {
 
-    GameFile gameFile = new GameFile();
+    private GameFile gameFile;
 
-    public LoadFile() {
-
+    public LoadFile(GameFile gf) {
+        gameFile = gf;
     }
 }

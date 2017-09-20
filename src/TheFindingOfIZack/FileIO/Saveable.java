@@ -1,11 +1,13 @@
 package TheFindingOfIZack.FileIO;
 
+import java.io.Serializable;
+
 /**
  *  This abstract class captures the notion of a Save friendly object,
  *  objects like Levels, Players, Games, Items, ... etc need to be able
  *  to be saved and stored in the GameFile
  */
-public abstract class Saveable {
+public abstract class Saveable implements Serializable {
 
     /**
      *  This method returns all of the information a class stores
