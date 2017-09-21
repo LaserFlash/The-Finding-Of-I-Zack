@@ -10,8 +10,15 @@ public class Main {
 
         Player player = new Player(100,new Point(0,0));
         Game game = new Game(player);
-        GameController controller = new GameController(game);
-        ViewManager view = new ViewManager(controller);
+        ViewManager view = new ViewManager();
+        game.addObserver(view);
+
+        GameController controller = new GameController(view,game);
+
+        view.addControllerForButtons(controller);
+
+        controller.showGUI();
+
 
 
 
