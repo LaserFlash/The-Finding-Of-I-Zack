@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 public class StartScreenPanel extends ScreenPanel {
     private final JButton newGame;
     private final JButton loadGame;
+    private final JButton saveGame;
+    private final JButton resumeGame;
     private final JButton exitGame;
 
     /**
@@ -24,11 +26,21 @@ public class StartScreenPanel extends ScreenPanel {
         this.newGame.setActionCommand("newGame");
         this.add(newGame);
 
-        this.loadGame = new JButton("Load Game");
+        this.loadGame = new JButton("Load");
         this.loadGame.setActionCommand("loadGame");
         this.add(loadGame);
 
-        this.exitGame = new JButton(" Exit");
+        this.saveGame = new JButton("Save");
+        this.saveGame.setActionCommand("saveGame");
+        this.saveGame.setEnabled(false);
+        this.add(saveGame);
+
+        this.resumeGame = new JButton("Resume");
+        this.resumeGame.setActionCommand("resumeGame");
+        this.resumeGame.setEnabled(false);
+        this.add(resumeGame);
+
+        this.exitGame = new JButton("Exit");
         this.exitGame.setActionCommand("exitGame");
         this.add(exitGame);
     }
