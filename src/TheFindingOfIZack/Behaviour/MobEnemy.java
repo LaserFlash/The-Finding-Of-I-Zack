@@ -2,7 +2,7 @@ package TheFindingOfIZack.Behaviour;
 
 
 import TheFindingOfIZack.Entities.Player;
-
+import TheFindingOfIZack.World.Game;
 import java.awt.*;
 
 
@@ -13,9 +13,9 @@ public class MobEnemy {
     private Point location;
     private Player player;
 
-    public MobEnemy(Point location, Player player){
+    public MobEnemy(Point location){
         this.location = location;
-        this.player = player;
+        this.player = World.getPlayer;
     }
 
     /**
@@ -34,9 +34,12 @@ public class MobEnemy {
 
     /**
      * To be used for different mob fields of view
+     * @param first Point
+     * @param second Point
+     * @return distance between the two inputs
      */
-    private double distanceToPlayer(MobPlayer player){
-
-        return 0;//temp
+    private double distanceBetween(Point a, Point b){
+        double distance = Math.hypot(a.getX()-b.getX(), a.getY()-b.getY());
+        return distance;
     }
 }
