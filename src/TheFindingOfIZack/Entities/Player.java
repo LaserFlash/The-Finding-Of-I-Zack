@@ -1,6 +1,5 @@
 package TheFindingOfIZack.Entities;
 
-
 import java.awt.*;
 
 /**
