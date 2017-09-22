@@ -1,4 +1,12 @@
-public class standardRoom extends Room extends Drawable{
+package TheFindingOfIZack.World.Rooms;
+
+import TheFindingOfIZack.Entities.Enemy;
+import TheFindingOfIZack.World.Rooms.Room;
+
+import java.awt.*;
+import java.util.ArrayList;
+
+public class standardRoom extends Room{
 
     private ArrayList<Enemy> enemiesInRoom;
 
@@ -10,10 +18,11 @@ public class standardRoom extends Room extends Drawable{
 
 public void draw(Graphics g){
         for(Enemy e: enemiesInRoom){
-            e.draw(g);
+        //    e.draw(g);
         }
 
 }
+
 
 
 
