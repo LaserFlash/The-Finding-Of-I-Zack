@@ -17,7 +17,7 @@ public class Enemy extends Entity {
         this.health = 0;
         this.damage =damage;
         int type = (int) Math.random()*4;
-        if (type>2) {this.behaviour = new MobeEnemy("standard");}
+        if (type>2) {this.behaviour = new MobEnemy("standard");}
         else if (type>1) {this.behaviour = new MobEnemy("fast");}
         else {this.behaviour = new MobEnemy("slow");}
     }
