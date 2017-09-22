@@ -5,7 +5,7 @@ package TheFindingOfIZack.Behaviour;
  */
 public class MobStandard extends MobEnemy {
     @Override
-    public void step(){
+    protected void step(){
         //performs Mod specific step
         int newX = 0;//temp value
         int newY = 0;//temp value
