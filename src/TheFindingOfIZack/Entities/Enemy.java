@@ -16,7 +16,7 @@ public class Enemy extends Entity {
         super(health, location);
         this.health = 0;
         this.damage =damage;
-        this.behaviour = new MobEnemy(super.getLocation());
+        this.behaviour = new MobEnemy(super.getLocation(), this.world.getPlayer());
     }
 
 }
