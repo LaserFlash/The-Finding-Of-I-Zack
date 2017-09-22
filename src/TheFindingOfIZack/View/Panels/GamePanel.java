@@ -1,4 +1,4 @@
-package TheFindingOfIZack.View;
+package TheFindingOfIZack.View.Panels;
 
 import java.awt.event.ActionListener;
 
