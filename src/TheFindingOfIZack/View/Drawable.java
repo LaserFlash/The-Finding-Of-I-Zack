@@ -5,11 +5,11 @@ import java.awt.*;
 /**
  *  This allows an object to be drawn by the view
  */
-public abstract class Drawable {
+public interface Drawable {
 
     /**
      * Draw the object
-     * @param g
+     * @param g graphics object to draw on
      */
-    public abstract void draw(Graphics g);
+    void draw(Graphics g);
 }
