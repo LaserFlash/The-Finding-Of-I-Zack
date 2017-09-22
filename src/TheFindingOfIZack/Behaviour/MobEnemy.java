@@ -34,8 +34,8 @@ public class MobEnemy {
 
     /**
      * To be used for different mob fields of view
-     * @param first Point
-     * @param second Point
+     * @param a first Point
+     * @param b second Point
      * @return distance between the two inputs
      */
     private double distanceBetween(Point a, Point b){
