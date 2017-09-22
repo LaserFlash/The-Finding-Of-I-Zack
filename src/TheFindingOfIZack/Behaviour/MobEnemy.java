@@ -1,8 +1,6 @@
 package TheFindingOfIZack.Behaviour;
 
 
-import TheFindingOfIZack.Entities.Player;
-
 import java.awt.*;
 
 
@@ -12,21 +10,21 @@ import java.awt.*;
  * all other enemies extend this and it houses the fundamental methods
  */
 public class MobEnemy {
-    private Point location;
-    private Player player;
+    private String type;
 
-    public MobEnemy(Point location, Player player){
-        this.location = location;
-        this.player = player;
+    public MobEnemy(String type){
+        this.type = type;
     }
 
     /**
      * Shifts the mob's location
-     * @param newX change in x
-     * @param newY change in y
-     * @return new location
+     * @param location point containing the mobs location
+     * @param player point containing the players location
+     * @return new mob Point
      */
-    public Point move(double newX, double newY){return location;}
+    public Point move(Point location, Point player){
+        return null;
+    }
 
     /**
      * Overridden in each different mob, is what changes movement behaviour/triggers attack behaviour
