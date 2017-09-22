@@ -1,5 +1,9 @@
 package TheFindingOfIZack.View;
 
+import TheFindingOfIZack.View.Panels.GamePanel;
+import TheFindingOfIZack.View.Panels.ScreenPanel;
+import TheFindingOfIZack.View.Panels.StartScreenPanel;
+
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -18,7 +22,7 @@ public class ViewManager extends JFrame implements java.util.Observer{
      * Takes a controller as an argument in order to create key bindings
      */
     public ViewManager(){
-        super("The Finding of Zack");
+        super("The Finding of I, Zack");
         this.setFocusable(true);
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         this.startScreen = new StartScreenPanel();
