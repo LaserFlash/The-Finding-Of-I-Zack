@@ -1,12 +1,25 @@
 package TheFindingOfIZack.Items;
 
+import TheFindingOfIZack.View.Drawable;
+
+import java.awt.*;
+
 /**
  * Created by Ben Allan
  */
-public abstract class Item {
+public abstract class Item implements Drawable{
 
-    public Item() {
+    protected Point location;
+    private String type;
+
+    public Item(String type) {
 
     }
+
+    public void setLocation(Point p) {
+        this.location = p;
+    }
+
+
 
 }

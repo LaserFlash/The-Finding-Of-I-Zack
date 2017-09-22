@@ -16,7 +16,25 @@ public class Enemy extends Entity {
         super(health, location);
         this.health = 0;
         this.damage =damage;
-        this.behaviour = new MobEnemy(super.getLocation(), this.world.getPlayer());
+        int type = (int) Math.random()*4;
+        if (type>2) {this.behaviour = new MobeEnemy("standard");}
+        else if (type>1) {this.behaviour = new MobEnemy("fast");}
+        else {this.behaviour = new MobEnemy("slow");}
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        g.setColor(Color.RED);
+        g.fillRect(location.x, location.y, 40, 40);
+        super.draw(g);
+    }
+
+    public void move() {
+        Point p = behaviour.move(location, this.world.getPlayer().getLocation());
+        for (Item i : items) {
+            i.setLocation(p);
+        }
+        this.location = p;
     }
 
 }

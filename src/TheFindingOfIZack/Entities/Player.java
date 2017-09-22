@@ -13,5 +13,12 @@ public class Player extends Entity {
         super(health, location);
     }
 
+    @Override
+    public void draw(Graphics g) {
+        g.setColor(Color.CYAN);
+        g.fillRect(location.x, location.y, 40, 40);
+        super.draw(g);
+    }
+
 
 }
