@@ -31,7 +31,7 @@ public class MobEnemy {
     /**
      * Overridden in each different mob, is what changes movement behaviour/triggers attack behaviour
      */
-    private void step(){}
+    public void step(){}
 
     /**
      * To be used for different mob fields of view
