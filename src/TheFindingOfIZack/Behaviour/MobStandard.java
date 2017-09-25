@@ -12,8 +12,11 @@ public class MobStandard extends MobEnemy {
 
     @Override
     public void step(){
-        //performs Mod specific step
-        int newX = 0;//temp value
-        int newY = 0;//temp value
+        //if(distanceBetween())
+
+
+        //performs Mob specific step
+        //int newX = 0;//temp value
+        //int newY = 0;//temp value
     }
 }

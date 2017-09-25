@@ -37,7 +37,7 @@ public class MobEnemy {
      * @param b second Point
      * @return distance between the two inputs
      */
-    private double distanceBetween(Point a, Point b){
+    protected double distanceBetween(Point a, Point b){
         double distance = Math.hypot(a.getX()-b.getX(), a.getY()-b.getY());
         return distance;
     }
