@@ -22,6 +22,7 @@ public class Level {
     }
 
     public void update(){
+        System.out.println("updating level");
         for(Room r: rooms){
             r.update();
         }

@@ -40,6 +40,7 @@ public class Game extends Observable{
      */
     public void beginNewGame(){
         createLevelOne();
+        System.out.println("level created");
         updateGame();
 
     }
@@ -64,7 +65,8 @@ public class Game extends Observable{
      * updates all of the components within the game
      */
     public void updateGame(){
-    currentLevel.update();
+        currentLevel.update();
+        notifyObservers();
 
     }
 
