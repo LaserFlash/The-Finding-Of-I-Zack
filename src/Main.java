@@ -1,7 +1,7 @@
-import TheFindingOfIZack.Controller.GameController;
-import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.View.ViewManager;
-import TheFindingOfIZack.World.Game;
+import Controller.GameController;
+import Entities.Player;
+import View.ViewManager;
+import World.Game;
 
 import java.awt.*;
 
