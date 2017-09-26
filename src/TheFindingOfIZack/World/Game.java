@@ -7,23 +7,21 @@ import TheFindingOfIZack.FileIO.Savable;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.startRoom;
 
-import java.io.Serializable;
 import java.util.Observable;
+
 
 /**
  * Created by fieldryan on 19/09/17.
  * Stores all the objects within the game world
  */
-public class Game extends Observable implements Savable {
+
+public class Game extends Observable implements Model,Savable{
+
 
     private Player player;
     private Level currentLevel;
 
-
     private int frameCount;
-
-
-
 
 
     /**
@@ -68,6 +66,16 @@ public class Game extends Observable implements Savable {
     public Player getPlayer(){
 
         return this.player;
+    }
+
+    @Override
+    public void startGameLoop() {
+
+    }
+
+    @Override
+    public void stopGameLoop() {
+
     }
 
     /**
@@ -179,6 +187,4 @@ public class Game extends Observable implements Savable {
     private void drawGame(){
         notifyObservers();
     }
-
-
 }
