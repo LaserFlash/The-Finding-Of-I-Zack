@@ -8,13 +8,17 @@ import java.awt.*;
  * After this it will follow the player at slow speed and cause damage if it touches
  */
 public class MobStandard extends MobEnemy {
+    private dobule viewRange = 50;
     public MobStandard(String type) {
         super(type);
     }
 
     @Override
     public Point step(Point location, Point player){
-        //if (distance )
+
+        if (distance(location,player) < viewRange){
+
+        }
 
         //performs Mob specific step
         //int newX = 0;//temp value
