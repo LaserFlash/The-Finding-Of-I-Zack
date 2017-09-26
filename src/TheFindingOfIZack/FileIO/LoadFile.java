@@ -1,7 +1,6 @@
 package TheFindingOfIZack.FileIO;
 
-import TheFindingOfIZack.FileIO.GameFile;
-import World.Game;
+import TheFindingOfIZack.World.Game;
 
 /**
  *  This class captures the notion of Loading a game file, it deals with
@@ -15,5 +14,13 @@ public class LoadFile {
 
     public LoadFile(GameFile gf) {
         gameFile = gf;
+    }
+
+    /**
+     *  This method chooses the File to be loaded, and verifies
+     *  the integrity of the .ZACK file
+     */
+    public void chooseFile(){
+        gameFile.openFile();
     }
 }
