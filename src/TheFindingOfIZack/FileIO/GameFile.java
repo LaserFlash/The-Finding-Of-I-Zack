@@ -1,10 +1,15 @@
 package TheFindingOfIZack.FileIO;
 
 import TheFindingOfIZack.Entities.Entity;
+import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Level;
 import TheFindingOfIZack.World.Rooms.Room;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.io.*;
 
 /**
@@ -31,7 +36,7 @@ public class GameFile {
     /**
      * This stores the location of the GameFile .txt file to be read or written
      */
-    private String fileName = "text.txt";
+    private String fileName = "";
 
     /**
      *  This is the the text to be encoded/decoded or saved/loaded
@@ -64,12 +69,37 @@ public class GameFile {
      *  be read, and the BufferedOutputStream to be written too.
      */
     public GameFile(){
+        boolean isValidFile = openFile();
+        if (!isValidFile)
+            return;
         try {
             in = new BufferedReader(new FileReader(new File(fileName)));
             out = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            fileError("Creating GameFile " + e.getLocalizedMessage());
         }
+        exit(in, out);
+    }
+
+    /**
+     *  This method allows the user to select a GameFile from their computer
+     *  and displays the valid file extensions
+     *  @return true if valid, false otherwise
+     */
+    public boolean openFile(){
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "TXT & ZACK Files", "txt");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(new ViewManager(new Game(new Player(100, new Point(0,0)))));
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            System.out.println("You chose to open this file: " +
+                    chooser.getSelectedFile().getName());
+            fileName = chooser.getSelectedFile().getName();
+            return true;
+        }
+        fileError("Invalid File choosen");
+        return false;
     }
 
 
@@ -142,7 +172,7 @@ public class GameFile {
      *  This method displays an a TheFindingOfIZack.FileIO error appropriately
      * @param str the error to be displayed
      */
-    private static void fileError(String str){
+    private void fileError(String str){
         System.err.print("TheFindingOfIZack.FileIO Error: " + str + "\n");
     }
 
@@ -150,11 +180,26 @@ public class GameFile {
      *  This method closes BufferedReader after the GameFile is done with it
      * @return true if successful, false otherwise
      */
-    public boolean close(){
+    public boolean close(BufferedReader in){
         try {
             in.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            fileError("Failed to close BufferedReader");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     *  This method closes BufferedReader after the GameFile is done with it
+     * @return true if successful, false otherwise
+     */
+    public boolean exit(BufferedReader in, BufferedOutputStream out){
+        try {
+            in.close();
+            out.close();
+        } catch (IOException e) {
+            fileError("Failed to close BufferedReader");
             return false;
         }
         return true;
@@ -183,7 +228,7 @@ public class GameFile {
      * @param args the arguments for the main method
      */
     public static void main(String [] args){
-        fileError("Error");
+        new GameFile();
     }
 
 }
