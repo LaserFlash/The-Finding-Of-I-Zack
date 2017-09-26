@@ -1,6 +1,6 @@
 package TheFindingOfIZack.FileIO;
 
-import World.Game;
+import TheFindingOfIZack.World.Game;
 
 /**
  *  This class captures the notion of Saving a GameFile, it deals with storing
