@@ -1,4 +1,4 @@
-package Entities;
+package TheFindingOfIZack.Entities;
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.View.Drawable;
 import TheFindingOfIZack.World.Game;

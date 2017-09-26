@@ -1,4 +1,4 @@
-package Entities;
+package TheFindingOfIZack.Entities;
 
 import java.awt.*;
 
