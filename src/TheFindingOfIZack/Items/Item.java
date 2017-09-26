@@ -13,7 +13,7 @@ public abstract class Item implements Drawable{
     private String type;
 
     public Item(String type) {
-
+        this.type = type;
     }
 
     public void setLocation(Point p) {
