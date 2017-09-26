@@ -38,6 +38,8 @@ public class GameFile {
      */
     private String fileName = "";
 
+    private File file = null;
+
     /**
      *  This is the the text to be encoded/decoded or saved/loaded
      */
@@ -97,10 +99,11 @@ public class GameFile {
     public boolean createOut(){
         try {
             System.out.printf("filename: " + fileName + "\n");
-            in = new BufferedReader(new FileReader(new File(fileName)));
-            out = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+            in = new BufferedReader(new FileReader(file + EXTENSION));
+            out = new BufferedOutputStream(new FileOutputStream(file+EXTENSION));
 
             out.write(HEADER.getBytes());
+            out.write("\n".getBytes());
             out.close();
 
             System.out.println(in.readLine());
@@ -125,8 +128,8 @@ public class GameFile {
         try {
             System.out.printf("filename: " + fileName + "\n");
 
-            in = new BufferedReader(new FileReader(new File(fileName)));
-            System.out.printf(in.readLine());
+            in = new BufferedReader(new FileReader(file));
+            System.out.println(in.readLine());
             close(in);
         } catch (FileNotFoundException e) {
             fileError("Creating GameFile " + e.getLocalizedMessage());
@@ -157,7 +160,7 @@ public class GameFile {
         int returnVal = chooser.showOpenDialog(parent);
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             System.out.println("opening...");
-            fileName = chooser.getSelectedFile().getName();
+            file = chooser.getSelectedFile();
             return true;
         }
         fileError("Invalid File choosen");
@@ -183,7 +186,7 @@ public class GameFile {
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             System.out.println("saving...");
             try {
-                fileName = chooser.getSelectedFile() + EXTENSION;
+                file = chooser.getSelectedFile();
                 return true;
             } catch (Exception ex) {
                 fileError("Invalid saveFile " + ex.getLocalizedMessage());
