@@ -8,13 +8,24 @@ import TheFindingOfIZack.World.Game;
  *  GameFile, that stores the Game in its current state. This class will return
  *  a GameFile, made from the current game.
  */
-public class SaveFile {
+public class SaveFile extends GameFile {
 
-    private GameFile gameFile = new GameFile();
     private Game game;
 
     public SaveFile(Game g){
+        game = g;
+        execute();
+    }
 
+    /**
+     *  This method chooses the File to saved, and verifies
+     *  the integrity of the .ZACK file
+     */
+    public void execute(){
+        boolean isValidFile = saveFile(parent);
+        if (!isValidFile)
+            return;
+        createStreams();
     }
 
 }

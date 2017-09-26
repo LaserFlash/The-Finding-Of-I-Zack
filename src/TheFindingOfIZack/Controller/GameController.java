@@ -2,6 +2,8 @@ package TheFindingOfIZack.Controller;
 
 
 import TheFindingOfIZack.FileIO.GameFile;
+import TheFindingOfIZack.FileIO.LoadFile;
+import TheFindingOfIZack.FileIO.SaveFile;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
 
@@ -52,16 +54,22 @@ public class GameController implements ActionListener, KeyListener {
             }
             case "loadGame":{
                 //TODO trigger load from file
-                GameFile loadedGame = new GameFile();
+                // This sets up a file to be selected and loaded
+                LoadFile loadedGame = new LoadFile();
+                game = loadedGame.getGame();
+
                 view.goToGameView();
                 break;
             }
             case "saveGame" :{
                 //TODO trigger saving of game
+                SaveFile saveGame = new SaveFile(game);
+                break;
             }
             case "resumeGame":{
                 //TODO start any lops or threads that need to be resumed
                 view.goToGameView();
+                break;
             }
         }
     }

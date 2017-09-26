@@ -64,7 +64,7 @@ public class GameFile {
      */
     private String release = "0.0.1";
 
-    private JFrame parent =
+    protected JFrame parent =
             new ViewManager(new Game(new Player(100, new Point(0,0))));
 
     /**
@@ -79,23 +79,40 @@ public class GameFile {
     protected static final String DIRECTORY = "/home/rocktopus/Documents/tri2/swen222/IZack/saves";
 
     /**
+     * This stores the file header for each of the Gamefiles
+     */
+    protected static final String HEADER = "#ZACK/FILEIO/";
+
+    /**
      *  This GameFile constructor sets up the BufferedReader for a GameFile to
      *  be read, and the BufferedOutputStream to be written too.
      */
-    public GameFile(){
-        //boolean isValidFile = openFile(parent);
-        boolean isValidFile = openFile(parent);
-        if (!isValidFile)
-            return;
+    public GameFile(){}
+
+    /**
+     *  This method sets up the BufferedReader and BufferedOutputStream
+     *  for the files
+     * @return
+     */
+    public boolean createStreams(){
         try {
             System.out.printf("filename: " + fileName + "\n");
             in = new BufferedReader(new FileReader(new File(fileName)));
             out = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+
+            out.write(HEADER.getBytes());
+            out.close();
+
+            System.out.println(in.readLine());
+
             exit(in, out);
         } catch (FileNotFoundException e) {
             fileError("Creating GameFile " + e.getLocalizedMessage());
+            return false;
+        } catch (IOException e) {
+            fileError("Creating Streams IO" + e.getLocalizedMessage());
         }
-        System.exit(0);
+        return true;
     }
 
     /**
@@ -144,11 +161,6 @@ public class GameFile {
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             try {
                 fileName = chooser.getSelectedFile() + EXTENSION;
-
-                FileWriter fw = new FileWriter(fileName);
-                fw.write("test"); // TODO: 9/26/17 implement this
-                fw.close(); // close will automatically flush
-
                 return true;
             } catch (Exception ex) {
                 fileError("Invalid saveFile " + ex.getLocalizedMessage());
@@ -290,6 +302,7 @@ public class GameFile {
      * @param args the arguments for the main method
      */
     public static void main(String [] args){
+
         new GameFile();
     }
 
