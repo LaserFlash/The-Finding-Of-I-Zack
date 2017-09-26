@@ -1,6 +1,7 @@
 package TheFindingOfIZack.Controller;
 
 
+import TheFindingOfIZack.FileIO.GameFile;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
 
@@ -46,12 +47,12 @@ public class GameController implements ActionListener, KeyListener {
             }
             case "newGame": {
                 this.game.beginNewGame();
-                //TODO change what is in the view
                 view.goToGameView();
                 break;
             }
             case "loadGame":{
                 //TODO trigger load from file
+                GameFile loadedGame = new GameFile();
                 view.goToGameView();
                 break;
             }
