@@ -1,4 +1,9 @@
-package TheFindingOfIZack.FileIO;
+package FileIO;
+
+import TheFindingOfIZack.Entities.Entity;
+import TheFindingOfIZack.World.Game;
+import TheFindingOfIZack.World.Level;
+import TheFindingOfIZack.World.Rooms.Room;
 
 import java.io.*;
 
@@ -68,24 +73,50 @@ public class GameFile {
     }
 
 
-    public String readGame(){
-        return "";
+    public String readGame(BufferedReader in){
+        if (isEOF(in))
+            fileError("EOF reached in readGame");
+        return null;
     }
 
-    public String readLevel(){
-        return "";
+    public String readLevel(BufferedReader in){
+        if (isEOF(in))
+            fileError("EOF reached in readLevel");
+        return null;
     }
 
-    public String readRoom(){
-        return "";
+    public String readRoom(BufferedReader in){
+        if (isEOF(in))
+            fileError("EOF reached in readRoom");
+        return null;
     }
 
-    public String readEntity(){
-        return "";
+    public String readEntity(BufferedReader in){
+        if (isEOF(in))
+            fileError("EOF reached in readEntity");
+        return null;
     }
 
-    public String readItem(){
-        return "";
+    public String readItem(BufferedReader in){
+        if (isEOF(in))
+        fileError("EOF reached in readItem");
+        return null;
+    }
+
+    public Game writeGame(BufferedOutputStream out) {
+        return null;
+    }
+
+    public Level writeLevel(BufferedOutputStream out) {
+        return null;
+    }
+
+    public Room writeRoom(BufferedOutputStream out) {
+        return null;
+    }
+
+    public Entity writeEntity(BufferedOutputStream out) {
+        return null;
     }
 
 
@@ -93,16 +124,18 @@ public class GameFile {
      *  This method returns true if the end of the file has been reached
      *  @return true if EOF, false otherwise
      */
-    public boolean isEOF() {
-        boolean result = false;
+    public boolean isEOF(BufferedReader in) {
+        boolean isEOF = false;
         try {
-            result = in.ready();
+            isEOF = in.ready();
         }
         catch (IOException e)
         {
-            System.err.println(e);
+            //  The end of file has been reached
+            fileError("End-of-file");
+            isEOF = true;
         }
-        return result;
+        return isEOF;
     }
 
     /**

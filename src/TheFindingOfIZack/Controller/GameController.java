@@ -1,7 +1,7 @@
-package TheFindingOfIZack.Controller;
+package Controller;
 
-import TheFindingOfIZack.View.ViewManager;
-import TheFindingOfIZack.World.Game;
+import View.ViewManager;
+import World.Game;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -73,6 +73,7 @@ public class GameController implements ActionListener, KeyListener {
             //TODO pause or resume game anf change view accordingly
             view.goToMenuView();
         }
+
     }
     @Override
     public void keyReleased(KeyEvent e) {}

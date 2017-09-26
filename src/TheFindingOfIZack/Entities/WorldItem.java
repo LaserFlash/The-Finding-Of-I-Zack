@@ -1,4 +1,4 @@
-package TheFindingOfIZack.Entities;
+package Entities;
 
 import java.awt.*;
 
@@ -14,7 +14,7 @@ public class WorldItem extends Entity {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.YELLOW);
-        g.fillRect(location.x, location.y, 40, 40);
+        g.fillRect(location.x, location.y, width, width);
         super.draw(g);
     }
 

@@ -1,4 +1,4 @@
-package TheFindingOfIZack.FileIO;
+package FileIO;
 
 import java.util.*;
 

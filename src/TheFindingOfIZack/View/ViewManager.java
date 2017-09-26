@@ -1,8 +1,9 @@
-package TheFindingOfIZack.View;
+package View;
 
-import TheFindingOfIZack.View.Panels.GamePanel;
-import TheFindingOfIZack.View.Panels.ScreenPanel;
-import TheFindingOfIZack.View.Panels.StartScreenPanel;
+import View.Panels.GamePanel;
+import View.Panels.ScreenPanel;
+import View.Panels.StartScreenPanel;
+import World.Game;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -21,7 +22,7 @@ public class ViewManager extends JFrame implements java.util.Observer{
      * Initialise the ViewManager.
      * Takes a controller as an argument in order to create key bindings
      */
-    public ViewManager(){
+    public ViewManager(Game game){
         super("The Finding of I, Zack");
         this.setFocusable(true);
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -31,10 +32,10 @@ public class ViewManager extends JFrame implements java.util.Observer{
         this.pack();
         this.setLocationRelativeTo( null );
 
-        this.gameScreen = new GamePanel();
+        this.gameScreen = new GamePanel(game);
     }
 
-    @Override
+
     public void update(Observable observable, Object o) {
         //Draw stuff here
         //Or find what needs to be drawn

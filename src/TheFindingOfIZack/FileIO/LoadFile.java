@@ -1,6 +1,6 @@
-package TheFindingOfIZack.FileIO;
+package FileIO;
 
-import TheFindingOfIZack.World.Game;
+import World.Game;
 
 /**
  *  This class captures the notion of Loading a game file, it deals with

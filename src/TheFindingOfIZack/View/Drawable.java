@@ -1,4 +1,4 @@
-package TheFindingOfIZack.View;
+package View;
 
 import java.awt.*;
 

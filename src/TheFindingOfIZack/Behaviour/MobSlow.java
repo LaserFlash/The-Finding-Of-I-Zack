@@ -1,4 +1,4 @@
-package TheFindingOfIZack.Behaviour;
+package Behaviour;
 
 import java.awt.*;
 

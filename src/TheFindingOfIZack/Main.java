@@ -1,7 +1,7 @@
-import TheFindingOfIZack.Controller.GameController;
-import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.View.ViewManager;
-import TheFindingOfIZack.World.Game;
+import Controller.GameController;
+import Entities.Player;
+import View.ViewManager;
+import World.Game;
 
 import java.awt.*;
 
@@ -10,18 +10,13 @@ public class Main {
 
         Player player = new Player(100,new Point(0,0));
         Game game = new Game(player);
-        ViewManager view = new ViewManager();
+        ViewManager view = new ViewManager(game);
         game.addObserver(view);
 
         GameController controller = new GameController(view,game);
 
         view.addControllerForButtons(controller);
-
         controller.showGUI();
-
-
-
-
 
     }
 }

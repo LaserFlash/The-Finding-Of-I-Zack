@@ -3,12 +3,12 @@ package TheFindingOfIZack.Items;
 import java.awt.*;
 
 /**
- * Created by Ben Allan
+ * Created by allanbenj1 on 26/09/17.
  */
-public class Potion extends Item {
+public class Key extends Item {
 
-    public Potion() {
-        super("potion");
+    public Key() {
+        super("key");
     }
 
     @Override

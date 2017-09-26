@@ -1,6 +1,6 @@
-package TheFindingOfIZack.FileIO;
+package FileIO;
 
-import TheFindingOfIZack.World.Game;
+import World.Game;
 
 /**
  *  This class captures the notion of Saving a GameFile, it deals with storing
@@ -16,4 +16,5 @@ public class SaveFile {
     public SaveFile(Game g){
 
     }
+
 }

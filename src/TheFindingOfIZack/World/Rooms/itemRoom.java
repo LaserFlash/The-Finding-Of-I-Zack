@@ -1,4 +1,4 @@
-package TheFindingOfIZack.World.Rooms;
+package World.Rooms;
 
 import java.awt.*;
 
@@ -10,6 +10,11 @@ public class itemRoom extends Room {
 
     @Override
     public void draw(Graphics g) {
+
+    }
+
+    @Override
+    public void update() {
 
     }
 }
