@@ -5,6 +5,7 @@ import TheFindingOfIZack.View.Panels.GamePanel;
 import TheFindingOfIZack.View.Panels.ScreenPanel;
 import TheFindingOfIZack.View.Panels.StartScreenPanel;
 import TheFindingOfIZack.World.Game;
+import TheFindingOfIZack.World.Model;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ import java.util.Observable;
  */
 public class ViewManager extends JFrame implements java.util.Observer {
 
-    private Game model;
+    private Model model;
 
     private ScreenPanel startScreen;
     private ScreenPanel gameScreen;
@@ -26,7 +27,7 @@ public class ViewManager extends JFrame implements java.util.Observer {
      * Initialise the ViewManager.
      * Takes a controller as an argument in order to create key bindings
      */
-    public ViewManager(Game model) {
+    public ViewManager(Model model) {
         super("The Finding of I, Zack");
         setPreferredSize(new Dimension(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT));
         this.model = model;
@@ -73,7 +74,6 @@ public class ViewManager extends JFrame implements java.util.Observer {
     public void goToGameView() {
         this.remove(startScreen);
         this.add(gameScreen);
-        this.getContentPane().revalidate();
         this.repaint();
     }
 
@@ -83,12 +83,12 @@ public class ViewManager extends JFrame implements java.util.Observer {
     public void goToMenuView() {
         this.remove(gameScreen);
         this.add(startScreen);
-        this.getContentPane().revalidate();
         this.repaint();
     }
 
     @Override
     public void repaint(){
+        this.getContentPane().revalidate();
         this.getContentPane().repaint();
     }
 }
