@@ -25,7 +25,7 @@ public class SaveFile extends GameFile {
         boolean isValidFile = saveFile(parent);
         if (!isValidFile)
             return;
-        createStreams();
+        createOut();
     }
 
 }

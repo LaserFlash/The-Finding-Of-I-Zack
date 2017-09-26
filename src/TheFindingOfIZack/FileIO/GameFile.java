@@ -90,11 +90,11 @@ public class GameFile {
     public GameFile(){}
 
     /**
-     *  This method sets up the BufferedReader and BufferedOutputStream
+     *  This method sets up the BufferedOutputStream
      *  for the files
-     * @return
+     * @return true if successful, false otherwise
      */
-    public boolean createStreams(){
+    public boolean createOut(){
         try {
             System.out.printf("filename: " + fileName + "\n");
             in = new BufferedReader(new FileReader(new File(fileName)));
@@ -111,6 +111,29 @@ public class GameFile {
             return false;
         } catch (IOException e) {
             fileError("Creating Streams IO" + e.getLocalizedMessage());
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     *  This method sets up the BufferedReader
+     *  for the files
+     * @return true if successful, false otherwise
+     */
+    public boolean createIn(){
+        try {
+            System.out.printf("filename: " + fileName + "\n");
+
+            in = new BufferedReader(new FileReader(new File(fileName)));
+            System.out.printf(in.readLine());
+            close(in);
+        } catch (FileNotFoundException e) {
+            fileError("Creating GameFile " + e.getLocalizedMessage());
+            return false;
+        } catch (IOException e) {
+            fileError("Creating Streams IO" + e.getLocalizedMessage());
+            return false;
         }
         return true;
     }
@@ -126,15 +149,14 @@ public class GameFile {
         // This method only accepts .txt or .zack file extensions
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "ZACK Files", EXTENSION);
-        chooser.setFileFilter(filter);
+        //chooser.setFileFilter(filter);
 
         // Sets the current directory to make navigation easier
         chooser.setCurrentDirectory(new File(DIRECTORY));
 
         int returnVal = chooser.showOpenDialog(parent);
         if(returnVal == JFileChooser.APPROVE_OPTION) {
-            System.out.println("You chose to open this file: " +
-                    chooser.getSelectedFile().getName());
+            System.out.println("opening...");
             fileName = chooser.getSelectedFile().getName();
             return true;
         }
@@ -159,6 +181,7 @@ public class GameFile {
 
         int returnVal = chooser.showSaveDialog(parent);
         if(returnVal == JFileChooser.APPROVE_OPTION) {
+            System.out.println("saving...");
             try {
                 fileName = chooser.getSelectedFile() + EXTENSION;
                 return true;
