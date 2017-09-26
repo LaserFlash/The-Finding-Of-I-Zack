@@ -2,6 +2,9 @@ package TheFindingOfIZack.FileIO;
 
 import TheFindingOfIZack.World.Game;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 /**
  *  This class captures the notion of Saving a GameFile, it deals with storing
  *  all of the different components of a Game, and translating them all into a
@@ -14,18 +17,24 @@ public class SaveFile extends GameFile {
 
     public SaveFile(Game g){
         game = g;
-        execute();
+        execute(game);
     }
 
     /**
      *  This method chooses the File to saved, and verifies
      *  the integrity of the .ZACK file
      */
-    public void execute(){
+    public void execute(Game g){
         boolean isValidFile = saveFile(parent);
         if (!isValidFile)
             return;
         createOut();
+        try {
+            ObjectOutputStream obOut = new ObjectOutputStream(out);
+            obOut.writeObject(g);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

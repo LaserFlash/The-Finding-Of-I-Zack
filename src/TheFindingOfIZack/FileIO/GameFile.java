@@ -29,9 +29,9 @@ public class GameFile {
     /**
      *  This BufferedReader stores the reader that interacts with the files
      */
-    private BufferedReader in;
+    protected BufferedReader in;
 
-    private BufferedOutputStream out;
+    protected BufferedOutputStream out;
 
     /**
      * This stores the location of the GameFile .txt file to be read or written
@@ -142,7 +142,7 @@ public class GameFile {
      *  and displays the valid file extensions
      *  @return true if valid, false otherwise
      */
-    public boolean openFile(JFrame parent){
+    public boolean openFile(JFrame parent) {
         JFileChooser chooser = new JFileChooser();
 
         // This method only accepts .txt or .zack file extensions
@@ -154,7 +154,7 @@ public class GameFile {
         chooser.setCurrentDirectory(new File(DIRECTORY));
 
         int returnVal = chooser.showOpenDialog(parent);
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
             System.out.println("opening...");
             file = chooser.getSelectedFile();
             return true;
