@@ -117,7 +117,8 @@ public class GameFile {
         return true;
     }
 
-    /**
+    /**\
+     *
      *  This method sets up the BufferedReader
      *  for the files
      * @return true if successful, false otherwise
