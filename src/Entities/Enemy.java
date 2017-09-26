@@ -1,7 +1,11 @@
-package Entities;
-import Items.Item;
-import Behaviour.MobEnemy;
+package TheFindingOfIZack.Entities;
+import TheFindingOfIZack.Items.Item;
+import TheFindingOfIZack.Behaviour.MobEnemy;
+import TheFindingOfIZack.World.Rooms.Room;
+import javafx.geometry.BoundingBox;
+
 import java.awt.*;
+import java.util.List;
 
 /**
  * Created by Ben Allan
@@ -30,10 +34,12 @@ public class Enemy extends Entity {
 
     public void move() {
         Point p = behaviour.move(location, this.world.getPlayer().getLocation());
-        for (Item i : items) {
-            i.setLocation(p);
-        }
         this.location = p;
+        this.box = new BoundingBox(p.getX(), p.getY(), this.width, this.width);
+    }
+
+    public void collisions(Room room) {
+
     }
 
 }
