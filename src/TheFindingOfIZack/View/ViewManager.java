@@ -4,7 +4,6 @@ import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.Panels.GamePanel;
 import TheFindingOfIZack.View.Panels.ScreenPanel;
 import TheFindingOfIZack.View.Panels.StartScreenPanel;
-import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Model;
 
 import javax.swing.*;
@@ -16,7 +15,7 @@ import java.util.Observable;
  * Manage the view for the game.
  * Handles what needs to be drawn and the GUI
  */
-public class ViewManager extends JFrame implements java.util.Observer {
+public class ViewManager extends JFrame implements View, java.util.Observer {
 
     private Model model;
 
@@ -90,5 +89,14 @@ public class ViewManager extends JFrame implements java.util.Observer {
     public void repaint(){
         this.getContentPane().revalidate();
         this.getContentPane().repaint();
+    }
+
+    /**
+     * Replace the game panel with a new one
+     * Intended to be used when loading or replacing the game model
+     * @param game the game model to be used
+     */
+    public void newGame(Model game) {
+        this.gameScreen = new GamePanel(game);
     }
 }

@@ -1,7 +1,6 @@
 package TheFindingOfIZack.View.Panels;
 
 
-import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Model;
 
 import java.awt.*;
