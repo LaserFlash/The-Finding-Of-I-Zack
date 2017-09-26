@@ -1,5 +1,6 @@
 package TheFindingOfIZack.Controller;
 
+
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
 
@@ -73,6 +74,7 @@ public class GameController implements ActionListener, KeyListener {
             //TODO pause or resume game anf change view accordingly
             view.goToMenuView();
         }
+
     }
     @Override
     public void keyReleased(KeyEvent e) {}

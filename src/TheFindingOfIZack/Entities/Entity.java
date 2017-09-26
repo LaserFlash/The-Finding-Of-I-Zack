@@ -1,11 +1,10 @@
 package TheFindingOfIZack.Entities;
-import TheFindingOfIZack.Items.Item;
+
 import TheFindingOfIZack.View.Drawable;
 import TheFindingOfIZack.World.Game;
 import javafx.geometry.BoundingBox;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 
 /**
@@ -37,7 +36,7 @@ public class Entity implements Drawable {
 
     public void draw(Graphics g) {
         g.setColor(Color.black);
-        g.drawRect(location.x, location.y, 40, 40);
+        g.drawRect(location.x, location.y, width, width);
     }
 
 

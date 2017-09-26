@@ -1,7 +1,7 @@
 package TheFindingOfIZack.World.Rooms;
 
+
 import TheFindingOfIZack.Entities.Enemy;
-import TheFindingOfIZack.World.Rooms.Room;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -24,7 +24,8 @@ public void draw(Graphics g){
 }
 
 
+    @Override
+    public void update() {
 
-
-
+    }
 }

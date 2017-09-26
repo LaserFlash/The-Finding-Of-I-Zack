@@ -1,3 +1,5 @@
+package TheFindingOfIZack;
+
 import TheFindingOfIZack.Controller.GameController;
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.View.ViewManager;

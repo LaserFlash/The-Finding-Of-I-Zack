@@ -1,11 +1,11 @@
 package TheFindingOfIZack.Items;
-
 import TheFindingOfIZack.View.Drawable;
+
 
 import java.awt.*;
 
 /**
- * Created by Ben Allan
+ * Created by allanbenj1 on 26/09/17.
  */
 public abstract class Item implements Drawable{
 
@@ -15,11 +15,5 @@ public abstract class Item implements Drawable{
     public Item(String type) {
         this.type = type;
     }
-
-    public void setLocation(Point p) {
-        this.location = p;
-    }
-
-
 
 }

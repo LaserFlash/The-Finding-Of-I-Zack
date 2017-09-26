@@ -33,12 +33,12 @@ public class ViewManager extends JFrame implements java.util.Observer {
         this.setFocusable(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.startScreen = new StartScreenPanel();
-        this.add(this.startScreen);
-
-        this.pack();
-        this.setLocationRelativeTo(null);
-
         this.gameScreen = new GamePanel(this.model);
+
+        this.add(this.startScreen);
+        this.pack();
+
+        this.setLocationRelativeTo(null);
     }
 
     @Override
@@ -73,6 +73,7 @@ public class ViewManager extends JFrame implements java.util.Observer {
     public void goToGameView() {
         this.remove(startScreen);
         this.add(gameScreen);
+        this.getContentPane().revalidate();
         this.repaint();
     }
 
@@ -82,6 +83,12 @@ public class ViewManager extends JFrame implements java.util.Observer {
     public void goToMenuView() {
         this.remove(gameScreen);
         this.add(startScreen);
+        this.getContentPane().revalidate();
         this.repaint();
+    }
+
+    @Override
+    public void repaint(){
+        this.getContentPane().repaint();
     }
 }
