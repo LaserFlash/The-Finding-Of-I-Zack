@@ -1,4 +1,4 @@
-package TheFindingOfIZack.Entities;
+package Entities;
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Behaviour.MobEnemy;
 import TheFindingOfIZack.World.Rooms.Room;

@@ -7,7 +7,6 @@ import World.Rooms.Room;
 import World.Rooms.startRoom;
 
 import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Created by fieldryan on 19/09/17.
