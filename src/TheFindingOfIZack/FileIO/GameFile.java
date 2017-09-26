@@ -1,4 +1,4 @@
-package FileIO;
+package TheFindingOfIZack.FileIO;
 
 import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.World.Game;

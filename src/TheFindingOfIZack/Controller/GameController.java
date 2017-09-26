@@ -1,7 +1,8 @@
-package Controller;
+package TheFindingOfIZack.Controller;
 
-import View.ViewManager;
-import World.Game;
+
+import TheFindingOfIZack.View.ViewManager;
+import TheFindingOfIZack.World.Game;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

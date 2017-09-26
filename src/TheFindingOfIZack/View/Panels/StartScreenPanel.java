@@ -1,4 +1,4 @@
-package View.Panels;
+package TheFindingOfIZack.View.Panels;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -21,6 +21,7 @@ public class StartScreenPanel extends ScreenPanel {
      * Create the panel and related buttons
      */
     public StartScreenPanel(){
+        super();
         //TODO make the button and layout look good
         this.newGame = new JButton("New Game");
         this.newGame.setActionCommand("newGame");

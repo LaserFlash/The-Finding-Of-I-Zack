@@ -1,10 +1,10 @@
-package World;
+package TheFindingOfIZack.World;
 
-import Entities.Player;
 
-import FileIO.GameFile;
-import World.Rooms.Room;
-import World.Rooms.startRoom;
+import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.FileIO.GameFile;
+import TheFindingOfIZack.World.Rooms.Room;
+import TheFindingOfIZack.World.Rooms.startRoom;
 
 import java.util.Observable;
 

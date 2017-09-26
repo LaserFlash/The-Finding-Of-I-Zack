@@ -1,7 +1,7 @@
-package View.Panels;
+package TheFindingOfIZack.View.Panels;
 
 
-import World.Game;
+import TheFindingOfIZack.World.Game;
 
 import java.awt.*;
 import java.awt.event.ActionListener;

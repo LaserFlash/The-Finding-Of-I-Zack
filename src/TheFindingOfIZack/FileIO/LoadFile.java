@@ -1,5 +1,6 @@
-package FileIO;
+package TheFindingOfIZack.FileIO;
 
+import TheFindingOfIZack.FileIO.GameFile;
 import World.Game;
 
 /**

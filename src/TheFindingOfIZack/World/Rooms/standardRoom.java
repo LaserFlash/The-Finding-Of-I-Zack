@@ -1,6 +1,7 @@
-package World.Rooms;
+package TheFindingOfIZack.World.Rooms;
 
-import Entities.Enemy;
+
+import TheFindingOfIZack.Entities.Enemy;
 
 import java.awt.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package Util;
+package TheFindingOfIZack.Util;
 
 public class GameSize {
     public static final int WINDOW_WIDTH    = 900;

@@ -1,4 +1,6 @@
-package World.Rooms;
+package TheFindingOfIZack.World.Rooms;
+
+import TheFindingOfIZack.World.Rooms.Room;
 
 import java.awt.*;
 

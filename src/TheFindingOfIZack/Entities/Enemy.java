@@ -1,11 +1,9 @@
 package TheFindingOfIZack.Entities;
-import TheFindingOfIZack.Items.Item;
+
 import TheFindingOfIZack.Behaviour.MobEnemy;
 import TheFindingOfIZack.World.Rooms.Room;
-import javafx.geometry.BoundingBox;
 
 import java.awt.*;
-import java.util.List;
 
 /**
  * Created by Ben Allan

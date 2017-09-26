@@ -1,6 +1,7 @@
-package World;
+package TheFindingOfIZack.World;
 
-import World.Rooms.Room;
+
+import TheFindingOfIZack.World.Rooms.Room;
 
 import java.util.ArrayList;
 
