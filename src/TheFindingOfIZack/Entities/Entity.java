@@ -37,7 +37,7 @@ public class Entity implements Drawable {
 
     public void draw(Graphics g) {
         g.setColor(Color.black);
-        g.drawRect(location.x, location.y, 40, 40);
+        g.drawRect(location.x, location.y, width, width);
     }
 
 

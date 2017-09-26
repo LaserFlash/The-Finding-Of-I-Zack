@@ -16,7 +16,7 @@ public class Player extends Entity {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.CYAN);
-        g.fillRect(location.x, location.y, 40, 40);
+        g.fillRect(location.x, location.y, width, width);
         super.draw(g);
     }
 
