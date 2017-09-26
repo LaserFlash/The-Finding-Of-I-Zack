@@ -1,6 +1,7 @@
 package View.Panels;
 
-import TheFindingOfIZack.World.Game;
+
+import World.Game;
 import com.sun.corba.se.impl.orbutil.graph.Graph;
 
 import java.awt.*;

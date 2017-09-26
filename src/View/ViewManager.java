@@ -3,6 +3,7 @@ package View;
 import View.Panels.GamePanel;
 import View.Panels.ScreenPanel;
 import View.Panels.StartScreenPanel;
+import World.Game;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -21,7 +22,7 @@ public class ViewManager extends JFrame implements java.util.Observer{
      * Initialise the ViewManager.
      * Takes a controller as an argument in order to create key bindings
      */
-    public ViewManager(){
+    public ViewManager(Game game){
         super("The Finding of I, Zack");
         this.setFocusable(true);
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -31,7 +32,7 @@ public class ViewManager extends JFrame implements java.util.Observer{
         this.pack();
         this.setLocationRelativeTo( null );
 
-        this.gameScreen = new GamePanel();
+        this.gameScreen = new GamePanel(game);
     }
 
 
