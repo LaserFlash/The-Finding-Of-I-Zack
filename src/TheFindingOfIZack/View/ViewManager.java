@@ -1,11 +1,13 @@
 package TheFindingOfIZack.View;
 
+import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.Panels.GamePanel;
 import TheFindingOfIZack.View.Panels.ScreenPanel;
 import TheFindingOfIZack.View.Panels.StartScreenPanel;
 import TheFindingOfIZack.World.Game;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 
@@ -26,6 +28,7 @@ public class ViewManager extends JFrame implements java.util.Observer {
      */
     public ViewManager(Game model) {
         super("The Finding of I, Zack");
+        setPreferredSize(new Dimension(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT));
         this.model = model;
         this.setFocusable(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -32,7 +32,7 @@ public class GamePanel extends ScreenPanel {
          */
         drawHealth(g);
         drawPlayerItems(g);
-        drawPlayerArmour();
+        drawPlayerArmour(g);
         drawRoom(g);
         //Health
         //Items
