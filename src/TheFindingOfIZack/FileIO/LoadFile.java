@@ -21,6 +21,6 @@ public class LoadFile {
      *  the integrity of the .ZACK file
      */
     public void chooseFile(){
-        gameFile.openFile();
+        gameFile.openFile(gameFile.getParent());
     }
 }

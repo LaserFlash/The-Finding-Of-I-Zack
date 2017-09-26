@@ -64,21 +64,38 @@ public class GameFile {
      */
     private String release = "0.0.1";
 
+    private JFrame parent =
+            new ViewManager(new Game(new Player(100, new Point(0,0))));
+
+    /**
+     *  This stores the files extension for all of the GameFiles
+     */
+    protected static final String EXTENSION = ".zack";
+
+    /**
+     * This stores the directory for all of the .zack GameFiles
+     */
+    // TODO: 9/26/17 Change this to YOUR directory for save files
+    protected static final String DIRECTORY = "/home/rocktopus/Documents/tri2/swen222/IZack/saves";
+
     /**
      *  This GameFile constructor sets up the BufferedReader for a GameFile to
      *  be read, and the BufferedOutputStream to be written too.
      */
     public GameFile(){
-        boolean isValidFile = openFile();
+        //boolean isValidFile = openFile(parent);
+        boolean isValidFile = openFile(parent);
         if (!isValidFile)
             return;
         try {
+            System.out.printf("filename: " + fileName + "\n");
             in = new BufferedReader(new FileReader(new File(fileName)));
             out = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+            exit(in, out);
         } catch (FileNotFoundException e) {
             fileError("Creating GameFile " + e.getLocalizedMessage());
         }
-        exit(in, out);
+        System.exit(0);
     }
 
     /**
@@ -86,12 +103,18 @@ public class GameFile {
      *  and displays the valid file extensions
      *  @return true if valid, false otherwise
      */
-    public boolean openFile(){
+    public boolean openFile(JFrame parent){
         JFileChooser chooser = new JFileChooser();
+
+        // This method only accepts .txt or .zack file extensions
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "TXT & ZACK Files", "txt");
+                "ZACK Files", EXTENSION);
         chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(new ViewManager(new Game(new Player(100, new Point(0,0)))));
+
+        // Sets the current directory to make navigation easier
+        chooser.setCurrentDirectory(new File(DIRECTORY));
+
+        int returnVal = chooser.showOpenDialog(parent);
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             System.out.println("You chose to open this file: " +
                     chooser.getSelectedFile().getName());
@@ -102,6 +125,38 @@ public class GameFile {
         return false;
     }
 
+    /**
+     *  This method allows the user to select a GameFile from their computer
+     *  and displays the valid file extensions
+     *  @return true if valid, false otherwise
+     */
+    public boolean saveFile(JFrame parent){
+        JFileChooser chooser = new JFileChooser();
+
+        // This method only accepts .zack or .txt file extensions
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("ZACK Files", EXTENSION);
+        chooser.setFileFilter(filter);
+
+        // Sets the current directory to make navigation easier
+        chooser.setCurrentDirectory(new File(DIRECTORY));
+
+        int returnVal = chooser.showSaveDialog(parent);
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                fileName = chooser.getSelectedFile() + EXTENSION;
+
+                FileWriter fw = new FileWriter(fileName);
+                fw.write("test"); // TODO: 9/26/17 implement this
+                fw.close(); // close will automatically flush
+
+                return true;
+            } catch (Exception ex) {
+                fileError("Invalid saveFile " + ex.getLocalizedMessage());
+            }
+        }
+        fileError("Invalid File chosen");
+        return false;
+    }
 
     public String readGame(BufferedReader in){
         if (isEOF(in))
@@ -222,6 +277,13 @@ public class GameFile {
         if (fileState == FILE_STATE.ENCODED)
             huffman.decode(text);
     }
+
+    /**
+     *  Returns the JFrame component that the dialogue boxes
+     *  for saving and loading .ZACK files is opened from
+     * @return
+     */
+    public JFrame getParent(){  return parent; }
 
     /**
      *  This  main method is for testing purposes of the class ...
