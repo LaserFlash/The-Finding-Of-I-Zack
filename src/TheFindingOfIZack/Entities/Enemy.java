@@ -2,6 +2,7 @@ package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.Behaviour.MobEnemy;
 import TheFindingOfIZack.World.Rooms.Room;
+import javafx.geometry.BoundingBox;
 
 import java.awt.*;
 
@@ -31,9 +32,9 @@ public class Enemy extends Entity {
     }
 
     public void move() {
-        Point p = behaviour.step(location, this.world.getPlayer().getLocation());
-        this.location = p;
-        this.box = new BoundingBox(p.getX(), p.getY(), this.width, this.width);
+        //Point p = behaviour.step(location, this.world.getPlayer().getLocation());
+        //this.location = p;
+        //this.box = new BoundingBox(p.getX(), p.getY(), this.width, this.width);
     }
 
     public void collisions(Room room) {
