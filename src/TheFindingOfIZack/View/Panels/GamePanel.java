@@ -1,5 +1,8 @@
 package TheFindingOfIZack.View.Panels;
 
+import TheFindingOfIZack.World.Game;
+
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 /**
@@ -8,8 +11,25 @@ import java.awt.event.ActionListener;
  */
 public class GamePanel extends ScreenPanel {
 
-    @Override
-    public void addControllerForButtons(ActionListener controller) {
+    private Game model;
 
+    public GamePanel(Game model){
+        super();
+        this.model = model;
+    }
+
+    @Override
+    public void addControllerForButtons(ActionListener controller) {}
+
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        System.out.println("Trying to draw");
+        //TODO get stuff from model to paint
+        //Health
+        //Items
+        //Room
+        //Enemy
+        //Player
     }
 }
