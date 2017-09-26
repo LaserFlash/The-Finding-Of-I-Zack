@@ -22,14 +22,11 @@ public class MobEnemy {
      * @param player point containing the players location
      * @return new mob Point
      */
-    public Point move(Point location, Point player){
+    public Point step(Point location, Point player){
+        double dtp = (distanceBetween(location,player));
+
         return null;
     }
-
-    /**
-     * Overridden in each different mob, is what changes movement behaviour/triggers attack behaviour
-     */
-    public void step(){}
 
     /**
      * To be used for different mob fields of view

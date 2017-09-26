@@ -1,5 +1,7 @@
 package TheFindingOfIZack.Behaviour;
 
+import java.awt.*;
+
 /**
  * Created by gordontheo on 19/09/17.
  * The staple enemy, will remain still until the player enters its field of view.
@@ -11,9 +13,10 @@ public class MobSlow extends MobEnemy {
     }
 
     @Override
-    public void step(){
+    public Point step(Point location, Point player){
         //performs Mod specific step
         int newX = 0;//temp value
         int newY = 0;//temp value
+        return location;
     }
 }
