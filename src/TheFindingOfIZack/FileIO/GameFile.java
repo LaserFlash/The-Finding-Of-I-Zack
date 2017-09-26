@@ -35,9 +35,8 @@ public class GameFile {
 
     /**
      * This stores the location of the GameFile .txt file to be read or written
+     *
      */
-    private String fileName = "";
-
     private File file = null;
 
     /**
@@ -83,7 +82,7 @@ public class GameFile {
     /**
      * This stores the file header for each of the Gamefiles
      */
-    protected static final String HEADER = "#ZACK/FILEIO/";
+    protected static final String HEADER = "#ZACK/FILEIO";
 
     /**
      *  This GameFile constructor sets up the BufferedReader for a GameFile to
@@ -98,7 +97,6 @@ public class GameFile {
      */
     public boolean createOut(){
         try {
-            System.out.printf("filename: " + fileName + "\n");
             in = new BufferedReader(new FileReader(file + EXTENSION));
             out = new BufferedOutputStream(new FileOutputStream(file+EXTENSION));
 
@@ -126,8 +124,6 @@ public class GameFile {
      */
     public boolean createIn(){
         try {
-            System.out.printf("filename: " + fileName + "\n");
-
             in = new BufferedReader(new FileReader(file));
             System.out.println(in.readLine());
             close(in);
@@ -163,7 +159,7 @@ public class GameFile {
             file = chooser.getSelectedFile();
             return true;
         }
-        fileError("Invalid File choosen");
+        fileError("Invalid File chosen");
         return false;
     }
 
@@ -329,7 +325,6 @@ public class GameFile {
      */
     public static void main(String [] args){
 
-        new GameFile();
     }
 
 }

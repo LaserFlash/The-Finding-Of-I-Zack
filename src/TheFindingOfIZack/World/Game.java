@@ -3,16 +3,18 @@ package TheFindingOfIZack.World;
 
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.GameFile;
+import TheFindingOfIZack.FileIO.Saveable;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.startRoom;
 
+import java.io.Serializable;
 import java.util.Observable;
 
 /**
  * Created by fieldryan on 19/09/17.
  * Stores all the objects within the game world
  */
-public class Game extends Observable{
+public class Game extends Observable implements Serializable {
 
     private Player player;
     private Level currentLevel;
