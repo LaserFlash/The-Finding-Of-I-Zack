@@ -20,7 +20,7 @@ public class Game extends Observable implements Model,Savable{
 
     private Player player;
     private Level currentLevel;
-
+    private boolean running = false;
     private int frameCount;
 
 
@@ -87,15 +87,21 @@ public class Game extends Observable implements Model,Savable{
 
     }
 
+    /**
+     * creates the first level of the game
+     */
     public void createLevelOne(){
         this.currentLevel = new Level();
         Room start = new startRoom();
+        player.setRoom(start);
         currentLevel.addRoom(start);
 
     }
 
 
-
+    /**
+     * begin the game ticks
+      */
     public void runGameLoop() {
         Thread loop = new Thread()
         {
@@ -107,7 +113,12 @@ public class Game extends Observable implements Model,Savable{
         loop.start();
     }
 
-    //game loop method found online:
+
+    /**
+     * Tick method created by Eli Delventhal at http://www.java-gaming.org/index.php?topic=24220.0
+     * Tells the game what to do every tick and ensures everything runs smoothly
+     */
+
     private void gameLoop()
     {
         //This value would probably be stored elsewhere.
@@ -129,7 +140,7 @@ public class Game extends Observable implements Model,Savable{
         //Simple way of finding FPS.
         int lastSecondTime = (int) (lastUpdateTime / 1000000000);
 
-        boolean running = false;
+
         while (running)
         {
             double now = System.nanoTime();
@@ -184,6 +195,9 @@ public class Game extends Observable implements Model,Savable{
         }
     }
 
+    /**
+     * draws everything within the game
+     */
     private void drawGame(){
         notifyObservers();
     }
