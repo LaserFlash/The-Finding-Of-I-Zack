@@ -22,6 +22,10 @@ public class Game extends Observable implements Model,Savable{
     private Level currentLevel;
     private boolean running = false;
     private int frameCount;
+    private boolean north;
+    private boolean east;
+    private boolean south;
+    private boolean west;
 
 
     /**
@@ -104,21 +108,45 @@ public class Game extends Observable implements Model,Savable{
 
     @Override
     public void changeUp() {
+        if(this.north){
+            this.north = false;
+        }else{
+            this.north = true;
+
+        }
 
     }
 
     @Override
     public void changeDown() {
+        if(this.south){
+            this.south = false;
+        }else{
+            this.south = true;
+
+        }
 
     }
 
     @Override
     public void changeRight() {
+        if(this.east){
+            this.east = false;
+        }else{
+            this.east = true;
+
+        }
 
     }
 
     @Override
     public void changeLeft() {
+        if(this.west){
+            this.west = false;
+        }else{
+            this.west = true;
+
+        }
 
     }
 
@@ -126,9 +154,24 @@ public class Game extends Observable implements Model,Savable{
      * updates all of the components within the game
      */
     public void updateGame(){
+        checkMovement();
         currentLevel.update();
 
 
+    }
+    private void checkMovement(){
+        if(north){
+            player.moveUp();
+        }
+        if(east){
+            player.moveLeft();
+        }
+        if(south){
+            player.moveDown();
+        }
+        if(west){
+            player.moveLeft();
+        }
     }
 
     /**
