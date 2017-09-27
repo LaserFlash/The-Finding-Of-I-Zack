@@ -1,7 +1,7 @@
 package TheFindingOfIZack.View.Panels;
 
 
-import TheFindingOfIZack.World.Game;
+import TheFindingOfIZack.World.Model;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -12,9 +12,13 @@ import java.awt.event.ActionListener;
  */
 public class GamePanel extends ScreenPanel {
 
-    private Game model;
+    private Model model;
 
-    public GamePanel(Game model){
+    /**
+     * Create a panel intended to draw the game on
+     * @param model reference to the model being drawn
+     */
+    public GamePanel(Model model){
         super();
         this.model = model;
     }
@@ -34,15 +38,16 @@ public class GamePanel extends ScreenPanel {
         drawPlayerItems(g);
         drawPlayerArmour(g);
         drawRoom(g);
-        //Health
-        //Items
-        //Room
-        //Enemy
-        //Player
+
+        drawPlayer(g);
+        drawEntities(g);
     }
 
     private void drawHealth(Graphics g){
+        int maxHealth = model.getPlayer().getMaxHealth();
+        int health = model.getPlayer().getHealth();
 
+        g.drawString(health + "/" + maxHealth, 50,50);
     }
 
     private void drawPlayerItems(Graphics g){
@@ -54,13 +59,13 @@ public class GamePanel extends ScreenPanel {
     }
 
     private void drawRoom(Graphics g){
-
+        model.getPlayer().getRoom().draw(g);
     }
 
     private void drawEntities(Graphics g){
-
+        model.getPlayer();
     }
     private void drawPlayer(Graphics g){
-
+        model.getPlayer().draw(g);
     }
 }

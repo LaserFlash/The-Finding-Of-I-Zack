@@ -3,25 +3,25 @@ package TheFindingOfIZack.World;
 
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.GameFile;
+import TheFindingOfIZack.FileIO.Savable;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.startRoom;
 
 import java.util.Observable;
 
+
 /**
  * Created by fieldryan on 19/09/17.
  * Stores all the objects within the game world
  */
-public class Game extends Observable{
+
+public class Game extends Observable implements Model,Savable{
+
 
     private Player player;
     private Level currentLevel;
-
-
+    private boolean running = false;
     private int frameCount;
-
-
-
 
 
     /**
@@ -48,7 +48,7 @@ public class Game extends Observable{
     public void beginNewGame(){
         createLevelOne();
         System.out.println("level created");
-        updateGame();
+        runGameLoop();
 
     }
 
@@ -68,6 +68,40 @@ public class Game extends Observable{
         return this.player;
     }
 
+    @Override
+    public void startGameLoop() {
+
+    }
+
+    @Override
+    public void stopGameLoop() {
+
+    }
+
+    @Override
+    public void moveUp() {
+        player.moveUp();
+        drawGame();
+    }
+
+    @Override
+    public void moveDown() {
+    player.moveDown();
+        drawGame();
+    }
+
+    @Override
+    public void moveRight() {
+    player.moveRight();
+        drawGame();
+    }
+
+    @Override
+    public void moveLeft() {
+    player.moveLeft();
+        drawGame();
+    }
+
     /**
      * updates all of the components within the game
      */
@@ -77,15 +111,21 @@ public class Game extends Observable{
 
     }
 
+    /**
+     * creates the first level of the game
+     */
     public void createLevelOne(){
         this.currentLevel = new Level();
         Room start = new startRoom();
+        player.setRoom(start);
         currentLevel.addRoom(start);
 
     }
 
 
-
+    /**
+     * begin the game ticks
+      */
     public void runGameLoop() {
         Thread loop = new Thread()
         {
@@ -97,7 +137,12 @@ public class Game extends Observable{
         loop.start();
     }
 
-    //game loop method found online:
+
+    /**
+     * Tick method created by Eli Delventhal at http://www.java-gaming.org/index.php?topic=24220.0
+     * Tells the game what to do every tick and ensures everything runs smoothly
+     */
+
     private void gameLoop()
     {
         //This value would probably be stored elsewhere.
@@ -119,7 +164,7 @@ public class Game extends Observable{
         //Simple way of finding FPS.
         int lastSecondTime = (int) (lastUpdateTime / 1000000000);
 
-        boolean running = false;
+
         while (running)
         {
             double now = System.nanoTime();
@@ -174,9 +219,11 @@ public class Game extends Observable{
         }
     }
 
+    /**
+     * draws everything within the game
+     */
     private void drawGame(){
+        this.setChanged();
         notifyObservers();
     }
-
-
 }

@@ -1,8 +1,11 @@
 package TheFindingOfIZack.Controller;
 
 
+import TheFindingOfIZack.FileIO.LoadFile;
+import TheFindingOfIZack.FileIO.SaveFile;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
+import TheFindingOfIZack.World.Model;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +18,7 @@ import java.awt.event.KeyListener;
 public class GameController implements ActionListener, KeyListener {
 
     private ViewManager view;
-    private Game game;
+    private Model game;
 
     /**
      *  Create a controller for the game
@@ -46,21 +49,27 @@ public class GameController implements ActionListener, KeyListener {
             }
             case "newGame": {
                 this.game.beginNewGame();
-                //TODO change what is in the view
                 view.goToGameView();
                 break;
             }
             case "loadGame":{
-                //TODO trigger load from file
+                /* This sets up a file to be selected and loaded */
+                LoadFile loadedGame = new LoadFile();
+                game = loadedGame.getGame();
+                view.newGame(game);
                 view.goToGameView();
                 break;
             }
             case "saveGame" :{
-                //TODO trigger saving of game
+                SaveFile saveGame = new SaveFile((Game)game);
+                //TODO trigger write to file
+                break;
             }
             case "resumeGame":{
-                //TODO start any lops or threads that need to be resumed
+                //TODO start any loops or threads that need to be resumed
+                game.resumeGame();
                 view.goToGameView();
+                break;
             }
         }
     }
@@ -70,9 +79,22 @@ public class GameController implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
-            //TODO pause or resume game anf change view accordingly
-            view.goToMenuView();
+        switch (e.getKeyCode()){
+            case KeyEvent.VK_ESCAPE:
+                game.stopGameLoop();
+                view.goToMenuView();
+            case KeyEvent.VK_W:
+                game.moveUp();
+                break;
+            case KeyEvent.VK_S:
+                game.moveDown();
+                break;
+            case KeyEvent.VK_A:
+                game.moveLeft();
+                break;
+            case KeyEvent.VK_D:
+                game.moveRight();
+                break;
         }
 
     }

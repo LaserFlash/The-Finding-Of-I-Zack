@@ -20,9 +20,8 @@ public class startRoom extends Room {
 
     @Override
     public void draw(Graphics g) {
-    super.drawBase(50,50,Color.black,g);
-        g.setColor(Color.black);
-        g.fillOval(50,50,50,50);
+
+
 
     }
 }

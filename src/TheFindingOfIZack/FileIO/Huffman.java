@@ -8,7 +8,7 @@ import java.util.*;
  * construct the tree. You should store this tree in a field and then use it in
  * the encode and decode methods.
  */
-public class Huffman {
+public class  Huffman {
 
 
     private Map<Character, BinaryNode> characterToNode = new HashMap<>();

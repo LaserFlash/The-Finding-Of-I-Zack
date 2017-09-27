@@ -4,7 +4,7 @@ import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.Panels.GamePanel;
 import TheFindingOfIZack.View.Panels.ScreenPanel;
 import TheFindingOfIZack.View.Panels.StartScreenPanel;
-import TheFindingOfIZack.World.Game;
+import TheFindingOfIZack.World.Model;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,9 +15,9 @@ import java.util.Observable;
  * Manage the view for the game.
  * Handles what needs to be drawn and the GUI
  */
-public class ViewManager extends JFrame implements java.util.Observer {
+public class ViewManager extends JFrame implements View, java.util.Observer {
 
-    private Game model;
+    private Model model;
 
     private ScreenPanel startScreen;
     private ScreenPanel gameScreen;
@@ -26,7 +26,7 @@ public class ViewManager extends JFrame implements java.util.Observer {
      * Initialise the ViewManager.
      * Takes a controller as an argument in order to create key bindings
      */
-    public ViewManager(Game model) {
+    public ViewManager(Model model) {
         super("The Finding of I, Zack");
         setPreferredSize(new Dimension(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT));
         this.model = model;
@@ -44,9 +44,6 @@ public class ViewManager extends JFrame implements java.util.Observer {
     @Override
     public void update(Observable observable, Object o) {
         gameScreen.repaint();
-
-        //Draw stuff here
-        //Or find what needs to be drawn
     }
 
     /**
@@ -73,7 +70,6 @@ public class ViewManager extends JFrame implements java.util.Observer {
     public void goToGameView() {
         this.remove(startScreen);
         this.add(gameScreen);
-        this.getContentPane().revalidate();
         this.repaint();
     }
 
@@ -83,12 +79,21 @@ public class ViewManager extends JFrame implements java.util.Observer {
     public void goToMenuView() {
         this.remove(gameScreen);
         this.add(startScreen);
-        this.getContentPane().revalidate();
         this.repaint();
     }
 
     @Override
     public void repaint(){
+        this.getContentPane().revalidate();
         this.getContentPane().repaint();
+    }
+
+    /**
+     * Replace the game panel with a new one
+     * Intended to be used when loading or replacing the game model
+     * @param game the game model to be used
+     */
+    public void newGame(Model game) {
+        this.gameScreen = new GamePanel(game);
     }
 }
