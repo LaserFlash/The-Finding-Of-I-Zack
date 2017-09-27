@@ -1,14 +1,16 @@
 package TheFindingOfIZack.Behaviour;
 
+import TheFindingOfIZack.Entities.Player;
+
 import java.awt.*;
 
 /**
  * Created by gordontheo on 27/09/17.
  */
 public class Mob {
-    private Mob type;
     protected int speed;
     protected int viewRange;
+    protected int health;
 
     /**
      * Shifts the mob's location
@@ -38,6 +40,28 @@ public class Mob {
         location.move((int)newX,(int)newY);
 
         return location;
+    }
+
+    /**
+     *
+     * @param location The point being tested for obstacles
+     * @return if the point is clear return true
+     * @
+     */
+    private boolean canMove(Point location, Player player){
+        if(location){
+
+        }
+
+        return true;
+    }
+
+    /**
+     * Returns health
+     * @return health
+     */
+    public int getHealth(){
+        return health;
     }
 
     /**

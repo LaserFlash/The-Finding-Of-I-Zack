@@ -2,6 +2,7 @@ package TheFindingOfIZack.Behaviour;
 
 /**
  * Created by gordontheo on 27/09/17.
+ * This class is used to create new mobs and specify what type they are
  */
 public class MobEnemy {
     Mob mob;
@@ -20,6 +21,16 @@ public class MobEnemy {
             case "slow":
                 mob = new MobSlow();
                 break;
+            default: mobTypeError(type);
+                break;
         }
+    }
+
+    /**
+     * Throws an error if an invalid mobType is called
+     * @param str the invalid type name entered
+     */
+    private void mobTypeError(String str){
+        System.err.print("Invalid mob type " + str + "\n");
     }
 }

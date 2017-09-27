@@ -6,5 +6,9 @@ package TheFindingOfIZack.Behaviour;
  * After this it will follow the player at slow speed and cause damage if it touches
  */
 public class MobStandard extends Mob {
-    private double viewRange = 50;
+    MobStandard(){
+        this.viewRange = 50;
+        this.speed = 2;
+        this.health = 50;
+    }
 }

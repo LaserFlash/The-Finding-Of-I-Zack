@@ -14,6 +14,7 @@ public class ViewManagerTest {
 
     @Test
     public void testMenuDisplay() throws InterruptedException {
+
         MockModel m = new MockModel();
         killIn3Sec(m);
     }
