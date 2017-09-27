@@ -49,9 +49,9 @@ public class Mob {
      * @
      */
     private boolean canMove(Point location, Player player){
-        if(location){
+        //if(location){
 
-        }
+        //}
 
         return true;
     }
