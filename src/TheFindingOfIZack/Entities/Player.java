@@ -9,7 +9,6 @@ import java.awt.*;
  * Created by Ben Allan
  */
 public class Player extends Entity implements Savable {
-
     private int armour = 0;
     private Room room;
     private int MAX_HEALTH = 100;
@@ -19,7 +18,6 @@ public class Player extends Entity implements Savable {
     public Player(int health, Point location) {
         super(health, location);
     }
-
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.CYAN);
