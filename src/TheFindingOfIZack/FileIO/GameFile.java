@@ -97,16 +97,12 @@ public class GameFile {
      */
     public boolean createOut(){
         try {
-            in = new BufferedReader(new FileReader(file + EXTENSION));
+            System.out.print("filename: " + file.getName() + "\n");
             out = new BufferedOutputStream(new FileOutputStream(file+EXTENSION));
-
             out.write(HEADER.getBytes());
             out.write("\n".getBytes());
             out.close();
-
-            System.out.println(in.readLine());
-
-            exit(in, out);
+            out.close();
         } catch (FileNotFoundException e) {
             fileError("Creating GameFile " + e.getLocalizedMessage());
             return false;
@@ -174,7 +170,7 @@ public class GameFile {
 
         // This method only accepts .zack or .txt file extensions
         FileNameExtensionFilter filter = new FileNameExtensionFilter("ZACK Files", EXTENSION);
-        chooser.setFileFilter(filter);
+        //chooser.setFileFilter(filter);
 
         // Sets the current directory to make navigation easier
         chooser.setCurrentDirectory(new File(DIRECTORY));
