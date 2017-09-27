@@ -39,11 +39,9 @@ public class GamePanel extends ScreenPanel {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        System.out.println("Trying to draw");
         /*
          * Draw player information such as health, armour, items etc
          */
-
         this.topInfo.repaint();
         this.gameArea.repaint();
     }

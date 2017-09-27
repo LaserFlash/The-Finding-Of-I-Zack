@@ -7,4 +7,5 @@ package TheFindingOfIZack.Behaviour;
  */
 public class MobStandard extends Mob {
     private double viewRange = 50;
+    private double speed = 2;
 }
