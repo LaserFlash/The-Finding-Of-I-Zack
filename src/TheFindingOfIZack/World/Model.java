@@ -1,6 +1,8 @@
 package TheFindingOfIZack.World;
 
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.View.Drawable;
+
 
 public interface Model {
     void beginNewGame();
@@ -12,7 +14,7 @@ public interface Model {
     void startGameLoop();
 
     void stopGameLoop();
-
+    
     void moveUp();
     void moveDown();
     void moveRight();
