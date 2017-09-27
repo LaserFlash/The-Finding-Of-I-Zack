@@ -28,4 +28,24 @@ public class MockModel implements Model {
     public void stopGameLoop() {
 
     }
+
+    @Override
+    public void moveUp() {
+
+    }
+
+    @Override
+    public void moveDown() {
+
+    }
+
+    @Override
+    public void moveRight() {
+
+    }
+
+    @Override
+    public void moveLeft() {
+
+    }
 }
