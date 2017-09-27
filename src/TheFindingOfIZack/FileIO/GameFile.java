@@ -88,7 +88,7 @@ public class GameFile {
      *  This GameFile constructor sets up the BufferedReader for a GameFile to
      *  be read, and the BufferedOutputStream to be written too.
      */
-    public GameFile(){}
+    public GameFile() {}
 
     /**
      *  This method sets up the BufferedOutputStream

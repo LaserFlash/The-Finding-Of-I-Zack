@@ -55,9 +55,13 @@ public class GameController implements ActionListener, KeyListener {
             }
             case "loadGame":{
                 /* This sets up a file to be selected and loaded */
-                LoadFile loadedGame = new LoadFile();
-                this.game = loadedGame.getGame();
-                this.game.beginNewGame();
+                LoadFile loadedGame = null;
+                try {
+                    loadedGame = new LoadFile();
+                } catch (InvalidFileException e1) {
+                    System.out.print("Unsuccessful Load: " + e1.getMessage());
+                }
+                game = loadedGame.getGame();
                 view.newGame(game);
                 view.goToGameView();
                 break;
@@ -89,37 +93,21 @@ public class GameController implements ActionListener, KeyListener {
             case KeyEvent.VK_ESCAPE:
                 game.stopGameLoop();
                 view.goToMenuView();
-                break;
             case KeyEvent.VK_W:
-                game.trueUp();
+                game.moveUp();
                 break;
             case KeyEvent.VK_S:
-                game.trueDown();
+                game.moveDown();
                 break;
             case KeyEvent.VK_A:
-                game.trueLeft();
+                game.moveLeft();
                 break;
             case KeyEvent.VK_D:
-                game.trueRight();
+                game.moveRight();
                 break;
         }
 
     }
     @Override
-    public void keyReleased(KeyEvent e) {
-        switch (e.getKeyCode()){
-            case KeyEvent.VK_W:
-                game.falseUp();
-                break;
-            case KeyEvent.VK_S:
-                game.falseDown();
-                break;
-            case KeyEvent.VK_A:
-                game.falseLeft();
-                break;
-            case KeyEvent.VK_D:
-                game.falseRight();
-                break;
-        }
-    }
+    public void keyReleased(KeyEvent e) {}
 }

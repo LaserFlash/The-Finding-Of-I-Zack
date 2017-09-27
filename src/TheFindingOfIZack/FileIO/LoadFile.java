@@ -1,5 +1,6 @@
 package TheFindingOfIZack.FileIO;
 
+import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.World.Game;
 
 /**
@@ -11,7 +12,7 @@ public class LoadFile extends GameFile{
 
     private Game game = null;
 
-    public LoadFile() {
+    public LoadFile() throws InvalidFileException {
         execute();
     }
 
