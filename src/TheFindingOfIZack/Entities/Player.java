@@ -24,7 +24,7 @@ public class Player extends Entity {
         g.setColor(Color.CYAN);
         g.fillRect(location.x, location.y, width, width);
         g.setColor(Color.MAGENTA);
-        g.drawOval(location.x+4, location.y+4, width-8, width-8);
+        g.fillOval(location.x+4, location.y+4, width-8, width-8);
         super.draw(g);
     }
 
