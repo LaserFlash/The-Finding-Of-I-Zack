@@ -2,7 +2,6 @@ package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.Behaviour.MobEnemy;
 import TheFindingOfIZack.World.Rooms.Room;
-import javafx.geometry.BoundingBox;
 
 import java.awt.*;
 
