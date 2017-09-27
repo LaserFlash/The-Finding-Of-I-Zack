@@ -9,6 +9,7 @@ public class standardRoom extends Room extends Drawable{
 
 
 public void draw(Graphics g){
+
         for(Enemy e: enemiesInRoom){
             e.draw(g);
         }

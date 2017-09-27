@@ -55,9 +55,7 @@ public class Game extends Observable{
         return this.player;
     }
 
-    /**
-     * updates all of the components within the game
-     */
+
     public void updateGame(){
 
 
