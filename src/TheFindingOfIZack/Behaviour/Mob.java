@@ -6,9 +6,9 @@ import java.awt.*;
  * Created by gordontheo on 27/09/17.
  */
 public class Mob {
-    private Mob type;
     protected int speed;
     protected int viewRange;
+    protected int health;
 
     /**
      * Shifts the mob's location
