@@ -13,7 +13,7 @@ public class Player extends Entity {
     private int armour = 0;
     private Room room;
     private int MAX_HEALTH = 100;
-    private int speed = 3;
+    private int speed = 5;
     private int key = 0;
 
     public Player(int health, Point location) {
@@ -33,7 +33,7 @@ public class Player extends Entity {
         int x = (int) location.getX();
         int y = (int) location.getY()-speed;
 
-        if (y < GameSize.MENU_HEIGHT) {y = GameSize.MENU_HEIGHT;}
+        if (y < GameSize.TOP_WALL) {y = GameSize.TOP_WALL;}
 
         location.move(x, y);
     }
@@ -42,7 +42,7 @@ public class Player extends Entity {
         int x = (int) location.getX();
         int y = (int) location.getY()+speed;
 
-        if (y > GameSize.WINDOW_HEIGHT-width) {y = GameSize.WINDOW_HEIGHT-width;}
+        if (y > GameSize.BOTTOM_WALL-width) {y = GameSize.BOTTOM_WALL-width;}
 
         location.move(x, y);
     }
@@ -51,7 +51,7 @@ public class Player extends Entity {
         int x = (int) location.getX()-speed;
         int y = (int) location.getY();
 
-        if (x < 0) {x = 0;}
+        if (x < GameSize.LEFT_WALL) {x = GameSize.LEFT_WALL;}
 
         location.move(x, y);
     }
@@ -60,7 +60,7 @@ public class Player extends Entity {
         int x = (int) location.getX()+speed;
         int y = (int) location.getY();
 
-        if (x > GameSize.WINDOW_WIDTH-width) {x = GameSize.WINDOW_WIDTH-width;}
+        if (x > GameSize.RIGHT_WALL-width) {x = GameSize.RIGHT_WALL-width;}
 
         location.move(x, y);
     }
