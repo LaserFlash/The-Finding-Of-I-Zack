@@ -27,10 +27,18 @@ public class MobEnemy {
     }
 
     /**
+     * Returns health f
+     * @return health
+     */
+    public int getHealth(){
+        return mob.getHealth();
+    }
+
+    /**
      * Throws an error if an invalid mobType is called
      * @param str the invalid type name entered
      */
     private void mobTypeError(String str){
-        System.err.print("Invalid mob type " + str + "\n");
+        System.err.print("Error: Invalid mob type " + str + "\n");
     }
 }
