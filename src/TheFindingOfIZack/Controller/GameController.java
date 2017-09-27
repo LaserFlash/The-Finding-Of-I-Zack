@@ -113,7 +113,7 @@ public class GameController implements ActionListener, KeyListener {
                 game.falseLeft();
                 break;
             case KeyEvent.VK_D:
-                game.faleeRight();
+                game.falseRight();
                 break;
         }
     }
