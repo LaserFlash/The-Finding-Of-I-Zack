@@ -27,7 +27,7 @@ public class GamePanel extends ScreenPanel {
         this.topInfo = new InventoryPanel(model);
         this.topInfo.setPreferredSize(new Dimension(900,100));
         this.gameArea = new GameArea(model);
-        this.setPreferredSize(new Dimension(900,500));
+        this.gameArea.setPreferredSize(new Dimension(900,500));
 
         this.add(topInfo,BorderLayout.NORTH);
         this.add(gameArea,BorderLayout.SOUTH);
