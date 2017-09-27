@@ -3,6 +3,7 @@ package TheFindingOfIZack.View.Panels;
 
 import TheFindingOfIZack.World.Model;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -13,6 +14,8 @@ import java.awt.event.ActionListener;
 public class GamePanel extends ScreenPanel {
 
     private Model model;
+    private JPanel topInfo;
+    private JPanel gameArea;
 
     /**
      * Create a panel intended to draw the game on
@@ -21,6 +24,8 @@ public class GamePanel extends ScreenPanel {
     public GamePanel(Model model){
         super();
         this.model = model;
+        this.topInfo = new JPanel();
+        this.gameArea = new JPanel();
     }
 
     @Override
@@ -30,7 +35,6 @@ public class GamePanel extends ScreenPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         System.out.println("Trying to draw");
-        //TODO get stuff from model to paint
         /*
          * Draw player information such as health, armour, items etc
          */
