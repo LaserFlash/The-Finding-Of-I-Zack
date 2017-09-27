@@ -29,19 +29,27 @@ public class Player extends Entity {
     }
 
     public void moveUp() {
-        location.move(0, -5);
+        int x = (int) location.getX();
+        int y = (int) location.getY()-speed;
+        location.move(x, y);
     }
 
     public void moveDown() {
-        location.move(0, 5);
+        int x = (int) location.getX();
+        int y = (int) location.getY()+speed;
+        location.move(x, y);
     }
 
     public void moveLeft() {
-        location.move(-5, 0);
+        int x = (int) location.getX()-speed;
+        int y = (int) location.getY();
+        location.move(x, y);
     }
 
     public void moveRight() {
-        location.move(5, 0);
+        int x = (int) location.getX()+speed;
+        int y = (int) location.getY();
+        location.move(x, y);
     }
 
     public int getMaxHealth() {
