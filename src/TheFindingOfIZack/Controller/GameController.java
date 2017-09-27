@@ -3,6 +3,7 @@ package TheFindingOfIZack.Controller;
 
 import TheFindingOfIZack.FileIO.LoadFile;
 import TheFindingOfIZack.FileIO.SaveFile;
+import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Model;
@@ -61,7 +62,11 @@ public class GameController implements ActionListener, KeyListener {
                 break;
             }
             case "saveGame" :{
-                SaveFile saveGame = new SaveFile((Game)game);
+                try {
+                    SaveFile saveGame = new SaveFile((Game)game);
+                } catch (InvalidFileException e1) {
+                    System.out.printf("Unsuccessful Save");
+                }
                 //TODO trigger write to file
                 break;
             }

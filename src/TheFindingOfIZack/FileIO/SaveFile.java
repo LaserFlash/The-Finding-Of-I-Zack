@@ -1,5 +1,6 @@
 package TheFindingOfIZack.FileIO;
 
+import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.World.Game;
 
 import java.io.IOException;
@@ -15,7 +16,9 @@ public class SaveFile extends GameFile {
 
     private Game game;
 
-    public SaveFile(Game g){
+    public SaveFile(Game g) throws InvalidFileException{
+        if (game == null)
+            throw new InvalidFileException("Null pointer to Game");
         game = g;
         execute(game);
     }
@@ -29,13 +32,7 @@ public class SaveFile extends GameFile {
         if (!isValidFile)
             return;
         createOut();
-        try {
-            ObjectOutputStream obOut = new ObjectOutputStream(out);
-            obOut.writeObject(g);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        writeGame(g, out);
     }
 
 }

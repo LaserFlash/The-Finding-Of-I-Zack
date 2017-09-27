@@ -2,6 +2,7 @@ package TheFindingOfIZack.FileIO;
 
 import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.FileIO.Util.Huffman;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Level;
@@ -25,20 +26,6 @@ import java.io.*;
  *
  */
 public class GameFile {
-
-    /**
-     *  This BufferedReader stores the reader that interacts with the files
-     */
-    protected BufferedReader in;
-
-    protected BufferedOutputStream out;
-
-    /**
-     * This stores the location of the GameFile .txt file to be read or written
-     *
-     */
-    private File file = null;
-
     /**
      *  This is the the text to be encoded/decoded or saved/loaded
      */
@@ -61,9 +48,22 @@ public class GameFile {
     private Huffman huffman = new Huffman(text);
 
     /**
+     *  This BufferedReader stores the reader that interacts with the files
+     */
+    protected BufferedReader in;
+
+    protected BufferedOutputStream out;
+
+    /**
+     * This stores the location of the GameFile .txt file to be read or written
+     *
+     */
+    private File file = null;
+
+    /**
      *  Ensures that different versions of the game are not saved and loaded
      */
-    private String release = "0.0.1";
+    private static final String RELEASE = "/v0.0.1";
 
     protected JFrame parent =
             new ViewManager(new Game(new Player(100, new Point(0,0))));
@@ -100,9 +100,8 @@ public class GameFile {
             System.out.print("filename: " + file.getName() + "\n");
             out = new BufferedOutputStream(new FileOutputStream(file+EXTENSION));
             out.write(HEADER.getBytes());
+            out.write(RELEASE.getBytes());
             out.write("\n".getBytes());
-            out.close();
-            out.close();
         } catch (FileNotFoundException e) {
             fileError("Creating GameFile " + e.getLocalizedMessage());
             return false;
@@ -113,7 +112,7 @@ public class GameFile {
         return true;
     }
 
-    /**\
+    /**
      *
      *  This method sets up the BufferedReader
      *  for the files
@@ -188,10 +187,27 @@ public class GameFile {
         fileError("Invalid File chosen");
         return false;
     }
+    public Game writeGame(Game g, BufferedOutputStream out) {
+        try {
+            ObjectOutputStream obOut = new ObjectOutputStream(out);
+            obOut.writeObject(g);
+            obOut.close();
+        } catch (IOException e) {
+            fileError("Writing Game: " + e.getLocalizedMessage());
+        }return null;
+    }
+
 
     public String readGame(BufferedReader in){
         if (isEOF(in))
             fileError("EOF reached in readGame");
+        try {
+            in.readLine();
+            //ObjectInput obIn = new ObjectInputStream(in);
+
+        } catch (IOException e) {
+            fileError("Reading Game: " + e.getLocalizedMessage());
+        }
         return null;
     }
 
@@ -219,9 +235,7 @@ public class GameFile {
         return null;
     }
 
-    public Game writeGame(BufferedOutputStream out) {
-        return null;
-    }
+
 
     public Level writeLevel(BufferedOutputStream out) {
         return null;
@@ -308,13 +322,6 @@ public class GameFile {
         if (fileState == FILE_STATE.ENCODED)
             huffman.decode(text);
     }
-
-    /**
-     *  Returns the JFrame component that the dialogue boxes
-     *  for saving and loading .ZACK files is opened from
-     * @return
-     */
-    public JFrame getParent(){  return parent; }
 
     /**
      *  This  main method is for testing purposes of the class ...
