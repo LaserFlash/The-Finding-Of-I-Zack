@@ -1,6 +1,5 @@
 package TheFindingOfIZack.FileIO;
 
-import TheFindingOfIZack.FileIO.GameFile;
 import TheFindingOfIZack.World.Game;
 
 /**
@@ -8,12 +7,28 @@ import TheFindingOfIZack.World.Game;
  *  interpreting the GameFile, and recreating the game that was stored.
  *  The class will return the Game, stored in the GameFile.
  */
-public class LoadFile {
+public class LoadFile extends GameFile{
 
-    private GameFile gameFile;
-    private Game game;
+    private Game game = null;
 
-    public LoadFile(GameFile gf) {
-        gameFile = gf;
+    public LoadFile() {
+        execute();
+    }
+
+    /**
+     *  This method chooses the File to be loaded, and verifies
+     *  the integrity of the .ZACK file
+     */
+    public Game execute(){
+        boolean isValidFile = openFile(parent);
+        if (!isValidFile)
+            return null;
+        createIn();
+        return null; // TODO: 9/26/17 return a game if successful
+    }
+
+    // TODO: 9/26/17 Implement this
+    public Game getGame(){
+        return game;
     }
 }

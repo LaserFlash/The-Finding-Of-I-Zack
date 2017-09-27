@@ -13,11 +13,12 @@ import java.awt.event.ActionListener;
  */
 public abstract class ScreenPanel extends JPanel {
 
+    /**
+     * Constructor setting default background colour for all ScreenPanels
+     */
     public ScreenPanel(){
         super();
         this.setBackground(Color.DARK_GRAY);
-        this.setEnabled(true);
-        this.setVisible(true);
     }
 
     /**
