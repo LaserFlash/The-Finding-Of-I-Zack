@@ -59,7 +59,7 @@ public class GamePanel extends ScreenPanel {
     }
 
     private void drawRoom(Graphics g){
-
+        model.getPlayer().getRoom().draw(g);
     }
 
     private void drawEntities(Graphics g){
