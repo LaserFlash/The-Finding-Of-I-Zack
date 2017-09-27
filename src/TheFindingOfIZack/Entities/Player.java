@@ -12,7 +12,7 @@ public class Player extends Entity {
     private int armour = 0;
     private Room room;
     private int MAX_HEALTH = 100;
-    private int speed = 5;
+    private int speed = 3;
     private int key = 0;
 
     public Player(int health, Point location) {
