@@ -29,12 +29,14 @@ public class SaveFile extends GameFile {
         if (!isValidFile)
             return;
         createOut();
+        /**
         try {
             ObjectOutputStream obOut = new ObjectOutputStream(out);
             obOut.writeObject(g);
         } catch (IOException e) {
             e.printStackTrace();
         }
+         */
     }
 
 }
