@@ -31,7 +31,7 @@ public class MobEnemy {
      * @return health
      */
     public int getHealth(){
-        return mob.health;
+        return mob.getHealth();
     }
 
     /**
