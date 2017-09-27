@@ -78,6 +78,26 @@ public class Game extends Observable implements Model,Savable{
 
     }
 
+    @Override
+    public void moveUp() {
+        player.moveUp();
+    }
+
+    @Override
+    public void moveDown() {
+    player.moveDown();
+    }
+
+    @Override
+    public void moveRight() {
+    player.moveRight();
+    }
+
+    @Override
+    public void moveLeft() {
+    player.moveLeft();
+    }
+
     /**
      * updates all of the components within the game
      */

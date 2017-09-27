@@ -1,7 +1,6 @@
 package TheFindingOfIZack.Controller;
 
 
-import TheFindingOfIZack.FileIO.GameFile;
 import TheFindingOfIZack.FileIO.LoadFile;
 import TheFindingOfIZack.FileIO.SaveFile;
 import TheFindingOfIZack.View.ViewManager;
@@ -68,6 +67,7 @@ public class GameController implements ActionListener, KeyListener {
             }
             case "resumeGame":{
                 //TODO start any loops or threads that need to be resumed
+                game.resumeGame();
                 view.goToGameView();
                 break;
             }
@@ -79,9 +79,22 @@ public class GameController implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
-            //TODO pause or resume game and change view accordingly
-            view.goToMenuView();
+        switch (e.getKeyCode()){
+            case KeyEvent.VK_ESCAPE:
+                game.stopGameLoop();
+                view.goToMenuView();
+            case KeyEvent.VK_W:
+                game.moveUp();
+                break;
+            case KeyEvent.VK_S:
+                game.moveDown();
+                break;
+            case KeyEvent.VK_A:
+                game.moveLeft();
+                break;
+            case KeyEvent.VK_D:
+                game.moveRight();
+                break;
         }
 
     }

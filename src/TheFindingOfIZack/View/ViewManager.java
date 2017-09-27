@@ -44,9 +44,6 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
     @Override
     public void update(Observable observable, Object o) {
         gameScreen.repaint();
-
-        //Draw stuff here
-        //Or find what needs to be drawn
     }
 
     /**
