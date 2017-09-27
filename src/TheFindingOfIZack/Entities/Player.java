@@ -1,6 +1,6 @@
 package TheFindingOfIZack.Entities;
 
-import TheFindingOfIZack.FileIO.Savable;
+import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import java.awt.*;
@@ -8,16 +8,18 @@ import java.awt.*;
 /**
  * Created by Ben Allan
  */
-public class Player extends Entity implements Savable {
+public class Player extends Entity {
+
     private int armour = 0;
     private Room room;
     private int MAX_HEALTH = 100;
-    private int speed = 5;
+    private int speed = 3;
     private int key = 0;
 
     public Player(int health, Point location) {
         super(health, location);
     }
+
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.CYAN);
@@ -28,19 +30,39 @@ public class Player extends Entity implements Savable {
     }
 
     public void moveUp() {
-        location.move(0, -5);
+        int x = (int) location.getX();
+        int y = (int) location.getY()-speed;
+
+        if (y < GameSize.MENU_HEIGHT) {y = GameSize.MENU_HEIGHT;}
+
+        location.move(x, y);
     }
 
     public void moveDown() {
-        location.move(0, 5);
+        int x = (int) location.getX();
+        int y = (int) location.getY()+speed;
+
+        if (y > GameSize.WINDOW_HEIGHT-width) {y = GameSize.WINDOW_HEIGHT-width;}
+
+        location.move(x, y);
     }
 
     public void moveLeft() {
-        location.move(-5, 0);
+        int x = (int) location.getX()-speed;
+        int y = (int) location.getY();
+
+        if (x < 0) {x = 0;}
+
+        location.move(x, y);
     }
 
     public void moveRight() {
-        location.move(5, 0);
+        int x = (int) location.getX()+speed;
+        int y = (int) location.getY();
+
+        if (x > GameSize.WINDOW_WIDTH-width) {x = GameSize.WINDOW_WIDTH-width;}
+
+        location.move(x, y);
     }
 
     public int getMaxHealth() {
