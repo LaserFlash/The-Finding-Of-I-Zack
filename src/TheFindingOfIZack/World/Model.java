@@ -9,5 +9,4 @@ public interface Model {
     Player getPlayer();
     void startGameLoop();
     void stopGameLoop();
-
 }
