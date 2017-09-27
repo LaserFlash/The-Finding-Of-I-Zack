@@ -24,4 +24,25 @@ public interface Model {
     void changeDown();
     void changeRight();
     void changeLeft();
+
+
+    void trueRight();
+
+    void trueLeft();
+
+
+   void trueUp();
+
+
+   void trueDown();
+
+
+   void falseRight();
+
+    void falseLeft();
+
+
+    void falseUp();
+
+    void falseDown();
 }
