@@ -1,6 +1,6 @@
 package TheFindingOfIZack.World.Rooms;
 
-import TheFindingOfIZack.FileIO.Savable;
+import TheFindingOfIZack.FileIO.Util.Savable;
 
 import java.awt.*;
 

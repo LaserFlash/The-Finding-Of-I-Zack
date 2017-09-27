@@ -1,6 +1,6 @@
 package TheFindingOfIZack.Entities;
 
-import TheFindingOfIZack.FileIO.Savable;
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.World.Rooms.Room;
 

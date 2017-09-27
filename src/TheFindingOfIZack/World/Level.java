@@ -1,7 +1,7 @@
 package TheFindingOfIZack.World;
 
 
-import TheFindingOfIZack.FileIO.Savable;
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import java.util.ArrayList;
