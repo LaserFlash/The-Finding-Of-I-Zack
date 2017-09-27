@@ -1,5 +1,7 @@
 package TheFindingOfIZack.Behaviour;
 
+import TheFindingOfIZack.Entities.Player;
+
 import java.awt.*;
 
 /**
@@ -44,10 +46,12 @@ public class Mob {
      *
      * @param location The point being tested for obstacles
      * @return if the point is clear return true
+     * @
      */
-    private boolean canMove(Point location){
+    private boolean canMove(Point location, Player player){
+        if(location){
 
-
+        }
 
         return true;
     }
