@@ -8,7 +8,7 @@ public class BehaviourTest {
     public void createNewMob() throws Exception {
         MobEnemy test;
 
-        test = new MobEnemy("normal");
+        test = new MobEnemy("standard");
 
         test = new MobEnemy("fast");
 
