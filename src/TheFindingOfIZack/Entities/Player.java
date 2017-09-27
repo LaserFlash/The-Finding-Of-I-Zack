@@ -13,6 +13,7 @@ public class Player extends Entity {
     private Room room;
     private int MAX_HEALTH = 100;
     private int speed = 5;
+    private int key = 0;
 
     public Player(int health, Point location) {
         super(health, location);
@@ -22,6 +23,8 @@ public class Player extends Entity {
     public void draw(Graphics g) {
         g.setColor(Color.CYAN);
         g.fillRect(location.x, location.y, width, width);
+        g.setColor(Color.MAGENTA);
+        g.drawOval(location.x+4, location.y+4, width-8, width-8);
         super.draw(g);
     }
 
@@ -47,6 +50,18 @@ public class Player extends Entity {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void addKey() {
+        key++;
+    }
+
+    public void removekey() {
+        key--;
     }
 
 
