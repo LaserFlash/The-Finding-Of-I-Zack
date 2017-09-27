@@ -102,6 +102,26 @@ public class Game extends Observable implements Model,Savable{
         drawGame();
     }
 
+    @Override
+    public void changeUp() {
+
+    }
+
+    @Override
+    public void changeDown() {
+
+    }
+
+    @Override
+    public void changeRight() {
+
+    }
+
+    @Override
+    public void changeLeft() {
+
+    }
+
     /**
      * updates all of the components within the game
      */
