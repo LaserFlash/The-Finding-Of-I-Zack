@@ -1,5 +1,6 @@
 package TheFindingOfIZack.Entities;
 
+import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import java.awt.*;
@@ -31,24 +32,36 @@ public class Player extends Entity {
     public void moveUp() {
         int x = (int) location.getX();
         int y = (int) location.getY()-speed;
+
+        if (y < GameSize.MENU_HEIGHT) {y = GameSize.MENU_HEIGHT;}
+
         location.move(x, y);
     }
 
     public void moveDown() {
         int x = (int) location.getX();
         int y = (int) location.getY()+speed;
+
+        if (y > GameSize.WINDOW_HEIGHT-width) {y = GameSize.WINDOW_HEIGHT-width;}
+
         location.move(x, y);
     }
 
     public void moveLeft() {
         int x = (int) location.getX()-speed;
         int y = (int) location.getY();
+
+        if (x < 0) {x = 0;}
+
         location.move(x, y);
     }
 
     public void moveRight() {
         int x = (int) location.getX()+speed;
         int y = (int) location.getY();
+
+        if (x > GameSize.WINDOW_WIDTH-width) {x = GameSize.WINDOW_WIDTH-width;}
+
         location.move(x, y);
     }
 
