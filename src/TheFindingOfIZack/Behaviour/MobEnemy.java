@@ -2,6 +2,7 @@ package TheFindingOfIZack.Behaviour;
 
 /**
  * Created by gordontheo on 27/09/17.
+ * This class is used to create new mobs and specify what type they are
  */
 public class MobEnemy {
     Mob mob;
