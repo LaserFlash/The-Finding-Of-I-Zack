@@ -1,9 +1,6 @@
 package Tests.FileIO;
 
 import TheFindingOfIZack.FileIO.GameFile;
-import TheFindingOfIZack.FileIO.LoadFile;
-import TheFindingOfIZack.FileIO.SaveFile;
-import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
