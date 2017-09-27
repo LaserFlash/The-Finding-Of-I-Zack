@@ -87,5 +87,9 @@ public class Player extends Entity implements Savable {
         key--;
     }
 
+    public int getSpeed() {
+        return this.speed;
+    }
+
 
 }
