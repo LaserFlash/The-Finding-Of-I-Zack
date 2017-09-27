@@ -84,16 +84,16 @@ public class GameController implements ActionListener, KeyListener {
                 game.stopGameLoop();
                 view.goToMenuView();
             case KeyEvent.VK_W:
-                game.moveUp();
+                game.changeUp();
                 break;
             case KeyEvent.VK_S:
-                game.moveDown();
+                game.changeDown();
                 break;
             case KeyEvent.VK_A:
-                game.moveLeft();
+                game.changeLeft();
                 break;
             case KeyEvent.VK_D:
-                game.moveRight();
+                game.changeRight();
                 break;
         }
 
