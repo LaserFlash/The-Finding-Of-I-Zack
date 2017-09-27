@@ -23,9 +23,15 @@ public class MockModel implements Model {
             }
         });
     }
+
     @Override
     public void beginNewGame() {
 
+    }
+
+    @Override
+    public Player getPlayer() {
+        return null;
     }
 
     @Override
@@ -34,57 +40,7 @@ public class MockModel implements Model {
     }
 
     @Override
-    public Player getPlayer() {
-        return p;
-    }
-
-    @Override
-    public void startGameLoop() {
-
-    }
-
-    @Override
-    public void stopGameLoop() {
-
-    }
-
-    @Override
-    public void moveUp() {
-
-    }
-
-    @Override
-    public void moveDown() {
-
-    }
-
-    @Override
-    public void moveRight() {
-
-    }
-
-    @Override
-    public void moveLeft() {
-
-    }
-
-    @Override
-    public void changeUp() {
-
-    }
-
-    @Override
-    public void changeDown() {
-
-    }
-
-    @Override
-    public void changeRight() {
-
-    }
-
-    @Override
-    public void changeLeft() {
+    public void pauseGame() {
 
     }
 

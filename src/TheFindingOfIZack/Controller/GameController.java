@@ -68,7 +68,7 @@ public class GameController implements ActionListener, KeyListener {
             }
             case "saveGame" :{
                 try {
-                    SaveFile saveGame = new SaveFile((Game)this.game);
+                    SaveFile saveGame = new SaveFile( (Game) this.game);
                 } catch (InvalidFileException e1) {
                     System.out.printf("Unsuccessful Save");
                 }
@@ -91,7 +91,7 @@ public class GameController implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()){
             case KeyEvent.VK_ESCAPE:
-                game.stopGameLoop();
+                game.pauseGame();
                 view.goToMenuView();
                 break;
             case KeyEvent.VK_W:

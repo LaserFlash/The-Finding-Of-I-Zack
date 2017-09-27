@@ -67,6 +67,11 @@ public class Game extends Observable implements Model,Savable{
 
     }
 
+    @Override
+    public void pauseGame() {
+
+    }
+
     /**
      *
      * @return the the player object
@@ -76,59 +81,27 @@ public class Game extends Observable implements Model,Savable{
         return this.player;
     }
 
-    @Override
-    public void startGameLoop() {
 
-    }
-
-    @Override
-    public void stopGameLoop() {
-
-    }
-
-    @Override
     public void moveUp() {
 
         player.moveUp();
         drawGame();
     }
 
-    @Override
+
     public void moveDown() {
     player.moveDown();
         drawGame();
     }
 
-    @Override
     public void moveRight() {
     player.moveRight();
         drawGame();
     }
 
-    @Override
     public void moveLeft() {
     player.moveLeft();
         drawGame();
-    }
-
-    @Override
-    public void changeUp() {
-
-    }
-
-    @Override
-    public void changeDown() {
-
-    }
-
-    @Override
-    public void changeRight() {
-
-    }
-
-    @Override
-    public void changeLeft() {
-
     }
 
     @Override
