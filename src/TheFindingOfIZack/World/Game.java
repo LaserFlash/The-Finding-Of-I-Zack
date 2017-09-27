@@ -112,22 +112,42 @@ public class Game extends Observable implements Model,Savable{
     }
 
     @Override
+    public void changeUp() {
+
+    }
+
+    @Override
+    public void changeDown() {
+
+    }
+
+    @Override
+    public void changeRight() {
+
+    }
+
+    @Override
+    public void changeLeft() {
+
+    }
+
+    @Override
     public void trueUp() {
        this.north = true;
 
     }
     @Override
-    public void trueright() {
+    public void trueRight() {
         this.east = true;
 
     }
     @Override
-    public void truedown() {
+    public void trueDown() {
         this.south = true;
 
     }
     @Override
-    public void trueleft() {
+    public void trueLeft() {
         this.west = true;
 
     }
@@ -138,17 +158,17 @@ public class Game extends Observable implements Model,Savable{
 
     }
     @Override
-    public void falseright() {
+    public void falseRight() {
         this.east = false;
 
     }
     @Override
-    public void falsedown() {
+    public void falseDown() {
         this.south = false;
 
     }
     @Override
-    public void falseleft() {
+    public void falseLeft() {
         this.west = false;
 
     }
