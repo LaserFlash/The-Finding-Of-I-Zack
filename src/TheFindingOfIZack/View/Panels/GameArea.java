@@ -16,7 +16,6 @@ public class GameArea extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        System.out.print("m");
         drawRoom(g);
         drawPlayer(g);
         drawEntities(g);
