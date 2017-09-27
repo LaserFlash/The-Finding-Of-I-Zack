@@ -1,5 +1,6 @@
 package TheFindingOfIZack.Entities;
 
+import TheFindingOfIZack.FileIO.Savable;
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.World.Rooms.Room;
 
@@ -8,7 +9,7 @@ import java.awt.*;
 /**
  * Created by Ben Allan
  */
-public class Player extends Entity {
+public class Player extends Entity implements Savable {
 
     private int armour = 0;
     private Room room;

@@ -1,11 +1,13 @@
 package TheFindingOfIZack.World.Rooms;
 
+import TheFindingOfIZack.FileIO.Savable;
+
 import java.awt.*;
 
 /**
  * Created by fieldryan on 19/09/17.
  */
-public class startRoom extends Room {
+public class startRoom extends Room implements Savable{
 
 
 
