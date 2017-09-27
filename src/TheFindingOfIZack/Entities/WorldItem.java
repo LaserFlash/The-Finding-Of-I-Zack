@@ -11,4 +11,11 @@ public class WorldItem extends Entity {
         super(health, location);
     }
 
+    @Override
+    public void draw(Graphics g) {
+        g.setColor(Color.YELLOW);
+        g.fillRect(location.x, location.y, width, width);
+        super.draw(g);
+    }
+
 }

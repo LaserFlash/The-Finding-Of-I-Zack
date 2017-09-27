@@ -1,33 +1,44 @@
 package TheFindingOfIZack.Behaviour;
 
-import javax.xml.stream.Location;
-
 /**
- * Created by gordontheo on 19/09/17.
+ * Created by gordontheo on 27/09/17.
+ * This class is used to create new mobs and specify what type they are
  */
 public class MobEnemy {
-    Location location;
+    Mob mob;
 
     /**
-     * Shifts the mobs location
-     * @param newX
-     * @param newY
-     * @return
+     * @param type Constructor which takes a type and makes a new mob of this type
      */
-    public Location move(double newX, double newY){
-        return location;
+    public MobEnemy(String type) {
+        switch (type) {
+            case "standard":
+                mob = new MobStandard();
+                break;
+            case "fast":
+                mob = new MobFast();
+                break;
+            case "slow":
+                mob = new MobSlow();
+                break;
+            default: mobTypeError(type);
+                break;
+        }
     }
 
     /**
-     * Overridden in each different mob, is what changes movement behaviour/triggers attack behaviour
+     * Returns health f
+     * @return health
      */
-    public void step(){
+    public int getHealth(){
+        return mob.getHealth();
     }
 
     /**
-     * To be used for different mob fields of view
+     * Throws an error if an invalid mobType is called
+     * @param str the invalid type name entered
      */
-    public double distanceToPlayer(MobPlayer player){
-        return 2.0;//Arbitrary double
+    private void mobTypeError(String str){
+        System.err.print("Error: Invalid mob type " + str + "\n");
     }
 }

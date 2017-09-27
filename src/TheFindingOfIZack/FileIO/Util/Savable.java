@@ -1,4 +1,4 @@
-package TheFindingOfIZack.FileIO;
+package TheFindingOfIZack.FileIO.Util;
 
 import java.io.Serializable;
 
@@ -7,14 +7,14 @@ import java.io.Serializable;
  *  objects like Levels, Players, Games, Items, ... etc need to be able
  *  to be saved and stored in the GameFile
  */
-public abstract class Saveable implements Serializable {
+public interface Savable extends Serializable {
 
     /**
      *  This method returns all of the information a class stores
      *  needed to recreate the that class in its current state
      * @return the class information as a String
      */
-    public abstract String save();
+    //public abstract String save();
 
     /**
      *  This method returns a string containing all of the information
@@ -22,5 +22,5 @@ public abstract class Saveable implements Serializable {
      *  it was saved
      * @param str
      */
-    public abstract void load(String str);
+    //public abstract void load(String str);
 }
