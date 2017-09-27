@@ -113,16 +113,16 @@ public class GameController implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()){
             case KeyEvent.VK_W:
-                game.trueUp();
+                game.falseUp();
                 break;
             case KeyEvent.VK_S:
-                game.trueDown();
+                game.falseDown();
                 break;
             case KeyEvent.VK_A:
-                game.trueLeft();
+                game.falseLeft();
                 break;
             case KeyEvent.VK_D:
-                game.trueRight();
+                game.falseRight();
                 break;
         }
     }
