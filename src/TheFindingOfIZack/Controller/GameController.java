@@ -86,16 +86,16 @@ public class GameController implements ActionListener, KeyListener {
                 view.goToMenuView();
                 break;
             case KeyEvent.VK_W:
-                game.changeUp();
+                game.trueUp();
                 break;
             case KeyEvent.VK_S:
-                game.changeDown();
+                game.trueDown();
                 break;
             case KeyEvent.VK_A:
-                game.changeLeft();
+                game.trueLeft();
                 break;
             case KeyEvent.VK_D:
-                game.changeRight();
+                game.trueRight();
                 break;
         }
 
@@ -104,16 +104,16 @@ public class GameController implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()){
             case KeyEvent.VK_W:
-                game.changeUp();
+                game.falseUp();
                 break;
             case KeyEvent.VK_S:
-                game.changeDown();
+                game.falseDown();
                 break;
             case KeyEvent.VK_A:
-                game.changeLeft();
+                game.falseLeft();
                 break;
             case KeyEvent.VK_D:
-                game.changeRight();
+                game.falseRight();
                 break;
         }
     }

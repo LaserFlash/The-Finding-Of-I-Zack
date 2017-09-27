@@ -68,4 +68,46 @@ public class MockModel implements Model {
     public void changeLeft() {
 
     }
+
+    @Override
+    public void trueRight() {
+
+    }
+
+    @Override
+    public void trueLeft() {
+
+    }
+
+    @Override
+    public void trueUp() {
+
+    }
+
+    @Override
+    public void trueDown() {
+
+    }
+
+    @Override
+    public void falseRight() {
+
+    }
+
+    @Override
+    public void falseLeft() {
+
+    }
+
+    @Override
+    public void falseUp() {
+
+    }
+
+    @Override
+    public void falseDown() {
+
+    }
+
+
 }
