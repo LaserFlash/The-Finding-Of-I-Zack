@@ -1,10 +1,15 @@
 package TheFindingOfIZack.FileIO;
 
 import TheFindingOfIZack.Entities.Entity;
+import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Level;
 import TheFindingOfIZack.World.Rooms.Room;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.io.*;
 
 /**
@@ -24,14 +29,15 @@ public class GameFile {
     /**
      *  This BufferedReader stores the reader that interacts with the files
      */
-    private BufferedReader in;
+    protected BufferedReader in;
 
-    private BufferedOutputStream out;
+    protected BufferedOutputStream out;
 
     /**
      * This stores the location of the GameFile .txt file to be read or written
+     *
      */
-    private String fileName = "text.txt";
+    private File file = null;
 
     /**
      *  This is the the text to be encoded/decoded or saved/loaded
@@ -59,19 +65,133 @@ public class GameFile {
      */
     private String release = "0.0.1";
 
+    protected JFrame parent =
+            new ViewManager(new Game(new Player(100, new Point(0,0))));
+
+    /**
+     *  This stores the files extension for all of the GameFiles
+     */
+    protected static final String EXTENSION = ".zack";
+
+    /**
+     * This stores the directory for all of the .zack GameFiles
+     */
+    // TODO: 9/26/17 Change this to YOUR directory for save files
+    protected static final String DIRECTORY = "/home/rocktopus/Documents/tri2/swen222/IZack/saves";
+
+    /**
+     * This stores the file header for each of the Gamefiles
+     */
+    protected static final String HEADER = "#ZACK/FILEIO";
+
     /**
      *  This GameFile constructor sets up the BufferedReader for a GameFile to
      *  be read, and the BufferedOutputStream to be written too.
      */
-    public GameFile(){
+    public GameFile(){}
+
+    /**
+     *  This method sets up the BufferedOutputStream
+     *  for the files
+     * @return true if successful, false otherwise
+     */
+    public boolean createOut(){
         try {
-            in = new BufferedReader(new FileReader(new File(fileName)));
-            out = new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+            in = new BufferedReader(new FileReader(file + EXTENSION));
+            out = new BufferedOutputStream(new FileOutputStream(file+EXTENSION));
+
+            out.write(HEADER.getBytes());
+            out.write("\n".getBytes());
+            out.close();
+
+            System.out.println(in.readLine());
+
+            exit(in, out);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            fileError("Creating GameFile " + e.getLocalizedMessage());
+            return false;
+        } catch (IOException e) {
+            fileError("Creating Streams IO" + e.getLocalizedMessage());
+            return false;
         }
+        return true;
     }
 
+    /**\
+     *
+     *  This method sets up the BufferedReader
+     *  for the files
+     * @return true if successful, false otherwise
+     */
+    public boolean createIn(){
+        try {
+            in = new BufferedReader(new FileReader(file));
+            System.out.println(in.readLine());
+            close(in);
+        } catch (FileNotFoundException e) {
+            fileError("Creating GameFile " + e.getLocalizedMessage());
+            return false;
+        } catch (IOException e) {
+            fileError("Creating Streams IO" + e.getLocalizedMessage());
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     *  This method allows the user to select a GameFile from their computer
+     *  and displays the valid file extensions
+     *  @return true if valid, false otherwise
+     */
+    public boolean openFile(JFrame parent) {
+        JFileChooser chooser = new JFileChooser();
+
+        // This method only accepts .txt or .zack file extensions
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "ZACK Files", EXTENSION);
+        //chooser.setFileFilter(filter);
+
+        // Sets the current directory to make navigation easier
+        chooser.setCurrentDirectory(new File(DIRECTORY));
+
+        int returnVal = chooser.showOpenDialog(parent);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            System.out.println("opening...");
+            file = chooser.getSelectedFile();
+            return true;
+        }
+        fileError("Invalid File chosen");
+        return false;
+    }
+
+    /**
+     *  This method allows the user to select a GameFile from their computer
+     *  and displays the valid file extensions
+     *  @return true if valid, false otherwise
+     */
+    public boolean saveFile(JFrame parent){
+        JFileChooser chooser = new JFileChooser();
+
+        // This method only accepts .zack or .txt file extensions
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("ZACK Files", EXTENSION);
+        chooser.setFileFilter(filter);
+
+        // Sets the current directory to make navigation easier
+        chooser.setCurrentDirectory(new File(DIRECTORY));
+
+        int returnVal = chooser.showSaveDialog(parent);
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            System.out.println("saving...");
+            try {
+                file = chooser.getSelectedFile();
+                return true;
+            } catch (Exception ex) {
+                fileError("Invalid saveFile " + ex.getLocalizedMessage());
+            }
+        }
+        fileError("Invalid File chosen");
+        return false;
+    }
 
     public String readGame(BufferedReader in){
         if (isEOF(in))
@@ -142,7 +262,7 @@ public class GameFile {
      *  This method displays an a TheFindingOfIZack.FileIO error appropriately
      * @param str the error to be displayed
      */
-    private static void fileError(String str){
+    private void fileError(String str){
         System.err.print("TheFindingOfIZack.FileIO Error: " + str + "\n");
     }
 
@@ -150,11 +270,26 @@ public class GameFile {
      *  This method closes BufferedReader after the GameFile is done with it
      * @return true if successful, false otherwise
      */
-    public boolean close(){
+    public boolean close(BufferedReader in){
         try {
             in.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            fileError("Failed to close BufferedReader");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     *  This method closes BufferedReader after the GameFile is done with it
+     * @return true if successful, false otherwise
+     */
+    public boolean exit(BufferedReader in, BufferedOutputStream out){
+        try {
+            in.close();
+            out.close();
+        } catch (IOException e) {
+            fileError("Failed to close BufferedReader");
             return false;
         }
         return true;
@@ -179,11 +314,18 @@ public class GameFile {
     }
 
     /**
+     *  Returns the JFrame component that the dialogue boxes
+     *  for saving and loading .ZACK files is opened from
+     * @return
+     */
+    public JFrame getParent(){  return parent; }
+
+    /**
      *  This  main method is for testing purposes of the class ...
      * @param args the arguments for the main method
      */
     public static void main(String [] args){
-        fileError("Error");
+
     }
 
 }

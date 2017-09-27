@@ -1,7 +1,7 @@
 package TheFindingOfIZack.View.Panels;
 
 
-import TheFindingOfIZack.World.Game;
+import TheFindingOfIZack.World.Model;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -12,9 +12,13 @@ import java.awt.event.ActionListener;
  */
 public class GamePanel extends ScreenPanel {
 
-    private Game model;
+    private Model model;
 
-    public GamePanel(Game model){
+    /**
+     * Create a panel intended to draw the game on
+     * @param model reference to the model being drawn
+     */
+    public GamePanel(Model model){
         super();
         this.model = model;
     }
