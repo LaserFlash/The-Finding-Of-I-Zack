@@ -12,7 +12,7 @@ public class Player extends Entity {
     private int armour = 0;
     private Room room;
     private int MAX_HEALTH = 100;
-    private int speed = 5;
+    private int speed = 3;
     private int key = 0;
 
     public Player(int health, Point location) {
@@ -29,19 +29,27 @@ public class Player extends Entity {
     }
 
     public void moveUp() {
-        location.move(0, -5);
+        int x = (int) location.getX();
+        int y = (int) location.getY()-speed;
+        location.move(x, y);
     }
 
     public void moveDown() {
-        location.move(0, 5);
+        int x = (int) location.getX();
+        int y = (int) location.getY()+speed;
+        location.move(x, y);
     }
 
     public void moveLeft() {
-        location.move(-5, 0);
+        int x = (int) location.getX()-speed;
+        int y = (int) location.getY();
+        location.move(x, y);
     }
 
     public void moveRight() {
-        location.move(5, 0);
+        int x = (int) location.getX()+speed;
+        int y = (int) location.getY();
+        location.move(x, y);
     }
 
     public int getMaxHealth() {
