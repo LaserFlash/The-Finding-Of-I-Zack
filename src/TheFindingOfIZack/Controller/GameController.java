@@ -79,10 +79,6 @@ public class GameController implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
-            //TODO pause or resume game and change view accordingly
-            view.goToMenuView();
-        }
         switch (e.getKeyCode()){
             case KeyEvent.VK_ESCAPE:
                 game.stopGameLoop();
