@@ -41,6 +41,26 @@ public class Mob {
     }
 
     /**
+     *
+     * @param location The point being tested for obstacles
+     * @return if the point is clear return true
+     */
+    private boolean canMove(Point location){
+
+
+
+        return true;
+    }
+
+    /**
+     * Returns health
+     * @return health
+     */
+    public int getHealth(){
+        return health;
+    }
+
+    /**
      * To be used for different mob fields of view
      * @param a first Point
      * @param b second Point

@@ -48,6 +48,10 @@ public class Entity implements Drawable {
         health -= damage;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
 
 
 }
