@@ -235,7 +235,7 @@ public class Game extends Observable implements Model,Savable{
     private void gameLoop()
     {
         //This value would probably be stored elsewhere.
-        final double GAME_HERTZ = 20.0;
+        final double GAME_HERTZ = 30.0;
         //Calculate how many ns each frame should take for our target game hertz.
         final double TIME_BETWEEN_UPDATES = 1000000000 / GAME_HERTZ;
         //At the very most we will update the game this many times before a new render.
