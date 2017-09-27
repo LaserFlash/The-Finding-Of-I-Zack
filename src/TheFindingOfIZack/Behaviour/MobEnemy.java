@@ -27,7 +27,7 @@ public class MobEnemy {
     }
 
     /**
-     * Returns health
+     * Returns health f
      * @return health
      */
     public int getHealth(){
