@@ -2,6 +2,7 @@ package Tests.FileIO;
 
 import TheFindingOfIZack.FileIO.GameFile;
 import TheFindingOfIZack.FileIO.LoadFile;
+import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import org.junit.Test;
 
 /**
@@ -14,6 +15,10 @@ public class LoadFileTest {
      */
     @Test
     public void test01_createLoadFile(){
-        LoadFile testLoadFile = new LoadFile();
+        try {
+            LoadFile testLoadFile = new LoadFile();
+        } catch (InvalidFileException e) {
+            e.printStackTrace();
+        }
     }
 }
