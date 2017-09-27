@@ -17,7 +17,7 @@ public class Entity implements Drawable {
     protected Point location;
     protected BoundingBox box;
 
-    public static int width = 20;
+    public static int width = 40;
 
     protected Game world;
 
