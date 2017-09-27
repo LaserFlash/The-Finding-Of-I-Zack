@@ -9,7 +9,7 @@ public class MobEnemy {
     /**
      * @param type Constructor which takes a type and makes a new mob of this type
      */
-    MobEnemy(String type) {
+    public MobEnemy(String type) {
         switch (type) {
             case "standard":
                 mob = new MobStandard();
