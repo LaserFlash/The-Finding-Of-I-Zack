@@ -112,49 +112,48 @@ public class Game extends Observable implements Model,Savable{
     }
 
     @Override
-    public void changeUp() {
-        if(this.north){
-            this.north = false;
-        }else{
-            System.out.println("moving up is true");
-            this.north = true;
+    public void trueUp() {
+       this.north = true;
 
-        }
+    }
+    @Override
+    public void trueright() {
+        this.east = true;
+
+    }
+    @Override
+    public void truedown() {
+        this.south = true;
+
+    }
+    @Override
+    public void trueleft() {
+        this.west = true;
 
     }
 
     @Override
-    public void changeDown() {
-        if(this.south){
-            this.south = false;
-        }else{
-            this.south = true;
-
-        }
+    public void falseUp() {
+        this.north = false;
 
     }
-
     @Override
-    public void changeRight() {
-        if(this.east){
-            this.east = false;
-        }else{
-            this.east = true;
-
-        }
+    public void falseright() {
+        this.east = false;
 
     }
-
     @Override
-    public void changeLeft() {
-        if(this.west){
-            this.west = false;
-        }else{
-            this.west = true;
-
-        }
+    public void falsedown() {
+        this.south = false;
 
     }
+    @Override
+    public void falseleft() {
+        this.west = false;
+
+    }
+
+
 
     /**
      * updates all of the components within the game
