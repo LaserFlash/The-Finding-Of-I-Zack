@@ -1,11 +1,10 @@
 package TheFindingOfIZack.World;
-
-
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.GameFile;
 import TheFindingOfIZack.FileIO.Savable;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.startRoom;
+import com.sun.javafx.tk.Toolkit;
 
 import java.util.Observable;
 
@@ -20,12 +19,13 @@ public class Game extends Observable implements Model,Savable{
 
     private Player player;
     private Level currentLevel;
-    private boolean running = false;
+    private boolean running = true;
     private int frameCount;
     private boolean north;
     private boolean east;
     private boolean south;
     private boolean west;
+    private boolean paused = false;
 
 
     /**
@@ -35,6 +35,10 @@ public class Game extends Observable implements Model,Savable{
     public Game(Player p){
         this.player = p;
         this.frameCount = 0;
+        this.north = false;
+        this.east = false;
+        this.south = false;
+        this.west = false;
 
     }
 
@@ -84,6 +88,7 @@ public class Game extends Observable implements Model,Savable{
 
     @Override
     public void moveUp() {
+        System.out.println("moving up");
         player.moveUp();
         drawGame();
     }
@@ -111,6 +116,7 @@ public class Game extends Observable implements Model,Savable{
         if(this.north){
             this.north = false;
         }else{
+            System.out.println("moving up is true");
             this.north = true;
 
         }
@@ -154,6 +160,7 @@ public class Game extends Observable implements Model,Savable{
      * updates all of the components within the game
      */
     public void updateGame(){
+        System.out.println("updating game");
         checkMovement();
         currentLevel.update();
 
@@ -161,16 +168,16 @@ public class Game extends Observable implements Model,Savable{
     }
     private void checkMovement(){
         if(north){
-            player.moveUp();
+            moveUp();
         }
         if(east){
-            player.moveLeft();
+            moveLeft();
         }
         if(south){
-            player.moveDown();
+            moveDown();
         }
         if(west){
-            player.moveLeft();
+            moveLeft();
         }
     }
 
@@ -233,12 +240,13 @@ public class Game extends Observable implements Model,Savable{
             double now = System.nanoTime();
             int updateCount = 0;
 
-            boolean paused = false;
+
             if (!paused)
             {
                 //Do as many game updates as we need to, potentially playing catchup.
                 while( now - lastUpdateTime > TIME_BETWEEN_UPDATES && updateCount < MAX_UPDATES_BEFORE_RENDER )
                 {
+                    System.out.println("is it reaching here?");
                     updateGame();
                     lastUpdateTime += TIME_BETWEEN_UPDATES;
                     updateCount++;
@@ -288,5 +296,6 @@ public class Game extends Observable implements Model,Savable{
     private void drawGame(){
         this.setChanged();
         notifyObservers();
+
     }
 }
