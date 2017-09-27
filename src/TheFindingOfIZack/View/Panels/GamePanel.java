@@ -24,8 +24,13 @@ public class GamePanel extends ScreenPanel {
     public GamePanel(Model model){
         super();
         this.model = model;
-        this.topInfo = new JPanel();
-        this.gameArea = new JPanel();
+        this.topInfo = new InventoryPanel(model);
+        this.topInfo.setPreferredSize(new Dimension(900,100));
+        this.gameArea = new GameArea(model);
+        this.setPreferredSize(new Dimension(900,500));
+
+        this.add(topInfo,BorderLayout.NORTH);
+        this.add(gameArea,BorderLayout.SOUTH);
     }
 
     @Override
@@ -38,38 +43,8 @@ public class GamePanel extends ScreenPanel {
         /*
          * Draw player information such as health, armour, items etc
          */
-        drawHealth(g);
-        drawPlayerItems(g);
-        drawPlayerArmour(g);
-        drawRoom(g);
 
-        drawPlayer(g);
-        drawEntities(g);
-    }
-
-    private void drawHealth(Graphics g){
-        int maxHealth = model.getPlayer().getMaxHealth();
-        int health = model.getPlayer().getHealth();
-
-        g.drawString(health + "/" + maxHealth, 50,50);
-    }
-
-    private void drawPlayerItems(Graphics g){
-
-    }
-
-    private void drawPlayerArmour(Graphics g){
-
-    }
-
-    private void drawRoom(Graphics g){
-        model.getPlayer().getRoom().draw(g);
-    }
-
-    private void drawEntities(Graphics g){
-        model.getPlayer();
-    }
-    private void drawPlayer(Graphics g){
-        model.getPlayer().draw(g);
+        this.topInfo.repaint();
+        this.gameArea.repaint();
     }
 }
