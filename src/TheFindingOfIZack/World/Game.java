@@ -55,7 +55,7 @@ public class Game extends Observable implements Model,Savable{
      */
     public void beginNewGame(){
         createLevelOne();
-        System.out.println("level created");
+
         runGameLoop();
 
     }
@@ -88,7 +88,7 @@ public class Game extends Observable implements Model,Savable{
 
     @Override
     public void moveUp() {
-        System.out.println("moving up");
+
         player.moveUp();
         drawGame();
     }
@@ -179,7 +179,7 @@ public class Game extends Observable implements Model,Savable{
      * updates all of the components within the game
      */
     public void updateGame(){
-        System.out.println("updating game");
+
         checkMovement();
         currentLevel.update();
 
@@ -265,7 +265,7 @@ public class Game extends Observable implements Model,Savable{
                 //Do as many game updates as we need to, potentially playing catchup.
                 while( now - lastUpdateTime > TIME_BETWEEN_UPDATES && updateCount < MAX_UPDATES_BEFORE_RENDER )
                 {
-                    System.out.println("is it reaching here?");
+
                     updateGame();
                     lastUpdateTime += TIME_BETWEEN_UPDATES;
                     updateCount++;
@@ -287,7 +287,7 @@ public class Game extends Observable implements Model,Savable{
                 int thisSecond = (int) (lastUpdateTime / 1000000000);
                 if (thisSecond > lastSecondTime)
                 {
-                    System.out.println("NEW SECOND " + thisSecond + " " + frameCount);
+                   // System.out.println("NEW SECOND " + thisSecond + " " + frameCount);
 
                     frameCount = 0;
                     lastSecondTime = thisSecond;

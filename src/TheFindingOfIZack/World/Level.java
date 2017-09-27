@@ -24,7 +24,7 @@ public class Level implements Savable{
     }
 
     public void update(){
-        System.out.println("updating level");
+
         for(Room r: rooms){
             r.update();
         }

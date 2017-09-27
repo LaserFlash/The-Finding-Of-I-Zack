@@ -17,7 +17,7 @@ public class startRoom extends Room implements Savable{
 
 
     public void update(){
-        System.out.println("updating room");
+
     }
 
     @Override
