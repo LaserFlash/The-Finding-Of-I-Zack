@@ -1,41 +1,25 @@
 package TheFindingOfIZack.Behaviour;
 
-
-import java.awt.*;
-
-
 /**
- * Created by gordontheo on 19/09/17.
- * The MobEnemy class acts as the 'interface' for mobs,
- * all other enemies extend this and it houses the fundamental methods
+ * Created by gordontheo on 27/09/17.
  */
 public class MobEnemy {
-    private String type;
-
-    public MobEnemy(String type){
-        this.type = type;
-    }
+    Mob mob;
 
     /**
-     * Shifts the mob's location
-     * @param location point containing the mobs location
-     * @param player point containing the players location
-     * @return new mob Point
+     * @param type Constructor which takes a type and makes a new mob of this type
      */
-    public Point step(Point location, Point player){
-        double dtp = (distanceBetween(location,player));
-
-        return null;
-    }
-
-    /**
-     * To be used for different mob fields of view
-     * @param a first Point
-     * @param b second Point
-     * @return distance between the two inputs
-     */
-    protected double distanceBetween(Point a, Point b){
-        double distance = Math.hypot(a.getX()-b.getX(), a.getY()-b.getY());
-        return distance;
+    public MobEnemy(String type) {
+        switch (type) {
+            case "standard":
+                mob = new MobStandard();
+                break;
+            case "fast":
+                mob = new MobFast();
+                break;
+            case "slow":
+                mob = new MobSlow();
+                break;
+        }
     }
 }

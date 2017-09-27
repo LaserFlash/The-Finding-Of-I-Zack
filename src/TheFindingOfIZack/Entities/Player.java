@@ -1,5 +1,6 @@
 package TheFindingOfIZack.Entities;
 
+import TheFindingOfIZack.FileIO.Savable;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import java.awt.*;
@@ -7,18 +8,16 @@ import java.awt.*;
 /**
  * Created by Ben Allan
  */
-public class Player extends Entity {
-
+public class Player extends Entity implements Savable {
     private int armour = 0;
     private Room room;
     private int MAX_HEALTH = 100;
-    private int speed = 3;
+    private int speed = 5;
     private int key = 0;
 
     public Player(int health, Point location) {
         super(health, location);
     }
-
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.CYAN);
@@ -29,27 +28,19 @@ public class Player extends Entity {
     }
 
     public void moveUp() {
-        int x = (int) location.getX();
-        int y = (int) location.getY()-speed;
-        location.move(x, y);
+        location.move(0, -5);
     }
 
     public void moveDown() {
-        int x = (int) location.getX();
-        int y = (int) location.getY()+speed;
-        location.move(x, y);
+        location.move(0, 5);
     }
 
     public void moveLeft() {
-        int x = (int) location.getX()-speed;
-        int y = (int) location.getY();
-        location.move(x, y);
+        location.move(-5, 0);
     }
 
     public void moveRight() {
-        int x = (int) location.getX()+speed;
-        int y = (int) location.getY();
-        location.move(x, y);
+        location.move(5, 0);
     }
 
     public int getMaxHealth() {
