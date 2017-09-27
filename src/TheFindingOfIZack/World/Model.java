@@ -19,4 +19,9 @@ public interface Model {
     void moveDown();
     void moveRight();
     void moveLeft();
+
+    void changeUp();
+    void changeDown();
+    void changeRight();
+    void changeLeft();
 }
