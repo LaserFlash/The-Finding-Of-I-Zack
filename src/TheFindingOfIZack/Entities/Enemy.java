@@ -29,10 +29,28 @@ public class Enemy extends Entity {
         super.draw(g);
     }
 
+    /**
+     * Makes each mob run through its step method
+     */
     public void move() {
+
         //Point p = behaviour.step(location, this.world.getPlayer().getLocation());
         //this.location = p;
         //this.box = new BoundingBox(p.getX(), p.getY(), this.width, this.width);
+    }
+
+
+    /**
+     * The Beginning of Theo's hostile takeover of the Enemy class
+     * @param location The point being tested for obstacles
+     * @return if the point is clear return true
+     */
+    private boolean canMove(Point location, Player player){
+        //if(location < ){
+
+        //}
+
+        return true;
     }
 
     public void collisions(Room room) {
