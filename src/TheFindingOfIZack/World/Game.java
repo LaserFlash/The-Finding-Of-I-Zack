@@ -223,6 +223,7 @@ public class Game extends Observable implements Model,Savable{
      * draws everything within the game
      */
     private void drawGame(){
+        this.setChanged();
         notifyObservers();
     }
 }

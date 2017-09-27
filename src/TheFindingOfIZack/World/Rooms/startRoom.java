@@ -21,8 +21,7 @@ public class startRoom extends Room {
     @Override
     public void draw(Graphics g) {
 
-        g.setColor(Color.black);
-        g.fillOval(50,50,50,50);
+
 
     }
 }
