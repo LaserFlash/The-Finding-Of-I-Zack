@@ -43,7 +43,7 @@ public class GamePanel extends ScreenPanel {
         /*
          * Draw player information such as health, armour, items etc
          */
-
+        Toolkit.getDefaultToolkit().sync();
         this.topInfo.repaint();
         this.gameArea.repaint();
     }
