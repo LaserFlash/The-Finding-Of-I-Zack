@@ -48,7 +48,7 @@ public class Game extends Observable implements Model,Savable{
     public void beginNewGame(){
         createLevelOne();
         System.out.println("level created");
-        updateGame();
+        runGameLoop();
 
     }
 
