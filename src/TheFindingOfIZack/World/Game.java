@@ -171,7 +171,7 @@ public class Game extends Observable implements Model,Savable{
             moveUp();
         }
         if(east){
-            moveLeft();
+            moveRight();
         }
         if(south){
             moveDown();
