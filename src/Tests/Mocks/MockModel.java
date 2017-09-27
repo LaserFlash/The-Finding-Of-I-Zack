@@ -2,8 +2,27 @@ package Tests.Mocks;
 
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.World.Model;
+import TheFindingOfIZack.World.Rooms.Room;
+
+import java.awt.*;
 
 public class MockModel implements Model {
+    private Player p = new Player(100,new Point(20,20));
+
+    public MockModel(){
+        p.setRoom(new Room() {
+            @Override
+            public void update() {
+
+            }
+
+            @Override
+            public void draw(Graphics g) {
+                g.setColor(Color.green);
+                g.fillRect(0,0,900,500);
+            }
+        });
+    }
     @Override
     public void beginNewGame() {
 
@@ -16,7 +35,7 @@ public class MockModel implements Model {
 
     @Override
     public Player getPlayer() {
-        return null;
+        return p;
     }
 
     @Override
@@ -108,6 +127,4 @@ public class MockModel implements Model {
     public void falseDown() {
 
     }
-
-
 }
