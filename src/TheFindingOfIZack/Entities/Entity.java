@@ -34,9 +34,17 @@ public class Entity implements Drawable {
         return this.location;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
     public void draw(Graphics g) {
         g.setColor(Color.black);
         g.drawRect(location.x, location.y, width, width);
+    }
+
+    public void damage(int damage) {
+        health -= damage;
     }
 
 
