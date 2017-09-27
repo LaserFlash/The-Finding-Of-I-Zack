@@ -9,7 +9,7 @@ public class GameSize {
     public static final int WALL_WIDTH = 40;
     public static final int LEFT_WALL = WALL_WIDTH;
     public static final int RIGHT_WALL = WINDOW_WIDTH-WALL_WIDTH;
-    public static final int TOP_WALL = MENU_HEIGHT+WALL_WIDTH;
+    public static final int TOP_WALL = WALL_WIDTH;
     public static final int BOTTOM_WALL = WINDOW_HEIGHT+WALL_WIDTH;
 
 }
