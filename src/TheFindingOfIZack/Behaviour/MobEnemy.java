@@ -1,5 +1,7 @@
 package TheFindingOfIZack.Behaviour;
 
+import java.awt.*;
+
 /**
  * Created by gordontheo on 27/09/17.
  * This class is used to create new mobs and specify what type they are
@@ -40,5 +42,9 @@ public class MobEnemy {
      */
     private void mobTypeError(String str){
         System.err.print("Error: Invalid mob type " + str + "\n");
+    }
+
+    public Point step(Point location, Point player){
+        return(mob.step(location,player));
     }
 }
