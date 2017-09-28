@@ -35,7 +35,7 @@ public class Player extends Entity implements Savable {
         int x = (int) location.getX();
         int y = (int) location.getY()-speed;
 
-        //if (y < GameSize.TOP_WALL) {y = GameSize.TOP_WALL;}
+        if (y < GameSize.TOP_WALL) {y = GameSize.TOP_WALL;}
 
         location.move(x, y);
     }
@@ -44,7 +44,7 @@ public class Player extends Entity implements Savable {
         int x = (int) location.getX();
         int y = (int) location.getY()+speed;
 
-        //if (y > GameSize.BOTTOM_WALL-width) {y = GameSize.BOTTOM_WALL-width;}
+        if (y > GameSize.BOTTOM_WALL-width) {y = GameSize.BOTTOM_WALL-width;}
 
         location.move(x, y);
     }
@@ -53,7 +53,7 @@ public class Player extends Entity implements Savable {
         int x = (int) location.getX()-speed;
         int y = (int) location.getY();
 
-        //if (x < GameSize.LEFT_WALL) {x = GameSize.LEFT_WALL;}
+        if (x < GameSize.LEFT_WALL) {x = GameSize.LEFT_WALL;}
 
         location.move(x, y);
     }
@@ -62,7 +62,7 @@ public class Player extends Entity implements Savable {
         int x = (int) location.getX()+speed;
         int y = (int) location.getY();
 
-        //if (x > GameSize.RIGHT_WALL-width) {x = GameSize.RIGHT_WALL-width;}
+        if (x > GameSize.RIGHT_WALL-width) {x = GameSize.RIGHT_WALL-width;}
 
         location.move(x, y);
     }
