@@ -1,6 +1,7 @@
 package TheFindingOfIZack.World.Rooms;
 
 import TheFindingOfIZack.FileIO.Util.Savable;
+import TheFindingOfIZack.Util.GameSize;
 
 import java.awt.*;
 
@@ -48,10 +49,10 @@ public class startRoom extends Room implements Savable{
     @Override
     public void draw(Graphics g) {
         if(this.westDoor!= null){
-
             this.westDoor.draw(g);
         }
-
+    g.setColor(Color.black);
+        g.drawRect(GameSize.WALL_WIDTH,GameSize.WALL_WIDTH, GameSize.WINDOW_WIDTH - (2 * GameSize.WALL_WIDTH), GameSize.GAME_HEIGHT - (2 * GameSize.WALL_WIDTH));
 
     }
 }
