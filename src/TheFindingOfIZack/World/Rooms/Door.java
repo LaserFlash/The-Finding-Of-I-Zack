@@ -13,6 +13,8 @@ public class Door implements Drawable {
     private Room entry;
     private Room destination;
     int position;
+    int width = 10;
+    int height = 50;
 
 
 
@@ -48,7 +50,7 @@ public class Door implements Drawable {
     public void draw(Graphics g) {
         g.setColor(Color.green);
         if(this.position == 3){
-            g.fillRect(50,50,50,50);
+            g.fillRect(0,GameSize.GAME_HEIGHT/2 - this.height,GameSize.WALL_WIDTH,height);
         }
 
 
