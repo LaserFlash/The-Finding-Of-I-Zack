@@ -1,9 +1,11 @@
 package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.Behaviour.MobEnemy;
-import TheFindingOfIZack.World.Rooms.Room;
+import javafx.geometry.BoundingBox;
 
 import java.awt.*;
+
+import static TheFindingOfIZack.Util.GameSize.*;
 
 /**
  * Created by Ben Allan
@@ -33,10 +35,11 @@ public class Enemy extends Entity {
      * Makes each mob run through its step method
      */
     public void move() {
-
-        //Point p = behaviour.step(location, this.world.getPlayer().getLocation());
-        //this.location = p;
-        //this.box = new BoundingBox(p.getX(), p.getY(), this.width, this.width);
+        Point potentialStep = behaviour.step(location, this.world.getPlayer().getLocation());
+        if(canMove(potentialStep)) {
+            this.location = potentialStep;
+            this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.width, this.width);
+        }
     }
 
 
@@ -45,15 +48,23 @@ public class Enemy extends Entity {
      * @param location The point being tested for obstacles
      * @return if the point is clear return true
      */
-    private boolean canMove(Point location, Player player){
-        //if(location < ){
-
-        //}
-
+    private boolean canMove(Point location){
+        if(location.getY() < TOP_WALL){
+            return false;
+        }
+        if(location.getY() < LEFT_WALL){
+            return false;
+        }
+        if(location.getY()+width > BOTTOM_WALL){
+            return false;
+        }
+        if(location.getY()+width > RIGHT_WALL){
+            return false;
+        }
         return true;
     }
 
-    public void collisions(Room room) {
+    public void collisions(Point location) {
 
     }
 
