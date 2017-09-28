@@ -12,5 +12,6 @@ public abstract class Room implements Drawable {
 
 
     public abstract void update();
+    public abstract void addDoor(Door d, int n);
 
 }

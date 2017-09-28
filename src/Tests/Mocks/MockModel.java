@@ -2,6 +2,7 @@ package Tests.Mocks;
 
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.World.Model;
+import TheFindingOfIZack.World.Rooms.Door;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import java.awt.*;
@@ -13,6 +14,11 @@ public class MockModel implements Model {
         p.setRoom(new Room() {
             @Override
             public void update() {
+
+            }
+
+            @Override
+            public void addDoor(Door d, int n) {
 
             }
 

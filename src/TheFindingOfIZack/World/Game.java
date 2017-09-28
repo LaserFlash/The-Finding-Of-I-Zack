@@ -2,8 +2,7 @@ package TheFindingOfIZack.World;
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.GameFile;
 import TheFindingOfIZack.FileIO.Util.Savable;
-import TheFindingOfIZack.World.Rooms.Room;
-import TheFindingOfIZack.World.Rooms.startRoom;
+import TheFindingOfIZack.World.Rooms.*;
 import com.sun.javafx.tk.Toolkit;
 
 import java.util.Observable;
@@ -178,9 +177,56 @@ public class Game extends Observable implements Model,Savable{
      */
     public void createLevelOne(){
         this.currentLevel = new Level();
-        Room start = new startRoom();
-        player.setRoom(start);
-        currentLevel.addRoom(start);
+
+        Room r1 = new startRoom();
+        Room r2 = new standardRoom();
+        Room r3 = new standardRoom();
+        Room r4 = new itemRoom();
+        Room r5 = new standardRoom();
+        Room r6 = new standardRoom();
+        Room r7 = new standardRoom();
+        Room r8 = new bossRoom();
+
+        //Door connecting rooms 1 and 2
+        Door r1t2 = new Door(r1,r2,3);
+        r1.addDoor(r1t2,r1t2.getPosition());
+        r2.addDoor(r1t2.getOpposite(),r1t2.getOpposite().getPosition());
+
+        //Door connecting rooms 1 and 3
+        Door r1t3 = new Door(r1,r3,1);
+        r1.addDoor(r1t3,r1t3.getPosition());
+        r3.addDoor(r1t3.getOpposite(),r1t3.getOpposite().getPosition());
+
+        //Door connecting rooms 3 and 4
+        Door r3t4 = new Door(r3,r4,1);
+        r3.addDoor(r3t4,r3t4.getPosition());
+        r4.addDoor(r3t4.getOpposite(),r3t4.getOpposite().getPosition());
+
+
+        //Door connecting rooms 3 and 5
+        Door r3t5 = new Door(r3,r5,2);
+        r3.addDoor(r3t5,r3t5.getPosition());
+        r5.addDoor(r3t5.getOpposite(),r3t5.getOpposite().getPosition());
+
+        //Door connecting rooms 5 and 6
+        Door r5t6 = new Door(r5,r6,2);
+        r5.addDoor(r5t6,r5t6.getPosition());
+        r6.addDoor(r5t6.getOpposite(),r5t6.getOpposite().getPosition());
+
+        //Door connecting rooms 5 and 7
+        Door r5t7 = new Door(r5,r7,1);
+        r5.addDoor(r5t7,r5t7.getPosition());
+        r7.addDoor(r5t7.getOpposite(),r5t7.getOpposite().getPosition());
+
+        //Door connecting rooms 7 and 8
+        Door r7t8 = new Door(r7,r8,2);
+        r7.addDoor(r7t8,r7t8.getPosition());
+        r8.addDoor(r7t8.getOpposite(),r7t8.getOpposite().getPosition());
+
+
+        player.setRoom(r1);
+        currentLevel.addRoom(r1);
+
 
     }
 
