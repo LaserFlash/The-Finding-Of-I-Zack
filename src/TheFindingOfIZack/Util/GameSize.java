@@ -4,8 +4,8 @@ public class GameSize {
     public static final int PADDING = 100;
 
     public static final int WINDOW_WIDTH = 1000;
-    public static final int WINDOW_HEIGHT = 600;
-    public static final int MENU_HEIGHT = 50;
+    public static final int WINDOW_HEIGHT = 700;
+    public static final int MENU_HEIGHT = 100;
     public static final int GAME_WIDTH = WINDOW_WIDTH - PADDING;
     public static final int GAME_HEIGHT = WINDOW_HEIGHT - MENU_HEIGHT - PADDING;
 

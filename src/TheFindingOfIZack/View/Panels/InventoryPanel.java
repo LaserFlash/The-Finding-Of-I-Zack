@@ -26,17 +26,17 @@ public class InventoryPanel extends JPanel{
     private void drawHealth(Graphics g){
         int maxHealth = model.getPlayer().getMaxHealth();
         int health = model.getPlayer().getHealth();
-
         int maxArmour = model.getPlayer().getMaxArmour();
         int armour = model.getPlayer().getArmour();
+
         g.setFont(new Font("TimesRoman", Font.BOLD, 18));
 
         g.drawString("Health:", PADDING,PADDING);
-        g.drawString("Armour:",PADDING,PADDING * 3);
+        g.drawString("Armour:",PADDING,PADDING * 2);
         g.setColor(Color.red);
-        g.drawString( health + "/" + maxHealth, PADDING + 60,PADDING);
+        g.drawString( health + "/" + maxHealth, PADDING + 80,PADDING);
         g.setColor(Color.BLUE);
-        g.drawString(armour + "/" + maxArmour, PADDING + 60, PADDING * 3);
+        g.drawString(armour + "/" + maxArmour, PADDING + 80, PADDING * 2);
     }
 
     private void drawPlayerItems(Graphics g){
