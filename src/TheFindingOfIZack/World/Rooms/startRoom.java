@@ -9,18 +9,12 @@ import java.awt.*;
  * Created by fieldryan on 19/09/17.
  */
 public class startRoom extends Room implements Savable{
-  private  Door northDoor;
-   private Door eastDoor;
-    private Door southDoor;
-    private Door westDoor;
+
 
 
 
     public startRoom(){
-        this.northDoor = null;
-        this.eastDoor = null;
-        this.southDoor = null;
-        this.westDoor = null;
+        super();
 
     }
 
@@ -71,16 +65,5 @@ public class startRoom extends Room implements Savable{
         return false;
     }
 
-    @Override
-    public void draw(Graphics g) {
-        if(this.westDoor!= null){
-            this.westDoor.draw(g);
-        }
-        if(this.southDoor != null){
-            this.southDoor.draw(g);
-        }
-    g.setColor(Color.black);
-        g.drawRect(GameSize.WALL_WIDTH,GameSize.WALL_WIDTH, GameSize.GAME_WIDTH - (2 * GameSize.WALL_WIDTH), GameSize.GAME_HEIGHT - (2 * GameSize.WALL_WIDTH));
 
-    }
 }

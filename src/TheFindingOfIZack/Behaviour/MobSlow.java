@@ -7,7 +7,7 @@ package TheFindingOfIZack.Behaviour;
  */
 public class MobSlow extends Mob {
     MobSlow(){
-        this.viewRange = 100;
+        this.viewRange = 200;
         this.speed = 1;
         this.health = 100;
     }
