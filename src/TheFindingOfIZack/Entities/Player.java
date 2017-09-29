@@ -52,7 +52,7 @@ public class Player extends Entity implements Savable {
         if (y > GameSize.BOTTOM_WALL-width) {
             y = GameSize.BOTTOM_WALL-width;
             if (room.hasDoor(2) && vertDoor()) {
-                System.out.println("Move South");
+                moveSouth();
             }
         }
 
@@ -100,6 +100,17 @@ public class Player extends Entity implements Savable {
         }
         return false;
     }
+
+
+    public void moveSouth() {
+        int x = (int) location.getX();
+        int y = GameSize.TOP_WALL;
+        room = room.getSouthDoor().getDestination();
+        location.move(x, y);
+    }
+
+
+
 
     public int getMaxHealth() {
         return MAX_HEALTH;
