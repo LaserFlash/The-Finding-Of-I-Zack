@@ -52,7 +52,7 @@ public class startRoom extends Room implements Savable{
             this.westDoor.draw(g);
         }
     g.setColor(Color.black);
-        g.drawRect(GameSize.WALL_WIDTH,GameSize.WALL_WIDTH, GameSize.WINDOW_WIDTH - (2 * GameSize.WALL_WIDTH), GameSize.GAME_HEIGHT - (2 * GameSize.WALL_WIDTH));
+        g.drawRect(GameSize.WALL_WIDTH,GameSize.WALL_WIDTH, GameSize.GAME_WIDTH - (2 * GameSize.WALL_WIDTH), GameSize.GAME_HEIGHT - (2 * GameSize.WALL_WIDTH));
 
     }
 }
