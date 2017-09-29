@@ -1,13 +1,17 @@
 package TheFindingOfIZack.Controller;
 
 
+import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.LoadFile;
 import TheFindingOfIZack.FileIO.SaveFile;
 import TheFindingOfIZack.FileIO.Util.InvalidFileException;
+import TheFindingOfIZack.Util.CreateGameModel;
+import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Model;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -49,8 +53,12 @@ public class GameController implements ActionListener, KeyListener {
                 break;
             }
             case "newGame": {
+                this.game = CreateGameModel.newGame(this.view);
                 this.game.beginNewGame();
-                view.goToGameView();
+                this.game.pauseGame();
+                this.view.newGame(game);
+                this.view.goToGameView();
+                this.game.resumeGame();
                 break;
             }
             case "loadGame":{
@@ -76,7 +84,6 @@ public class GameController implements ActionListener, KeyListener {
                 break;
             }
             case "resumeGame":{
-                //TODO start any loops or threads that need to be resumed
                 game.resumeGame();
                 view.goToGameView();
                 break;
@@ -91,20 +98,20 @@ public class GameController implements ActionListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()){
             case KeyEvent.VK_ESCAPE:
-                game.pauseGame();
-                view.goToMenuView();
+                this.game.pauseGame();
+                this.view.goToMenuView();
                 break;
             case KeyEvent.VK_W:
-                game.trueUp();
+                this.game.trueUp();
                 break;
             case KeyEvent.VK_S:
-                game.trueDown();
+                this.game.trueDown();
                 break;
             case KeyEvent.VK_A:
-                game.trueLeft();
+                this.game.trueLeft();
                 break;
             case KeyEvent.VK_D:
-                game.trueRight();
+                this.game.trueRight();
                 break;
         }
 
@@ -113,16 +120,16 @@ public class GameController implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()){
             case KeyEvent.VK_W:
-                game.falseUp();
+                this.game.falseUp();
                 break;
             case KeyEvent.VK_S:
-                game.falseDown();
+                this.game.falseDown();
                 break;
             case KeyEvent.VK_A:
-                game.falseLeft();
+                this.game.falseLeft();
                 break;
             case KeyEvent.VK_D:
-                game.falseRight();
+                this.game.falseRight();
                 break;
         }
     }

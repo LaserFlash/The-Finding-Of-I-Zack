@@ -88,7 +88,6 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
 
     @Override
     public void repaint(){
-        Toolkit.getDefaultToolkit().sync();
         this.getContentPane().revalidate();
         this.getContentPane().repaint();
     }
@@ -99,7 +98,8 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
      * @param game the game model to be used
      */
     public void newGame(Model game) {
-        this.gameScreen = new GamePanel(game);
+        this.model = game;
+        this.gameScreen = new GamePanel(this.model);
     }
 
     private static void setUIFont(javax.swing.plaf.FontUIResource f)

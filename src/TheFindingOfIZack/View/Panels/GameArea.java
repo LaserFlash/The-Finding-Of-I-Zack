@@ -19,6 +19,7 @@ public class GameArea extends JPanel{
         drawRoom(g);
         drawPlayer(g);
         drawEntities(g);
+        Toolkit.getDefaultToolkit().sync();
     }
 
 
