@@ -256,6 +256,13 @@ public class Game extends Observable implements Model,Savable{
 
         player.setRoom(r1);
         currentLevel.addRoom(r1);
+        currentLevel.addRoom(r2);
+        currentLevel.addRoom(r3);
+        currentLevel.addRoom(r4);
+        currentLevel.addRoom(r5);
+        currentLevel.addRoom(r6);
+        currentLevel.addRoom(r7);
+        currentLevel.addRoom(r8);
 
 
     }
