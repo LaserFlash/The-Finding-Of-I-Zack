@@ -44,7 +44,10 @@ public class Player extends Entity implements Savable {
         int x = (int) location.getX();
         int y = (int) location.getY()+speed;
 
-        if (y > GameSize.BOTTOM_WALL-width) {y = GameSize.BOTTOM_WALL-width;}
+        if (y > GameSize.BOTTOM_WALL-width) {
+            y = GameSize.BOTTOM_WALL-width;
+
+        }
 
         location.move(x, y);
     }
