@@ -33,7 +33,7 @@ public class StartScreenPanel extends ScreenPanel {
 
         this.saveGame = new JButton("Save");
         this.saveGame.setActionCommand("saveGame");
-        //this.saveGame.setEnabled(false); todo testing purposes - JW
+        this.saveGame.setEnabled(false);
         this.add(saveGame);
 
         this.resumeGame = new JButton("Resume");
@@ -51,6 +51,12 @@ public class StartScreenPanel extends ScreenPanel {
         newGame.addActionListener(controller);
         loadGame.addActionListener(controller);
         saveGame.addActionListener(controller);
+        resumeGame.addActionListener(controller);
         exitGame.addActionListener(controller);
+    }
+
+    public void enableOtherButtons(){
+        this.resumeGame.setEnabled(true);
+        this.saveGame.setEnabled(true);
     }
 }

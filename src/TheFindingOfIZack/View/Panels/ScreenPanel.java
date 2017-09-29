@@ -31,4 +31,6 @@ public abstract class ScreenPanel extends JPanel {
     public Dimension getPreferredSize() {
         return new Dimension(GameSize.WINDOW_WIDTH, GameSize.WINDOW_HEIGHT);
     }
+
+    public abstract void enableOtherButtons();
 }

@@ -14,4 +14,6 @@ public interface View {
     void goToMenuView();
 
     void newGame(Model model);
+
+    void enableOtherButtons();
 }

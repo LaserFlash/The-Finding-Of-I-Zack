@@ -41,7 +41,7 @@ public class MobShooter extends Mob{
         if(range < viewRange){
             int shootChance = (int) Math.random()*3;
             if(shootChance < 2){
-
+                MobProjectile shot = new MobProjectile(location);
             }
         }
 
