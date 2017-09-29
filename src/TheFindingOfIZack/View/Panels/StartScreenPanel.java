@@ -1,10 +1,11 @@
 package TheFindingOfIZack.View.Panels;
 
+import TheFindingOfIZack.Util.GameSize;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -22,12 +23,13 @@ public class StartScreenPanel extends ScreenPanel {
     private final JButton resumeGame;
     private final JButton exitGame;
 
+    private Image img;
+
     /**
      * Create the panel and related buttons
      */
     public StartScreenPanel(){
         super();
-        //TODO make the button and layout look good
         this.newGame = new JButton("New Game");
         this.newGame.setActionCommand("newGame");
         this.add(newGame);
@@ -49,6 +51,14 @@ public class StartScreenPanel extends ScreenPanel {
         this.exitGame = new JButton("Exit");
         this.exitGame.setActionCommand("exitGame");
         this.add(exitGame);
+
+        this.setVisible(true);
+        try {
+            this.img = ImageIO.read(getClass().getResource(("/jesse.png"))).getScaledInstance(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT,Image.SCALE_DEFAULT);
+            //this.add(new JLabel(new ImageIcon(img)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -61,13 +71,9 @@ public class StartScreenPanel extends ScreenPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        super.paintComponent(g);
-        try {
-            g.drawImage(ImageIO.read(new File("assets/jesse.png")), 0, 0, null);
-        } catch (IOException e) {
-        }
+        g.drawImage(img, 0, 0, null);
     }
 
     public void enableOtherButtons(){
