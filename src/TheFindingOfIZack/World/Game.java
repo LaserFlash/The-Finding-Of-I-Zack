@@ -193,7 +193,7 @@ public class Game extends Observable implements Model,Savable{
         r2.addDoor(r1t2.getOpposite(),r1t2.getOpposite().getPosition());
 
         //Door connecting rooms 1 and 3
-        Door r1t3 = new Door(r1,r3,1);
+        Door r1t3 = new Door(r1,r3,2);
         r1.addDoor(r1t3,r1t3.getPosition());
         r3.addDoor(r1t3.getOpposite(),r1t3.getOpposite().getPosition());
 
