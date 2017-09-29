@@ -7,18 +7,13 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class standardRoom extends Room{
-    private  Door northDoor;
-    private Door eastDoor;
-    private Door southDoor;
-    private Door westDoor;
+
     private ArrayList<Enemy> enemiesInRoom;
 
     public standardRoom(){
+        super();
         this.enemiesInRoom = new ArrayList<Enemy>();
-        this.northDoor = null;
-        this.eastDoor = null;
-        this.southDoor = null;
-        this.westDoor = null;
+
 
     }
 
