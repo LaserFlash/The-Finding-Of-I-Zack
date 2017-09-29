@@ -1,7 +1,12 @@
 package TheFindingOfIZack.View.Panels;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * The display intended for first landing
@@ -53,6 +58,16 @@ public class StartScreenPanel extends ScreenPanel {
         saveGame.addActionListener(controller);
         resumeGame.addActionListener(controller);
         exitGame.addActionListener(controller);
+    }
+
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        super.paintComponent(g);
+        try {
+            g.drawImage(ImageIO.read(new File("assets/jesse.png")), 0, 0, null);
+        } catch (IOException e) {
+        }
     }
 
     public void enableOtherButtons(){

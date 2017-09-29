@@ -17,7 +17,7 @@ public class Game extends Observable implements Model,Savable{
 
 
     private transient Player player;
-    private Level currentLevel;
+    private transient Level currentLevel;
     private boolean running = true;
     private int frameCount;
     private boolean north;
@@ -45,12 +45,15 @@ public class Game extends Observable implements Model,Savable{
      *Constructor for loading a new game from a file
      * @param file
      */
-    public Game(GameFile file){
-
-    }
-
-    public Level getCurrentLevel(){
-        return this.currentLevel;
+    public Game(Game g, Player p, Level l, Room r){
+        p.setRoom(r);
+        this.player = p;
+        this.currentLevel = l;
+        this.frameCount = g.frameCount;
+        this.north = g.north;
+        this.east = g.east;
+        this.south = g.south;
+        this.west = g.west;
     }
 
 
@@ -81,6 +84,15 @@ public class Game extends Observable implements Model,Savable{
     public Player getPlayer(){
 
         return this.player;
+    }
+
+    /**
+     *
+     * @return the level object
+     */
+    public Level getCurrentLevel(){
+
+        return this.currentLevel;
     }
 
 
