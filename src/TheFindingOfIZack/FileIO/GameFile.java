@@ -67,7 +67,7 @@ public class GameFile {
     private static final String RELEASE = "/v0.0.1";
 
     protected JFrame parent =
-            new ViewManager(new Game(new Player(100, new Point(0,0))));
+            new ViewManager(new Game(new Player(new Point(0,0))));
 
     /**
      *  This stores the files extension for all of the GameFiles
@@ -201,7 +201,7 @@ public class GameFile {
     }
 
     public void writeGame(Game g, BufferedOutputStream out) {
-        Game e = new Game(new Player(100, new Point(0,0)));
+        Game e = new Game(new Player(new Point(0,0)));
 
         try {
             FileOutputStream fileOut = new FileOutputStream(file+EXTENSION);
@@ -209,7 +209,7 @@ public class GameFile {
             obOut.writeObject(e);
             obOut.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in " + file.getName() + EXTENSION);
+            System.out.printf("Game Serialized data is saved in " + file.getName() + EXTENSION + "\n");
         }   catch(IOException i) {
             i.printStackTrace();
         }
@@ -237,16 +237,109 @@ public class GameFile {
         return g;
     }
 
-    public String readLevel(BufferedReader in){
-        if (isEOF(in))
-            fileError("EOF reached in readLevel");
-        return null;
+    public Player readPlayer(BufferedReader in){
+        Player p = null;
+        if (!isEOF(in)) {
+            fileError("EOF reached in readGame");
+            return p;
+        }
+        try {
+            in.close();
+            ObjectInput obIn = new ObjectInputStream(new FileInputStream(file));
+            try {
+                p = (Player) obIn.readObject();
+            } catch (ClassNotFoundException e) {
+                fileError("Reading Player: " + e.getLocalizedMessage());
+            }
+
+        } catch (IOException e) {
+            fileError("Reading Game: " + e.getLocalizedMessage());
+        }
+        return p;
     }
 
-    public String readRoom(BufferedReader in){
-        if (isEOF(in))
-            fileError("EOF reached in readRoom");
-        return null;
+    public void writePlayer(Game g, BufferedOutputStream out){
+        Player p = g.getPlayer();
+
+        try {
+            FileOutputStream fileOut = new FileOutputStream(file+EXTENSION);
+            ObjectOutputStream obOut = new ObjectOutputStream(fileOut);
+            obOut.writeObject(p);
+            obOut.close();
+            fileOut.close();
+            System.out.printf(" Player Serialized data is saved in " + file.getName() + EXTENSION + "\n");
+        }   catch(IOException i) {
+            fileError("Writing player" + i.getLocalizedMessage());
+        }
+    }
+
+    public Room writeRoom(Game g, BufferedOutputStream out){
+        Room r = g.getPlayer().getRoom();
+
+        try {
+            FileOutputStream fileOut = new FileOutputStream(file+EXTENSION);
+            ObjectOutputStream obOut = new ObjectOutputStream(fileOut);
+            obOut.writeObject(r);
+            obOut.close();
+            fileOut.close();
+            System.out.printf(" Room Serialized data is saved in " + file.getName() + EXTENSION + "\n");
+        }   catch(IOException i) {
+            fileError("Writing Room: " + i.getLocalizedMessage());
+        }
+        return r;
+    }
+
+    public Room readRoom(BufferedReader in){
+        Room r = null;
+        if (!isEOF(in))
+            fileError("EOF reached in readLevel");
+        try {
+            in.close();
+            ObjectInput obIn = new ObjectInputStream(new FileInputStream(file));
+            try {
+                r = (Room) obIn.readObject();
+            } catch (ClassNotFoundException e) {
+                fileError("Reading Level: " + e.getLocalizedMessage());
+            }
+
+        } catch (IOException e) {
+            fileError("Reading Level: " + e.getLocalizedMessage());
+        }
+        return r;
+    }
+
+    public Level readLevel(BufferedReader in){
+        Level l = null;
+        if (!isEOF(in))
+            fileError("EOF reached in readLevel");
+        try {
+            in.close();
+            ObjectInput obIn = new ObjectInputStream(new FileInputStream(file));
+            try {
+                l = (Level) obIn.readObject();
+            } catch (ClassNotFoundException e) {
+                fileError("Reading Level: " + e.getLocalizedMessage());
+            }
+
+        } catch (IOException e) {
+            fileError("Reading Level: " + e.getLocalizedMessage());
+        }
+        return l;
+    }
+
+    public void writeLevel(Game g, BufferedOutputStream out){
+        Level l = g.getCurrentLevel();
+
+        try {
+            FileOutputStream fileOut = new FileOutputStream(file+EXTENSION);
+            ObjectOutputStream obOut = new ObjectOutputStream(fileOut);
+            obOut.writeObject(l);
+            obOut.close();
+            fileOut.close();
+            System.out.printf(" Room Serialized data is saved in " + file.getName()  + EXTENSION + "\n");
+        }   catch(IOException i) {
+            fileError("Writing Room: " + i.getLocalizedMessage());
+        }
     }
 
     public String readEntity(BufferedReader in){

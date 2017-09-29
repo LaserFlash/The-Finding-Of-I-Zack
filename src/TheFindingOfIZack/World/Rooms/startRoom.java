@@ -18,6 +18,11 @@ public class startRoom extends Room implements Savable{
 
     }
 
+    @Override
+    public void populateRoom() {
+
+    }
+
 
     public void update(){
 

@@ -17,7 +17,11 @@ public class itemRoom extends Room {
 
     }
 
+    @Override
+    public void populateRoom() {
 
+
+    }
 
 
     @Override
