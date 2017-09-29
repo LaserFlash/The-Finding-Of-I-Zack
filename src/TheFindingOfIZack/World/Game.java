@@ -77,6 +77,10 @@ public class Game extends Observable implements Model,Savable{
 
     }
 
+    public Level getCurrentLevel(){
+        return this.currentLevel;
+    }
+
     /**
      *
      * @return the the player object
