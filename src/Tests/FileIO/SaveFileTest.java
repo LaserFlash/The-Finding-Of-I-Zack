@@ -22,7 +22,7 @@ public class SaveFileTest {
     @Test
     public void test01_createSaveFile(){
         try {
-            SaveFile testSaveFile = new SaveFile(new Game(new Player(100,new Point(GameSize.GAME_WIDTH /2 - 20,GameSize.GAME_HEIGHT/2 - 20))));
+            SaveFile testSaveFile = new SaveFile(new Game(new Player(new Point(GameSize.GAME_WIDTH /2 - 20,GameSize.GAME_HEIGHT/2 - 20))));
 
         } catch (InvalidFileException e) {
             fail(e.getMessage());

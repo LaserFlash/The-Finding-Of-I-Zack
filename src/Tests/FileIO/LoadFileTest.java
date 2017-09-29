@@ -24,7 +24,7 @@ public class LoadFileTest {
     @Test
     public void test01_createLoadFile(){
         try {
-            SaveFile saveFile = new SaveFile(new Game(new Player(999,new Point(GameSize.GAME_WIDTH /2 - 20,GameSize.GAME_HEIGHT/2 - 20))));
+            SaveFile saveFile = new SaveFile(new Game(new Player(new Point(GameSize.GAME_WIDTH /2 - 20,GameSize.GAME_HEIGHT/2 - 20))));
             LoadFile testLoadFile = new LoadFile();
             assertTrue("There should be a game",testLoadFile.getGame() != null);
             assertTrue("There should be a player",testLoadFile.getGame().getPlayer() != null);

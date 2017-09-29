@@ -8,7 +8,7 @@ import TheFindingOfIZack.World.Rooms.Room;
 import java.awt.*;
 
 public class MockModel implements Model {
-    private Player p = new Player(100,new Point(20,20));
+    private Player p = new Player(new Point(20,20));
 
     public MockModel(){
         p.setRoom(new Room() {
@@ -92,6 +92,26 @@ public class MockModel implements Model {
 
     @Override
     public void falseDown() {
+
+    }
+
+    @Override
+    public void shootLeft() {
+
+    }
+
+    @Override
+    public void shootRight() {
+
+    }
+
+    @Override
+    public void shootUp() {
+
+    }
+
+    @Override
+    public void shootDown() {
 
     }
 }

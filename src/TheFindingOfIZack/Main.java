@@ -11,7 +11,7 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args){
 
-        Player player = new Player(100,new Point(GameSize.GAME_WIDTH /2 - 20,GameSize.GAME_HEIGHT/2 - 20));
+        Player player = new Player(new Point(GameSize.GAME_WIDTH /2 - 20,GameSize.GAME_HEIGHT/2 - 20));
         Game game = new Game(player);
         ViewManager view = new ViewManager(game);
         game.addObserver(view);
