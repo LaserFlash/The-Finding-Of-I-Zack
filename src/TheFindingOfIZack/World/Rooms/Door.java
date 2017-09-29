@@ -60,6 +60,9 @@ public class Door implements Drawable {
 
             g.fillRect(GameSize.GAME_WIDTH/2 - height/2,GameSize.GAME_HEIGHT - GameSize.WALL_WIDTH, height,GameSize.WALL_WIDTH);
         }
+        if(this.position == 0){
+            g.fillRect(GameSize.GAME_WIDTH/2 - height/2,0, height,GameSize.WALL_WIDTH);
+        }
 
 
     }

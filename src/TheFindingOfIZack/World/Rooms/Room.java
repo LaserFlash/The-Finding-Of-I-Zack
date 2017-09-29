@@ -58,6 +58,7 @@ public abstract class Room implements Drawable {
 
     public abstract void update();
     public abstract void addDoor(Door d, int n);
+
     public boolean hasDoor(int dir) {
         if(dir == 2){
             if(this.southDoor != null){
