@@ -12,6 +12,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.io.*;
+import java.nio.Buffer;
 
 /**
  *  This class captures the notion of a GameFile. The file itself will be
@@ -99,17 +100,29 @@ public class GameFile {
         try {
             System.out.print("filename: " + file.getName() + "\n");
             out = new BufferedOutputStream(new FileOutputStream(file+EXTENSION));
-            out.write(HEADER.getBytes());
-            out.write(RELEASE.getBytes());
-            out.write("\n".getBytes());
         } catch (FileNotFoundException e) {
             fileError("Creating GameFile " + e.getLocalizedMessage());
             return false;
-        } catch (IOException e) {
-            fileError("Creating Streams IO" + e.getLocalizedMessage());
-            return false;
         }
         return true;
+    }
+
+    public void writeHeader(BufferedOutputStream out){
+        try {
+            out.write(HEADER.getBytes());
+            out.write(RELEASE.getBytes());
+            out.write("\n".getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void readHeader(){
+        try {
+            in.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -122,7 +135,6 @@ public class GameFile {
         try {
             in = new BufferedReader(new FileReader(file));
             System.out.println(in.readLine());
-            close(in);
         } catch (FileNotFoundException e) {
             fileError("Creating GameFile " + e.getLocalizedMessage());
             return false;
@@ -187,28 +199,38 @@ public class GameFile {
         fileError("Invalid File chosen");
         return false;
     }
-    public Game writeGame(Game g, BufferedOutputStream out) {
+
+    public void writeGame(Game g, BufferedOutputStream out) {
+        Game e = new Game(new Player(100, new Point(0,0)));
+
         try {
-            ObjectOutputStream obOut = new ObjectOutputStream(out);
-            obOut.writeObject(g);
+            FileOutputStream fileOut = new FileOutputStream(file+EXTENSION);
+            ObjectOutputStream obOut = new ObjectOutputStream(fileOut);
+            obOut.writeObject(e);
             obOut.close();
-        } catch (IOException e) {
-            fileError("Writing Game: " + e.getLocalizedMessage());
-        }return null;
+            fileOut.close();
+            System.out.printf("Serialized data is saved in /tmp/employee.ser");
+        }   catch(IOException i) {
+            i.printStackTrace();
+        }
     }
 
-
-    public String readGame(BufferedReader in){
+    public Game readGame(BufferedReader in){
+        Game g = null;
         if (isEOF(in))
             fileError("EOF reached in readGame");
         try {
-            in.readLine();
-            //ObjectInput obIn = new ObjectInputStream(in);
+            ObjectInput obIn = new ObjectInputStream(new FileInputStream(file+EXTENSION ));
+            try {
+                g = (Game) obIn.readObject();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
 
         } catch (IOException e) {
             fileError("Reading Game: " + e.getLocalizedMessage());
         }
-        return null;
+        return g;
     }
 
     public String readLevel(BufferedReader in){

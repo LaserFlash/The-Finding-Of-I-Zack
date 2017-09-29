@@ -39,6 +39,7 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
         this.pack();
 
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     @Override
@@ -84,9 +85,10 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
 
     @Override
     public void repaint(){
+        Toolkit.getDefaultToolkit().sync();
         this.getContentPane().revalidate();
         this.getContentPane().repaint();
-        Toolkit.getDefaultToolkit().sync();
+
     }
 
     /**

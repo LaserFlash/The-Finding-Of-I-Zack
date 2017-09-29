@@ -17,8 +17,8 @@ public class SaveFile extends GameFile {
     private Game game;
 
     public SaveFile(Game g) throws InvalidFileException{
-        if (game == null)
-            throw new InvalidFileException("Null pointer to Game");
+        //if (game == null)
+            //throw new InvalidFileException("Null pointer to Game");
         game = g;
         execute(game);
     }
@@ -32,6 +32,7 @@ public class SaveFile extends GameFile {
         if (!isValidFile)
             return;
         createOut();
+        writeHeader(out);
         writeGame(g, out);
     }
 

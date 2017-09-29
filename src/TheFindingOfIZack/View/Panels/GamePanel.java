@@ -7,9 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-import static TheFindingOfIZack.Util.GameSize.GAME_HEIGHT;
-import static TheFindingOfIZack.Util.GameSize.MENU_HEIGHT;
-import static TheFindingOfIZack.Util.GameSize.WINDOW_WIDTH;
+import static TheFindingOfIZack.Util.GameSize.*;
 
 /**
  * Panel indented to display the game
@@ -29,9 +27,9 @@ public class GamePanel extends ScreenPanel {
         super();
         this.model = model;
         this.topInfo = new InventoryPanel(model);
-        this.topInfo.setPreferredSize(new Dimension(WINDOW_WIDTH,MENU_HEIGHT));
+        this.topInfo.setPreferredSize(new Dimension(GAME_WIDTH,MENU_HEIGHT));
         this.gameArea = new GameArea(model);
-        this.gameArea.setPreferredSize(new Dimension(WINDOW_WIDTH,GAME_HEIGHT));
+        this.gameArea.setPreferredSize(new Dimension(GAME_WIDTH,GAME_HEIGHT));
 
         this.add(topInfo,BorderLayout.NORTH);
         this.add(gameArea,BorderLayout.SOUTH);

@@ -22,7 +22,6 @@ public class GameArea extends JPanel{
     }
 
 
-
     private void drawRoom(Graphics g){
         model.getPlayer().getRoom().draw(g);
     }
