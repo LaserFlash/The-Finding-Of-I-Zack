@@ -36,15 +36,16 @@ public class Player extends Entity implements Savable {
 
     @Override
     public void draw(Graphics g) {
+
+        for (Projectile p : projectiles) {
+            p.draw(g);
+        }
+
         g.setColor(Color.CYAN);
         g.fillRect((int) location.getX(), (int) location.getY(), width, width);
         g.setColor(Color.MAGENTA);
         g.fillOval((int) location.getX()+4, (int) location.getY()+4, width-8, width-8);
         super.draw(g);
-
-        for (Projectile p : projectiles) {
-            p.draw(g);
-        }
 
     }
 
@@ -161,23 +162,30 @@ public class Player extends Entity implements Savable {
         room.populateRoom(this);
     }
 
+    public Point clonePoint() {
+        int x = (int) location.getX();
+        int y = (int) location.getY();
+        return new Point(x, y);
+    }
+
     public void shootUp() {
-        Projectile p = new Projectile(this.damage, this.location, "up");
+
+        Projectile p = new Projectile(this.damage, clonePoint(), "up");
         projectiles.add(p);
     }
 
     public void shootDown() {
-        Projectile p = new Projectile(this.damage, this.location, "down");
+        Projectile p = new Projectile(this.damage, clonePoint(), "down");
         projectiles.add(p);
     }
 
     public void shootLeft() {
-        Projectile p = new Projectile(this.damage, this.location, "left");
+        Projectile p = new Projectile(this.damage, clonePoint(), "left");
         projectiles.add(p);
     }
 
     public void shootRight() {
-        Projectile p = new Projectile(this.damage, this.location, "right");
+        Projectile p = new Projectile(this.damage, clonePoint(), "right");
         projectiles.add(p);
     }
 
