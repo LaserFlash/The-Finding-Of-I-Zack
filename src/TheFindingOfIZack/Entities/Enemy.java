@@ -15,10 +15,13 @@ public class Enemy extends Entity {
     private int damage;
     private MobEnemy behaviour;
     int health;
+    private Player player;
 
-    public Enemy(Point location) {
+    public Enemy(Point location, Player p) {
         super(location);
-        int type = (int) Math.random()*5;
+        this.player = p;
+        //int type = (int) Math.random()*5;
+        int type = 4;
         if (type>3) {this.behaviour = new MobEnemy("standard");}
         else if (type>2) {this.behaviour = new MobEnemy("fast");}
         else if (type>1) {this.behaviour = new MobEnemy("shooter");}
@@ -42,18 +45,16 @@ public class Enemy extends Entity {
      * Also checks to see if the mob has touched the player
      */
     public void move() {
-        Point player = this.world.getPlayer().getLocation();
-        Point potentialStep = behaviour.step(location, player);
+        Point playerPoint = player.getLocation();
+        Point potentialStep = behaviour.step(location, playerPoint);
         //potentialStep represents the move which will take place is there is no obstacle,
         // also checks if mob is currently touching player
-        if(canMove(potentialStep) && !collision(location,player)) {
+        if(canMove(potentialStep) && !collision(location,playerPoint)) {
             this.location = potentialStep;
             this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.width, this.width);
         }
-        if(collision(location,player)){
-            this.world.getPlayer().damage(this.behaviour.getDamage()); //Not sure what this.damage actually is,
-                                                        // hopefully it hurts the player
-                                                        // (assuming mobs are given a damage value at some point)
+        if(collision(location,playerPoint)){
+            this.player.damage(this.behaviour.getDamage()); //Takes the damage value from each mob type
         }
     }
 

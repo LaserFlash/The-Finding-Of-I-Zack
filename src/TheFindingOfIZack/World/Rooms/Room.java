@@ -1,7 +1,7 @@
 package TheFindingOfIZack.World.Rooms;
 
 
-import TheFindingOfIZack.FileIO.Util.Savable;
+import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.Drawable;
 
@@ -11,7 +11,7 @@ import java.awt.*;
  * Created by fieldryan on 19/09/17.
  * Interface for the general definition of a room
  */
-public abstract class Room implements Drawable, Savable {
+public abstract class Room implements Drawable {
 
 
 
@@ -59,7 +59,7 @@ public abstract class Room implements Drawable, Savable {
         return this.westDoor;
     }
 
-    public abstract void populateRoom();
+    public abstract void populateRoom(Player p);
     public abstract void update();
     public void addDoor(Door d, int n) {
 

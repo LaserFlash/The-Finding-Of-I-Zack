@@ -34,9 +34,11 @@ public class MockModel implements Model {
             }
 
             @Override
-            public void populateRoom() {
+            public void populateRoom(Player p) {
 
             }
+
+
         });
     }
 

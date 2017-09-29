@@ -5,7 +5,7 @@ import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import java.awt.*;
-import java.math.BigInteger;
+import java.util.ArrayList;
 
 /**
  * Created by Ben Allan
@@ -21,7 +21,11 @@ public class Player extends Entity implements Savable {
     private int key = 0;
     private int damage = 10;
 
-    public int weaponTick;
+    private int weaponTick = 0;
+    private int firerate = 20;
+    private int MIN_FIRERATE = 7;
+
+    private ArrayList<Projectile> projectiles;
 
     public Player(){
 
@@ -29,15 +33,30 @@ public class Player extends Entity implements Savable {
 
     public Player(Point location) {
         super(location);
+        projectiles = new ArrayList<Projectile>();
     }
 
     @Override
     public void draw(Graphics g) {
+
+        for (Projectile p : projectiles) {
+            p.draw(g);
+        }
+
         g.setColor(Color.CYAN);
         g.fillRect((int) location.getX(), (int) location.getY(), width, width);
         g.setColor(Color.MAGENTA);
         g.fillOval((int) location.getX()+4, (int) location.getY()+4, width-8, width-8);
         super.draw(g);
+
+    }
+
+    public void update() {
+        if (weaponTick == firerate) {weaponTick = 0;}
+        else if (weaponTick != 0) {weaponTick++;}
+        for (Projectile p : projectiles) {
+            p.move();
+        }
     }
 
     public void moveUp() {
@@ -120,7 +139,7 @@ public class Player extends Entity implements Savable {
         int y = GameSize.TOP_WALL;
         room = room.getSouthDoor().getDestination();
         location.move(x, y);
-        room.populateRoom();
+        room.populateRoom(this);
     }
 
     public void moveNorth() {
@@ -128,7 +147,7 @@ public class Player extends Entity implements Savable {
         int y = GameSize.BOTTOM_WALL-width;
         room = room.getNorthDoor().getDestination();
         location.move(x, y);
-        room.populateRoom();
+        room.populateRoom(this);
     }
 
     public void moveWest() {
@@ -136,7 +155,7 @@ public class Player extends Entity implements Savable {
         int y = (int) location.getY();
         room = room.getWestDoor().getDestination();
         location.move(x, y);
-        room.populateRoom();
+        room.populateRoom(this);
     }
 
     public void moveEast() {
@@ -144,7 +163,41 @@ public class Player extends Entity implements Savable {
         int y = (int) location.getY();
         room = room.getEastDoor().getDestination();
         location.move(x, y);
-        room.populateRoom();
+        room.populateRoom(this);
+    }
+
+    public Point clonePoint() {
+        int x = (int) location.getX();
+        int y = (int) location.getY();
+        return new Point(x, y);
+    }
+
+    public void shootUp() {
+        if (weaponTick != 0) {return;}
+        Projectile p = new Projectile(this.damage, clonePoint(), "up");
+        projectiles.add(p);
+        weaponTick++;
+    }
+
+    public void shootDown() {
+        if (weaponTick != 0) {return;}
+        Projectile p = new Projectile(this.damage, clonePoint(), "down");
+        projectiles.add(p);
+        weaponTick++;
+    }
+
+    public void shootLeft() {
+        if (weaponTick != 0) {return;}
+        Projectile p = new Projectile(this.damage, clonePoint(), "left");
+        projectiles.add(p);
+        weaponTick++;
+    }
+
+    public void shootRight() {
+        if (weaponTick != 0) {return;}
+        Projectile p = new Projectile(this.damage, clonePoint(), "right");
+        projectiles.add(p);
+        weaponTick++;
     }
 
 

@@ -151,22 +151,24 @@ public class Game extends Observable implements Model,Savable{
 
     @Override
     public void shootLeft() {
-
+        player.shootLeft();
     }
 
     @Override
     public void shootRight() {
+        player.shootRight();
 
     }
 
     @Override
     public void shootUp() {
+        player.shootUp();
 
     }
 
     @Override
     public void shootDown() {
-
+        player.shootDown();
     }
 
     @Override
@@ -184,6 +186,7 @@ public class Game extends Observable implements Model,Savable{
 
         checkMovement();
         currentLevel.update();
+        player.update();
 
 
     }
@@ -256,6 +259,13 @@ public class Game extends Observable implements Model,Savable{
 
         player.setRoom(r1);
         currentLevel.addRoom(r1);
+        currentLevel.addRoom(r2);
+        currentLevel.addRoom(r3);
+        currentLevel.addRoom(r4);
+        currentLevel.addRoom(r5);
+        currentLevel.addRoom(r6);
+        currentLevel.addRoom(r7);
+        currentLevel.addRoom(r8);
 
 
     }
