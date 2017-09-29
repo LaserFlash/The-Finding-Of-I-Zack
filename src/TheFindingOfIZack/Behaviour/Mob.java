@@ -17,21 +17,23 @@ public class Mob {
      * @return new mob Point
      */
     public Point step(Point location, Point player){
-        double newX = location.getX();
-        double newY = location.getY();
+        double x = player.getX() - location.getX();
+        double y = player.getY() - location.getY();
+        double h = Math.hypot(x,y);
+        double n = 1/h;
+        double newX = x*n;
+        double newY = y*n;
 
-        if (distanceBetween(location,player) < viewRange){
-            if(player.getX() > location.getX()){
-                newX += speed;}
-            else if(player.getY() > location.getY()){
-                newY += speed;}
-            else if(player.getX() < location.getX()){
-                newX -= speed;}
-            else if(player.getY() < location.getY()){
-                newY -= speed;}
-        }
+        if (newX<0 && newX<-speed){
+            newX = -speed;
+        } else if(newX>0 && newX>speed){
+            newX = speed;
+        }else if (newY<0 && newY<-speed){
+            newY = -speed;}
+        else if(newY>0 && newY>speed){
+            newY = speed;}
 
-        location.move((int)newX,(int)newY);
+        location.move((int)(newX + location.getX()),(int)(newY + location.getY()));
 
         return location;
     }
