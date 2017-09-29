@@ -53,9 +53,7 @@ public class Enemy extends Entity {
             this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.width, this.width);
         }
         if(collision(location,playerPoint)){
-            this.world.getPlayer().damage(this.behaviour.getDamage()); //Not sure what this.damage actually is,
-                                                        // hopefully it hurts the player
-                                                        // (assuming mobs are given a damage value at some point)
+            this.player.damage(this.behaviour.getDamage()); //Takes the damage value from each mob type
         }
     }
 
