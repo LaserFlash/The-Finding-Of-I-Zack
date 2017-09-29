@@ -24,6 +24,10 @@ public class Door implements Drawable {
         this.position = position;
     }
 
+    public Room getDestination(){
+        return this.destination;
+    }
+
     public Door getOpposite(){
         Door d = null;
         int w = 0;
