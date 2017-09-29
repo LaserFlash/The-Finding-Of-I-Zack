@@ -38,6 +38,11 @@ public class bossRoom extends Room{
     }
 
     @Override
+    public boolean hasDoor(int dir) {
+        return false;
+    }
+
+    @Override
     public void draw(Graphics g) {
 
     }

@@ -23,6 +23,11 @@ public class MockModel implements Model {
             }
 
             @Override
+            public boolean hasDoor(int dir) {
+                return false;
+            }
+
+            @Override
             public void draw(Graphics g) {
                 g.setColor(Color.green);
                 g.fillRect(0,0,900,500);
