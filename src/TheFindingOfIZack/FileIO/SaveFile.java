@@ -32,8 +32,11 @@ public class SaveFile extends GameFile {
         if (!isValidFile)
             return;
         createOut();
-        writeHeader(out);
+
         writeGame(g, out);
+        writePlayer(g, out);
+        writeLevel(g, out);
+        writeRoom(g, out);
     }
 
 }

@@ -1,7 +1,10 @@
 package TheFindingOfIZack.FileIO;
 
+import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.World.Game;
+import TheFindingOfIZack.World.Level;
+import TheFindingOfIZack.World.Rooms.Room;
 
 /**
  *  This class captures the notion of Loading a game file, it deals with
@@ -25,9 +28,14 @@ public class LoadFile extends GameFile{
         if (!isValidFile)
             return null;
         createIn();
+
         //readHeader();
-        game = readGame(in);
-        return null; // TODO: 9/26/17 return a game if successful
+        Game g = readGame(in);
+        Player p = readPlayer(in);
+        Level l = readLevel(in);
+        Room r = readRoom(in);
+
+        return new Game(g,p,l,r);
     }
 
     // TODO: 9/26/17 Implement this

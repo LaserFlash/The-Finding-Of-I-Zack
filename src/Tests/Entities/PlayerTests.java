@@ -19,7 +19,7 @@ public class PlayerTests {
 
     @Test
     public void testMovement() {
-        Player p = new Player(health, location);
+        Player p = new Player(location);
         assertTrue(p!=null);
         p.moveUp();
         assertTrue(p.getLocation().getY()==y-p.getSpeed());
@@ -39,7 +39,7 @@ public class PlayerTests {
 
     @Test
     public void testDamage() {
-        Player p = new Player(health, location);
+        Player p = new Player(location);
         p.damage(50);
         assertTrue(p.getHealth()<p.getMaxHealth());
         assertTrue(p.getHealth() == p.getMaxHealth()-50);

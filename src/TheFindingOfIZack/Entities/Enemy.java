@@ -16,14 +16,13 @@ public class Enemy extends Entity {
     private MobEnemy behaviour;
     int health;
 
-    public Enemy(Point location, int damage) {
+    public Enemy(Point location) {
         super(location);
-        this.damage = damage;
         int type = (int) Math.random()*5;
-        if (type>3) {this.behaviour = new MobEnemy("standard"); this.setHealth(behaviour.getHealth());}
-        else if (type>2) {this.behaviour = new MobEnemy("fast"); this.setHealth(behaviour.getHealth());}
-        else if (type>1) {this.behaviour = new MobEnemy("fast"); this.setHealth(behaviour.getHealth());}
-        else {this.behaviour = new MobEnemy("slow"); this.setHealth(behaviour.getHealth());}
+        if (type>3) {this.behaviour = new MobEnemy("standard");}
+        else if (type>2) {this.behaviour = new MobEnemy("fast");}
+        else if (type>1) {this.behaviour = new MobEnemy("shooter");}
+        else {this.behaviour = new MobEnemy("slow");}
     }
 
     public void damage(int damage) {

@@ -13,6 +13,8 @@ import java.awt.*;
 public abstract class Room implements Drawable {
 
 
+
+
     public Door northDoor;
     public Door eastDoor;
     public Door southDoor;
@@ -56,6 +58,7 @@ public abstract class Room implements Drawable {
         return this.westDoor;
     }
 
+    public abstract void populateRoom();
     public abstract void update();
     public void addDoor(Door d, int n) {
 
