@@ -32,6 +32,12 @@ public abstract class Room implements Drawable {
         if(this.southDoor != null){
             this.southDoor.draw(g);
         }
+        if(this.northDoor != null){
+            this.northDoor.draw(g);
+        }
+        if(this.eastDoor != null){
+            this.eastDoor.draw(g);
+        }
         g.setColor(Color.black);
         g.drawRect(GameSize.WALL_WIDTH,GameSize.WALL_WIDTH, GameSize.GAME_WIDTH - (2 * GameSize.WALL_WIDTH), GameSize.GAME_HEIGHT - (2 * GameSize.WALL_WIDTH));
 
@@ -43,9 +49,38 @@ public abstract class Room implements Drawable {
     public Door getSouthDoor(){
         return this.southDoor;
     }
+    public Door getEastDoor(){
+        return this.eastDoor;
+    }
+    public Door getWestDoor(){
+        return this.westDoor;
+    }
 
     public abstract void update();
     public abstract void addDoor(Door d, int n);
-    public abstract boolean hasDoor(int dir);
+
+    public boolean hasDoor(int dir) {
+        if(dir == 2){
+            if(this.southDoor != null){
+                return true;
+            }
+        }
+        if(dir == 0){
+            if(this.northDoor != null){
+                return true;
+            }
+        }
+        if(dir == 1){
+            if(this.eastDoor != null){
+                return true;
+            }
+        }
+        if(dir == 3){
+            if(this.westDoor != null){
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

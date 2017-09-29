@@ -25,9 +25,9 @@ public class Player extends Entity implements Savable {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.CYAN);
-        g.fillRect(location.x, location.y, width, width);
+        g.fillRect((int) location.getX(), (int) location.getY(), width, width);
         g.setColor(Color.MAGENTA);
-        g.fillOval(location.x+4, location.y+4, width-8, width-8);
+        g.fillOval((int) location.getX()+4, (int) location.getY()+4, width-8, width-8);
         super.draw(g);
     }
 
@@ -38,7 +38,8 @@ public class Player extends Entity implements Savable {
         if (y < GameSize.TOP_WALL) {
             y = GameSize.TOP_WALL;
             if (room.hasDoor(0) && vertDoor()) {
-                System.out.println("Move north");
+                moveNorth();
+                return;
             }
         }
 
@@ -53,6 +54,7 @@ public class Player extends Entity implements Savable {
             y = GameSize.BOTTOM_WALL-width;
             if (room.hasDoor(2) && vertDoor()) {
                 moveSouth();
+                return;
             }
         }
 
@@ -73,7 +75,8 @@ public class Player extends Entity implements Savable {
         if (x < GameSize.LEFT_WALL) {
             x = GameSize.LEFT_WALL;
             if (room.hasDoor(3) && horzDoor()){
-                System.out.println("Move west");
+                moveWest();
+                return;
             }
         }
 
@@ -87,7 +90,8 @@ public class Player extends Entity implements Savable {
         if (x > GameSize.RIGHT_WALL-width) {
             x = GameSize.RIGHT_WALL-width;
             if (room.hasDoor(1) && horzDoor()) {
-                System.out.println("Move east");
+                moveEast();
+                return;
             }
         }
 
@@ -106,6 +110,27 @@ public class Player extends Entity implements Savable {
         int x = (int) location.getX();
         int y = GameSize.TOP_WALL;
         room = room.getSouthDoor().getDestination();
+        location.move(x, y);
+    }
+
+    public void moveNorth() {
+        int x = (int) location.getX();
+        int y = GameSize.BOTTOM_WALL-width;
+        room = room.getNorthDoor().getDestination();
+        location.move(x, y);
+    }
+
+    public void moveWest() {
+        int x = GameSize.RIGHT_WALL-width;
+        int y = (int) location.getY();
+        room = room.getWestDoor().getDestination();
+        location.move(x, y);
+    }
+
+    public void moveEast() {
+        int x = GameSize.LEFT_WALL;
+        int y = (int) location.getY();
+        room = room.getEastDoor().getDestination();
         location.move(x, y);
     }
 

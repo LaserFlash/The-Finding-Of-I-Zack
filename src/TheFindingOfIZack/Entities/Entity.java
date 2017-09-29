@@ -41,7 +41,7 @@ public class Entity implements Drawable {
 
     public void draw(Graphics g) {
         g.setColor(Color.black);
-        g.drawRect(location.x, location.y, width, width);
+        g.drawRect((int) location.getX(), (int) location.getY(), width, width);
     }
 
     public void damage(int damage) {
@@ -50,6 +50,10 @@ public class Entity implements Drawable {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public void setBox() {
+        this.box = new BoundingBox(location.getX(), location.getY(), width, width);
     }
 
 
