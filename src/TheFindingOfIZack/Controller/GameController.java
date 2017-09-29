@@ -111,15 +111,19 @@ public class GameController implements ActionListener, KeyListener {
                 this.game.trueRight();
                 break;
             case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_KP_LEFT:
                 this.game.shootLeft();
                 break;
             case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_KP_RIGHT:
                 this.game.shootRight();
                 break;
             case KeyEvent.VK_UP:
+            case KeyEvent.VK_KP_UP:
                 this.game.shootUp();
                 break;
             case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_KP_DOWN:
                 this.game.shootDown();
                 break;
         }
