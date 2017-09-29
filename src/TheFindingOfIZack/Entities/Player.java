@@ -15,7 +15,7 @@ public class Player extends Entity implements Savable {
     private int armour = 0;
     private Room room;
     private int MAX_HEALTH = 100;
-    private int speed = 5;
+    private int speed = 2;
     private int key = 0;
 
     public Player(int health, Point location) {
@@ -46,10 +46,19 @@ public class Player extends Entity implements Savable {
 
         if (y > GameSize.BOTTOM_WALL-width) {
             y = GameSize.BOTTOM_WALL-width;
-
+            if (room.hasDoor(2) && southDoor()) {
+                System.out.println("Move South");
+            }
         }
 
         location.move(x, y);
+    }
+
+    public boolean southDoor() {
+        if (location.getX() > GameSize.VERT_DOOR_START && location.getX() < GameSize.VERT_DOOR_END) {
+            if (location.getX()+width > GameSize.VERT_DOOR_START && location.getX()+width < GameSize.VERT_DOOR_END) {return true;}
+        }
+        return false;
     }
 
     public void moveLeft() {

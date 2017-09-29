@@ -15,4 +15,9 @@ public class GameSize {
     public static final int TOP_WALL = WALL_WIDTH;
     public static final int BOTTOM_WALL = GAME_HEIGHT-WALL_WIDTH;
 
+    public static final int VERT_DOOR_START = GAME_WIDTH/2 - 25;
+    public static final int VERT_DOOR_END = GAME_WIDTH/2 + 25;
+    public static final int HORZ_DOOR_START = GAME_HEIGHT/2 - 25;
+    public static final int HORZ_DOOR_END = GAME_HEIGHT/2 + 25;
+
 }
