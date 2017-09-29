@@ -140,6 +140,7 @@ public class Player extends Entity implements Savable {
         room = room.getSouthDoor().getDestination();
         location.move(x, y);
         room.populateRoom(this);
+        projectiles.clear();
     }
 
     public void moveNorth() {
@@ -148,6 +149,7 @@ public class Player extends Entity implements Savable {
         room = room.getNorthDoor().getDestination();
         location.move(x, y);
         room.populateRoom(this);
+        projectiles.clear();
     }
 
     public void moveWest() {
@@ -156,6 +158,7 @@ public class Player extends Entity implements Savable {
         room = room.getWestDoor().getDestination();
         location.move(x, y);
         room.populateRoom(this);
+        projectiles.clear();
     }
 
     public void moveEast() {
@@ -164,6 +167,7 @@ public class Player extends Entity implements Savable {
         room = room.getEastDoor().getDestination();
         location.move(x, y);
         room.populateRoom(this);
+        projectiles.clear();
     }
 
     public Point clonePoint() {
