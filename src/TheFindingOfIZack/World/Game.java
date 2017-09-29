@@ -151,22 +151,24 @@ public class Game extends Observable implements Model,Savable{
 
     @Override
     public void shootLeft() {
-
+        player.shootLeft();
     }
 
     @Override
     public void shootRight() {
+        player.shootRight();
 
     }
 
     @Override
     public void shootUp() {
+        player.shootUp();
 
     }
 
     @Override
     public void shootDown() {
-
+        player.shootDown();
     }
 
     @Override
