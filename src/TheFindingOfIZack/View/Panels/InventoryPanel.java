@@ -29,7 +29,7 @@ public class InventoryPanel extends JPanel{
         int maxArmour = model.getPlayer().getMaxArmour();
         int armour = model.getPlayer().getArmour();
 
-        g.setFont(new Font("TimesRoman", Font.BOLD, 18));
+        g.setFont(new Font("ComicSans", Font.BOLD, 18));
 
         g.drawString("Health:", PADDING,PADDING);
         g.drawString("Armour:",PADDING,PADDING * 2);
