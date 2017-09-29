@@ -15,7 +15,7 @@ public class Player extends Entity implements Savable {
     private int armour = 0;
     private Room room;
     private int MAX_HEALTH = 100;
-    private int speed = 2;
+    private int speed = 5;
     private int key = 0;
 
     public Player(int health, Point location) {
@@ -44,7 +44,10 @@ public class Player extends Entity implements Savable {
         int x = (int) location.getX();
         int y = (int) location.getY()+speed;
 
-        if (y > GameSize.BOTTOM_WALL-width) {y = GameSize.BOTTOM_WALL-width;}
+        if (y > GameSize.BOTTOM_WALL-width) {
+            y = GameSize.BOTTOM_WALL-width;
+
+        }
 
         location.move(x, y);
     }
