@@ -1,17 +1,14 @@
 package TheFindingOfIZack.Controller;
 
 
-import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.LoadFile;
 import TheFindingOfIZack.FileIO.SaveFile;
 import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.Util.CreateGameModel;
-import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Model;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -57,6 +54,7 @@ public class GameController implements ActionListener, KeyListener {
                 this.game.beginNewGame();
                 this.game.pauseGame();
                 this.view.newGame(game);
+                this.view.enableOtherButtons();
                 this.view.goToGameView();
                 this.game.resumeGame();
                 break;
@@ -71,6 +69,7 @@ public class GameController implements ActionListener, KeyListener {
                 }
                 game = loadedGame.getGame();
                 view.newGame(game);
+                this.view.enableOtherButtons();
                 view.goToGameView();
                 break;
             }

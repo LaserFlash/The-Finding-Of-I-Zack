@@ -102,6 +102,12 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
         this.gameScreen = new GamePanel(this.model);
     }
 
+    @Override
+    public void enableOtherButtons() {
+        this.startScreen.enableOtherButtons();
+        this.gameScreen.enableOtherButtons();
+    }
+
     private static void setUIFont(javax.swing.plaf.FontUIResource f)
     {
         java.util.Enumeration<Object> keys = UIManager.getDefaults().keys();
