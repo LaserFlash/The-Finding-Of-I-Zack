@@ -10,5 +10,6 @@ public class MobStandard extends Mob {
         this.viewRange = 50;
         this.speed = 2;
         this.health = 50;
+        this.damage = 10;
     }
 }

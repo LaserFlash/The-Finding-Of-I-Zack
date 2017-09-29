@@ -39,6 +39,10 @@ public class MobEnemy {
         return mob.getHealth();
     }
 
+    public int getDamage(){
+        return mob.getDamage();
+    }
+
     /**
      * Throws an error if an invalid mobType is called
      * @param str the invalid type name entered

@@ -10,5 +10,6 @@ public class MobSlow extends Mob {
         this.viewRange = 200;
         this.speed = 1;
         this.health = 100;
+        this.damage = 20;
     }
 }
