@@ -59,7 +59,7 @@ public class GameFile {
      * This stores the location of the GameFile .txt file to be read or written
      *
      */
-    private File file = null;
+    protected File file = null;
 
     /**
      *  Ensures that different versions of the game are not saved and loaded
@@ -91,22 +91,6 @@ public class GameFile {
      */
     public GameFile() {}
 
-    /**
-     *  This method sets up the BufferedOutputStream
-     *  for the files
-     * @return true if successful, false otherwise
-     */
-    public boolean createOut(){
-        try {
-            System.out.print("filename: " + file.getName() + "\n");
-            out = new BufferedOutputStream(new FileOutputStream(file+EXTENSION));
-        } catch (FileNotFoundException e) {
-            fileError("Creating GameFile " + e.getLocalizedMessage());
-            return false;
-        }
-        return true;
-    }
-
     public void writeHeader(BufferedOutputStream out){
         try {
             out.write(HEADER.getBytes());
@@ -122,223 +106,6 @@ public class GameFile {
             in.readLine();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    /**
-     *
-     *  This method sets up the BufferedReader
-     *  for the files
-     * @return true if successful, false otherwise
-     */
-    public boolean createIn(){
-        try {
-            in = new BufferedReader(new FileReader(file));
-            System.out.println(in.readLine());
-        } catch (FileNotFoundException e) {
-            fileError("Creating GameFile " + e.getLocalizedMessage());
-            return false;
-        } catch (IOException e) {
-            fileError("Creating Streams IO" + e.getLocalizedMessage());
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     *  This method allows the user to select a GameFile from their computer
-     *  and displays the valid file extensions
-     *  @return true if valid, false otherwise
-     */
-    public boolean openFile(JFrame parent) {
-        JFileChooser chooser = new JFileChooser();
-
-        // This method only accepts .txt or .zack file extensions
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "ZACK Files", EXTENSION);
-        //chooser.setFileFilter(filter);
-
-        // Sets the current directory to make navigation easier
-        chooser.setCurrentDirectory(new File(DIRECTORY));
-
-        int returnVal = chooser.showOpenDialog(parent);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            System.out.println("opening...");
-            file = chooser.getSelectedFile();
-            return true;
-        }
-        fileError("Invalid File chosen");
-        return false;
-    }
-
-    /**
-     *  This method allows the user to select a GameFile from their computer
-     *  and displays the valid file extensions
-     *  @return true if valid, false otherwise
-     */
-    public boolean saveFile(JFrame parent){
-        JFileChooser chooser = new JFileChooser();
-
-        // This method only accepts .zack or .txt file extensions
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("ZACK Files", EXTENSION);
-        //chooser.setFileFilter(filter);
-
-        // Sets the current directory to make navigation easier
-        chooser.setCurrentDirectory(new File(DIRECTORY));
-
-        int returnVal = chooser.showSaveDialog(parent);
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
-            System.out.println("saving...");
-            try {
-                file = chooser.getSelectedFile();
-                return true;
-            } catch (Exception ex) {
-                fileError("Invalid saveFile " + ex.getLocalizedMessage());
-            }
-        }
-        fileError("Invalid File chosen");
-        return false;
-    }
-
-    public void writeGame(Game g, BufferedOutputStream out) {
-        Game e = new Game(new Player(new Point(0,0)));
-
-        try {
-            FileOutputStream fileOut = new FileOutputStream(file+EXTENSION);
-            ObjectOutputStream obOut = new ObjectOutputStream(fileOut);
-            obOut.writeObject(e);
-            obOut.close();
-            fileOut.close();
-            System.out.printf("Game Serialized data is saved in " + file.getName() + EXTENSION + "\n");
-        }   catch(IOException i) {
-            i.printStackTrace();
-        }
-    }
-
-    public Game readGame(BufferedReader in){
-        Game g = null;
-        if (!isEOF(in)) {
-            fileError("EOF reached in readGame");
-            return g;
-        }
-        try {
-            in.close();
-            //out.close();
-            ObjectInput obIn = new ObjectInputStream(new FileInputStream(file));
-            try {
-                g = (Game) obIn.readObject();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
-        } catch (IOException e) {
-            fileError("Reading Game: " + e.getLocalizedMessage());
-        }
-        return g;
-    }
-
-    public Player readPlayer(BufferedReader in){
-        Player p = null;
-        if (!isEOF(in)) {
-            fileError("EOF reached in readGame");
-            return p;
-        }
-        try {
-            in.close();
-            ObjectInput obIn = new ObjectInputStream(new FileInputStream(file));
-            try {
-                p = (Player) obIn.readObject();
-            } catch (ClassNotFoundException e) {
-                fileError("Reading Player: " + e.getLocalizedMessage());
-            }
-
-        } catch (IOException e) {
-            fileError("Reading Game: " + e.getLocalizedMessage());
-        }
-        return p;
-    }
-
-    public void writePlayer(Game g, BufferedOutputStream out){
-        Player p = g.getPlayer();
-
-        try {
-            FileOutputStream fileOut = new FileOutputStream(file+EXTENSION);
-            ObjectOutputStream obOut = new ObjectOutputStream(fileOut);
-            obOut.writeObject(p);
-            obOut.close();
-            fileOut.close();
-            System.out.printf(" Player Serialized data is saved in " + file.getName() + EXTENSION + "\n");
-        }   catch(IOException i) {
-            fileError("Writing player" + i.getLocalizedMessage());
-        }
-    }
-
-    public Room writeRoom(Game g, BufferedOutputStream out){
-        Room r = g.getPlayer().getRoom();
-
-        try {
-            FileOutputStream fileOut = new FileOutputStream(file+EXTENSION);
-            ObjectOutputStream obOut = new ObjectOutputStream(fileOut);
-            obOut.writeObject(r);
-            obOut.close();
-            fileOut.close();
-            System.out.printf(" Room Serialized data is saved in " + file.getName() + EXTENSION + "\n");
-        }   catch(IOException i) {
-            fileError("Writing Room: " + i.getLocalizedMessage());
-        }
-        return r;
-    }
-
-    public Room readRoom(BufferedReader in){
-        Room r = null;
-        if (!isEOF(in))
-            fileError("EOF reached in readLevel");
-        try {
-            in.close();
-            ObjectInput obIn = new ObjectInputStream(new FileInputStream(file));
-            try {
-                r = (Room) obIn.readObject();
-            } catch (ClassNotFoundException e) {
-                fileError("Reading Level: " + e.getLocalizedMessage());
-            }
-
-        } catch (IOException e) {
-            fileError("Reading Level: " + e.getLocalizedMessage());
-        }
-        return r;
-    }
-
-    public Level readLevel(BufferedReader in){
-        Level l = null;
-        if (!isEOF(in))
-            fileError("EOF reached in readLevel");
-        try {
-            in.close();
-            ObjectInput obIn = new ObjectInputStream(new FileInputStream(file));
-            try {
-                l = (Level) obIn.readObject();
-            } catch (ClassNotFoundException e) {
-                fileError("Reading Level: " + e.getLocalizedMessage());
-            }
-
-        } catch (IOException e) {
-            fileError("Reading Level: " + e.getLocalizedMessage());
-        }
-        return l;
-    }
-
-    public void writeLevel(Game g, BufferedOutputStream out){
-        Level l = g.getCurrentLevel();
-
-        try {
-            FileOutputStream fileOut = new FileOutputStream(file+EXTENSION);
-            ObjectOutputStream obOut = new ObjectOutputStream(fileOut);
-            obOut.writeObject(l);
-            obOut.close();
-            fileOut.close();
-            System.out.printf(" Room Serialized data is saved in " + file.getName()  + EXTENSION + "\n");
-        }   catch(IOException i) {
-            fileError("Writing Room: " + i.getLocalizedMessage());
         }
     }
 
@@ -391,7 +158,7 @@ public class GameFile {
      *  This method displays an a TheFindingOfIZack.FileIO error appropriately
      * @param str the error to be displayed
      */
-    private void fileError(String str){
+    public static void fileError(String str){
         System.err.print("TheFindingOfIZack.FileIO Error: " + str + "\n");
     }
 
