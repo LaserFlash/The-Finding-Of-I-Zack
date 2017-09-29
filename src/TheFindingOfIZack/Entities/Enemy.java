@@ -18,8 +18,9 @@ public class Enemy extends Entity {
     public Enemy(Point location, int damage) {
         super(100, location);
         this.damage = damage;
-        int type = (int) Math.random()*4;
-        if (type>2) {this.behaviour = new MobEnemy("standard"); this.setHealth(behaviour.getHealth());}
+        int type = (int) Math.random()*5;
+        if (type>3) {this.behaviour = new MobEnemy("standard"); this.setHealth(behaviour.getHealth());}
+        else if (type>2) {this.behaviour = new MobEnemy("fast"); this.setHealth(behaviour.getHealth());}
         else if (type>1) {this.behaviour = new MobEnemy("fast"); this.setHealth(behaviour.getHealth());}
         else {this.behaviour = new MobEnemy("slow"); this.setHealth(behaviour.getHealth());}
     }

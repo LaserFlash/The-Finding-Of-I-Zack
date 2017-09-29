@@ -23,6 +23,9 @@ public class MobEnemy {
             case "slow":
                 mob = new MobSlow();
                 break;
+            case "shooter":
+                mob = new MobShooter();
+                break;
             default: mobTypeError(type);
                 break;
         }
