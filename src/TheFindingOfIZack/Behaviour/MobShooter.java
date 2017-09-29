@@ -8,8 +8,9 @@ import java.awt.*;
 public class MobShooter extends Mob{
     public MobShooter(){
         this.viewRange = 100;
-        this.speed = 0;
+        this.speed = 1;
         this.health = 50;
+        this.damage = 0;
     }
 
     @Override

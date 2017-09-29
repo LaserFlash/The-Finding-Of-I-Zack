@@ -9,6 +9,7 @@ public class Mob {
     protected int speed;
     protected int viewRange;
     protected int health;
+    protected int damage;
 
     /**
      * Shifts the mob's location
@@ -44,6 +45,10 @@ public class Mob {
      */
     public int getHealth(){
         return health;
+    }
+
+    public int getDamage(){
+        return damage;
     }
 
     /**
