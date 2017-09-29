@@ -40,30 +40,8 @@ public class startRoom extends Room implements Savable{
 
     }
 
-    @Override
-    public boolean hasDoor(int dir) {
-        if(dir == 2){
-            if(this.southDoor != null){
-                    return true;
-            }
-        }
-        if(dir == 0){
-            if(this.northDoor != null){
-                return true;
-            }
-        }
-        if(dir == 1){
-            if(this.eastDoor != null){
-                return true;
-            }
-        }
-        if(dir == 3){
-            if(this.westDoor != null){
-                return true;
-            }
-        }
-        return false;
-    }
+
+
 
 
 }
