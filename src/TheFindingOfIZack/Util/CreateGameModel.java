@@ -5,7 +5,6 @@ import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Model;
 
-import javax.swing.text.View;
 import java.awt.*;
 
 public class CreateGameModel {

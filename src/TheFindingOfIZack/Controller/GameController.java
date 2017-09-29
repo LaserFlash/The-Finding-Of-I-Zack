@@ -78,7 +78,6 @@ public class GameController implements ActionListener, KeyListener {
                 } catch (InvalidFileException e1) {
                     System.out.printf("Unsuccessful Save");
                 }
-                //TODO trigger write to file
                 break;
             }
             case "resumeGame":{
@@ -110,6 +109,18 @@ public class GameController implements ActionListener, KeyListener {
                 break;
             case KeyEvent.VK_D:
                 this.game.trueRight();
+                break;
+            case KeyEvent.VK_LEFT:
+                this.game.shootLeft();
+                break;
+            case KeyEvent.VK_RIGHT:
+                this.game.shootRight();
+                break;
+            case KeyEvent.VK_UP:
+                this.game.shootUp();
+                break;
+            case KeyEvent.VK_DOWN:
+                this.game.shootDown();
                 break;
         }
 

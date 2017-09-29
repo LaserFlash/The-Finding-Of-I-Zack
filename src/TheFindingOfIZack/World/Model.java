@@ -16,4 +16,9 @@ public interface Model {
     void falseLeft();
     void falseUp();
     void falseDown();
+
+    void shootLeft();
+    void shootRight();
+    void shootUp();
+    void shootDown();
 }
