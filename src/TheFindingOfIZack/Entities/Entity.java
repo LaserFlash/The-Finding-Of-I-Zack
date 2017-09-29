@@ -13,7 +13,6 @@ import java.awt.*;
  */
 public class Entity implements Drawable {
 
-    protected int health;
     protected Point location;
     protected BoundingBox box;
 
@@ -25,8 +24,7 @@ public class Entity implements Drawable {
 
     }
 
-    public Entity(int health, Point location) {
-        this.health = health;
+    public Entity(Point location) {
         this.location = location;
         this.box = new BoundingBox(location.getX(), location.getY(), width, width);
     }
@@ -39,21 +37,9 @@ public class Entity implements Drawable {
         return this.location;
     }
 
-    public int getHealth() {
-        return health;
-    }
-
     public void draw(Graphics g) {
         g.setColor(Color.black);
         g.drawRect((int) location.getX(), (int) location.getY(), width, width);
-    }
-
-    public void damage(int damage) {
-        health -= damage;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
     }
 
     public void setBox() {

@@ -5,10 +5,16 @@ import java.awt.*;
 /**
  * Created by allanbenj1 on 29/09/17.
  */
-public class Urn extends WorldItem{
+public class Urn extends Entity{
 
-    public Urn(int health, Point location) {
-        super(health, location);
+    int health = 40;
+
+    public Urn(Point location) {
+        super(location);
+    }
+
+    public void damage(int damage) {
+        this.health -= damage;
     }
 
     @Override

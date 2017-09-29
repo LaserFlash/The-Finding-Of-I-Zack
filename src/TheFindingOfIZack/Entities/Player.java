@@ -16,15 +16,19 @@ public class Player extends Entity implements Savable {
     private int armour = 0;
     private Room room;
     private int MAX_HEALTH = 100;
+    private int health = 100;
     private int speed = 3;
     private int key = 0;
+    private int damage = 10;
+
+    public int weaponTick;
 
     public Player(){
 
     }
 
-    public Player(int health, Point location) {
-        super(health, location);
+    public Player(Point location) {
+        super(location);
     }
 
     @Override
@@ -144,6 +148,14 @@ public class Player extends Entity implements Savable {
 
     public int getMaxHealth() {
         return MAX_HEALTH;
+    }
+
+    public int getHealth() {
+        return this.health;
+    }
+
+    public void damage(int damage) {
+        this.health -= damage;
     }
 
     public void setRoom(Room room) {

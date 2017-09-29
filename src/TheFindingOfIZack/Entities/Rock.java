@@ -5,10 +5,16 @@ import java.awt.*;
 /**
  * Created by allanbenj1 on 29/09/17.
  */
-public class Rock extends WorldItem{
+public class Rock extends Entity{
 
-    public Rock(int health, Point location) {
-        super(health, location);
+    int health = 1000;
+
+    public Rock(Point location) {
+        super(location);
+    }
+
+    public void damage(int damage) {
+        this.health -= damage;
     }
 
     @Override
