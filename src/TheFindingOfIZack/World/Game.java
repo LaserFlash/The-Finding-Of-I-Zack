@@ -56,10 +56,6 @@ public class Game extends Observable implements Model,Savable{
         this.west = g.west;
     }
 
-    public Level getCurrentLevel(){
-        return this.currentLevel;
-    }
-
 
     /**
      * begins the logic of a brand new game

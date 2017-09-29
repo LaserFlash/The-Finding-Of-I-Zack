@@ -32,6 +32,11 @@ public class MockModel implements Model {
                 g.setColor(Color.green);
                 g.fillRect(0,0,900,500);
             }
+
+            @Override
+            public void populateRoom() {
+
+            }
         });
     }
 
