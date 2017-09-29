@@ -46,7 +46,6 @@ public class GameController implements ActionListener, KeyListener {
         switch (e.getActionCommand()){
             case "exitGame": {
                 this.view.dispose();
-                //TODO stop any other threads / gameloops
                 break;
             }
             case "newGame": {
@@ -67,15 +66,15 @@ public class GameController implements ActionListener, KeyListener {
                 } catch (InvalidFileException e1) {
                     System.out.print("Unsuccessful Load: " + e1.getMessage());
                 }
-                game = loadedGame.getGame();
-                view.newGame(game);
+                this.game = loadedGame.getGame();
+                this.view.newGame(game);
                 this.view.enableOtherButtons();
-                view.goToGameView();
+                this.view.goToGameView();
                 break;
             }
             case "saveGame" :{
                 try {
-                    SaveFile saveGame = new SaveFile( (Game) this.game);
+                    SaveFile saveGame = new SaveFile((Game) this.game);
                 } catch (InvalidFileException e1) {
                     System.out.printf("Unsuccessful Save");
                 }
@@ -83,8 +82,8 @@ public class GameController implements ActionListener, KeyListener {
                 break;
             }
             case "resumeGame":{
-                game.resumeGame();
-                view.goToGameView();
+                this.game.resumeGame();
+                this.view.goToGameView();
                 break;
             }
         }
