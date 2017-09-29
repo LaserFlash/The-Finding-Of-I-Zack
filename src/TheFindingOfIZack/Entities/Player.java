@@ -14,7 +14,7 @@ public class Player extends Entity implements Savable {
 
     private int MAX_ARMOUR = 25;
     private int armour = 0;
-    private Room room;
+    private transient Room room;
     private int MAX_HEALTH = 100;
     private int health = 100;
     private int speed = 3;

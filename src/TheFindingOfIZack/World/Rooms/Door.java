@@ -1,5 +1,6 @@
 package TheFindingOfIZack.World.Rooms;
 
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.Drawable;
 
@@ -8,7 +9,7 @@ import java.awt.*;
 /**
  * Created by fieldryan on 27/09/17.
  */
-public class Door implements Drawable {
+public class Door implements Drawable, Savable {
 
     private Room entry;
     private Room destination;
