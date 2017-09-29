@@ -28,6 +28,7 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
      */
     public ViewManager(Model model) {
         super("The Finding of I, Zack");
+        setUIFont (new javax.swing.plaf.FontUIResource(new Font("ComicSans", Font.BOLD, 18)));
         setPreferredSize(new Dimension(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT));
         this.model = model;
         this.setFocusable(true);
@@ -40,6 +41,8 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
 
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+
+
     }
 
     @Override
@@ -98,4 +101,19 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
     public void newGame(Model game) {
         this.gameScreen = new GamePanel(game);
     }
+
+    private static void setUIFont(javax.swing.plaf.FontUIResource f)
+    {
+        java.util.Enumeration<Object> keys = UIManager.getDefaults().keys();
+        while (keys.hasMoreElements())
+        {
+            Object key = keys.nextElement();
+            Object value = UIManager.get(key);
+            if (value instanceof javax.swing.plaf.FontUIResource)
+            {
+                UIManager.put(key, f);
+            }
+        }
+    }
+
 }
