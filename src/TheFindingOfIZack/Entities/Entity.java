@@ -21,6 +21,10 @@ public class Entity implements Drawable {
 
     protected Game world;
 
+    public Entity(){
+
+    }
+
     public Entity(int health, Point location) {
         this.health = health;
         this.location = location;
