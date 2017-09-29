@@ -50,4 +50,9 @@ public class itemRoom extends Room {
             this.westDoor = d;
         }
     }
+
+    @Override
+    public boolean hasDoor(int dir) {
+        return false;
+    }
 }
