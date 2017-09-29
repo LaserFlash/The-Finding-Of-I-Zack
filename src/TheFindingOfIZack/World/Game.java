@@ -142,6 +142,27 @@ public class Game extends Observable implements Model,Savable{
         this.south = false;
 
     }
+
+    @Override
+    public void shootLeft() {
+
+    }
+
+    @Override
+    public void shootRight() {
+
+    }
+
+    @Override
+    public void shootUp() {
+
+    }
+
+    @Override
+    public void shootDown() {
+
+    }
+
     @Override
     public void falseLeft() {
         this.west = false;
