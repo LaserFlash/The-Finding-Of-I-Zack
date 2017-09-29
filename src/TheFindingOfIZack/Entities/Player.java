@@ -35,7 +35,12 @@ public class Player extends Entity implements Savable {
         int x = (int) location.getX();
         int y = (int) location.getY()-speed;
 
-        if (y < GameSize.TOP_WALL) {y = GameSize.TOP_WALL;}
+        if (y < GameSize.TOP_WALL) {
+            y = GameSize.TOP_WALL;
+            if (room.hasDoor(0) && vertDoor()) {
+                System.out.println("Move north");
+            }
+        }
 
         location.move(x, y);
     }
@@ -46,7 +51,7 @@ public class Player extends Entity implements Savable {
 
         if (y > GameSize.BOTTOM_WALL-width) {
             y = GameSize.BOTTOM_WALL-width;
-            if (room.hasDoor(2) && southDoor()) {
+            if (room.hasDoor(2) && vertDoor()) {
                 System.out.println("Move South");
             }
         }
@@ -54,7 +59,7 @@ public class Player extends Entity implements Savable {
         location.move(x, y);
     }
 
-    public boolean southDoor() {
+    public boolean vertDoor() {
         if (location.getX() > GameSize.VERT_DOOR_START && location.getX() < GameSize.VERT_DOOR_END) {
             if (location.getX()+width > GameSize.VERT_DOOR_START && location.getX()+width < GameSize.VERT_DOOR_END) {return true;}
         }
@@ -65,7 +70,12 @@ public class Player extends Entity implements Savable {
         int x = (int) location.getX()-speed;
         int y = (int) location.getY();
 
-        if (x < GameSize.LEFT_WALL) {x = GameSize.LEFT_WALL;}
+        if (x < GameSize.LEFT_WALL) {
+            x = GameSize.LEFT_WALL;
+            if (room.hasDoor(3) && horzDoor()){
+                System.out.println("Move west");
+            }
+        }
 
         location.move(x, y);
     }
@@ -74,9 +84,21 @@ public class Player extends Entity implements Savable {
         int x = (int) location.getX()+speed;
         int y = (int) location.getY();
 
-        if (x > GameSize.RIGHT_WALL-width) {x = GameSize.RIGHT_WALL-width;}
+        if (x > GameSize.RIGHT_WALL-width) {
+            x = GameSize.RIGHT_WALL-width;
+            if (room.hasDoor(1) && horzDoor()) {
+                System.out.println("Move east");
+            }
+        }
 
         location.move(x, y);
+    }
+
+    public boolean horzDoor() {
+        if (location.getY() > GameSize.HORZ_DOOR_START && location.getY() < GameSize.HORZ_DOOR_END) {
+            if (location.getY()+width > GameSize.HORZ_DOOR_START && location.getY()+width < GameSize.HORZ_DOOR_END) {return true;}
+        }
+        return false;
     }
 
     public int getMaxHealth() {
