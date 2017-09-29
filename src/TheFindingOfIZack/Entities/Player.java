@@ -5,6 +5,7 @@ import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import java.awt.*;
+import java.math.BigInteger;
 
 /**
  * Created by Ben Allan
@@ -17,6 +18,10 @@ public class Player extends Entity implements Savable {
     private int MAX_HEALTH = 100;
     private int speed = 3;
     private int key = 0;
+
+    public Player(){
+
+    }
 
     public Player(int health, Point location) {
         super(health, location);

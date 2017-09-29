@@ -16,7 +16,7 @@ import java.util.Observable;
 public class Game extends Observable implements Model,Savable{
 
 
-    private Player player;
+    private transient Player player;
     private Level currentLevel;
     private boolean running = true;
     private int frameCount;

@@ -209,7 +209,7 @@ public class GameFile {
             obOut.writeObject(e);
             obOut.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in /tmp/employee.ser");
+            System.out.printf("Serialized data is saved in " + file.getName() + EXTENSION);
         }   catch(IOException i) {
             i.printStackTrace();
         }
@@ -217,10 +217,14 @@ public class GameFile {
 
     public Game readGame(BufferedReader in){
         Game g = null;
-        if (isEOF(in))
+        if (!isEOF(in)) {
             fileError("EOF reached in readGame");
+            return g;
+        }
         try {
-            ObjectInput obIn = new ObjectInputStream(new FileInputStream(file+EXTENSION ));
+            in.close();
+            //out.close();
+            ObjectInput obIn = new ObjectInputStream(new FileInputStream(file));
             try {
                 g = (Game) obIn.readObject();
             } catch (ClassNotFoundException e) {
@@ -277,7 +281,7 @@ public class GameFile {
      *  @return true if EOF, false otherwise
      */
     public boolean isEOF(BufferedReader in) {
-        boolean isEOF = false;
+        boolean isEOF;
         try {
             isEOF = in.ready();
         }
