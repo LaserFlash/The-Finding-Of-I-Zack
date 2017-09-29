@@ -25,6 +25,8 @@ public class LoadFile extends GameFile{
         if (!isValidFile)
             return null;
         createIn();
+        readHeader();
+        game = readGame(in);
         return null; // TODO: 9/26/17 return a game if successful
     }
 
