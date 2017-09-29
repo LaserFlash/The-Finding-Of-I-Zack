@@ -1,5 +1,6 @@
 package TheFindingOfIZack.World.Rooms;
 
+import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.GameSize;
 
@@ -19,9 +20,11 @@ public class startRoom extends Room implements Savable{
     }
 
     @Override
-    public void populateRoom() {
+    public void populateRoom(Player p) {
 
     }
+
+
 
 
     public void update(){

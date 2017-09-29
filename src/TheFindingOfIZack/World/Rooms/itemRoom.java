@@ -1,5 +1,6 @@
 package TheFindingOfIZack.World.Rooms;
 
+import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import java.awt.*;
@@ -18,10 +19,11 @@ public class itemRoom extends Room {
     }
 
     @Override
-    public void populateRoom() {
-
+    public void populateRoom(Player p) {
 
     }
+
+
 
 
     @Override

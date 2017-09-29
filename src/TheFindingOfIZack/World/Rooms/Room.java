@@ -1,6 +1,7 @@
 package TheFindingOfIZack.World.Rooms;
 
 
+import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.Drawable;
 
@@ -58,7 +59,7 @@ public abstract class Room implements Drawable {
         return this.westDoor;
     }
 
-    public abstract void populateRoom();
+    public abstract void populateRoom(Player p);
     public abstract void update();
     public void addDoor(Door d, int n) {
 
