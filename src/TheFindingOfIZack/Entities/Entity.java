@@ -11,7 +11,7 @@ import java.awt.*;
 /**
  * Created by Ben Allan
  */
-public class Entity implements Drawable {
+public abstract class Entity implements Drawable {
 
     protected Point location;
     protected BoundingBox box;
