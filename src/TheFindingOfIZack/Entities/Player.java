@@ -25,7 +25,7 @@ public class Player extends Entity implements Savable {
     private int firerate = 20;
     private int MIN_FIRERATE = 7;
 
-    private ArrayList<Projectile> projectiles;
+    private transient ArrayList<Projectile> projectiles;
 
     public Player(){
 

@@ -109,20 +109,6 @@ public class GameFile {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public String readEntity(BufferedReader in){
         if (isEOF(in))
             fileError("EOF reached in readEntity");
