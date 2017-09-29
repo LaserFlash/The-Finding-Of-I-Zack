@@ -48,8 +48,5 @@ public class standardRoom extends Room{
         }
     }
 
-    @Override
-    public boolean hasDoor(int dir) {
-        return false;
-    }
+
 }
