@@ -21,7 +21,9 @@ public class Player extends Entity implements Savable {
     private int key = 0;
     private int damage = 10;
 
-    private int weaponTick;
+    private int weaponTick = 0;
+    private int firerate = 20;
+    private int MIN_FIRERATE = 7;
 
     private ArrayList<Projectile> projectiles;
 
@@ -50,6 +52,8 @@ public class Player extends Entity implements Savable {
     }
 
     public void update() {
+        if (weaponTick == firerate) {weaponTick = 0;}
+        else if (weaponTick != 0) {weaponTick++;}
         for (Projectile p : projectiles) {
             p.move();
         }
@@ -169,24 +173,31 @@ public class Player extends Entity implements Savable {
     }
 
     public void shootUp() {
-
+        if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "up");
         projectiles.add(p);
+        weaponTick++;
     }
 
     public void shootDown() {
+        if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "down");
         projectiles.add(p);
+        weaponTick++;
     }
 
     public void shootLeft() {
+        if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "left");
         projectiles.add(p);
+        weaponTick++;
     }
 
     public void shootRight() {
+        if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "right");
         projectiles.add(p);
+        weaponTick++;
     }
 
 
