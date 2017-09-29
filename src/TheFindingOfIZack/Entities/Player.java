@@ -91,5 +91,13 @@ public class Player extends Entity implements Savable {
         return this.speed;
     }
 
+    public int getMaxArmour() {
+        return MAX_ARMOUR;
+    }
+
+    public int getArmour() {
+        return armour;
+    }
+
 
 }
