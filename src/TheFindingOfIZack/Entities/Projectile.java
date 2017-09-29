@@ -1,5 +1,6 @@
 package TheFindingOfIZack.Entities;
 
+import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.Drawable;
 
 import java.awt.*;
@@ -11,6 +12,8 @@ public class Projectile extends Entity implements Drawable{
 
     private int damage;
     private String direction;
+
+    private boolean pop = false;
 
     private int speed = 5;
 
@@ -44,8 +47,30 @@ public class Projectile extends Entity implements Drawable{
 
         location.move(x, y);
 
+        if (wallCollision()) {pop = true;}
+
     }
 
+    public boolean wallCollision() {
 
+        if (location.getX()+width/4 < GameSize.LEFT_WALL) {
+            return true;
+        }
+        else if (location.getY()+width/4 < GameSize.TOP_WALL) {
+            return true;
+        }
+        else if (location.getX() + (3*width)/4 > GameSize.RIGHT_WALL) {
+            return true;
+        }
+        else if (location.getY() + (3*width)/4 > GameSize.BOTTOM_WALL) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean getPopped() {
+        return this.pop;
+    }
 
 }

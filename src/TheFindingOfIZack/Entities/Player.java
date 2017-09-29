@@ -57,6 +57,18 @@ public class Player extends Entity implements Savable {
         for (Projectile p : projectiles) {
             p.move();
         }
+        popProjectiles();
+    }
+
+    public void popProjectiles() {
+        ArrayList<Projectile> temp = new ArrayList<Projectile>();
+        for (Projectile p : projectiles) {
+            if (p.getPopped()) {temp.add(p);}
+        }
+
+        for (Projectile p : temp) {
+            projectiles.remove(p);
+        }
     }
 
     public void moveUp() {
