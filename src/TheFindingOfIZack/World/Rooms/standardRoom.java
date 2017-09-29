@@ -2,12 +2,14 @@ package TheFindingOfIZack.World.Rooms;
 
 
 import TheFindingOfIZack.Entities.Enemy;
+import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Util.GameSize;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 import static TheFindingOfIZack.Util.GameSize.RIGHT_WALL;
+
 
 public class standardRoom extends Room{
 
@@ -30,10 +32,11 @@ public class standardRoom extends Room{
         Point p = new Point(x,y);
         return p;
     }
-    public void populateRoom(){
+    @Override
+    public  void populateRoom(Player p){
 
 
-        Enemy e1 = new Enemy(new Point(50,50));
+        Enemy e1 = new Enemy(new Point(50,50),p);
         enemiesInRoom.add(e1);
 
     }
@@ -56,7 +59,6 @@ public class standardRoom extends Room{
             e.draw(g);
         }
     }
-
 
 
 
