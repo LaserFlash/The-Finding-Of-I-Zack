@@ -66,9 +66,9 @@ public class Enemy extends Entity {
      */
     private boolean canMove(Point location){
         if(location.getY() < TOP_WALL){return false;}
-        if(location.getY() < LEFT_WALL){return false;}
+        if(location.getX() < LEFT_WALL){return false;}
         if(location.getY()+width > BOTTOM_WALL){return false;}
-        if(location.getY()+width > RIGHT_WALL){return false;}
+        if(location.getX()+width > RIGHT_WALL){return false;}
         return true;
     }
 
@@ -78,10 +78,16 @@ public class Enemy extends Entity {
      * @param player player location
      */
     public boolean collision(Point mob, Point player) {
-        if(mob.getY() < player.getX()+width){return true;}
-        if(mob.getY() < player.getY()+width){return true;}
-        if(mob.getY()+width > player.getX()){return true;}
-        if(mob.getY()+width > player.getY()){return true;}
+        double px = player.getX();
+        double py = player.getY();
+        double mx = mob.getX();
+        double my = mob.getY();
+        int w = width;
+
+        if(mx<px && my<py && mx+w>px && my+w>py){return true;} //Top left
+        if(mx>px && my>py && mx<px+w && my<py+w){return true;} //Bottom Right
+        if(mx<px && my>py && mx+w>px && my<py+w){return true;} //Bottom left
+        if(mx>px && my<py && mx<px+w && my+w>py){return true;} //Top Right
         return false;
     }
 

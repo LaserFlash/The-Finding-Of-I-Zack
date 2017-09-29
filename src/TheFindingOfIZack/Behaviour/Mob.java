@@ -20,6 +20,11 @@ public class Mob {
     public Point step(Point location, Point player){
         double x = player.getX() - location.getX();
         double y = player.getY() - location.getY();
+
+
+
+
+        //System.out.println("x: " + x + " y: " + y);//******************************************************************
         double h = Math.hypot(x,y);
         double n = 1/h;
         double newX = x*n;
@@ -34,7 +39,7 @@ public class Mob {
         else if(newY>0 && newY>speed){
             newY = speed;}
 
-        location.move((int)(newX + location.getX()),(int)(newY + location.getY()));
+        location.setLocation((int)(newX + location.getX()),(int)(newY + location.getY()));
 
         return location;
     }
