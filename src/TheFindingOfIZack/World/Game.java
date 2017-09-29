@@ -90,16 +90,6 @@ public class Game extends Observable implements Model,Savable{
         return this.player;
     }
 
-    /**
-     *
-     * @return the level object
-     */
-    public Level getCurrentLevel(){
-
-        return this.currentLevel;
-    }
-
-
     public void moveUp() {
 
         player.moveUp();

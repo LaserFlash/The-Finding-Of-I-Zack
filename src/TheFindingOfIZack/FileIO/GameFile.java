@@ -67,7 +67,7 @@ public class GameFile {
     private static final String RELEASE = "/v0.0.1";
 
     protected JFrame parent =
-            new ViewManager(new Game(new Player(100, new Point(0,0))));
+            new ViewManager(new Game(new Player(new Point(0,0))));
 
     /**
      *  This stores the files extension for all of the GameFiles
@@ -201,7 +201,7 @@ public class GameFile {
     }
 
     public void writeGame(Game g, BufferedOutputStream out) {
-        Game e = new Game(new Player(100, new Point(0,0)));
+        Game e = new Game(new Player(new Point(0,0)));
 
         try {
             FileOutputStream fileOut = new FileOutputStream(file+EXTENSION);
