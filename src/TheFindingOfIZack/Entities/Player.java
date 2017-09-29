@@ -41,6 +41,17 @@ public class Player extends Entity implements Savable {
         g.setColor(Color.MAGENTA);
         g.fillOval((int) location.getX()+4, (int) location.getY()+4, width-8, width-8);
         super.draw(g);
+
+        for (Projectile p : projectiles) {
+            p.draw(g);
+        }
+
+    }
+
+    public void update() {
+        for (Projectile p : projectiles) {
+            p.move();
+        }
     }
 
     public void moveUp() {
@@ -151,19 +162,23 @@ public class Player extends Entity implements Savable {
     }
 
     public void shootUp() {
-
+        Projectile p = new Projectile(this.damage, this.location, "up");
+        projectiles.add(p);
     }
 
     public void shootDown() {
-
+        Projectile p = new Projectile(this.damage, this.location, "down");
+        projectiles.add(p);
     }
 
     public void shootLeft() {
-
+        Projectile p = new Projectile(this.damage, this.location, "left");
+        projectiles.add(p);
     }
 
     public void shootRight() {
-
+        Projectile p = new Projectile(this.damage, this.location, "right");
+        projectiles.add(p);
     }
 
 
