@@ -115,13 +115,13 @@ public class Player extends Entity implements Savable {
 
     public void moveNorth() {
         int x = (int) location.getX();
-        int y = GameSize.BOTTOM_WALL;
+        int y = GameSize.BOTTOM_WALL-width;
         room = room.getNorthDoor().getDestination();
         location.move(x, y);
     }
 
     public void moveWest() {
-        int x = GameSize.RIGHT_WALL;
+        int x = GameSize.RIGHT_WALL-width;
         int y = (int) location.getY();
         room = room.getWestDoor().getDestination();
         location.move(x, y);
