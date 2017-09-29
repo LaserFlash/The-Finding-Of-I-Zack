@@ -14,6 +14,7 @@ public class Enemy extends Entity {
 
     private int damage;
     private MobEnemy behaviour;
+    int health;
 
     public Enemy(Point location, int damage) {
         super(100, location);
@@ -23,6 +24,10 @@ public class Enemy extends Entity {
         else if (type>2) {this.behaviour = new MobEnemy("fast"); this.setHealth(behaviour.getHealth());}
         else if (type>1) {this.behaviour = new MobEnemy("fast"); this.setHealth(behaviour.getHealth());}
         else {this.behaviour = new MobEnemy("slow"); this.setHealth(behaviour.getHealth());}
+    }
+
+    public void damage(int damage) {
+        this.health -= damage;
     }
 
     @Override
