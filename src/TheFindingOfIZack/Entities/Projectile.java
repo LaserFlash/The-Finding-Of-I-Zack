@@ -1,11 +1,13 @@
 package TheFindingOfIZack.Entities;
 
+import TheFindingOfIZack.View.Drawable;
+
 import java.awt.*;
 
 /**
  * Created by allanbenj1 on 29/09/17.
  */
-public class Projectile extends Entity{
+public class Projectile extends Entity implements Drawable{
 
     private int damage;
     private String direction;
@@ -17,6 +19,8 @@ public class Projectile extends Entity{
         this.damage = damage;
         this.direction = direction;
     }
+
+
 
 
 

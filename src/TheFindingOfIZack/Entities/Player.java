@@ -5,7 +5,7 @@ import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import java.awt.*;
-import java.math.BigInteger;
+import java.util.ArrayList;
 
 /**
  * Created by Ben Allan
@@ -21,7 +21,9 @@ public class Player extends Entity implements Savable {
     private int key = 0;
     private int damage = 10;
 
-    public int weaponTick;
+    private int weaponTick;
+
+    private ArrayList<Projectile> projectiles;
 
     public Player(){
 
@@ -29,6 +31,7 @@ public class Player extends Entity implements Savable {
 
     public Player(Point location) {
         super(location);
+        projectiles = new ArrayList<Projectile>();
     }
 
     @Override
@@ -145,6 +148,22 @@ public class Player extends Entity implements Savable {
         room = room.getEastDoor().getDestination();
         location.move(x, y);
         room.populateRoom(this);
+    }
+
+    public void shootUp() {
+
+    }
+
+    public void shootDown() {
+
+    }
+
+    public void shootLeft() {
+
+    }
+
+    public void shootRight() {
+
     }
 
 
