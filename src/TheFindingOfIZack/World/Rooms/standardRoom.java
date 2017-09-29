@@ -23,13 +23,7 @@ public class standardRoom extends Room{
     }
 
 
-public void draw(Graphics g){
 
-        for(Enemy e: enemiesInRoom){
-        //    e.draw(g);
-        }
-
-}
 
 
     @Override
