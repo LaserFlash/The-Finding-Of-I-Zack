@@ -120,6 +120,7 @@ public class Player extends Entity implements Savable {
         int y = GameSize.TOP_WALL;
         room = room.getSouthDoor().getDestination();
         location.move(x, y);
+        room.populateRoom();
     }
 
     public void moveNorth() {
@@ -127,6 +128,7 @@ public class Player extends Entity implements Savable {
         int y = GameSize.BOTTOM_WALL-width;
         room = room.getNorthDoor().getDestination();
         location.move(x, y);
+        room.populateRoom();
     }
 
     public void moveWest() {
@@ -134,6 +136,7 @@ public class Player extends Entity implements Savable {
         int y = (int) location.getY();
         room = room.getWestDoor().getDestination();
         location.move(x, y);
+        room.populateRoom();
     }
 
     public void moveEast() {
@@ -141,6 +144,7 @@ public class Player extends Entity implements Savable {
         int y = (int) location.getY();
         room = room.getEastDoor().getDestination();
         location.move(x, y);
+        room.populateRoom();
     }
 
 
