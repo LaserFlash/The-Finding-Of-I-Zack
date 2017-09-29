@@ -88,7 +88,6 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
         Toolkit.getDefaultToolkit().sync();
         this.getContentPane().revalidate();
         this.getContentPane().repaint();
-
     }
 
     /**

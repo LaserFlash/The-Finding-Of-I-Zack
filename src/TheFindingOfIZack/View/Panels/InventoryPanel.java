@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class InventoryPanel extends JPanel{
 
+    private static final int PADDING = 20;
     private Model model;
 
     public InventoryPanel(Model m){
@@ -26,7 +27,16 @@ public class InventoryPanel extends JPanel{
         int maxHealth = model.getPlayer().getMaxHealth();
         int health = model.getPlayer().getHealth();
 
-        g.drawString(health + "/" + maxHealth, 50,50);
+        int maxArmour = model.getPlayer().getMaxArmour();
+        int armour = model.getPlayer().getArmour();
+        g.setFont(new Font("TimesRoman", Font.BOLD, 18));
+
+        g.drawString("Health:", PADDING,PADDING);
+        g.drawString("Armour:",PADDING,PADDING * 3);
+        g.setColor(Color.red);
+        g.drawString( health + "/" + maxHealth, PADDING + 60,PADDING);
+        g.setColor(Color.BLUE);
+        g.drawString(armour + "/" + maxArmour, PADDING + 60, PADDING * 3);
     }
 
     private void drawPlayerItems(Graphics g){
