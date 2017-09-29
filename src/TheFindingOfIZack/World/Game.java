@@ -186,6 +186,7 @@ public class Game extends Observable implements Model,Savable{
 
         checkMovement();
         currentLevel.update();
+        player.update();
 
 
     }
