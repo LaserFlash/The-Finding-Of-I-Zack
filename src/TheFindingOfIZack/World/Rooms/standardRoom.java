@@ -33,7 +33,7 @@ public class standardRoom extends Room{
     public void populateRoom(){
 
 
-        Enemy e1 = new Enemy(randomPoint());
+        Enemy e1 = new Enemy(new Point(50,50));
         enemiesInRoom.add(e1);
 
     }
