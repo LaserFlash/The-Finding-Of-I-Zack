@@ -22,17 +22,13 @@ public class Mob {
 
         if (distanceBetween(location,player) < viewRange){
             if(player.getX() > location.getX()){
-                newX += speed;
-            }
-            if(player.getY() > location.getY()){
-                newY += speed;
-            }
-            if(player.getX() < location.getX()){
-                newX -= speed;
-            }
-            if(player.getY() < location.getY()){
-                newY -= speed;
-            }
+                newX += speed;}
+            else if(player.getY() > location.getY()){
+                newY += speed;}
+            else if(player.getX() < location.getX()){
+                newX -= speed;}
+            else if(player.getY() < location.getY()){
+                newY -= speed;}
         }
 
         location.move((int)newX,(int)newY);
