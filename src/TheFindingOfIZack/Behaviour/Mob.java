@@ -22,13 +22,17 @@ public class Mob {
         double y = player.getY() - location.getY();
 
 
+        //Todo Make the move a double so that the mobs will move in a straight line
+        //The code bellow will do this (it's all jittery at the moment)
+        //double h = Math.hypot(x,y);
+        /**double n = h/speed;
+        double newX = x/n;
+        double newY = y/n;*/
 
-
-        //System.out.println("x: " + x + " y: " + y);//******************************************************************
-        double h = Math.hypot(x,y);
-        double n = 1/h;
-        double newX = x*n;
-        double newY = y*n;
+        //**********Temp**************
+        double newX = x/speed;
+        double newY = y/speed;
+        //**********Temp**************
 
         if (newX<0 && newX<-speed){
             newX = -speed;
@@ -38,6 +42,9 @@ public class Mob {
             newY = -speed;}
         else if(newY>0 && newY>speed){
             newY = speed;}
+
+        //System.out.println("x: " + (int)(newX+location.getX()) + " y: " + (int)(newY+location.getY()));//******************************************************************
+
 
         location.setLocation((int)(newX + location.getX()),(int)(newY + location.getY()));
 
