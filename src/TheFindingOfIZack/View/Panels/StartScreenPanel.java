@@ -1,9 +1,14 @@
 package TheFindingOfIZack.View.Panels;
 
 import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.ImageLoader;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -23,41 +28,45 @@ public class StartScreenPanel extends ScreenPanel {
     private final JButton resumeGame;
     private final JButton exitGame;
 
-    private Image img;
-
     /**
      * Create the panel and related buttons
      */
     public StartScreenPanel(){
         super();
-        this.newGame = new JButton("New Game");
-        this.newGame.setActionCommand("newGame");
+        this.newGame = buildButton("New Game", "newGame");
         this.add(newGame);
 
-        this.loadGame = new JButton("Load");
-        this.loadGame.setActionCommand("loadGame");
+        this.loadGame = buildButton("Load", "loadGame");
         this.add(loadGame);
 
-        this.saveGame = new JButton("Save");
-        this.saveGame.setActionCommand("saveGame");
+        this.saveGame = buildButton("Save","saveGame");
         this.saveGame.setEnabled(false);
         this.add(saveGame);
 
-        this.resumeGame = new JButton("Resume");
-        this.resumeGame.setActionCommand("resumeGame");
+        this.resumeGame = buildButton("Resume","resumeGame");
         this.resumeGame.setEnabled(false);
         this.add(resumeGame);
 
-        this.exitGame = new JButton("Exit");
-        this.exitGame.setActionCommand("exitGame");
+        this.exitGame = buildButton("Exit","exitGame");
         this.add(exitGame);
 
+
         this.setVisible(true);
-        try {
-            this.img = ImageIO.read(getClass().getResource(("/startBG.jpg"))).getScaledInstance(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT,Image.SCALE_DEFAULT);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    }
+
+    private JButton buildButton(String name,String command){
+        JButton b = new JButton(name,ImageLoader.normalButton);
+        b.setHorizontalTextPosition(JButton.CENTER);
+        b.setVerticalTextPosition(JButton.CENTER);
+        b.setDisabledIcon(ImageLoader.disabledButton);
+        b.setRolloverIcon(ImageLoader.hoverButton);
+        b.setForeground(Color.lightGray);
+        b.setBorderPainted(false);
+        b.setContentAreaFilled(false);
+
+        b.setActionCommand(command);
+
+        return b;
     }
 
     @Override
@@ -72,7 +81,7 @@ public class StartScreenPanel extends ScreenPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(img, 0, 0, null);
+        g.drawImage(ImageLoader.startBG, 0, 0, null);
     }
 
     public void enableOtherButtons(){
