@@ -54,8 +54,7 @@ public class StartScreenPanel extends ScreenPanel {
 
         this.setVisible(true);
         try {
-            this.img = ImageIO.read(getClass().getResource(("/jesse.png"))).getScaledInstance(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT,Image.SCALE_DEFAULT);
-            //this.add(new JLabel(new ImageIcon(img)));
+            this.img = ImageIO.read(getClass().getResource(("/startBG.jpg"))).getScaledInstance(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT,Image.SCALE_DEFAULT);
         } catch (IOException e) {
             e.printStackTrace();
         }

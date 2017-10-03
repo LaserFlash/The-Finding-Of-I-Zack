@@ -64,7 +64,7 @@ public class GameController implements ActionListener, KeyListener {
                 try {
                     loadedGame = new LoadFile();
                 } catch (InvalidFileException e1) {
-                    System.out.print("Unsuccessful Load: " + e1.getMessage());
+                    break; //No file was loaded successfully
                 }
                 this.game = loadedGame.getGame();
                 this.view.newGame(game);
