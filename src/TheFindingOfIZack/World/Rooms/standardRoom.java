@@ -60,6 +60,10 @@ public class standardRoom extends Room{
         }
     }
 
+    public ArrayList<Enemy> getEnemies(){
+        return this.enemiesInRoom;
+    }
+
 
 
 

@@ -103,6 +103,46 @@ public class MockModel implements Model {
     }
 
     @Override
+    public void shootLeftTrue() {
+
+    }
+
+    @Override
+    public void shootLeftFalse() {
+
+    }
+
+    @Override
+    public void shootUpTrue() {
+
+    }
+
+    @Override
+    public void shootUpFalse() {
+
+    }
+
+    @Override
+    public void shootRightTrue() {
+
+    }
+
+    @Override
+    public void shootRightFalse() {
+
+    }
+
+    @Override
+    public void shootDownTrue() {
+
+    }
+
+    @Override
+    public void shootDownFalse() {
+
+    }
+
+    @Override
     public void shootLeft() {
 
     }
