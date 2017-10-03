@@ -73,7 +73,7 @@ public class Projectile extends Entity implements Drawable{
 
     public void enemyCollision(ArrayList<Enemy> enemies) {
         for (Enemy e : enemies) {
-            if (e.box.contains(location.getX()+width/4, location.getY()+width/4, width/2, width/2)) {e.damage(damage); pop = true;}
+            if (e.box.intersects(location.getX()+width/4, location.getY()+width/4, width/2, width/2)) {e.damage(damage); pop = true;}
         }
     }
 
