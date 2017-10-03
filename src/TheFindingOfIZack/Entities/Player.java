@@ -89,6 +89,7 @@ public class Player extends Entity implements Savable {
         }
 
         location.move(x, y);
+        setBox();
     }
 
     public void moveDown() {
@@ -104,6 +105,7 @@ public class Player extends Entity implements Savable {
         }
 
         location.move(x, y);
+        setBox();
     }
 
     public boolean vertDoor() {
@@ -126,6 +128,7 @@ public class Player extends Entity implements Savable {
         }
 
         location.move(x, y);
+        setBox();
     }
 
     public void moveRight() {
@@ -141,6 +144,7 @@ public class Player extends Entity implements Savable {
         }
 
         location.move(x, y);
+        setBox();
     }
 
     public boolean horzDoor() {
