@@ -36,7 +36,9 @@ public class standardRoom extends Room{
     }
     @Override
     public  void populateRoom(Player p){
-
+        if(this.isCleared){
+            return;
+        }
 
         Enemy e1 = new Enemy(new Point(50,50),p);
         enemiesInRoom.add(e1);
