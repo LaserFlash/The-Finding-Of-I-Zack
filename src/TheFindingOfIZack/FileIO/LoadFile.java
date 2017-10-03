@@ -4,11 +4,13 @@ import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Level;
+import TheFindingOfIZack.World.Rooms.Door;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  *  This class captures the notion of Loading a game file, it deals with
@@ -80,17 +82,19 @@ public class LoadFile extends GameFile{
      * @param obIn object input stream
      * @return the loaded Level
      */
-    public Level readLevel(ObjectInput obIn){
+    public Level readLevel(ObjectInput obIn) throws InvalidFileException{
         Level l = null;
         try {
             try {
                 l = (Level) obIn.readObject();
             } catch (ClassNotFoundException e) {
                 fileError("Reading Level: " + e.getLocalizedMessage());
+                throw new InvalidFileException("Reading Level");
             }
 
         } catch (IOException e) {
             fileError("Reading Level: " + e.getLocalizedMessage());
+            throw new InvalidFileException("Reading Leve;l");
         }
         return l;
     }
@@ -100,17 +104,19 @@ public class LoadFile extends GameFile{
      * @param obIn object input stream
      * @return the loaded Game
      */
-    public Game readGame(ObjectInput obIn){
+    public Game readGame(ObjectInput obIn) throws InvalidFileException {
         Game g = null;
         try {
             try {
                 g = (Game) obIn.readObject();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
+                throw new InvalidFileException("Reading Game");
             }
 
         } catch (IOException e) {
             fileError("Reading Game: " + e.getLocalizedMessage());
+            throw new InvalidFileException("Reading Game");
         }
         return g;
     }
@@ -120,20 +126,35 @@ public class LoadFile extends GameFile{
      * @param obIn object input stream
      * @return the loaded Player
      */
-    public Player readPlayer(ObjectInput obIn){
+    public Player readPlayer(ObjectInput obIn) throws InvalidFileException {
         Player p = null;
         try {
-            try {
-                p = (Player) obIn.readObject();
-            } catch (ClassNotFoundException e) {
-                fileError("Reading Player: " + e.getLocalizedMessage());
-            }
-
+            p = (Player) obIn.readObject();
+        } catch (ClassNotFoundException e) {
+            fileError("Reading Player: " + e.getLocalizedMessage());
+            throw new InvalidFileException("Reading Player");
         } catch (IOException e) {
             fileError("Reading Game: " + e.getLocalizedMessage());
+            throw new InvalidFileException("Reading Player");
         }
         return p;
     }
+
+    public ArrayList<Door> readDoors(ObjectInputStream obIn) throws InvalidFileException {
+        ArrayList<Door> doors = new ArrayList<>();
+        try {
+            doors.add((Door) obIn.readObject());
+            doors.add((Door) obIn.readObject());
+            doors.add((Door) obIn.readObject());
+            doors.add((Door) obIn.readObject());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new InvalidFileException("Reading doors");
+        }
+        return doors;
+    }
+
     /**
      *  This method allows the user to select a GameFile from their computer
      *  and displays the valid file extensions
@@ -159,6 +180,8 @@ public class LoadFile extends GameFile{
         fileError("Invalid File chosen");
         throw new InvalidFileException("No file chosen");
     }
+
+
 
     /**
      * This method returns the Game

@@ -51,6 +51,7 @@ public class SaveFile extends GameFile {
             writePlayer(g, obOut);
             writeLevel(g, obOut);
             writeRoom(g, obOut);
+            writeDoors(g, obOut);
             try {
                 obOut.close();
             } catch (IOException e) {

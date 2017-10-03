@@ -16,10 +16,10 @@ public abstract class Room implements Drawable {
 
 
 
-    public Door northDoor;
-    public Door eastDoor;
-    public Door southDoor;
-    public Door westDoor;
+    public transient Door northDoor;
+    public transient Door eastDoor;
+    public transient Door southDoor;
+    public transient Door westDoor;
 
     protected Room() {
         this.northDoor = null;
@@ -58,6 +58,17 @@ public abstract class Room implements Drawable {
     public Door getWestDoor(){
         return this.westDoor;
     }
+
+    public void setNorthDoor(Door d){
+        this.northDoor = d;
+    }
+    public void setSouthDoor(Door d){
+        this.southDoor = d;
+    }
+    public void setEastDoor(Door d){this.eastDoor = d;}
+    public void setWestDoor(Door d){ this.westDoor = d;}
+
+
 
     public abstract void populateRoom(Player p);
     public abstract void update();
