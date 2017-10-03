@@ -24,6 +24,13 @@ public class Game extends Observable implements Model,Savable{
     private boolean east;
     private boolean south;
     private boolean west;
+
+    private boolean shootnorth;
+    private boolean shooteast;
+    private boolean shootsouth;
+    private boolean shootwest;
+
+
     private boolean paused = false;
 
 
@@ -39,11 +46,16 @@ public class Game extends Observable implements Model,Savable{
         this.south = false;
         this.west = false;
 
+        this.shootnorth = false;
+        this.shooteast = false;
+        this.shootsouth = false;
+        this.shootwest = false;
+
     }
 
     /**
      *Constructor for loading a new game from a file
-     * @param file
+     * @param
      */
     public Game(Game g, Player p, Level l, Room r){
         p.setRoom(r);
@@ -150,6 +162,59 @@ public class Game extends Observable implements Model,Savable{
     }
 
     @Override
+    public void shootLeftTrue() {
+        this.shootwest = true;
+        this.shootnorth = false;
+        this.shooteast = false;
+        this.shootsouth = false;
+    }
+
+    @Override
+    public void shootLeftFalse() {
+        this.shootwest = false;
+    }
+
+    @Override
+    public void shootUpTrue() {
+        this.shootwest = false;
+        this.shootnorth = true;
+        this.shooteast = false;
+        this.shootsouth = false;
+    }
+
+    @Override
+    public void shootUpFalse() {
+        this.shootnorth = false;
+    }
+
+    @Override
+    public void shootRightTrue() {
+        this.shootwest = false;
+        this.shootnorth = false;
+        this.shooteast = true;
+        this.shootsouth = false;
+    }
+
+    @Override
+    public void shootRightFalse() {
+        this.shooteast = false;
+    }
+
+    @Override
+    public void shootDownTrue() {
+        this.shootwest = false;
+        this.shootnorth = false;
+        this.shooteast = false;
+        this.shootsouth = true;
+    }
+
+    @Override
+    public void shootDownFalse() {
+        this.shootsouth = false;
+    }
+
+
+    @Override
     public void shootLeft() {
         player.shootLeft();
     }
@@ -185,6 +250,7 @@ public class Game extends Observable implements Model,Savable{
     public void updateGame(){
 
         checkMovement();
+        checkShooting();
         currentLevel.update();
         player.update();
 
@@ -203,6 +269,21 @@ public class Game extends Observable implements Model,Savable{
         if(west){
             moveLeft();
         }
+    }
+    private void checkShooting(){
+        if(shootnorth){
+            shootUp();
+        }
+        if(shooteast){
+            shootRight();
+        }
+        if(shootsouth){
+            shootDown();
+        }
+        if(shootwest){
+            shootLeft();
+        }
+
     }
 
     /**
