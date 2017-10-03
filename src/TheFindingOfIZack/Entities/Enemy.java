@@ -16,6 +16,7 @@ public class Enemy extends Entity {
     private MobEnemy behaviour;
     int health;
     private Player player;
+    private boolean isDead = false;
 
     public Enemy(Point location, Player p) {
         super(location);
@@ -30,7 +31,10 @@ public class Enemy extends Entity {
 
     public void damage(int damage) {
         this.health -= damage;
+        if (this.health <= 0) {isDead = true;}
     }
+
+    public boolean isDead() {return isDead;}
 
     @Override
     public void draw(Graphics g) {
@@ -52,6 +56,7 @@ public class Enemy extends Entity {
         if(canMove(potentialStep) && !collision(location,playerPoint)) {
             this.location = potentialStep;
             this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.width, this.width);
+            setBox();
         }
         if(collision(location,playerPoint)){
             this.player.damage(this.behaviour.getDamage()); //Takes the damage value from each mob type
