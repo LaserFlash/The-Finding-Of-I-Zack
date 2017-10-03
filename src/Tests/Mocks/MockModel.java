@@ -4,6 +4,7 @@ import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.World.Model;
 import TheFindingOfIZack.World.Rooms.Door;
 import TheFindingOfIZack.World.Rooms.Room;
+import TheFindingOfIZack.World.Rooms.standardRoom;
 
 import java.awt.*;
 
@@ -13,32 +14,14 @@ public class MockModel implements Model {
     public MockModel(){
         p.setRoom(new Room() {
             @Override
-            public void update() {
-
-            }
-
-            @Override
-            public void addDoor(Door d, int n) {
-
-            }
-
-            @Override
-            public boolean hasDoor(int dir) {
-                return false;
-            }
-
-            @Override
-            public void draw(Graphics g) {
-                g.setColor(Color.green);
-                g.fillRect(0,0,900,500);
-            }
-
-            @Override
             public void populateRoom(Player p) {
 
             }
 
+            @Override
+            public void update() {
 
+            }
         });
     }
 
@@ -49,7 +32,7 @@ public class MockModel implements Model {
 
     @Override
     public Player getPlayer() {
-        return null;
+        return p;
     }
 
     @Override
@@ -99,6 +82,46 @@ public class MockModel implements Model {
 
     @Override
     public void falseDown() {
+
+    }
+
+    @Override
+    public void shootLeftTrue() {
+
+    }
+
+    @Override
+    public void shootLeftFalse() {
+
+    }
+
+    @Override
+    public void shootUpTrue() {
+
+    }
+
+    @Override
+    public void shootUpFalse() {
+
+    }
+
+    @Override
+    public void shootRightTrue() {
+
+    }
+
+    @Override
+    public void shootRightFalse() {
+
+    }
+
+    @Override
+    public void shootDownTrue() {
+
+    }
+
+    @Override
+    public void shootDownFalse() {
 
     }
 
