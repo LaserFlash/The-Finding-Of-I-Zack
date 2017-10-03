@@ -16,6 +16,7 @@ public class Door implements Drawable, Savable {
     int position;
     int width = 10;
     int height = 50;
+    public boolean isLocked;
 
 
 
@@ -23,6 +24,7 @@ public class Door implements Drawable, Savable {
         this.entry = entry;
         this.destination = destination;
         this.position = position;
+        this.isLocked = true;
     }
 
     public Room getDestination(){
@@ -53,7 +55,11 @@ public class Door implements Drawable, Savable {
 
     @Override
     public void draw(Graphics g) {
-        g.setColor(Color.green);
+        if(this.isLocked){
+            g.setColor(Color.red);
+        }else {
+            g.setColor(Color.green);
+        }
         if(this.position == 3){
             g.fillRect(0,GameSize.GAME_HEIGHT/2 - this.height/2,GameSize.WALL_WIDTH,height);
         }

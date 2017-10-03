@@ -37,8 +37,6 @@ public class Mob {
             newY = newY/2;
         }
 
-
-
         //System.out.println("x2: " + (int)(newX) + " y2: " + (int)(newY));//******************************************************************
 
 

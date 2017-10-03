@@ -18,7 +18,7 @@ public class Player extends Entity implements Savable {
     private transient Room room;
     private int MAX_HEALTH = 100;
     private int health = 100;
-    private int speed = 3;
+    private int speed = 5;
     private int key = 0;
     private int damage = 10;
 
@@ -28,13 +28,13 @@ public class Player extends Entity implements Savable {
 
     private transient ArrayList<Projectile> projectiles;
 
-    public Player(){
-
-    }
-
     public Player(Point location) {
         super(location);
         projectiles = new ArrayList<Projectile>();
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     @Override
