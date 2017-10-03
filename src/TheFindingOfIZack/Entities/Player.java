@@ -3,6 +3,7 @@ package TheFindingOfIZack.Entities;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.World.Rooms.Room;
+import TheFindingOfIZack.World.Rooms.standardRoom;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -56,6 +57,10 @@ public class Player extends Entity implements Savable {
         else if (weaponTick != 0) {weaponTick++;}
         for (Projectile p : projectiles) {
             p.move();
+            if (room instanceof standardRoom) {
+                standardRoom r = (standardRoom) room;
+                p.enemyCollision(r.getEnemies());
+            }
         }
         popProjectiles();
     }
@@ -84,6 +89,7 @@ public class Player extends Entity implements Savable {
         }
 
         location.move(x, y);
+        setBox();
     }
 
     public void moveDown() {
@@ -99,6 +105,7 @@ public class Player extends Entity implements Savable {
         }
 
         location.move(x, y);
+        setBox();
     }
 
     public boolean vertDoor() {
@@ -121,6 +128,7 @@ public class Player extends Entity implements Savable {
         }
 
         location.move(x, y);
+        setBox();
     }
 
     public void moveRight() {
@@ -136,6 +144,7 @@ public class Player extends Entity implements Savable {
         }
 
         location.move(x, y);
+        setBox();
     }
 
     public boolean horzDoor() {

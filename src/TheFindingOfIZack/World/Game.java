@@ -217,23 +217,25 @@ public class Game extends Observable implements Model,Savable{
     @Override
     public void shootLeft() {
         player.shootLeft();
+        drawGame();
     }
 
     @Override
     public void shootRight() {
         player.shootRight();
-
+        drawGame();
     }
 
     @Override
     public void shootUp() {
         player.shootUp();
-
+        drawGame();
     }
 
     @Override
     public void shootDown() {
         player.shootDown();
+        drawGame();
     }
 
     @Override
@@ -256,6 +258,10 @@ public class Game extends Observable implements Model,Savable{
 
 
     }
+
+    /**
+     * checks the movement fields to determine which direction the player needs to move during the current tick
+     */
     private void checkMovement(){
         if(north){
             moveUp();
@@ -270,6 +276,10 @@ public class Game extends Observable implements Model,Savable{
             moveLeft();
         }
     }
+
+    /**
+     * checks the shooting fields to determine which direction the player needs to shoot during the current tick
+     */
     private void checkShooting(){
         if(shootnorth){
             shootUp();
