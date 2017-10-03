@@ -13,6 +13,7 @@ public class ImageLoader {
     public static final Icon hoverButton;
     public static final Icon disabledButton;
 
+    public static final Image controls;
     public static final Image startBG;
 
     static {
@@ -53,6 +54,41 @@ public class ImageLoader {
 
         }finally {
             startBG = img;
+        }
+
+        img = new Image() {
+            @Override
+            public int getWidth(ImageObserver observer) {
+                return 0;
+            }
+
+            @Override
+            public int getHeight(ImageObserver observer) {
+                return 0;
+            }
+
+            @Override
+            public ImageProducer getSource() {
+                return null;
+            }
+
+            @Override
+            public Graphics getGraphics() {
+                return null;
+            }
+
+            @Override
+            public Object getProperty(String name, ImageObserver observer) {
+                return null;
+            }
+        };
+
+        try {
+            img =  ImageIO.read(ImageLoader.class.getResource(("/keys.png"))).getScaledInstance(330,150,Image.SCALE_DEFAULT);
+        } catch (IOException e) {
+
+        }finally {
+            controls = img;
         }
     }
 

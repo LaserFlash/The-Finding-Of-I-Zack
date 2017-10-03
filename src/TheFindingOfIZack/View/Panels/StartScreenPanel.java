@@ -82,6 +82,7 @@ public class StartScreenPanel extends ScreenPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(ImageLoader.startBG, 0, 0, null);
+        g.drawImage(ImageLoader.controls,GameSize.WINDOW_WIDTH/2 - 330/2,GameSize.WINDOW_HEIGHT / 3 * 2,null);
     }
 
     public void enableOtherButtons(){
