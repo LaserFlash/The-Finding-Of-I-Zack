@@ -62,14 +62,16 @@ public class SaveFile extends GameFile {
      * @param g the Game with the level to write to an
      * @param obOut object output stream
      */
-    public void writeLevel(Game g, ObjectOutputStream obOut){
+    public void writeLevel(Game g, ObjectOutputStream obOut) throws InvalidFileException {
         Level l = g.getCurrentLevel();
-
+        if (l == null)
+            throw new InvalidFileException("Null Level Exception");
         try {
             obOut.writeObject(l);
             System.out.printf(" Room Serialized data is saved in " + file.getName()  + EXTENSION + "\n");
         }   catch(IOException i) {
             GameFile.fileError("Writing Room: " + i.getLocalizedMessage());
+            throw new InvalidFileException("Writing Room " + i.getLocalizedMessage());
         }
     }
 
@@ -78,9 +80,10 @@ public class SaveFile extends GameFile {
      * @param g the Game with the player to write to an
      * @param obOut object output stream
      */
-    public void writePlayer(Game g, ObjectOutputStream obOut){
+    public void writePlayer(Game g, ObjectOutputStream obOut) throws InvalidFileException {
         Player p = g.getPlayer();
-
+        if (p == null)
+            throw new InvalidFileException("Null Player Error");
         try {
             obOut.writeObject(p);
             System.out.printf(" Player Serialized data is saved in " + file.getName() + EXTENSION + "\n");
@@ -98,7 +101,7 @@ public class SaveFile extends GameFile {
     public void writeRoom(Game g, ObjectOutputStream obOut) throws InvalidFileException{
         Room r = g.getPlayer().getRoom();
         if (r == null){
-            System.out.printf("FUCK");
+            throw new InvalidFileException("Null Game Error");
         }
         try {
             obOut.writeObject(r);
@@ -116,6 +119,8 @@ public class SaveFile extends GameFile {
      * @throws InvalidFileException thrown if errors are encountered
      */
     public void writeGame(Game g, ObjectOutputStream obOut) throws InvalidFileException {
+        if (g == null)
+            throw new InvalidFileException("Null Game Error");
         try {
             obOut.writeObject(g);
             System.out.printf("Game Serialized data is saved in " + file.getName() + EXTENSION + "\n");
