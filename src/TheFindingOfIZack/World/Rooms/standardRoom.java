@@ -14,6 +14,7 @@ import static TheFindingOfIZack.Util.GameSize.RIGHT_WALL;
 public class standardRoom extends Room{
 
     private ArrayList<Enemy> enemiesInRoom;
+    private ArrayList<Enemy> deadEnemies;
     public boolean isCleared;
 
     public standardRoom(){
@@ -46,6 +47,14 @@ public class standardRoom extends Room{
     public void update() {
         if(this.enemiesInRoom.size() == 0){
             this.isCleared = true;
+        }
+        for(Enemy e : enemiesInRoom){
+            if(e.isDead()){
+                this.deadEnemies.add(e);
+            }
+        }
+        for(Enemy e : deadEnemies){
+            enemiesInRoom.remove(e);
         }
         for(Enemy e : enemiesInRoom){
             e.move();
