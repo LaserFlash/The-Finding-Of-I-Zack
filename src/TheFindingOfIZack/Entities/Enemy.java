@@ -21,11 +21,11 @@ public class Enemy extends Entity {
     public Enemy(Point location, Player p) {
         super(location);
         this.player = p;
-        int type = (int) Math.random()*5;
-        //int type = 4;
-        if (type>3) {this.behaviour = new MobEnemy("standard");}
-        else if (type>2) {this.behaviour = new MobEnemy("fast");}
-        else if (type>1) {this.behaviour = new MobEnemy("shooter");}
+        //int type = (int) Math.random()*5;
+        int type = 4;
+        if (type==4 || type==5) {this.behaviour = new MobEnemy("standard");}
+        else if (type==3) {this.behaviour = new MobEnemy("fast");}
+        else if (type==2) {this.behaviour = new MobEnemy("shooter");}
         else {this.behaviour = new MobEnemy("slow");}
         this.health = behaviour.getHealth();
     }
