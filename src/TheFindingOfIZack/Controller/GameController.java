@@ -112,19 +112,19 @@ public class GameController implements ActionListener, KeyListener {
                 break;
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_KP_LEFT:
-                this.game.shootLeft();
+                this.game.shootLeftTrue();
                 break;
             case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_KP_RIGHT:
-                this.game.shootRight();
+                this.game.shootRightTrue();
                 break;
             case KeyEvent.VK_UP:
             case KeyEvent.VK_KP_UP:
-                this.game.shootUp();
+                this.game.shootUpTrue();
                 break;
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_KP_DOWN:
-                this.game.shootDown();
+                this.game.shootDownTrue();
                 break;
         }
 
@@ -143,6 +143,22 @@ public class GameController implements ActionListener, KeyListener {
                 break;
             case KeyEvent.VK_D:
                 this.game.falseRight();
+                break;
+            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_KP_LEFT:
+                this.game.shootLeftFalse();
+                break;
+            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_KP_RIGHT:
+                this.game.shootRightFalse();
+                break;
+            case KeyEvent.VK_UP:
+            case KeyEvent.VK_KP_UP:
+                this.game.shootUpFalse();
+                break;
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_KP_DOWN:
+                this.game.shootDownFalse();
                 break;
         }
     }
