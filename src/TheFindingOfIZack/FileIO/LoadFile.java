@@ -29,46 +29,57 @@ public class LoadFile extends GameFile{
      */
     public Game execute() throws InvalidFileException{
         ObjectInputStream obIn = null;
-        Game g = null;
+        Game g;
         boolean isValidFile = openFile(parent);
         if (!isValidFile)
             return null;
         try {
             obIn = new ObjectInputStream(new FileInputStream(file));
         } catch (IOException e) {
-            e.printStackTrace();
+            fileError("Failed to execute: " + e.getLocalizedMessage());
+            throw new InvalidFileException("Failed to execute");
         }
 
-        if (obIn != null) {
-            g = readGame(obIn);
-            Player p = readPlayer(obIn);
-            Level l = readLevel(obIn);
-            Room r = readRoom(obIn);
-            try {
-                obIn.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            g = new Game(g, p, l, r);
-        } else
-            throw new InvalidFileException("Failed to Load");
+        if (obIn == null)
+            throw new InvalidFileException("Object Input is null");
+
+        g = readGame(obIn);
+        Player p = readPlayer(obIn);
+        Level l = readLevel(obIn);
+        Room r = readRoom(obIn);
+        try {
+            obIn.close();
+        } catch (IOException e) {
+            fileError("Failed to close object reader");
+            throw new InvalidFileException("Failed to close object reader");
+        }
+        g = new Game(g, p, l, r);
+
         return g;
     }
+
+    /**
+     * This method reads the Room object from an
+     * @param obIn object input stream
+     * @return the loaded Level
+     */
     public Room readRoom(ObjectInput obIn){
         Room r = null;
         try {
-            try {
-                r = (Room) obIn.readObject();
-            } catch (ClassNotFoundException e) {
-                fileError("Reading Level: " + e.getLocalizedMessage());
-            }
-
+            r = (Room) obIn.readObject();
+        } catch (ClassNotFoundException e) {
+            fileError("Reading Level: " + e.getLocalizedMessage());
         } catch (IOException e) {
             fileError("Reading Level: " + e.getLocalizedMessage());
         }
         return r;
     }
 
+    /**
+     * This method reads the Level object from an
+     * @param obIn object input stream
+     * @return the loaded Level
+     */
     public Level readLevel(ObjectInput obIn){
         Level l = null;
         try {
@@ -83,28 +94,12 @@ public class LoadFile extends GameFile{
         }
         return l;
     }
-    public void writePlayer(Game g, ObjectOutputStream obOut){
-        Player p = g.getPlayer();
 
-        try {
-            obOut.writeObject(p);
-            System.out.printf(" Player Serialized data is saved in " + file.getName() + EXTENSION + "\n");
-        }   catch(IOException i) {
-            fileError("Writing player" + i.getLocalizedMessage());
-        }
-    }
-
-    public Room writeRoom(Game g, ObjectOutputStream obOut){
-        Room r = g.getPlayer().getRoom();
-        try {
-            obOut.writeObject(r);
-            System.out.printf(" Room Serialized data is saved in " + file.getName() + EXTENSION + "\n");
-        }   catch(IOException i) {
-            fileError("Writing Room: " + i.getLocalizedMessage());
-        }
-        return r;
-    }
-
+    /**
+     * This method returns the Game object from an
+     * @param obIn object input stream
+     * @return the loaded Game
+     */
     public Game readGame(ObjectInput obIn){
         Game g = null;
         try {
@@ -120,6 +115,11 @@ public class LoadFile extends GameFile{
         return g;
     }
 
+    /**
+     * This method returns the Player object from an
+     * @param obIn object input stream
+     * @return the loaded Player
+     */
     public Player readPlayer(ObjectInput obIn){
         Player p = null;
         try {
@@ -139,7 +139,7 @@ public class LoadFile extends GameFile{
      *  and displays the valid file extensions
      *  @return true if valid, false otherwise
      */
-    public boolean openFile(JFrame parent) {
+    public boolean openFile(JFrame parent) throws InvalidFileException {
         JFileChooser chooser = new JFileChooser();
 
         // This method only accepts .txt or .zack file extensions
@@ -157,11 +157,17 @@ public class LoadFile extends GameFile{
             return true;
         }
         fileError("Invalid File chosen");
-        return false;
+        throw new InvalidFileException("No file chosen");
     }
 
-    // TODO: 9/26/17 Implement this
-    public Game getGame(){
+    /**
+     * This method returns the Game
+     * @return the Game if it exists or
+     * @throws InvalidFileException if the Game is null
+     */
+    public Game getGame() throws InvalidFileException{
+        if (this.game == null)
+            throw new InvalidFileException("Game is null");
         return game;
     }
 }

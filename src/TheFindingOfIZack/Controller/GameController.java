@@ -66,7 +66,11 @@ public class GameController implements ActionListener, KeyListener {
                 } catch (InvalidFileException e1) {
                     break; //No file was loaded successfully
                 }
-                this.game = loadedGame.getGame();
+                try {
+                    this.game = loadedGame.getGame();
+                } catch (InvalidFileException e1) {
+                    break; // No game was loaded successfully
+                }
                 this.view.newGame(game);
                 this.view.enableOtherButtons();
                 this.view.goToGameView();
