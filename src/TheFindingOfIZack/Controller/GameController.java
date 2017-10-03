@@ -80,7 +80,7 @@ public class GameController implements ActionListener, KeyListener {
                 try {
                     SaveFile saveGame = new SaveFile((Game) this.game);
                 } catch (InvalidFileException e1) {
-                    System.out.printf("Unsuccessful Save");
+                    System.out.printf("Unsuccessful Save\n");
                 }
                 break;
             }

@@ -4,7 +4,9 @@ import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Level;
+import TheFindingOfIZack.World.Rooms.Door;
 import TheFindingOfIZack.World.Rooms.Room;
+import TheFindingOfIZack.World.Rooms.standardRoom;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -54,6 +56,23 @@ public class SaveFile extends GameFile {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void writeDoors(Game g, ObjectOutputStream obOut) throws InvalidFileException {
+        Door doorNorth, doorEast, doorSouth, doorWest;
+        doorNorth = g.getPlayer().getRoom().getNorthDoor();
+        doorEast = g.getPlayer().getRoom().getEastDoor();
+        doorSouth = g.getPlayer().getRoom().getSouthDoor();
+        doorWest= g.getPlayer().getRoom().getWestDoor();
+        try {
+            obOut.writeObject(doorNorth);
+            obOut.writeObject(doorEast);
+            obOut.writeObject(doorSouth);
+            obOut.writeObject(doorWest);
+        } catch (IOException e) {
+            fileError("Writing doors" + e.getLocalizedMessage());
+            throw new InvalidFileException("Writing Doors");
         }
     }
 
