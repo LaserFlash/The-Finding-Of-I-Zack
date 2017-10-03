@@ -18,32 +18,28 @@ public class Mob {
      * @return new mob Point
      */
     public Point step(Point location, Point player){
-        double x = player.getX() - location.getX();
-        double y = player.getY() - location.getY();
-
-
-        //Todo Make the move a double so that the mobs will move in a straight line
-        //The code bellow will do this (it's all jittery at the moment)
-        //double h = Math.hypot(x,y);
-        /**double n = h/speed;
-        double newX = x/n;
-        double newY = y/n;*/
-
-        //**********Temp**************
-        double newX = x/speed;
-        double newY = y/speed;
-        //**********Temp**************
+        double newX = player.getX() - location.getX();
+        double newY = player.getY() - location.getY();
 
         if (newX<0 && newX<-speed){
             newX = -speed;
-        } else if(newX>0 && newX>speed){
+        }if(newX>0 && newX>speed){
             newX = speed;
-        }else if (newY<0 && newY<-speed){
+        }if (newY<0 && newY<-speed){
             newY = -speed;}
-        else if(newY>0 && newY>speed){
+        if(newY>0 && newY>speed){
             newY = speed;}
 
-        //System.out.println("x: " + (int)(newX+location.getX()) + " y: " + (int)(newY+location.getY()));//******************************************************************
+        //System.out.println("x1: " + (int)(newX) + " y1: " + (int)(newY));//******************************************************************
+
+        if(newX != 0 && newY != 0){
+            newX = newX/2;
+            newY = newY/2;
+        }
+
+
+
+        //System.out.println("x2: " + (int)(newX) + " y2: " + (int)(newY));//******************************************************************
 
 
         location.setLocation((int)(newX + location.getX()),(int)(newY + location.getY()));
