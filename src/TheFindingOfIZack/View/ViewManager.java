@@ -41,8 +41,6 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
 
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-
-
     }
 
     @Override

@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import static TheFindingOfIZack.Util.GameSize.RIGHT_WALL;
 
 
-public class standardRoom extends Room{
+public class standardRoom extends Room {
 
-    private ArrayList<Enemy> enemiesInRoom;
-    private ArrayList<Enemy> deadEnemies;
+    private transient ArrayList<Enemy> enemiesInRoom;
+    private transient ArrayList<Enemy> deadEnemies;
     public boolean isCleared;
 
     public standardRoom(){
@@ -22,8 +22,6 @@ public class standardRoom extends Room{
         this.enemiesInRoom = new ArrayList<Enemy>();
         this.deadEnemies = new ArrayList<Enemy>();
         this.isCleared = false;
-
-
     }
 
 
@@ -66,18 +64,22 @@ public class standardRoom extends Room{
 
 
         }
-        for(Enemy e : enemiesInRoom){
-            if(e.isDead()){
+        for (Enemy e : enemiesInRoom){
+            if (e.isDead()){
                 this.deadEnemies.add(e);
             }
         }
-        for(Enemy e : deadEnemies){
+        for (Enemy e :deadEnemies){
             enemiesInRoom.remove(e);
         }
-        for(Enemy e : enemiesInRoom){
+        for (Enemy e : enemiesInRoom){
             e.move();
         }
 
+    }
+
+    public ArrayList<Enemy> getEnemies(){
+        return this.enemiesInRoom;
     }
 
     public void draw(Graphics g){
@@ -85,10 +87,6 @@ public class standardRoom extends Room{
         for(Enemy e : enemiesInRoom){
             e.draw(g);
         }
-    }
-
-    public ArrayList<Enemy> getEnemies(){
-        return this.enemiesInRoom;
     }
 
 
