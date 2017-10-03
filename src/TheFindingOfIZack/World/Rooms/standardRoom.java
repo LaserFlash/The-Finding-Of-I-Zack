@@ -19,6 +19,7 @@ public class standardRoom extends Room {
     public standardRoom(){
         super();
         this.enemiesInRoom = new ArrayList<Enemy>();
+        this.deadEnemies = new ArrayList<Enemy>();
         this.isCleared = false;
 
 
