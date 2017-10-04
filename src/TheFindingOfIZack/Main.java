@@ -17,8 +17,6 @@ public class Main {
         game.addObserver(view);
 
         GameController controller = new GameController(view,game);
-
-        view.addControllerForButtons(controller);
         controller.showGUI();
 
     }

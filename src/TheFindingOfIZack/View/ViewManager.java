@@ -15,7 +15,7 @@ import java.util.Observable;
  * Manage the view for the game.
  * Handles what needs to be drawn and the GUI
  */
-public class ViewManager extends JFrame implements View, java.util.Observer {
+public class ViewManager extends View {
 
     private Model model;
 

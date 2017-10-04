@@ -2,18 +2,24 @@ package TheFindingOfIZack.View;
 
 import TheFindingOfIZack.World.Model;
 
+import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.util.Observer;
 
-public interface View {
-    void showGUI();
+public abstract class View extends JFrame implements Observer {
 
-    void addControllerForButtons(ActionListener controller);
+    public View(String name){
+        super(name);
+    }
+    public abstract void showGUI();
 
-    void goToGameView();
+    public abstract void addControllerForButtons(ActionListener controller);
 
-    void goToMenuView();
+    public abstract void goToGameView();
 
-    void newGame(Model model);
+    public abstract void goToMenuView();
 
-    void enableOtherButtons();
+    public abstract void newGame(Model model);
+
+    public abstract void enableOtherButtons();
 }
