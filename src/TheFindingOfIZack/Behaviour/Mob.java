@@ -1,6 +1,6 @@
 package TheFindingOfIZack.Behaviour;
 
-import java.awt.*;
+import TheFindingOfIZack.Entities.Point;
 
 /**
  * Created by gordontheo on 27/09/17.
@@ -18,27 +18,28 @@ public class Mob {
      * @return new mob Point
      */
     public Point step(Point location, Point player){
-        double newX = player.getX() - location.getX();
-        double newY = player.getY() - location.getY();
+        double changeX = (player.getX() - location.getX());
+        double changeY = (player.getY() - location.getY());
+        double newX = 0;
+        double newY = 0;
+        int Xneg = 1;
+        int Yneg = 1;
 
-        if (newX<0 && newX<-speed){
+        if (changeX<0 && changeX<-speed){
             newX = -speed;
-        }if(newX>0 && newX>speed){
+            Xneg = -1;
+        }if(changeX>0 && changeX>speed){
             newX = speed;
-        }if (newY<0 && newY<-speed){
-            newY = -speed;}
-        if(newY>0 && newY>speed){
+        }if (changeY<0 && changeY<-speed){
+            newY = -speed;
+            Yneg = -1;
+        }if(changeY>0 && changeY>speed){
             newY = speed;}
 
-        //System.out.println("x1: " + (int)(newX) + " y1: " + (int)(newY));//******************************************************************
-
-        if(newX != 0 && newY != 0){
-            newX = newX/2;
-            newY = newY/2;
+        if(newX < -0.5 && newX > 0.5 && newY < -0.5 && newY > 0.5){
+            newX = (Math.sqrt((speed^2)/2))*Xneg;
+            newY = (Math.sqrt((speed^2)/2))*Yneg;
         }
-
-        //System.out.println("x2: " + (int)(newX) + " y2: " + (int)(newY));//******************************************************************
-
 
         location.setLocation((int)(newX + location.getX()),(int)(newY + location.getY()));
 
