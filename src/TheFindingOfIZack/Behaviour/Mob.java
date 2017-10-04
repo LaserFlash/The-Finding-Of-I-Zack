@@ -18,35 +18,30 @@ public class Mob {
      * @return new mob Point
      */
     public Point step(Point location, Point player){
-        int newX = (int)(player.getX() - location.getX());
-        int newY = (int)(player.getY() - location.getY());
+        double changeX = (player.getX() - location.getX());
+        double changeY = (player.getY() - location.getY());
+        double newX = 0;
+        double newY = 0;
+        int Xneg = 1;
+        int Yneg = 1;
 
-        if (newX<0 && newX<-speed){
+        if (changeX<0 && changeX<-speed){
             newX = -speed;
-        }if(newX>0 && newX>speed){
+            Xneg = -1;
+        }if(changeX>0 && changeX>speed){
             newX = speed;
-        }if (newY<0 && newY<-speed){
-            newY = -speed;}
-        if(newY>0 && newY>speed){
+        }if (changeY<0 && changeY<-speed){
+            newY = -speed;
+            Yneg = -1;
+        }if(changeY>0 && changeY>speed){
             newY = speed;}
 
-        //System.out.println("x1: " + newX + " y1: " + newY);//******************************************************************
-
-        if(newX != 0 && newY != 0){
-            /**
-             *Todo make the mob movement doubles so that these proper methods work well
-             *newX = (int)(Math.sqrt((speed^2)/2));
-             *System.out.println("New X post maths: " + Math.sqrt((speed^2)/2));//****************************************************
-             *newY = (int)(Math.sqrt((speed^2)/2));
-             * */
-            newX = newX/2;
-            newY = newY/2;
+        if(newX < -0.5 && newX > 0.5 && newY < -0.5 && newY > 0.5){
+            newX = (Math.sqrt((speed^2)/2))*Xneg;
+            newY = (Math.sqrt((speed^2)/2))*Yneg;
         }
 
-        //System.out.println("x2: " + newX + " y2: " + newY);//******************************************************************
-
-
-        location.setLocation((newX + location.getX()),(newY + location.getY()));
+        location.setLocation((int)(newX + location.getX()),(int)(newY + location.getY()));
 
         return location;
     }
