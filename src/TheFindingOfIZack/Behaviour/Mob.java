@@ -58,6 +58,8 @@ public class Mob {
         return damage;
     }
 
+    public int getSpeed() { return speed; }
+
     /**
      * To be used for different mob fields of view
      * @param a first Point
