@@ -5,7 +5,7 @@ import TheFindingOfIZack.FileIO.LoadFile;
 import TheFindingOfIZack.FileIO.SaveFile;
 import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.Util.CreateGameModel;
-import TheFindingOfIZack.View.ViewManager;
+import TheFindingOfIZack.View.View;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Model;
 
@@ -19,7 +19,7 @@ import java.awt.event.KeyListener;
  */
 public class GameController implements ActionListener, KeyListener {
 
-    private ViewManager view;
+    private View view;
     private Model game;
 
     /**
@@ -28,10 +28,11 @@ public class GameController implements ActionListener, KeyListener {
      * @param view  game view
      * @param game  game model
      */
-    public GameController(ViewManager view, Game game){
+    public GameController(View view, Model game){
         this.view = view;
         this.game = game;
         view.addKeyListener(this);
+        view.addControllerForButtons(this);
     }
 
     /**
@@ -102,67 +103,50 @@ public class GameController implements ActionListener, KeyListener {
                 this.game.pauseGame();
                 this.view.goToMenuView();
                 break;
-            case KeyEvent.VK_W:
-                this.game.trueUp();
-                break;
-            case KeyEvent.VK_S:
-                this.game.trueDown();
-                break;
-            case KeyEvent.VK_A:
-                this.game.trueLeft();
-                break;
-            case KeyEvent.VK_D:
-                this.game.trueRight();
-                break;
-            case KeyEvent.VK_LEFT:
-            case KeyEvent.VK_KP_LEFT:
-                this.game.shootLeftTrue();
-                break;
-            case KeyEvent.VK_RIGHT:
-            case KeyEvent.VK_KP_RIGHT:
-                this.game.shootRightTrue();
-                break;
-            case KeyEvent.VK_UP:
-            case KeyEvent.VK_KP_UP:
-                this.game.shootUpTrue();
-                break;
-            case KeyEvent.VK_DOWN:
-            case KeyEvent.VK_KP_DOWN:
-                this.game.shootDownTrue();
-                break;
         }
+
+        checkPlayerActions(e,true);
 
     }
     @Override
     public void keyReleased(KeyEvent e) {
+        checkPlayerActions(e,false);
+    }
+
+    /**
+     * Call methods on model when player controls are used
+     * @param e The key that was pressed
+     * @param b boolean stating if key is stopping or starting action
+     */
+    private void checkPlayerActions(KeyEvent e,boolean b){
         switch (e.getKeyCode()){
             case KeyEvent.VK_W:
-                this.game.falseUp();
+                this.game.moveUp(b);
                 break;
             case KeyEvent.VK_S:
-                this.game.falseDown();
+                this.game.moveDown(b);
                 break;
             case KeyEvent.VK_A:
-                this.game.falseLeft();
+                this.game.moveLeft(b);
                 break;
             case KeyEvent.VK_D:
-                this.game.falseRight();
+                this.game.moveRight(b);
                 break;
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_KP_LEFT:
-                this.game.shootLeftFalse();
+                this.game.shootLeft(b);
                 break;
             case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_KP_RIGHT:
-                this.game.shootRightFalse();
+                this.game.shootRight(b);
                 break;
             case KeyEvent.VK_UP:
             case KeyEvent.VK_KP_UP:
-                this.game.shootUpFalse();
+                this.game.shootUp(b);
                 break;
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_KP_DOWN:
-                this.game.shootDownFalse();
+                this.game.shootDown(b);
                 break;
         }
     }

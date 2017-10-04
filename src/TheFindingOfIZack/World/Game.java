@@ -77,9 +77,7 @@ public class Game extends Observable implements Model,Savable{
         runGameLoop();
     }
 
-    /**
-     * resumes the logic of a game loaded from a file
-     */
+    @Override
     public void resumeGame(){
 
     }
@@ -102,147 +100,126 @@ public class Game extends Observable implements Model,Savable{
         return this.player;
     }
 
-    public void moveUp() {
+    /**
+     * Move the player Up and trigger update of view
+     */
+    private void moveUp() {
 
         player.moveUp();
         drawGame();
     }
 
-
-    public void moveDown() {
+    /**
+     * Move the player down and trigger update of view
+     */
+    private void moveDown() {
     player.moveDown();
         drawGame();
     }
 
-    public void moveRight() {
+    /**
+     * Move the player right and trigger update of view
+     */
+    private void moveRight() {
     player.moveRight();
         drawGame();
     }
 
-    public void moveLeft() {
+    /**
+     * Move the player left and trigger update of view
+     */
+    private void moveLeft() {
     player.moveLeft();
         drawGame();
     }
 
     @Override
-    public void trueUp() {
-       this.north = true;
+    public void moveUp(boolean b) {
+       this.north = b;
 
     }
     @Override
-    public void trueRight() {
-        this.east = true;
+    public void moveRight(boolean b) {
+        this.east = b;
 
     }
     @Override
-    public void trueDown() {
-        this.south = true;
+    public void moveDown(boolean b) {
+        this.south = b;
 
     }
     @Override
-    public void trueLeft() {
-        this.west = true;
+    public void moveLeft(boolean b) {
+        this.west = b;
 
     }
 
-    @Override
-    public void falseUp() {
-        this.north = false;
-
-    }
-    @Override
-    public void falseRight() {
-        this.east = false;
-
-    }
-    @Override
-    public void falseDown() {
-        this.south = false;
-
-    }
 
     @Override
-    public void shootLeftTrue() {
-        this.shootwest = true;
+    public void shootLeft(boolean b) {
+        this.shootwest = b;
         this.shootnorth = false;
         this.shooteast = false;
         this.shootsouth = false;
     }
 
     @Override
-    public void shootLeftFalse() {
+    public void shootUp(boolean b) {
         this.shootwest = false;
-    }
-
-    @Override
-    public void shootUpTrue() {
-        this.shootwest = false;
-        this.shootnorth = true;
+        this.shootnorth = b;
         this.shooteast = false;
         this.shootsouth = false;
     }
 
     @Override
-    public void shootUpFalse() {
-        this.shootnorth = false;
-    }
-
-    @Override
-    public void shootRightTrue() {
+    public void shootRight(boolean b) {
         this.shootwest = false;
         this.shootnorth = false;
-        this.shooteast = true;
-        this.shootsouth = false;
-    }
-
-    @Override
-    public void shootRightFalse() {
-        this.shooteast = false;
-    }
-
-    @Override
-    public void shootDownTrue() {
-        this.shootwest = false;
-        this.shootnorth = false;
-        this.shooteast = false;
-        this.shootsouth = true;
-    }
-
-    @Override
-    public void shootDownFalse() {
+        this.shooteast = b;
         this.shootsouth = false;
     }
 
 
     @Override
-    public void shootLeft() {
+    public void shootDown(boolean b) {
+        this.shootwest = false;
+        this.shootnorth = false;
+        this.shooteast = false;
+        this.shootsouth = b;
+    }
+
+    /**
+     * Start or stop shooting in the left direction
+     */
+    private void shootLeft() {
         player.shootLeft();
         drawGame();
     }
 
-    @Override
-    public void shootRight() {
+    /**
+     * Start or stop shooting in the right direction
+     */
+    private void shootRight() {
         player.shootRight();
         drawGame();
     }
 
-    @Override
-    public void shootUp() {
+    /**
+     * Start or stop shooting in the up direction
+     */
+    private void shootUp() {
         player.shootUp();
         drawGame();
     }
 
-    @Override
-    public void shootDown() {
+    /**
+     * Start or stop shooting in the down direction
+     */
+    private void shootDown() {
         player.shootDown();
         drawGame();
     }
 
-    @Override
-    public void falseLeft() {
-        this.west = false;
-
-    }
 
 
 

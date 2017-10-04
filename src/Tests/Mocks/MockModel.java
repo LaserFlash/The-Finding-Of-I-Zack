@@ -46,102 +46,43 @@ public class MockModel implements Model {
     }
 
     @Override
-    public void trueRight() {
+    public void moveUp(boolean b) {
 
     }
 
     @Override
-    public void trueLeft() {
+    public void moveDown(boolean b) {
 
     }
 
     @Override
-    public void trueUp() {
+    public void moveLeft(boolean b) {
 
     }
 
     @Override
-    public void trueDown() {
+    public void moveRight(boolean b) {
 
     }
 
     @Override
-    public void falseRight() {
+    public void shootLeft(boolean b) {
 
     }
 
     @Override
-    public void falseLeft() {
+    public void shootRight(boolean b) {
 
     }
 
     @Override
-    public void falseUp() {
+    public void shootUp(boolean b) {
 
     }
 
     @Override
-    public void falseDown() {
+    public void shootDown(boolean b) {
 
     }
 
-    @Override
-    public void shootLeftTrue() {
-
-    }
-
-    @Override
-    public void shootLeftFalse() {
-
-    }
-
-    @Override
-    public void shootUpTrue() {
-
-    }
-
-    @Override
-    public void shootUpFalse() {
-
-    }
-
-    @Override
-    public void shootRightTrue() {
-
-    }
-
-    @Override
-    public void shootRightFalse() {
-
-    }
-
-    @Override
-    public void shootDownTrue() {
-
-    }
-
-    @Override
-    public void shootDownFalse() {
-
-    }
-
-    @Override
-    public void shootLeft() {
-
-    }
-
-    @Override
-    public void shootRight() {
-
-    }
-
-    @Override
-    public void shootUp() {
-
-    }
-
-    @Override
-    public void shootDown() {
-
-    }
 }

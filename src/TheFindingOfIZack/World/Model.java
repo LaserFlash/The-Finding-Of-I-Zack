@@ -8,30 +8,13 @@ public interface Model {
     void resumeGame();
     void pauseGame();
 
-    void trueRight();
-    void trueLeft();
-    void trueUp();
-    void trueDown();
-    void falseRight();
-    void falseLeft();
-    void falseUp();
-    void falseDown();
+    void moveUp(boolean b);
+    void moveDown(boolean b);
+    void moveLeft(boolean b);
+    void moveRight(boolean b);
 
-
-    void shootLeftTrue();
-    void shootLeftFalse();
-
-    void shootUpTrue();
-    void shootUpFalse();
-
-    void shootRightTrue();
-    void shootRightFalse();
-
-    void shootDownTrue();
-    void shootDownFalse();
-
-    void shootLeft();
-    void shootRight();
-    void shootUp();
-    void shootDown();
+    void shootLeft(boolean b);
+    void shootRight(boolean b);
+    void shootUp(boolean b);
+    void shootDown(boolean b);
 }
