@@ -6,7 +6,7 @@ import TheFindingOfIZack.Entities.Point;
  * Created by gordontheo on 27/09/17.
  */
 public class Mob {
-    protected int speed;
+    protected double speed;
     protected int viewRange;
     protected int health;
     protected int damage;
@@ -44,7 +44,7 @@ public class Mob {
         return damage;
     }
 
-    public int getSpeed() { return speed; }
+    public double getSpeed() { return speed; }
 
     /**
      * To be used for different mob fields of view

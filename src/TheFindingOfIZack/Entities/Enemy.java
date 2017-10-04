@@ -21,7 +21,8 @@ public class Enemy extends Entity {
     public Enemy(Point location, Player p) {
         super(location);
         this.player = p;
-        int type = (int) (Math.random()*6);
+        //int type = (int) (Math.random()*6);
+        int type = 2;
         System.out.println("Type = " + type);//*****************************************************************
         if (type>3) {this.behaviour = new MobEnemy("standard");}
         else if (type==3) {this.behaviour = new MobEnemy("fast");}
@@ -51,7 +52,7 @@ public class Enemy extends Entity {
      */
     public void move() {
         Point playerPoint = player.getLocation();
-        Point potentialStep = behaviour.step(location, playerPoint);
+        Point potentialStep = this.behaviour.step(location, playerPoint);
         //potentialStep represents the move which will take place is there is no obstacle,
         // also checks if mob is currently touching player
         if(canMove(potentialStep) && !collision(location,playerPoint)) {

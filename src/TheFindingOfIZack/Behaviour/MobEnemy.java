@@ -43,7 +43,7 @@ public class MobEnemy {
         return mob.getDamage();
     }
 
-    public int getSpeed() {return mob.getHealth();}
+    public double getSpeed() {return mob.getSpeed();}
 
     /**
      * Throws an error if an invalid mobType is called

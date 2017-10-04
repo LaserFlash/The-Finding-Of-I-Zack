@@ -7,9 +7,11 @@ import TheFindingOfIZack.Entities.Point;
  * Created by gordontheo on 29/09/17.
  */
 public class MobShooter extends Mob{
+    private int stopDistance = 200;
+
     public MobShooter(){
-        this.viewRange = 200;
-        this.speed = 1;
+        this.viewRange = 600;
+        this.speed = 4.5;
         this.health = 50;
         this.damage = 0;
     }
@@ -22,31 +24,23 @@ public class MobShooter extends Mob{
      * @return new mob Point
      */
     public Point step(Point location, Point player){
-        int stopDistance = 40;
-        double newX = location.getX();
-        double newY = location.getY();
-
         double range = distanceBetween(location,player);
-        if (range < viewRange && range > stopDistance){
-            if(player.getX() > location.getX()){
-                newX += speed;}
-            if(player.getY() > location.getY()){
-                newY += speed;}
-            if(player.getX() < location.getX()){
-                newX -= speed;}
-            if(player.getY() < location.getY()){
-                newY -= speed;}
-        }
-        location.move((int)newX,(int)newY);
+        if (range < viewRange && range > stopDistance+10 || range < stopDistance) {
+            double changeX = (player.getX() - location.getX());
+            double changeY = (player.getY() - location.getY());
 
-        //Controls random shooting
-        if(range < viewRange){
-            int shootChance = (int) Math.random()*3;
-            if(shootChance < 2){
-                MobProjectile shot = new MobProjectile(location);
+            double h = Math.hypot(changeX, changeY);
+            double a = h / speed;
+            double newX = changeX / a;
+            double newY = changeY / a;
+
+            if(range < stopDistance){
+                newX = -newX;
+                newY = -newY;
             }
-        }
 
+            location.setLocation((newX + location.getX()), (newY + location.getY()));
+        }
         return location;
     }
 
