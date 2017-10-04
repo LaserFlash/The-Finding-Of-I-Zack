@@ -3,12 +3,11 @@ package TheFindingOfIZack.World.Rooms;
 
 import TheFindingOfIZack.Entities.Enemy;
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Util.GameSize;
 
 import java.awt.*;
 import java.util.ArrayList;
-
-import static TheFindingOfIZack.Util.GameSize.RIGHT_WALL;
 
 
 public class standardRoom extends Room{

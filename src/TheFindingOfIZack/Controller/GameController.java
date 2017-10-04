@@ -9,6 +9,7 @@ import TheFindingOfIZack.View.View;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Model;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -46,17 +47,27 @@ public class GameController implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
             case "exitGame": {
-                this.view.dispose();
+                if(JOptionPane.showConfirmDialog(new JFrame(),"Are you sure you want to leave?",
+                        "Leaving :(", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                {
+                    this.view.dispose();
+                }
+
                 break;
             }
             case "newGame": {
-                this.game = CreateGameModel.newGame(this.view);
-                this.game.beginNewGame();
-                this.game.pauseGame();
-                this.view.newGame(game);
-                this.view.enableOtherButtons();
-                this.view.goToGameView();
-                this.game.resumeGame();
+                if(JOptionPane.showConfirmDialog(new JFrame(),"Create a new Game",
+                        "NewGame", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                {
+                    this.game = CreateGameModel.newGame(this.view);
+                    this.game.beginNewGame();
+                    this.game.pauseGame();
+                    this.view.newGame(game);
+                    this.view.enableOtherButtons();
+                    this.view.goToGameView();
+                    this.game.resumeGame();
+                }
+
                 break;
             }
             case "loadGame":{
@@ -64,13 +75,11 @@ public class GameController implements ActionListener, KeyListener {
                 LoadFile loadedGame = null;
                 try {
                     loadedGame = new LoadFile();
-                } catch (InvalidFileException e1) {
-                    break; //No file was loaded successfully
-                }
-                try {
                     this.game = loadedGame.getGame();
                 } catch (InvalidFileException e1) {
-                    break; // No game was loaded successfully
+                    JFrame frame = new JFrame();
+                    JOptionPane.showMessageDialog(frame, "Loading Failed");
+                    break; //No file was loaded successfully
                 }
                 this.view.newGame(game);
                 this.view.enableOtherButtons();
@@ -81,7 +90,8 @@ public class GameController implements ActionListener, KeyListener {
                 try {
                     SaveFile saveGame = new SaveFile((Game) this.game);
                 } catch (InvalidFileException e1) {
-                    System.out.printf("Unsuccessful Save\n");
+                    JFrame frame = new JFrame();
+                    JOptionPane.showMessageDialog(frame, "Saving Failed");
                 }
                 break;
             }
@@ -120,6 +130,7 @@ public class GameController implements ActionListener, KeyListener {
      */
     private void checkPlayerActions(KeyEvent e,boolean b){
         switch (e.getKeyCode()){
+            /* Player movement controls */
             case KeyEvent.VK_W:
                 this.game.moveUp(b);
                 break;
@@ -132,6 +143,8 @@ public class GameController implements ActionListener, KeyListener {
             case KeyEvent.VK_D:
                 this.game.moveRight(b);
                 break;
+
+            /* Shooting controls */
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_KP_LEFT:
                 this.game.shootLeft(b);

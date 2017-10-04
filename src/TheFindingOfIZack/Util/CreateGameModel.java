@@ -1,12 +1,10 @@
 package TheFindingOfIZack.Util;
 
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.View.View;
-import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Model;
-
-import java.awt.*;
 
 public class CreateGameModel {
 

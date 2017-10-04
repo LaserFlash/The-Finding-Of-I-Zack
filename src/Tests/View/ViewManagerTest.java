@@ -12,20 +12,20 @@ import javax.swing.*;
 public class ViewManagerTest {
 
 
-    @Test
     /**
      * Check that the view correctly displays the start screen menu
      */
+    @Test
     public void testMenuDisplay() throws InterruptedException {
 
         MockModel m = new MockModel();
         killIn3Sec(m);
     }
 
-    @Test
     /**
      * Check the game game be displayed and then returned to the start menu screen
      */
+    @Test
     public void testGameDisplayToggle() throws InterruptedException {
         MockModel m = new MockModel();
         SwingUtilities.invokeLater(()->{
@@ -38,13 +38,13 @@ public class ViewManagerTest {
         Thread.sleep(4000);
     }
 
-    @Test
     /**
      * Check that the initial disabled buttons become enabled
      * Disabled buttons are:
      *      Save
      *      Resume
      */
+    @Test
     public void testActivateOtherButtons() throws InterruptedException {
         MockModel m = new MockModel();
         SwingUtilities.invokeLater(()->{
@@ -61,7 +61,7 @@ public class ViewManagerTest {
      * @param mock
      * @throws InterruptedException
      */
-    void killIn3Sec(Model mock) throws InterruptedException {
+    private void killIn3Sec(Model mock) throws InterruptedException {
         SwingUtilities.invokeLater(()->{
             ViewManager v = new ViewManager(mock);
             v.showGUI();
