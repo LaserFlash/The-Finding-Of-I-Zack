@@ -8,7 +8,7 @@ import TheFindingOfIZack.Entities.Point;
  */
 public class MobShooter extends Mob{
     public MobShooter(){
-        this.viewRange = 100;
+        this.viewRange = 200;
         this.speed = 1;
         this.health = 50;
         this.damage = 0;
