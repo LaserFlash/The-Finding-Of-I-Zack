@@ -1,11 +1,13 @@
 package TheFindingOfIZack.Entities;
 
+import TheFindingOfIZack.FileIO.Util.Savable;
+
 import java.awt.*;
 
 /**
  * Created by allanbenj1 on 29/09/17.
  */
-public class Rock extends Entity{
+public class Rock extends Entity implements Savable {
 
     int health = 1000;
 

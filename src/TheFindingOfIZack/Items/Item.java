@@ -1,4 +1,5 @@
 package TheFindingOfIZack.Items;
+import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.View.Drawable;
 import javafx.geometry.BoundingBox;
 import TheFindingOfIZack.Util.GameSize;
@@ -12,14 +13,24 @@ import java.awt.*;
 public abstract class Item implements Drawable{
 
     protected Point location;
-    private String type;
-    private BoundingBox box;
-    private int width = 20;
+    protected String type;
+    protected BoundingBox box;
+    protected int width = 20;
+    protected boolean collected = false;
 
-    public Item(String type) {
+    protected Player player;
+
+    public Item(String type, Player p) {
         this.type = type;
         location = new Point((GameSize.WINDOW_WIDTH/2)-(width/2), (GameSize.GAME_HEIGHT/2)-(width/2));
         box = new BoundingBox(location.getX(), location.getY(), width, width);
+        this.player = p;
     }
+
+    public boolean isCollected() {
+        return collected;
+    }
+
+
 
 }

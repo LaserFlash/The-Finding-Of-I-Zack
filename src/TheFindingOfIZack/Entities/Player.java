@@ -65,6 +65,11 @@ public class Player extends Entity implements Savable {
         popProjectiles();
     }
 
+    public void damage(int damage) {
+        this.health -= (damage-armour);
+        if (armour > 0) {armour--;}
+    }
+
     public void popProjectiles() {
         ArrayList<Projectile> temp = new ArrayList<Projectile>();
         for (Projectile p : projectiles) {
@@ -240,8 +245,9 @@ public class Player extends Entity implements Savable {
         return this.health;
     }
 
-    public void damage(int damage) {
-        this.health -= damage;
+    public void heal(int potion) {
+        if (health+potion > MAX_HEALTH) {health = MAX_HEALTH;}
+        else {this.health += potion;}
     }
 
     public void setRoom(Room room) {
@@ -270,6 +276,17 @@ public class Player extends Entity implements Savable {
 
     public int getArmour() {
         return armour;
+    }
+
+    public void addArmour(int amount) {
+        if (armour+amount > MAX_ARMOUR) {armour = MAX_ARMOUR;}
+        else {this.armour += amount;}
+    }
+
+    public void weaponUpgrade() {
+        damage += 5;
+        if (firerate-3 < MIN_FIRERATE) {firerate = MIN_FIRERATE;}
+        else {firerate -= 3;}
     }
 
     public ArrayList<Projectile> getProjecctiles() {

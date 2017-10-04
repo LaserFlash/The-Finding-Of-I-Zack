@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import java.awt.*;
 
-import static junit.framework.TestCase.assertFalse;
 import TheFindingOfIZack.Entities.Point;
 import org.junit.Test;
 

@@ -1,5 +1,7 @@
 package TheFindingOfIZack.Items;
 
+import TheFindingOfIZack.Entities.Player;
+
 import java.awt.*;
 
 /**
@@ -7,12 +9,21 @@ import java.awt.*;
  */
 public class Key extends Item {
 
-    public Key() {
-        super("key");
+    public Key(Player p) {
+        super("key", p);
     }
 
     @Override
     public void draw(Graphics g) {
 
     }
+
+    public void update() {
+        if (box.intersects(player.getLocation().getX(), player.getLocation().getY(), player.width, player.width)) {
+            collected = true;
+            player.addKey();
+        }
+    }
+
+
 }
