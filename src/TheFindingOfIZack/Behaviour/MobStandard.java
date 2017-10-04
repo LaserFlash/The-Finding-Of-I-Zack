@@ -12,4 +12,10 @@ public class MobStandard extends Mob {
         this.health = 50;
         this.damage = 10;
     }
+
+    @Override
+    public String toString() {
+        String string = "A standard mob Damage = " + this.damage + " health = " + this.health + " speed = " + this.speed;
+        return string;
+    }
 }

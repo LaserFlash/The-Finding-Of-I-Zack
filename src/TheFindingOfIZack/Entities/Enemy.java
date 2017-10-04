@@ -40,7 +40,7 @@ public class Enemy extends Entity {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.RED);
-        g.fillRect(location.x, location.y, width, width);
+        g.fillRect((int)location.getX(), (int)location.getY(), width, width);
         super.draw(g);
     }
 

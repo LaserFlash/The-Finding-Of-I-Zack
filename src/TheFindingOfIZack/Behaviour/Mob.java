@@ -1,6 +1,6 @@
 package TheFindingOfIZack.Behaviour;
 
-import java.awt.*;
+import TheFindingOfIZack.Entities.Point;
 
 /**
  * Created by gordontheo on 27/09/17.

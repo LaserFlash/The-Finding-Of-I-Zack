@@ -1,6 +1,7 @@
 package TheFindingOfIZack.Behaviour;
 
-import java.awt.*;
+
+import TheFindingOfIZack.Entities.Point;
 
 /**
  * Created by gordontheo on 29/09/17.
@@ -47,5 +48,11 @@ public class MobShooter extends Mob{
         }
 
         return location;
+    }
+
+    @Override
+    public String toString() {
+        String string = "A shooting mob Damage = " + this.damage + " health = " + this.health + " speed = " + this.speed;
+        return string;
     }
 }

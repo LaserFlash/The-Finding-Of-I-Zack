@@ -1,12 +1,9 @@
 package Tests.Mocks;
 
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.World.Model;
-import TheFindingOfIZack.World.Rooms.Door;
 import TheFindingOfIZack.World.Rooms.Room;
-import TheFindingOfIZack.World.Rooms.standardRoom;
-
-import java.awt.*;
 
 public class MockModel implements Model {
     private Player p = new Player(new Point(20,20));

@@ -10,4 +10,10 @@ public class MobFast extends Mob {
         this.health = 20;
         this.damage = 5;
     }
+
+    @Override
+    public String toString() {
+        String string = "A fast mob. Damage = " + this.damage + " health = " + this.health + " speed = " + this.speed;
+        return string;
+    }
 }
