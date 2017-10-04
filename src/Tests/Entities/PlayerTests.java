@@ -1,9 +1,8 @@
 package Tests.Entities;
 
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.Point;
 import org.junit.Test;
-
-import java.awt.*;
 
 import static org.junit.Assert.assertTrue;
 

@@ -8,8 +8,14 @@ package TheFindingOfIZack.Behaviour;
 public class MobSlow extends Mob {
     MobSlow(){
         this.viewRange = 200;
-        this.speed = 2;
+        this.speed = 4;
         this.health = 100;
         this.damage = 20;
+    }
+
+    @Override
+    public String toString() {
+        String string = "A slow mob Damage = " + this.damage + " health = " + this.health + " speed = " + this.speed;
+        return string;
     }
 }
