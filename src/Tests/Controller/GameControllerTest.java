@@ -5,9 +5,7 @@ import Tests.Mocks.MockView;
 import TheFindingOfIZack.Controller.GameController;
 import org.junit.Test;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
