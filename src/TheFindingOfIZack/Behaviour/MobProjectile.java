@@ -1,7 +1,7 @@
 package TheFindingOfIZack.Behaviour;
 
 import TheFindingOfIZack.View.Drawable;
-
+import TheFindingOfIZack.Entities.Point;
 import java.awt.*;
 
 /**

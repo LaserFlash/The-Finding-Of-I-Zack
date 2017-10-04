@@ -8,8 +8,14 @@ package TheFindingOfIZack.Behaviour;
 public class MobStandard extends Mob {
     MobStandard(){
         this.viewRange = 50;
-        this.speed = 4;
+        this.speed = 2;
         this.health = 50;
         this.damage = 10;
+    }
+
+    @Override
+    public String toString() {
+        String string = "A standard mob Damage = " + this.damage + " health = " + this.health + " speed = " + this.speed;
+        return string;
     }
 }

@@ -1,15 +1,95 @@
 package Tests.Mocks;
 
+import TheFindingOfIZack.Entities.AbstractPlayer;
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.World.Model;
-import TheFindingOfIZack.World.Rooms.Door;
 import TheFindingOfIZack.World.Rooms.Room;
-import TheFindingOfIZack.World.Rooms.standardRoom;
 
-import java.awt.*;
 
 public class MockModel implements Model {
-    private Player p = new Player(new Point(20,20));
+    private AbstractPlayer p = new AbstractPlayer(new Point(20, 20)) {
+
+        private Room r;
+        @Override
+        public void moveSouth() {
+
+        }
+
+        @Override
+        public void moveNorth() {
+
+        }
+
+        @Override
+        public void moveEast() {
+
+        }
+
+        @Override
+        public void moveWest() {
+
+        }
+
+        @Override
+        public void shootUp() {
+
+        }
+
+        @Override
+        public void shootDown() {
+
+        }
+
+        @Override
+        public void shootLeft() {
+
+        }
+
+        @Override
+        public void shootRight() {
+
+        }
+
+        @Override
+        public Room getRoom() {
+            return r;
+        }
+
+        @Override
+        public void setRoom(Room r) {
+           this.r = r;
+        }
+
+        @Override
+        public int getMaxHealth() {
+            return 0;
+        }
+
+        @Override
+        public int getHealth() {
+            return 0;
+        }
+
+        @Override
+        public int getArmour() {
+            return 0;
+        }
+
+        @Override
+        public int getMaxArmour() {
+            return 0;
+        }
+    };
+
+    public boolean sLeft = false;
+    public boolean sRight = false;
+    public boolean sDown = false;
+    public boolean sUp = false;
+    public boolean mLeft = false;
+    public boolean mUp = false;
+    public boolean mDown = false;
+    public boolean mRight = false;
 
     public MockModel(){
         p.setRoom(new Room() {
@@ -31,7 +111,7 @@ public class MockModel implements Model {
     }
 
     @Override
-    public Player getPlayer() {
+    public AbstractPlayer getPlayer() {
         return p;
     }
 
@@ -46,102 +126,42 @@ public class MockModel implements Model {
     }
 
     @Override
-    public void trueRight() {
-
+    public void moveUp(boolean b) {
+        mUp = b;
     }
 
     @Override
-    public void trueLeft() {
-
+    public void moveDown(boolean b) {
+        mDown = b;
     }
 
     @Override
-    public void trueUp() {
-
+    public void moveLeft(boolean b) {
+        mLeft = b;
     }
 
     @Override
-    public void trueDown() {
-
+    public void moveRight(boolean b) {
+        mRight = b;
     }
 
     @Override
-    public void falseRight() {
-
+    public void shootLeft(boolean b) {
+        sLeft = b;
     }
 
     @Override
-    public void falseLeft() {
-
+    public void shootRight(boolean b) {
+        sRight = b;
     }
 
     @Override
-    public void falseUp() {
-
+    public void shootUp(boolean b) {
+        sUp = b;
     }
 
     @Override
-    public void falseDown() {
-
-    }
-
-    @Override
-    public void shootLeftTrue() {
-
-    }
-
-    @Override
-    public void shootLeftFalse() {
-
-    }
-
-    @Override
-    public void shootUpTrue() {
-
-    }
-
-    @Override
-    public void shootUpFalse() {
-
-    }
-
-    @Override
-    public void shootRightTrue() {
-
-    }
-
-    @Override
-    public void shootRightFalse() {
-
-    }
-
-    @Override
-    public void shootDownTrue() {
-
-    }
-
-    @Override
-    public void shootDownFalse() {
-
-    }
-
-    @Override
-    public void shootLeft() {
-
-    }
-
-    @Override
-    public void shootRight() {
-
-    }
-
-    @Override
-    public void shootUp() {
-
-    }
-
-    @Override
-    public void shootDown() {
-
+    public void shootDown(boolean b) {
+        sDown = b;
     }
 }

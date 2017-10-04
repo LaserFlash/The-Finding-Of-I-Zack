@@ -5,10 +5,11 @@ import TheFindingOfIZack.FileIO.LoadFile;
 import TheFindingOfIZack.FileIO.SaveFile;
 import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.Util.CreateGameModel;
-import TheFindingOfIZack.View.ViewManager;
+import TheFindingOfIZack.View.View;
 import TheFindingOfIZack.World.Game;
 import TheFindingOfIZack.World.Model;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -19,7 +20,7 @@ import java.awt.event.KeyListener;
  */
 public class GameController implements ActionListener, KeyListener {
 
-    private ViewManager view;
+    private View view;
     private Model game;
 
     /**
@@ -28,10 +29,11 @@ public class GameController implements ActionListener, KeyListener {
      * @param view  game view
      * @param game  game model
      */
-    public GameController(ViewManager view, Game game){
+    public GameController(View view, Model game){
         this.view = view;
         this.game = game;
         view.addKeyListener(this);
+        view.addControllerForButtons(this);
     }
 
     /**
@@ -45,17 +47,27 @@ public class GameController implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
             case "exitGame": {
-                this.view.dispose();
+                if(JOptionPane.showConfirmDialog(new JFrame(),"Are you sure you want to leave?",
+                        "Leaving :(", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                {
+                    this.view.dispose();
+                }
+
                 break;
             }
             case "newGame": {
-                this.game = CreateGameModel.newGame(this.view);
-                this.game.beginNewGame();
-                this.game.pauseGame();
-                this.view.newGame(game);
-                this.view.enableOtherButtons();
-                this.view.goToGameView();
-                this.game.resumeGame();
+                if(JOptionPane.showConfirmDialog(new JFrame(),"Create a new Game",
+                        "NewGame", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                {
+                    this.game = CreateGameModel.newGame(this.view);
+                    this.game.beginNewGame();
+                    this.game.pauseGame();
+                    this.view.newGame(game);
+                    this.view.enableOtherButtons();
+                    this.view.goToGameView();
+                    this.game.resumeGame();
+                }
+
                 break;
             }
             case "loadGame":{
@@ -63,13 +75,11 @@ public class GameController implements ActionListener, KeyListener {
                 LoadFile loadedGame = null;
                 try {
                     loadedGame = new LoadFile();
-                } catch (InvalidFileException e1) {
-                    break; //No file was loaded successfully
-                }
-                try {
                     this.game = loadedGame.getGame();
                 } catch (InvalidFileException e1) {
-                    break; // No game was loaded successfully
+                    JFrame frame = new JFrame();
+                    JOptionPane.showMessageDialog(frame, "Loading Failed");
+                    break; //No file was loaded successfully
                 }
                 this.view.newGame(game);
                 this.view.enableOtherButtons();
@@ -80,7 +90,8 @@ public class GameController implements ActionListener, KeyListener {
                 try {
                     SaveFile saveGame = new SaveFile((Game) this.game);
                 } catch (InvalidFileException e1) {
-                    System.out.printf("Unsuccessful Save\n");
+                    JFrame frame = new JFrame();
+                    JOptionPane.showMessageDialog(frame, "Saving Failed");
                 }
                 break;
             }
@@ -102,67 +113,53 @@ public class GameController implements ActionListener, KeyListener {
                 this.game.pauseGame();
                 this.view.goToMenuView();
                 break;
-            case KeyEvent.VK_W:
-                this.game.trueUp();
-                break;
-            case KeyEvent.VK_S:
-                this.game.trueDown();
-                break;
-            case KeyEvent.VK_A:
-                this.game.trueLeft();
-                break;
-            case KeyEvent.VK_D:
-                this.game.trueRight();
-                break;
-            case KeyEvent.VK_LEFT:
-            case KeyEvent.VK_KP_LEFT:
-                this.game.shootLeftTrue();
-                break;
-            case KeyEvent.VK_RIGHT:
-            case KeyEvent.VK_KP_RIGHT:
-                this.game.shootRightTrue();
-                break;
-            case KeyEvent.VK_UP:
-            case KeyEvent.VK_KP_UP:
-                this.game.shootUpTrue();
-                break;
-            case KeyEvent.VK_DOWN:
-            case KeyEvent.VK_KP_DOWN:
-                this.game.shootDownTrue();
-                break;
         }
+
+        checkPlayerActions(e,true);
 
     }
     @Override
     public void keyReleased(KeyEvent e) {
+        checkPlayerActions(e,false);
+    }
+
+    /**
+     * Call methods on model when player controls are used
+     * @param e The key that was pressed
+     * @param b boolean stating if key is stopping or starting action
+     */
+    private void checkPlayerActions(KeyEvent e,boolean b){
         switch (e.getKeyCode()){
+            /* Player movement controls */
             case KeyEvent.VK_W:
-                this.game.falseUp();
+                this.game.moveUp(b);
                 break;
             case KeyEvent.VK_S:
-                this.game.falseDown();
+                this.game.moveDown(b);
                 break;
             case KeyEvent.VK_A:
-                this.game.falseLeft();
+                this.game.moveLeft(b);
                 break;
             case KeyEvent.VK_D:
-                this.game.falseRight();
+                this.game.moveRight(b);
                 break;
+
+            /* Shooting controls */
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_KP_LEFT:
-                this.game.shootLeftFalse();
+                this.game.shootLeft(b);
                 break;
             case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_KP_RIGHT:
-                this.game.shootRightFalse();
+                this.game.shootRight(b);
                 break;
             case KeyEvent.VK_UP:
             case KeyEvent.VK_KP_UP:
-                this.game.shootUpFalse();
+                this.game.shootUp(b);
                 break;
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_KP_DOWN:
-                this.game.shootDownFalse();
+                this.game.shootDown(b);
                 break;
         }
     }

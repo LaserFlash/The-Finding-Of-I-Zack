@@ -15,7 +15,7 @@ import java.util.Observable;
  * Manage the view for the game.
  * Handles what needs to be drawn and the GUI
  */
-public class ViewManager extends JFrame implements View, java.util.Observer {
+public class ViewManager extends View {
 
     private Model model;
 
@@ -48,36 +48,25 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
         gameScreen.repaint();
     }
 
-    /**
-     * Make the GUI visible
-     * Separate method so the GUI can be made visible when all setup is finished
-     */
+    @Override
     public void showGUI() {
         this.setVisible(true);
     }
 
-    /**
-     * Provide ActionListener to any buttons present in the GUI
-     *
-     * @param controller
-     */
+    @Override
     public void addControllerForButtons(ActionListener controller) {
         this.startScreen.addControllerForButtons(controller);
         this.gameScreen.addControllerForButtons(controller);
     }
 
-    /**
-     * Change the view to displaying the game world
-     */
+    @Override
     public void goToGameView() {
         this.remove(startScreen);
         this.add(gameScreen);
         this.repaint();
     }
 
-    /**
-     * Change the view to displaying the menu
-     */
+    @Override
     public void goToMenuView() {
         this.remove(gameScreen);
         this.add(startScreen);
@@ -90,11 +79,7 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
         this.getContentPane().repaint();
     }
 
-    /**
-     * Replace the game panel with a new one
-     * Intended to be used when loading or replacing the game model
-     * @param game the game model to be used
-     */
+    @Override
     public void newGame(Model game) {
         this.model = game;
         this.gameScreen = new GamePanel(this.model);
@@ -106,6 +91,10 @@ public class ViewManager extends JFrame implements View, java.util.Observer {
         this.gameScreen.enableOtherButtons();
     }
 
+    /**
+     * Set a global font for all view elements
+     * @param f the font to use
+     */
     private static void setUIFont(javax.swing.plaf.FontUIResource f)
     {
         java.util.Enumeration<Object> keys = UIManager.getDefaults().keys();

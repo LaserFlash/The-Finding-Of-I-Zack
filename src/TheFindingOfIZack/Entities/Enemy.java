@@ -21,8 +21,9 @@ public class Enemy extends Entity {
     public Enemy(Point location, Player p) {
         super(location);
         this.player = p;
-        int type = (int) (Math.random()*5);
-        if (type==5) {this.behaviour = new MobEnemy("standard");}
+        int type = (int) (Math.random()*6);
+        System.out.println("Type = " + type);//*****************************************************************
+        if (type>3) {this.behaviour = new MobEnemy("standard");}
         else if (type==3) {this.behaviour = new MobEnemy("fast");}
         else if (type==2) {this.behaviour = new MobEnemy("shooter");}
         else {this.behaviour = new MobEnemy("slow");}
@@ -39,7 +40,7 @@ public class Enemy extends Entity {
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.RED);
-        g.fillRect(location.x, location.y, width, width);
+        g.fillRect((int)location.getX(), (int)location.getY(), width, width);
         super.draw(g);
     }
 

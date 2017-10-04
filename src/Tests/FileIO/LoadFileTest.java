@@ -1,15 +1,13 @@
 package Tests.FileIO;
 
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.FileIO.GameFile;
+import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.FileIO.LoadFile;
 import TheFindingOfIZack.FileIO.SaveFile;
 import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.World.Game;
 import org.junit.Test;
-
-import java.awt.*;
 
 import static org.junit.Assert.assertTrue;
 

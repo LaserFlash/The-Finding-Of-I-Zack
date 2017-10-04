@@ -1,5 +1,6 @@
 package TheFindingOfIZack.FileIO;
 
+import TheFindingOfIZack.Entities.AbstractPlayer;
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.World.Game;
@@ -101,7 +102,7 @@ public class SaveFile extends GameFile {
      * @param obOut object output stream
      */
     public void writePlayer(Game g, ObjectOutputStream obOut) throws InvalidFileException {
-        Player p = g.getPlayer();
+        AbstractPlayer p = g.getPlayer();
         if (p == null)
             throw new InvalidFileException("Null Player Error");
         try {
@@ -155,7 +156,7 @@ public class SaveFile extends GameFile {
      *  and displays the valid file extensions
      *  @return true if valid, false otherwise
      */
-    public boolean saveFile(JFrame parent){
+    public boolean saveFile(JFrame parent) throws InvalidFileException {
         JFileChooser chooser = new JFileChooser();
 
         // This method only accepts .zack or .txt file extensions
@@ -171,11 +172,12 @@ public class SaveFile extends GameFile {
             try {
                 file = chooser.getSelectedFile();
                 return true;
-            } catch (Exception ex) {
+            } catch (Exception ex) {//TODO SHOULD NOT CATCH ALL EXCEPTIONS
                 fileError("Invalid saveFile " + ex.getLocalizedMessage());
+                throw new InvalidFileException("Bad File");
             }
         }
         fileError("Invalid File chosen");
-        return false;
+        throw new InvalidFileException("Bad File");
     }
 }

@@ -2,11 +2,10 @@ package TheFindingOfIZack;
 
 import TheFindingOfIZack.Controller.GameController;
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
-
-import java.awt.*;
 
 public class Main {
     public static void main(String[] args){
@@ -17,8 +16,6 @@ public class Main {
         game.addObserver(view);
 
         GameController controller = new GameController(view,game);
-
-        view.addControllerForButtons(controller);
         controller.showGUI();
 
     }

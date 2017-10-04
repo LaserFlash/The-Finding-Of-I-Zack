@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Ben Allan
  */
-public class Player extends Entity implements Savable {
+public class Player extends AbstractPlayer {
 
     private int MAX_ARMOUR = 25;
     private int armour = 0;
@@ -63,6 +63,11 @@ public class Player extends Entity implements Savable {
             }
         }
         popProjectiles();
+    }
+
+    public void damage(int damage) {
+        this.health -= (damage-armour);
+        if (armour > 0) {armour--;}
     }
 
     public void popProjectiles() {
@@ -154,8 +159,9 @@ public class Player extends Entity implements Savable {
         return false;
     }
 
-
+    @Override
     public void moveSouth() {
+        if (room.getSouthDoor().isLocked) {return;}
         int x = (int) location.getX();
         int y = GameSize.TOP_WALL;
         room = room.getSouthDoor().getDestination();
@@ -164,7 +170,9 @@ public class Player extends Entity implements Savable {
         projectiles.clear();
     }
 
+    @Override
     public void moveNorth() {
+        if (room.getNorthDoor().isLocked) {return;}
         int x = (int) location.getX();
         int y = GameSize.BOTTOM_WALL-width;
         room = room.getNorthDoor().getDestination();
@@ -172,8 +180,9 @@ public class Player extends Entity implements Savable {
         room.populateRoom(this);
         projectiles.clear();
     }
-
+    @Override
     public void moveWest() {
+        if (room.getWestDoor().isLocked) {return;}
         int x = GameSize.RIGHT_WALL-width;
         int y = (int) location.getY();
         room = room.getWestDoor().getDestination();
@@ -181,8 +190,9 @@ public class Player extends Entity implements Savable {
         room.populateRoom(this);
         projectiles.clear();
     }
-
+    @Override
     public void moveEast() {
+        if (room.getEastDoor().isLocked) {return;}
         int x = GameSize.LEFT_WALL;
         int y = (int) location.getY();
         room = room.getEastDoor().getDestination();
@@ -191,33 +201,34 @@ public class Player extends Entity implements Savable {
         projectiles.clear();
     }
 
-    public Point clonePoint() {
+    private Point clonePoint() {
         int x = (int) location.getX();
         int y = (int) location.getY();
         return new Point(x, y);
     }
 
+    @Override
     public void shootUp() {
         if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "up");
         projectiles.add(p);
         weaponTick++;
     }
-
+    @Override
     public void shootDown() {
         if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "down");
         projectiles.add(p);
         weaponTick++;
     }
-
+    @Override
     public void shootLeft() {
         if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "left");
         projectiles.add(p);
         weaponTick++;
     }
-
+    @Override
     public void shootRight() {
         if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "right");
@@ -236,14 +247,16 @@ public class Player extends Entity implements Savable {
         return this.health;
     }
 
-    public void damage(int damage) {
-        this.health -= damage;
+    public void heal(int potion) {
+        if (health+potion > MAX_HEALTH) {health = MAX_HEALTH;}
+        else {this.health += potion;}
     }
 
     public void setRoom(Room room) {
         this.room = room;
     }
 
+    @Override
     public Room getRoom() {
         return room;
     }
@@ -266,6 +279,21 @@ public class Player extends Entity implements Savable {
 
     public int getArmour() {
         return armour;
+    }
+
+    public void addArmour(int amount) {
+        if (armour+amount > MAX_ARMOUR) {armour = MAX_ARMOUR;}
+        else {this.armour += amount;}
+    }
+
+    public void weaponUpgrade() {
+        damage += 5;
+        if (firerate-3 < MIN_FIRERATE) {firerate = MIN_FIRERATE;}
+        else {firerate -= 3;}
+    }
+
+    public ArrayList<Projectile> getProjecctiles() {
+        return projectiles;
     }
 
 

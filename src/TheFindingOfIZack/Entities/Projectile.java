@@ -16,7 +16,7 @@ public class Projectile extends Entity implements Drawable{
 
     private boolean pop = false;
 
-    private int speed = 5;
+    private int speed = 10;
 
     public Projectile(int damage, Point location, String direction) {
         super(location);

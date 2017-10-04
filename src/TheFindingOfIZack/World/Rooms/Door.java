@@ -32,7 +32,7 @@ public class Door implements Drawable, Savable {
     }
 
     public Door getOpposite(){
-        Door d = null;
+        Door d;
         int w = 0;
         if(this.position == 0){
             w = 2;

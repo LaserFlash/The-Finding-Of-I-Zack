@@ -1,6 +1,6 @@
 package TheFindingOfIZack.Behaviour;
 
-import java.awt.*;
+import TheFindingOfIZack.Entities.Point;
 
 /**
  * Created by gordontheo on 27/09/17.
@@ -42,6 +42,8 @@ public class MobEnemy {
     public int getDamage(){
         return mob.getDamage();
     }
+
+    public int getSpeed() {return mob.getHealth();}
 
     /**
      * Throws an error if an invalid mobType is called

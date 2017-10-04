@@ -2,6 +2,7 @@ package TheFindingOfIZack.FileIO;
 
 import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.FileIO.Util.Huffman;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
@@ -9,10 +10,10 @@ import TheFindingOfIZack.World.Level;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
-import java.io.*;
-import java.nio.Buffer;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
 
 /**
  *  This class captures the notion of a GameFile. The file itself will be
