@@ -120,6 +120,7 @@ public class GameController implements ActionListener, KeyListener {
      */
     private void checkPlayerActions(KeyEvent e,boolean b){
         switch (e.getKeyCode()){
+            /* Player movement controls */
             case KeyEvent.VK_W:
                 this.game.moveUp(b);
                 break;
@@ -132,6 +133,8 @@ public class GameController implements ActionListener, KeyListener {
             case KeyEvent.VK_D:
                 this.game.moveRight(b);
                 break;
+
+            /* Shooting controls */
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_KP_LEFT:
                 this.game.shootLeft(b);
