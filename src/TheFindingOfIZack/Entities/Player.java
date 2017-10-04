@@ -156,6 +156,7 @@ public class Player extends Entity implements Savable {
 
 
     public void moveSouth() {
+        if (room.getSouthDoor().isLocked) {return;}
         int x = (int) location.getX();
         int y = GameSize.TOP_WALL;
         room = room.getSouthDoor().getDestination();
@@ -165,6 +166,7 @@ public class Player extends Entity implements Savable {
     }
 
     public void moveNorth() {
+        if (room.getNorthDoor().isLocked) {return;}
         int x = (int) location.getX();
         int y = GameSize.BOTTOM_WALL-width;
         room = room.getNorthDoor().getDestination();
@@ -174,6 +176,7 @@ public class Player extends Entity implements Savable {
     }
 
     public void moveWest() {
+        if (room.getWestDoor().isLocked) {return;}
         int x = GameSize.RIGHT_WALL-width;
         int y = (int) location.getY();
         room = room.getWestDoor().getDestination();
@@ -183,6 +186,7 @@ public class Player extends Entity implements Savable {
     }
 
     public void moveEast() {
+        if (room.getEastDoor().isLocked) {return;}
         int x = GameSize.LEFT_WALL;
         int y = (int) location.getY();
         room = room.getEastDoor().getDestination();
@@ -266,6 +270,10 @@ public class Player extends Entity implements Savable {
 
     public int getArmour() {
         return armour;
+    }
+
+    public ArrayList<Projectile> getProjecctiles() {
+        return projectiles;
     }
 
 
