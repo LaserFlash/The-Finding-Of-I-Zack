@@ -20,31 +20,17 @@ public class Mob {
     public Point step(Point location, Point player){
         double changeX = (player.getX() - location.getX());
         double changeY = (player.getY() - location.getY());
-        double newX = 0;
-        double newY = 0;
-        int Xneg = 1;
-        int Yneg = 1;
 
-        if (changeX<0 && changeX<-speed){
-            newX = -speed;
-            Xneg = -1;
-        }if(changeX>0 && changeX>speed){
-            newX = speed;
-        }if (changeY<0 && changeY<-speed){
-            newY = -speed;
-            Yneg = -1;
-        }if(changeY>0 && changeY>speed){
-            newY = speed;}
+        double h = Math.hypot(changeX,changeY);
+        double a = h/speed;
+        double newX = changeX/a;
+        double newY = changeY/a;
 
-        if(newX < -0.5 && newX > 0.5 && newY < -0.5 && newY > 0.5){
-            newX = (Math.sqrt((speed^2)/2))*Xneg;
-            newY = (Math.sqrt((speed^2)/2))*Yneg;
-        }
-
-        location.setLocation((int)(newX + location.getX()),(int)(newY + location.getY()));
+        location.setLocation((newX + location.getX()),(newY + location.getY()));
 
         return location;
     }
+
 
     /**
      * Returns health
