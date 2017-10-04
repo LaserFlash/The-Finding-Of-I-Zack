@@ -39,7 +39,7 @@ public abstract class View extends JFrame implements Observer {
     /**
      * Replace references to the Model with a new model
      * Useful when loading a saved game
-     * @param model
+     * @param model Model that should now be referenced
      */
     public abstract void newGame(Model model);
 
