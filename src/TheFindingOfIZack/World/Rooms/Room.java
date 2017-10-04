@@ -21,7 +21,7 @@ public abstract class Room implements Drawable {
     public transient Door southDoor;
     public transient Door westDoor;
 
-    protected Room() {
+    public Room() {
         this.northDoor = null;
         this.eastDoor = null;
         this.southDoor = null;
