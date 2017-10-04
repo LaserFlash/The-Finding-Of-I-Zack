@@ -230,7 +230,7 @@ public class Game extends Observable implements Model,Savable{
 
         checkMovement();
         checkShooting();
-        currentLevel.update();
+        player.getRoom().update();
         player.update();
 
 
