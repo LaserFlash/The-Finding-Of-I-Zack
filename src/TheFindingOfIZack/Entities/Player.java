@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Ben Allan
  */
-public class Player extends Entity implements Savable {
+public class Player extends AbstractPlayer {
 
     private int MAX_ARMOUR = 25;
     private int armour = 0;
@@ -159,7 +159,7 @@ public class Player extends Entity implements Savable {
         return false;
     }
 
-
+    @Override
     public void moveSouth() {
         if (room.getSouthDoor().isLocked) {return;}
         int x = (int) location.getX();
@@ -170,6 +170,7 @@ public class Player extends Entity implements Savable {
         projectiles.clear();
     }
 
+    @Override
     public void moveNorth() {
         if (room.getNorthDoor().isLocked) {return;}
         int x = (int) location.getX();
@@ -179,7 +180,7 @@ public class Player extends Entity implements Savable {
         room.populateRoom(this);
         projectiles.clear();
     }
-
+    @Override
     public void moveWest() {
         if (room.getWestDoor().isLocked) {return;}
         int x = GameSize.RIGHT_WALL-width;
@@ -189,7 +190,7 @@ public class Player extends Entity implements Savable {
         room.populateRoom(this);
         projectiles.clear();
     }
-
+    @Override
     public void moveEast() {
         if (room.getEastDoor().isLocked) {return;}
         int x = GameSize.LEFT_WALL;
@@ -200,33 +201,34 @@ public class Player extends Entity implements Savable {
         projectiles.clear();
     }
 
-    public Point clonePoint() {
+    private Point clonePoint() {
         int x = (int) location.getX();
         int y = (int) location.getY();
         return new Point(x, y);
     }
 
+    @Override
     public void shootUp() {
         if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "up");
         projectiles.add(p);
         weaponTick++;
     }
-
+    @Override
     public void shootDown() {
         if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "down");
         projectiles.add(p);
         weaponTick++;
     }
-
+    @Override
     public void shootLeft() {
         if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "left");
         projectiles.add(p);
         weaponTick++;
     }
-
+    @Override
     public void shootRight() {
         if (weaponTick != 0) {return;}
         Projectile p = new Projectile(this.damage, clonePoint(), "right");
@@ -254,6 +256,7 @@ public class Player extends Entity implements Savable {
         this.room = room;
     }
 
+    @Override
     public Room getRoom() {
         return room;
     }
