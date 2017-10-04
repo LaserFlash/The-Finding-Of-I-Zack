@@ -4,49 +4,78 @@ import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.World.Rooms.Room;
 
 public abstract class AbstractPlayer extends Entity implements Savable {
-    AbstractPlayer(Point location){
+    public AbstractPlayer(Point location){
         super(location);
     }
 
     /**
      * Move the player to the south / down
      */
-    abstract void moveSouth();
+    public abstract void moveSouth();
 
     /**
      * Move the player to the north / up
      */
-    abstract void moveNorth();
+    public abstract void moveNorth();
 
     /**
      * Move the player east / right
      */
-    abstract void moveEast();
+    public abstract void moveEast();
 
     /**
      * Move the player west / left
      */
-    abstract void moveWest();
+    public abstract void moveWest();
 
     /**
      * Tell the player to fire projectile North / Up
      */
-    abstract void shootUp();
+    public abstract void shootUp();
     /**
      * Tell the player to fire projectile South / Down
      */
-    abstract void shootDown();
+    public abstract void shootDown();
     /**
      * Tell the player to fire projectile West / Left
      */
-    abstract void shootLeft();
+    public abstract void shootLeft();
     /**
      * Tell the player to fire projectile East / right
      */
-    abstract void shootRight();
+    public abstract void shootRight();
 
     /**
      * Get the room the player is in
      */
-    abstract Room getRoom();
+    public abstract Room getRoom();
+
+    /**
+     * Give the player a room it belongs to
+     * @param r
+     */
+    public abstract void setRoom(Room r);
+
+    /**
+     * Return the maximum health of the player
+     */
+    public abstract int getMaxHealth();
+
+    /**
+     * Get the current health of the player
+     * @return
+     */
+    public abstract int getHealth();
+
+    /**
+     * Get the current armour of the player
+     * @return
+     */
+    public abstract int getArmour();
+
+    /**
+     * Get the max armour of the player
+     * @return
+     */
+    public abstract int getMaxArmour();
 }

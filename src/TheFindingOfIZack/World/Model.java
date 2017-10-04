@@ -1,6 +1,6 @@
 package TheFindingOfIZack.World;
 
-import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.AbstractPlayer;
 
 public interface Model {
     /**
@@ -12,7 +12,7 @@ public interface Model {
      * Allow access to the player of the game
      * @return Player
      */
-    Player getPlayer();
+    AbstractPlayer getPlayer();
 
     /**
      * Resume gameloops and interactions

@@ -1,5 +1,6 @@
 package Tests.Mocks;
 
+import TheFindingOfIZack.Entities.AbstractPlayer;
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.World.Model;
@@ -7,7 +8,79 @@ import TheFindingOfIZack.World.Rooms.Room;
 
 
 public class MockModel implements Model {
-    private Player p = new Player(new Point(20,20));
+    private AbstractPlayer p = new AbstractPlayer(new Point(20, 20)) {
+
+        private Room r;
+        @Override
+        public void moveSouth() {
+
+        }
+
+        @Override
+        public void moveNorth() {
+
+        }
+
+        @Override
+        public void moveEast() {
+
+        }
+
+        @Override
+        public void moveWest() {
+
+        }
+
+        @Override
+        public void shootUp() {
+
+        }
+
+        @Override
+        public void shootDown() {
+
+        }
+
+        @Override
+        public void shootLeft() {
+
+        }
+
+        @Override
+        public void shootRight() {
+
+        }
+
+        @Override
+        public Room getRoom() {
+            return r;
+        }
+
+        @Override
+        public void setRoom(Room r) {
+           this.r = r;
+        }
+
+        @Override
+        public int getMaxHealth() {
+            return 0;
+        }
+
+        @Override
+        public int getHealth() {
+            return 0;
+        }
+
+        @Override
+        public int getArmour() {
+            return 0;
+        }
+
+        @Override
+        public int getMaxArmour() {
+            return 0;
+        }
+    };
 
     public boolean sLeft = false;
     public boolean sRight = false;
@@ -38,7 +111,7 @@ public class MockModel implements Model {
     }
 
     @Override
-    public Player getPlayer() {
+    public AbstractPlayer getPlayer() {
         return p;
     }
 

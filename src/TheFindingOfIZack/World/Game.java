@@ -1,9 +1,8 @@
 package TheFindingOfIZack.World;
+import TheFindingOfIZack.Entities.AbstractPlayer;
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.FileIO.GameFile;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.World.Rooms.*;
-import com.sun.javafx.tk.Toolkit;
 
 import java.util.Observable;
 
@@ -95,7 +94,7 @@ public class Game extends Observable implements Model,Savable{
      *
      * @return the the player object
      */
-    public Player getPlayer(){
+    public AbstractPlayer getPlayer(){
 
         return this.player;
     }

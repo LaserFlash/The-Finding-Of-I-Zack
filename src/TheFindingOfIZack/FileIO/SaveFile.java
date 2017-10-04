@@ -1,5 +1,6 @@
 package TheFindingOfIZack.FileIO;
 
+import TheFindingOfIZack.Entities.AbstractPlayer;
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.World.Game;
@@ -101,7 +102,7 @@ public class SaveFile extends GameFile {
      * @param obOut object output stream
      */
     public void writePlayer(Game g, ObjectOutputStream obOut) throws InvalidFileException {
-        Player p = g.getPlayer();
+        AbstractPlayer p = g.getPlayer();
         if (p == null)
             throw new InvalidFileException("Null Player Error");
         try {
