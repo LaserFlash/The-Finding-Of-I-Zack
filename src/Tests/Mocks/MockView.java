@@ -14,6 +14,8 @@ public class MockView extends View{
 
     public MockView(String name) {
         super(name);
+        setFocusable(true);
+        requestFocus();
     }
 
     public void showGUI() {
