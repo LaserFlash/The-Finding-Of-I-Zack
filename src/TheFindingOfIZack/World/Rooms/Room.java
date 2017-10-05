@@ -20,6 +20,7 @@ public abstract class Room implements Drawable {
     public transient Door eastDoor;
     public transient Door southDoor;
     public transient Door westDoor;
+    public boolean isCleared;
 
     public Room() {
         this.northDoor = null;

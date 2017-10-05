@@ -14,7 +14,7 @@ public class standardRoom extends Room{
 
     private ArrayList<Enemy> enemiesInRoom;
     private ArrayList<Enemy> deadEnemies;
-    public boolean isCleared;
+
 
     public standardRoom(){
         super();
@@ -27,8 +27,8 @@ public class standardRoom extends Room{
 
 
     private Point randomPoint(){
-        int x = (int)((Math.random() * GameSize.RIGHT_WALL - GameSize.LEFT_WALL) + GameSize.WALL_WIDTH) ;
-        int y = (int)((Math.random() * GameSize.TOP_WALL - GameSize.BOTTOM_WALL) + GameSize.WALL_WIDTH) ;
+        int x = (int)((Math.random() * GameSize.RIGHT_WALL - GameSize.LEFT_WALL) + GameSize.WALL_WIDTH - 40) ;
+        int y = (int)((Math.random() * GameSize.BOTTOM_WALL - GameSize.TOP_WALL) + GameSize.WALL_WIDTH - 40) ;
 
         Point p = new Point(x,y);
         return p;
@@ -39,7 +39,7 @@ public class standardRoom extends Room{
             return;
         }
 
-        Enemy e1 = new Enemy(new Point(50,50),p);
+        Enemy e1 = new Enemy(randomPoint(),p);
         enemiesInRoom.add(e1);
 
     }
