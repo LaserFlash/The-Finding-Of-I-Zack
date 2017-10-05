@@ -14,7 +14,7 @@ public class Projectile extends Entity implements Drawable{
     private int damage;
     private String direction;
 
-    private boolean pop = false;
+    protected boolean pop = false;
 
     private int speed = 10;
 
@@ -23,6 +23,8 @@ public class Projectile extends Entity implements Drawable{
         this.damage = damage;
         this.direction = direction;
     }
+
+    public Projectile(Point location, Point player){}
 
     @Override
     public void draw(Graphics g) {

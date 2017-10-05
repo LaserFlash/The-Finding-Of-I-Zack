@@ -5,7 +5,7 @@ import TheFindingOfIZack.Entities.Point;
 /**
  * Created by gordontheo on 27/09/17.
  */
-public class Mob {
+public abstract class Mob {
     protected double speed;
     protected int viewRange;
     protected int health;

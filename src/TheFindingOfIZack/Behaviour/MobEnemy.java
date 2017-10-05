@@ -7,7 +7,7 @@ import TheFindingOfIZack.Entities.Point;
  * This class is used to create new mobs and specify what type they are
  */
 public class MobEnemy {
-    Mob mob;
+    private Mob mob;
 
     /**
      * @param type Constructor which takes a type and makes a new mob of this type
@@ -55,5 +55,9 @@ public class MobEnemy {
 
     public Point step(Point location, Point player){
         return(mob.step(location,player));
+    }
+
+    public Mob getMob(){
+        return mob;
     }
 }

@@ -3,11 +3,15 @@ package TheFindingOfIZack.Behaviour;
 
 import TheFindingOfIZack.Entities.Point;
 
+
+import java.util.ArrayList;
+
 /**
  * Created by gordontheo on 29/09/17.
  */
 public class MobShooter extends Mob{
     private int stopDistance = 200;
+    private transient ArrayList<MobProjectile> projectiles;
 
     public MobShooter(){
         this.viewRange = 600;
@@ -40,7 +44,8 @@ public class MobShooter extends Mob{
             }
 
             location.setLocation((newX + location.getX()), (newY + location.getY()));
-        }
+            //projectiles.add(new MobProjectile(location, player));
+            }
         return location;
     }
 
@@ -48,5 +53,20 @@ public class MobShooter extends Mob{
     public String toString() {
         String string = "A shooting mob Damage = " + this.damage + " health = " + this.health + " speed = " + this.speed;
         return string;
+    }
+
+    public  ArrayList<MobProjectile> getProjectile(){
+        return projectiles;
+    }
+
+    public void popProjectiles() {
+        ArrayList<MobProjectile> temp = new ArrayList<MobProjectile>();
+        for (MobProjectile p : projectiles) {
+            if (p.getPopped()) {temp.add(p);}
+        }
+
+        for (MobProjectile p : temp) {
+            projectiles.remove(p);
+        }
     }
 }

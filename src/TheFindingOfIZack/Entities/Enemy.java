@@ -1,6 +1,8 @@
 package TheFindingOfIZack.Entities;
 
+import TheFindingOfIZack.Behaviour.Mob;
 import TheFindingOfIZack.Behaviour.MobEnemy;
+import TheFindingOfIZack.Behaviour.MobShooter;
 import javafx.geometry.BoundingBox;
 
 import java.awt.*;
@@ -21,12 +23,12 @@ public class Enemy extends Entity {
     public Enemy(Point location, Player p) {
         super(location);
         this.player = p;
-        int type = (int) (Math.random()*6);
+        int type = (int) (Math.random()*5);
         //int type = 2;
-        System.out.println("Type = " + type);//*****************************************************************
-        if (type>3) {this.behaviour = new MobEnemy("standard");}
-        else if (type==3) {this.behaviour = new MobEnemy("fast");}
-        else if (type==2) {this.behaviour = new MobEnemy("shooter");}
+        //System.out.println("Type = " + type);//*****************************************************************
+        if (type>2) {this.behaviour = new MobEnemy("standard");}
+        else if (type==2) {this.behaviour = new MobEnemy("fast");}
+        else if (type==1) {this.behaviour = new MobEnemy("shooter");}
         else {this.behaviour = new MobEnemy("slow");}
         this.health = behaviour.getHealth();
     }
@@ -62,6 +64,10 @@ public class Enemy extends Entity {
         }
         if(collision(location,playerPoint)){
             this.player.damage(this.behaviour.getDamage()); //Takes the damage value from each mob type
+        }
+
+        if (behaviour.getMob() instanceof MobShooter) {
+            Mob m = (MobShooter) behaviour.getMob();
         }
     }
 
