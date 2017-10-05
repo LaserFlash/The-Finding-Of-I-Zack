@@ -40,10 +40,11 @@ public class standardRoom extends Room{
             return;
         }
 
-        Enemy e1 = new Enemy(randomPoint(),p);
+
 
         int numRocks = (int) (Math.random() * 5) + 1;
         int numUrns = (int) (Math.random() * 2) ;
+        int numEnemies = (int) (Math.random() * 3) + 1 ;
         for(int i = 0; i < numRocks; i++){
             items.add(new Rock(randomPoint()));
         }
@@ -52,8 +53,12 @@ public class standardRoom extends Room{
             items.add(new Urn(randomPoint()));
         }
 
+        for(int i = 0; i < numEnemies; i++){
+            enemiesInRoom.add(new Enemy(randomPoint(),p));
+        }
 
-        enemiesInRoom.add(e1);
+
+
 
 
 
