@@ -1,8 +1,7 @@
 package TheFindingOfIZack.World.Rooms;
 
 
-import TheFindingOfIZack.Entities.Enemy;
-import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.*;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Util.GameSize;
 
@@ -14,12 +13,14 @@ public class standardRoom extends Room{
 
     private ArrayList<Enemy> enemiesInRoom;
     private ArrayList<Enemy> deadEnemies;
+    private ArrayList<Entity> items;
 
 
     public standardRoom(){
         super();
         this.enemiesInRoom = new ArrayList<Enemy>();
         this.deadEnemies = new ArrayList<Enemy>();
+        this.items = new ArrayList<Entity>();
         this.isCleared = false;
 
 
@@ -40,10 +41,27 @@ public class standardRoom extends Room{
         }
 
         Enemy e1 = new Enemy(randomPoint(),p);
+
+        int numRocks = (int) (Math.random() * 5) + 1;
+        int numUrns = (int) (Math.random() * 2) ;
+        for(int i = 0; i < numRocks; i++){
+            items.add(new Rock(randomPoint()));
+        }
+
+        for(int i = 0; i < numUrns; i++){
+            items.add(new Urn(randomPoint()));
+        }
+
+
         enemiesInRoom.add(e1);
+
+
 
     }
 
+    public ArrayList<Entity> getItems() {
+        return items;
+    }
 
     @Override
     public void update() {
@@ -84,6 +102,9 @@ public class standardRoom extends Room{
     public void draw(Graphics g){
         super.draw(g);
         for(Enemy e : enemiesInRoom){
+            e.draw(g);
+        }
+        for(Entity e : items){
             e.draw(g);
         }
     }
