@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class Rock extends Entity implements Savable {
 
-    private static Image rocks;
+    private static Image rocksImage;
 
     int health = 1000;
 
@@ -29,7 +29,7 @@ public class Rock extends Entity implements Savable {
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(rocks, (int) location.getX(), (int) location.getY(), null);
+        g.drawImage(rocksImage, (int) location.getX(), (int) location.getY(), null);
     }
 
 
@@ -67,7 +67,7 @@ public class Rock extends Entity implements Savable {
             e.printStackTrace();
         }
         finally {
-            rocks = img;
+            rocksImage = img;
         }
     }
 

@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class Urn extends Entity implements Savable{
 
-    private static Image urns;
+    private static Image urnsImage;
 
     int health = 40;
 
@@ -29,7 +29,7 @@ public class Urn extends Entity implements Savable{
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(urns, (int) location.getX(), (int) location.getY(), null);
+        g.drawImage(urnsImage, (int) location.getX(), (int) location.getY(), null);
 
     }
 
@@ -68,7 +68,7 @@ public class Urn extends Entity implements Savable{
             e.printStackTrace();
         }
         finally {
-            urns = img;
+            urnsImage = img;
         }
     }
 
