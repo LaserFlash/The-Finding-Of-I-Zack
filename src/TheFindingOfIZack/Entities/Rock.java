@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class Rock extends Entity implements Savable {
 
-    private static Image rocks;
+    private static Image rocksImage;
 
     int health = 1000;
 
@@ -29,21 +29,7 @@ public class Rock extends Entity implements Savable {
 
     @Override
     public void draw(Graphics g) {
-        /*g.setColor(Color.DARK_GRAY);
-
-        Polygon rock = new Polygon();
-
-        rock.addPoint((int) location.getX(), (int) location.getY()+width);
-        rock.addPoint((int) location.getX()+width, (int) location.getY()+width);
-        rock.addPoint((int) location.getX()+width/2, (int) location.getY());
-
-        g.fillPolygon(rock);
-
-        g.setColor(Color.black);
-
-        g.drawPolygon(rock);*/
-
-        g.drawImage(rocks, (int) location.getX(), (int) location.getY(), null);
+        g.drawImage(rocksImage, (int) location.getX(), (int) location.getY(), null);
     }
 
 
@@ -81,7 +67,7 @@ public class Rock extends Entity implements Savable {
             e.printStackTrace();
         }
         finally {
-            rocks = img;
+            rocksImage = img;
         }
     }
 
