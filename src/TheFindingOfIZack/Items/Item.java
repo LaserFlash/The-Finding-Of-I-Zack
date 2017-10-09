@@ -15,7 +15,7 @@ public abstract class Item implements Drawable{
     protected Point location;
     protected String type;
     protected BoundingBox box;
-    protected int width = 20;
+    protected int width = 25;
     protected boolean collected = false;
 
     protected Player player;

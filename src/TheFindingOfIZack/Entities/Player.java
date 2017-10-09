@@ -17,7 +17,7 @@ public class Player extends AbstractPlayer {
     private int armour = 0;
     private transient Room room;
     private int MAX_HEALTH = 100;
-    private int health = 100;
+    private int health = 50;
     private int speed = 5;
     private int key = 0;
     private int damage = 10;
@@ -48,6 +48,7 @@ public class Player extends AbstractPlayer {
         g.fillRect((int) location.getX(), (int) location.getY(), width, width);
         g.setColor(Color.MAGENTA);
         g.fillOval((int) location.getX()+4, (int) location.getY()+4, width-8, width-8);
+
         super.draw(g);
 
     }
