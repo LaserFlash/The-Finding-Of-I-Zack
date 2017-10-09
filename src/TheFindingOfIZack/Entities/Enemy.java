@@ -23,8 +23,8 @@ public class Enemy extends Entity {
     public Enemy(Point location, Player p) {
         super(location);
         this.player = p;
-        //int type = (int) (Math.random()*5);
-        int type = 10;
+        int type = (int) (Math.random()*5);
+        //int type = 10;
         //System.out.println("Type = " + type);//*****************************************************************
         if (type>2) {this.behaviour = new MobEnemy("standard");}
         else if (type==2) {this.behaviour = new MobEnemy("fast");}
