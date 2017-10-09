@@ -28,8 +28,8 @@ public class standardRoom extends Room{
 
 
     private Point randomPoint(){
-        int x = (int)((Math.random() * GameSize.RIGHT_WALL - GameSize.LEFT_WALL) + GameSize.WALL_WIDTH - 40) ;
-        int y = (int)((Math.random() * GameSize.BOTTOM_WALL - GameSize.TOP_WALL) + GameSize.WALL_WIDTH - 40) ;
+        int x = (int)((Math.random() * GameSize.RIGHT_WALL - GameSize.LEFT_WALL + 40)  + GameSize.WALL_WIDTH - 40) ;
+        int y = (int)((Math.random() * GameSize.BOTTOM_WALL - GameSize.TOP_WALL + 40) + GameSize.WALL_WIDTH - 40) ;
 
         Point p = new Point(x,y);
         return p;
