@@ -29,20 +29,6 @@ public class Rock extends Entity implements Savable {
 
     @Override
     public void draw(Graphics g) {
-        /*g.setColor(Color.DARK_GRAY);
-
-        Polygon rock = new Polygon();
-
-        rock.addPoint((int) location.getX(), (int) location.getY()+width);
-        rock.addPoint((int) location.getX()+width, (int) location.getY()+width);
-        rock.addPoint((int) location.getX()+width/2, (int) location.getY());
-
-        g.fillPolygon(rock);
-
-        g.setColor(Color.black);
-
-        g.drawPolygon(rock);*/
-
         g.drawImage(rocks, (int) location.getX(), (int) location.getY(), null);
     }
 
