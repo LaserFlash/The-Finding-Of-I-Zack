@@ -29,7 +29,7 @@ public class MobShooter extends Mob{
      */
     public Point step(Point location, Point player){
         double range = distanceBetween(location,player);
-        if (range < viewRange && range > stopDistance+40 || range < stopDistance) {
+        if (range < viewRange && range > stopDistance+60 || range < stopDistance) {
             double changeX = (player.getX() - location.getX());
             double changeY = (player.getY() - location.getY());
 
