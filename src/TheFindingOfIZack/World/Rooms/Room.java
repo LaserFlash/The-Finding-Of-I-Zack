@@ -13,9 +13,6 @@ import java.awt.*;
  */
 public abstract class Room implements Drawable {
 
-
-
-
     public transient Door northDoor;
     public transient Door eastDoor;
     public transient Door southDoor;

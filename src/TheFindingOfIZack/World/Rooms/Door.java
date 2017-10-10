@@ -14,8 +14,7 @@ public class Door implements Drawable, Savable {
     private Room entry;
     private Room destination;
     int position;
-    int width = 10;
-    int height = 50;
+    public static final int height = 50;
     public boolean isLocked;
 
 
