@@ -39,9 +39,7 @@ public class GamePanel extends ScreenPanel {
     public void addControllerForButtons(ActionListener controller) {}
 
     @Override
-    public void enableOtherButtons() {
-
-    }
+    public void enableOtherButtons() {}
 
     @Override
     public void paintComponent(Graphics g){

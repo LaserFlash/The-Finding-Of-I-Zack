@@ -3,11 +3,13 @@ package View;
 import Mocks.MockModel;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Model;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import javax.swing.*;
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ViewManagerTest {
 
 
