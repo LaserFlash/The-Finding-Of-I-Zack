@@ -38,7 +38,7 @@ public class PlayerTests {
         Player p = new Player(location);
         p.shootLeft();
 
-        assertTrue(!p.getProjecctiles().isEmpty());
+        assertTrue(!p.getProjectiles().isEmpty());
 
     }
 

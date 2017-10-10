@@ -2,7 +2,6 @@ package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameSize;
-import TheFindingOfIZack.World.Rooms.Door;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.standardRoom;
 
@@ -388,7 +387,7 @@ public class Player extends AbstractPlayer {
         else {firerate -= 3;}
     }
 
-    public List<Projectile> getProjecctiles() {
+    public List<Projectile> getProjectiles() {
         return projectiles;
     }
 

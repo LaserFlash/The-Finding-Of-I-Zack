@@ -22,7 +22,7 @@ public class Rock extends Entity implements Savable {
 
     public Rock(Point location) {
         super(location);
-        initialiseImage();
+        this.rocksImage = ImageLoader.loadImage("/rocks.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
     }
 
     public void damage(int damage) {
@@ -36,45 +36,6 @@ public class Rock extends Entity implements Savable {
     @Override
     public void draw(Graphics g) {
         g.drawImage(rocksImage, (int) location.getX(), (int) location.getY(), null);
-    }
-
-
-    public void initialiseImage() {
-        Image img = new Image() {
-            @Override
-            public int getWidth(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public int getHeight(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public ImageProducer getSource() {
-                return null;
-            }
-
-            @Override
-            public Graphics getGraphics() {
-                return null;
-            }
-
-            @Override
-            public Object getProperty(String name, ImageObserver observer) {
-                return null;
-            }
-        };
-
-        try {
-            img = ImageIO.read(ImageLoader.class.getResource(("/rocks.png"))).getScaledInstance(40, 40, Image.SCALE_DEFAULT);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            rocksImage = img;
-        }
     }
 
     public boolean isDestroyed() {
