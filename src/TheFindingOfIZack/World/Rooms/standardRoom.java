@@ -153,12 +153,8 @@ public class standardRoom extends Room{
 
     public void draw(Graphics g){
         super.draw(g);
-        for(Enemy e : enemiesInRoom){
-            e.draw(g);
-        }
-        for(Entity e : items){
-            e.draw(g);
-        }
+        enemiesInRoom.forEach( e -> e.draw(g));
+        items.forEach(e -> e.draw(g));
     }
 
     public ArrayList<Enemy> getEnemies(){
