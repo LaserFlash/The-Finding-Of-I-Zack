@@ -25,6 +25,7 @@ public class Door implements Drawable, Savable {
     int position;
     public static final int height = 50;
     public boolean isLocked;
+    public boolean bossDoor;
 
 
 
@@ -33,6 +34,12 @@ public class Door implements Drawable, Savable {
         this.destination = destination;
         this.position = position;
         this.isLocked = true;
+        if(destination instanceof bossRoom){
+            this.bossDoor = true;
+           this.lockedDoorImage = ImageLoader.loadImage("/lockedDoor.png");
+        }else{
+            this.bossDoor = false;
+        }
         initialiseOPenImage();
         initialiseClosedImage();
 
@@ -66,7 +73,8 @@ public class Door implements Drawable, Savable {
 
     @Override
     public void draw(Graphics g) {
-        if(this.isLocked){
+        if(this.isLocked && !this.bossDoor){
+
             g.setColor(Color.red);
             if(this.position == 3){
                 //g.fillRect(0,GameSize.GAME_HEIGHT/2 - this.height/2,GameSize.WALL_WIDTH,height);
@@ -86,7 +94,7 @@ public class Door implements Drawable, Savable {
                 //g.fillRect(GameSize.GAME_WIDTH - GameSize.WALL_WIDTH,GameSize.GAME_HEIGHT/2 - this.height/2,GameSize.WALL_WIDTH,height);
                 g.drawImage(closedDoorImage,GameSize.GAME_WIDTH - GameSize.WALL_WIDTH,GameSize.GAME_HEIGHT/2 - this.height/2,null);
             }
-        }else {
+        }else if(!this.isLocked && !this.bossDoor){
             g.setColor(Color.green);
             if(this.position == 3){
                 //g.fillRect(0,GameSize.GAME_HEIGHT/2 - this.height/2,GameSize.WALL_WIDTH,height);
@@ -106,11 +114,18 @@ public class Door implements Drawable, Savable {
                 //g.fillRect(GameSize.GAME_WIDTH - GameSize.WALL_WIDTH,GameSize.GAME_HEIGHT/2 - this.height/2,GameSize.WALL_WIDTH,height);
                 g.drawImage(openDoorImage,GameSize.GAME_WIDTH - GameSize.WALL_WIDTH,GameSize.GAME_HEIGHT/2 - this.height/2,null);
             }
+        }else if(this.bossDoor){
+            if(this.position == 2){
+                g.drawImage(lockedDoorImage,GameSize.GAME_WIDTH/2 - height/2,GameSize.GAME_HEIGHT - GameSize.WALL_WIDTH,null);
+                // g.fillRect(GameSize.GAME_WIDTH/2 - height/2,GameSize.GAME_HEIGHT - GameSize.WALL_WIDTH, height,GameSize.WALL_WIDTH);
+            }
         }
 
 
 
     }
+
+
 
 
 
@@ -129,7 +144,6 @@ public class Door implements Drawable, Savable {
             openDoorImage = ImageLoader.loadImage("/openDoorRight.png");
         }
     }
-
 
     public void initialiseClosedImage() {
         if(this.position == 0) {
