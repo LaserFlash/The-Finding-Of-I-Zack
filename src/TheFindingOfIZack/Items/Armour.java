@@ -29,6 +29,7 @@ public class Armour extends Item {
         g.drawImage(armourImage, (int) location.getX(), (int) location.getY(), null);
     }
 
+    @Override
     public void update() {
         if (box.intersects(player.getLocation().getX(), player.getLocation().getY(), player.width, player.width)) {
             collected = true;

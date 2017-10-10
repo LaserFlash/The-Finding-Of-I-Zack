@@ -26,6 +26,8 @@ public class Key extends Item {
         g.drawImage(keyImage, (int) location.getX(), (int) location.getY(), null);
     }
 
+
+    @Override
     public void update() {
         if (box.intersects(player.getLocation().getX(), player.getLocation().getY(), player.width, player.width)) {
             collected = true;

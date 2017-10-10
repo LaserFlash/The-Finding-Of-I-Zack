@@ -29,6 +29,10 @@ public abstract class Item implements Drawable{
         this.player = p;
     }
 
+    public void setBox() {
+        this.box = new BoundingBox(location.getX(), location.getY(), width, width);
+    }
+
     public void update() {}
 
     public void setLocation(Point p) {
