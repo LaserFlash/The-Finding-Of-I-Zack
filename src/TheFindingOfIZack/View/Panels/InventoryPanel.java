@@ -15,10 +15,16 @@ public class InventoryPanel extends JPanel{
     private static final int ARC = 20;
 
     private static final Image header;
+    private static final Image healthImg;
+    private static final Image armourImg;
+    private static final Image keyImg;
     private Model model;
 
     static {
         header = ImageLoader.loadImage("/header.png").getScaledInstance(GameSize.GAME_WIDTH,GameSize.MENU_HEIGHT,Image.SCALE_DEFAULT);
+        healthImg = ImageLoader.loadImage("/potion.png");
+        keyImg = ImageLoader.loadImage("/doorKey.png");
+        armourImg = ImageLoader.loadImage("/armour.png");
     }
 
     public InventoryPanel(Model m){
@@ -43,16 +49,20 @@ public class InventoryPanel extends JPanel{
 
         g.drawImage(header,0,0,null);
         g.setColor(Color.GRAY);
-        g.drawString("Health:", PADDING,PADDING);
-        g.fillRoundRect(PADDING + 100, BAR_PADDING, maxHealth,BAR_HEIGHT,ARC,ARC);
+        g.drawImage(healthImg,PADDING,BAR_PADDING,null);
+        g.fillRoundRect(PADDING*3, BAR_PADDING * 2, maxHealth,BAR_HEIGHT,ARC,ARC);
         g.setColor(Color.red);
-        g.fillRoundRect(PADDING + 100, BAR_PADDING, health,BAR_HEIGHT,ARC,ARC);
+        g.fillRoundRect(PADDING*3, BAR_PADDING * 2, health,BAR_HEIGHT,ARC,ARC);
 
         g.setColor(Color.GRAY);
-        g.drawString("Armour:",PADDING,PADDING * 2);
-        g.fillRoundRect(PADDING + 100, BAR_PADDING + PADDING, maxArmour,BAR_HEIGHT,ARC,ARC);
+        g.drawImage(armourImg, PADDING * 4 + maxHealth,BAR_PADDING,null);
+        g.fillRoundRect(PADDING * 6 + maxHealth, BAR_PADDING *2 , maxArmour,BAR_HEIGHT,ARC,ARC);
         g.setColor(Color.blue);
-        g.fillRoundRect(PADDING + 100, BAR_PADDING + PADDING, armour,BAR_HEIGHT,ARC,ARC);
+        g.fillRoundRect(PADDING * 6 + maxHealth, BAR_PADDING *2, armour,BAR_HEIGHT,ARC,ARC);
+
+        if (model.getPlayer().getKey()){
+            g.drawImage(keyImg, GameSize.GAME_WIDTH - PADDING*4,BAR_PADDING * 2,null);
+        }
     }
 
     private void drawPlayerItems(Graphics g){

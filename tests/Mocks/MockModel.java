@@ -80,6 +80,11 @@ public class MockModel implements Model {
         public int getMaxArmour() {
             return 0;
         }
+
+        @Override
+        public boolean getKey() {
+            return false;
+        }
     };
 
     public boolean sLeft = false;
