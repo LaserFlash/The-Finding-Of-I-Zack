@@ -33,6 +33,8 @@ public abstract class Item implements Drawable{
         this.location = p;
     }
 
+    public void draw(Graphics g) {}
+
     public boolean isCollected() {
         return collected;
     }
