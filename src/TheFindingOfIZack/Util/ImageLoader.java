@@ -9,10 +9,20 @@ import java.io.IOException;
 
 public class ImageLoader {
 
+    /**
+     * Load an Icon for use in the program
+     * @param resource  string for name of icon image in form "/name.ext"
+     * @return  The Icon loaded
+     */
     public static Icon loadIcon(String resource){
         return new ImageIcon((ImageLoader.class.getResource(resource)));
     }
 
+    /**
+     * Load an Image for use in the program
+     * @param resource string for name of image in form "/name.ext"
+     * @return The image loaded
+     */
     public static Image loadImage(String resource){
         Image img = new Image() {
             @Override
