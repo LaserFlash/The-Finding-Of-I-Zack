@@ -28,6 +28,21 @@ public class StartScreenPanel extends ScreenPanel {
     private final JButton resumeGame;
     private final JButton exitGame;
 
+    private static final Icon normalButton;
+    private static final Icon disabledButton;
+    private static final Icon hoverButton;
+    private static final Image startBG;
+    private static final Image controls;
+
+    static {
+        normalButton = ImageLoader.loadIcon("/normalButton.jpg");
+        disabledButton = ImageLoader.loadIcon("/disabledButton.jpg");
+        hoverButton = ImageLoader.loadIcon("/hoverButton.jpg");
+
+        startBG = ImageLoader.loadImage("/startBG.jpg");
+        controls = ImageLoader.loadImage("/keys.png").getScaledInstance(330,150,Image.SCALE_DEFAULT);
+    }
+
     /**
      * Create the panel and related buttons
      */
@@ -55,11 +70,11 @@ public class StartScreenPanel extends ScreenPanel {
     }
 
     private JButton buildButton(String name,String command){
-        JButton b = new JButton(name,ImageLoader.normalButton);
+        JButton b = new JButton(name,normalButton);
         b.setHorizontalTextPosition(JButton.CENTER);
         b.setVerticalTextPosition(JButton.CENTER);
-        b.setDisabledIcon(ImageLoader.disabledButton);
-        b.setRolloverIcon(ImageLoader.hoverButton);
+        b.setDisabledIcon(disabledButton);
+        b.setRolloverIcon(hoverButton);
         b.setForeground(Color.lightGray);
         b.setBorderPainted(false);
         b.setContentAreaFilled(false);
@@ -81,8 +96,8 @@ public class StartScreenPanel extends ScreenPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(ImageLoader.startBG, 0, 0, null);
-        g.drawImage(ImageLoader.controls,GameSize.WINDOW_WIDTH/2 - 330/2,GameSize.WINDOW_HEIGHT / 3 * 2,null);
+        g.drawImage(startBG, 0, 0, null);
+        g.drawImage(controls,GameSize.WINDOW_WIDTH/2 - 330/2,GameSize.WINDOW_HEIGHT / 3 * 2,null);
     }
 
     public void enableOtherButtons(){

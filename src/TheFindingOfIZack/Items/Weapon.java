@@ -18,7 +18,7 @@ public class Weapon extends Item {
 
     public Weapon(Player p) {
         super("weapon", p);
-        initialiseImage();
+        this.weaponImage = ImageLoader.loadImage("/sword.png");
     }
 
     @Override
@@ -30,44 +30,6 @@ public class Weapon extends Item {
         if (box.intersects(player.getLocation().getX(), player.getLocation().getY(), player.width, player.width)) {
             collected = true;
             player.weaponUpgrade();
-        }
-    }
-
-    public void initialiseImage() {
-        Image img = new Image() {
-            @Override
-            public int getWidth(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public int getHeight(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public ImageProducer getSource() {
-                return null;
-            }
-
-            @Override
-            public Graphics getGraphics() {
-                return null;
-            }
-
-            @Override
-            public Object getProperty(String name, ImageObserver observer) {
-                return null;
-            }
-        };
-
-        try {
-            img = ImageIO.read(ImageLoader.class.getResource(("/sword.png"))).getScaledInstance(40, 40, Image.SCALE_DEFAULT);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            weaponImage = img;
         }
     }
 
