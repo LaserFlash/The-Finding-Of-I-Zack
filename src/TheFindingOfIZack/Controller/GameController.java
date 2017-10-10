@@ -51,6 +51,7 @@ public class GameController implements ActionListener, KeyListener {
                         "Leaving :(", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
                 {
                     this.view.dispose();
+                    System.exit(0);
                 }
 
                 break;
