@@ -113,10 +113,9 @@ public class GameController implements ActionListener, KeyListener {
                 this.view.goToMenuView();
                 break;
         }
-
         checkPlayerActions(e,true);
-
     }
+
     @Override
     public void keyReleased(KeyEvent e) {
         checkPlayerActions(e,false);
