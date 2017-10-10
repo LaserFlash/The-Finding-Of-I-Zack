@@ -23,8 +23,8 @@ public class Enemy extends Entity {
     public Enemy(Point location, Player p) {
         super(location);
         this.player = p;
-        int type = (int) (Math.random()*5);
-        //int type = 10;
+        //int type = (int) (Math.random()*5);
+        int type = 1;
         //System.out.println("Type = " + type);//*****************************************************************
         if (type>2) {this.behaviour = new MobEnemy("standard");}
         else if (type==2) {this.behaviour = new MobEnemy("fast");}
@@ -62,6 +62,7 @@ public class Enemy extends Entity {
             this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.width, this.width);
             setBox();
         }
+        canMove();
         if(collision(location,playerPoint)){
             this.player.damage(this.behaviour.getDamage()); //Takes the damage value from each mob type
         }
@@ -74,15 +75,23 @@ public class Enemy extends Entity {
 
     /**
      * The Beginning of Theo's hostile takeover of the Enemy class
-     * @param location The point being tested for obstacles
-     * @return if the point is clear return true
      */
-    private boolean canMove(Point location){
-        if(location.getY() < TOP_WALL){return false;}
-        if(location.getX() < LEFT_WALL){return false;}
-        if(location.getY()+width > BOTTOM_WALL){return false;}
-        if(location.getX()+width > RIGHT_WALL){return false;}
-        return true;
+    private void canMove(){
+        double x = location.getX();
+        double y = location.getY();
+        boolean top = false;
+        boolean bottom = false;
+        boolean left = false;
+        boolean right = false;
+        if(y < TOP_WALL){top = true;}
+        if(x < LEFT_WALL){left = true;}
+        if(y+width > BOTTOM_WALL){bottom = true;}
+        if(x+width > RIGHT_WALL){right = true;}
+        if(top){y = TOP_WALL;}
+        if(bottom){y = BOTTOM_WALL-width;}
+        if(left){x = LEFT_WALL;}
+        if(right){x = RIGHT_WALL-width;}
+        location.move(x,y);
     }
 
     /**
