@@ -37,8 +37,47 @@ public class standardRoom extends Room{
         int x = r.nextInt(right - left) + left;
         int y = r.nextInt(bottom - top) + top;
 
+        boolean suitable = false;
+        while (!suitable) {
+            //Check if point is blocking a door or potential door
+            //TODO, add to abstract room and door to only check certain door locations
+            if (checkPointBlockingDoor(x,y)){
+                suitable = true;
+                continue;
+            }
+            x = r.nextInt(right - left) + left;
+            y = r.nextInt(bottom - top) + top;
+        }
         Point p = new Point(x,y);
         return p;
+    }
+
+    /**
+     * Check if the given point would block a doorway if it belonged to an entity
+     * @param x the x coordinate of point
+     * @param y the y coordinate of point
+     * @return  true if the door is not blocked false otherwise
+     */
+    private boolean checkPointBlockingDoor(int x, int y){
+        if (x >= GameSize.GAME_WIDTH/2 - Door.height/2 - Entity.width &&
+                x <= GameSize.GAME_WIDTH/2 + Door.height/2){     //potentially blocking north or south door
+            if (y >= GameSize.BOTTOM_WALL - Entity.width*2){  //Blocking south door
+                return false;
+            }
+            else if (y <= GameSize.TOP_WALL + Entity.width){    //Blocking North door
+                return false;
+            }
+
+        }else if(y >= GameSize.GAME_HEIGHT/2 - Door.height/2 - Entity.width &&
+                y <= GameSize.GAME_HEIGHT/2 + Door.height/2){     //potentially blocking east or west door
+            if (x <= GameSize.LEFT_WALL + Entity.width){
+                return false;
+            }
+            else if(x >= GameSize.RIGHT_WALL - Entity.width*2){
+                return false;
+            }
+        }
+        return true;
     }
     @Override
     public  void populateRoom(Player p){
