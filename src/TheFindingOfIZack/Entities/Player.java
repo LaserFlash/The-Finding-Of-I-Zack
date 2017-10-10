@@ -40,9 +40,8 @@ public class Player extends AbstractPlayer {
 
     @Override
     public void draw(Graphics g) {
-
-        for (Projectile p : projectiles) {
-            p.draw(g);
+        synchronized (projectiles) {
+            projectiles.forEach(p -> p.draw(g));
         }
 
         g.setColor(Color.CYAN);
