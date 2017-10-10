@@ -37,7 +37,7 @@ public abstract class Room implements Drawable {
         this.eastDoor = null;
         this.southDoor = null;
         this.westDoor = null;
-        initialiseImage();
+        this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameSize.GAME_WIDTH,GameSize.GAME_HEIGHT,Image.SCALE_DEFAULT);
     }
     public ArrayList<Item> getCollectables(){
         return this.collectables;
@@ -99,50 +99,6 @@ public abstract class Room implements Drawable {
 
     public abstract void populateRoom(Player p);
     public abstract void update();
-
-    public void initialiseImage() {
-        Image img = new Image() {
-            @Override
-            public int getWidth(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public int getHeight(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public ImageProducer getSource() {
-                return null;
-            }
-
-            @Override
-            public Graphics getGraphics() {
-                return null;
-            }
-
-            @Override
-            public Object getProperty(String name, ImageObserver observer) {
-                return null;
-            }
-        };
-
-        try {
-            img = ImageIO.read(ImageLoader.class.getResource(("/room.png")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            roomImage = img;
-        }
-    }
-
-
-
-
-
-
 
     public void addDoor(Door d, int n) {
 
