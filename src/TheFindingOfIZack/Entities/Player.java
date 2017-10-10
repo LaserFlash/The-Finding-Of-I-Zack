@@ -1,6 +1,7 @@
 package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.FileIO.Util.Savable;
+import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.standardRoom;
@@ -82,6 +83,16 @@ public class Player extends AbstractPlayer {
             }
         }
         popProjectiles();
+
+        ArrayList<Item> collected = new ArrayList<Item>();
+        for (Item i : room.getCollectables()) {
+            if (i.isCollected()) {
+                collected.add(i);
+            }
+        }
+        for (Item i : collected) {
+            room.getCollectables().remove(i);
+        }
 
     }
 
