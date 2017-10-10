@@ -93,7 +93,7 @@ public class standardRoom extends Room{
         }
 
         for(int i = 0; i < numUrns; i++){
-            items.add(new Urn(randomPoint()));
+            items.add(new Urn(randomPoint(), getPlayer()));
         }
 
         for(int i = 0; i < numEnemies; i++){

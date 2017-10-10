@@ -1,11 +1,13 @@
 package TheFindingOfIZack.Items;
-import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.*;
+import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.View.Drawable;
 import javafx.geometry.BoundingBox;
 import TheFindingOfIZack.Util.GameSize;
 
 
 import java.awt.*;
+
 
 /**
  * Created by allanbenj1 on 26/09/17.
@@ -25,6 +27,10 @@ public abstract class Item implements Drawable{
         location = new Point((GameSize.WINDOW_WIDTH/2)-(width/2), (GameSize.GAME_HEIGHT/2)-(width/2));
         box = new BoundingBox(location.getX(), location.getY(), width, width);
         this.player = p;
+    }
+
+    public void setLocation(Point p) {
+        this.location = p;
     }
 
     public boolean isCollected() {

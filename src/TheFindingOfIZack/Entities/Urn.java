@@ -1,6 +1,7 @@
 package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.FileIO.Util.Savable;
+import TheFindingOfIZack.Items.*;
 import TheFindingOfIZack.Util.ImageLoader;
 
 import javax.imageio.ImageIO;
@@ -16,13 +17,28 @@ public class Urn extends Entity implements Savable{
 
     private static Image urnsImage;
 
+    private Player p;
+
+    private Item item = null;
+
     private boolean destroyed = false;
 
     int health = 40;
 
-    public Urn(Point location) {
+    public Urn(Point location, Player p) {
         super(location);
+        this.p = p;
         initialiseImage();
+
+        int random = (int) (Math.random()*100);
+        if (random >= 50) {
+            random = (int) (Math.random()*100);
+            if (random <= 25) {item = new Armour(p); item.setLocation(location);}
+            else if (random <= 50) {item = new Weapon(p); item.setLocation(location);}
+            else if (random <= 75) {item = new Potion(p); item.setLocation(location);}
+            else {item = new Key(p); item.setLocation(location);}
+        }
+
     }
 
     public void damage(int damage) {
@@ -30,6 +46,7 @@ public class Urn extends Entity implements Savable{
         if (health < 0) {
             health = 0;
             destroyed = true;
+            p.getRoom().getCollectables().add(item);
         }
     }
 

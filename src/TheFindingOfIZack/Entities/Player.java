@@ -202,7 +202,9 @@ public class Player extends AbstractPlayer {
         if (room.getSouthDoor().isLocked) {return;}
         int x = (int) location.getX();
         int y = GameSize.TOP_WALL;
+        room.removePlayer();
         room = room.getSouthDoor().getDestination();
+        room.addPlayer(this);
         location.move(x, y);
         room.populateRoom(this);
         projectiles.clear();
@@ -213,7 +215,9 @@ public class Player extends AbstractPlayer {
         if (room.getNorthDoor().isLocked) {return;}
         int x = (int) location.getX();
         int y = GameSize.BOTTOM_WALL-width;
+        room.removePlayer();
         room = room.getNorthDoor().getDestination();
+        room.addPlayer(this);
         location.move(x, y);
         room.populateRoom(this);
         projectiles.clear();
@@ -223,7 +227,9 @@ public class Player extends AbstractPlayer {
         if (room.getWestDoor().isLocked) {return;}
         int x = GameSize.RIGHT_WALL-width;
         int y = (int) location.getY();
+        room.removePlayer();
         room = room.getWestDoor().getDestination();
+        room.addPlayer(this);
         location.move(x, y);
         room.populateRoom(this);
         projectiles.clear();
@@ -233,7 +239,9 @@ public class Player extends AbstractPlayer {
         if (room.getEastDoor().isLocked) {return;}
         int x = GameSize.LEFT_WALL;
         int y = (int) location.getY();
+        room.removePlayer();
         room = room.getEastDoor().getDestination();
+        room.addPlayer(this);
         location.move(x, y);
         room.populateRoom(this);
         projectiles.clear();
