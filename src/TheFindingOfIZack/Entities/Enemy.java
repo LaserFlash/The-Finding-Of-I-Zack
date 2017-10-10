@@ -14,11 +14,12 @@ import static TheFindingOfIZack.Util.GameSize.*;
  */
 public class Enemy extends Entity {
 
-    private int damage;
     private MobEnemy behaviour;
     int health;
     private Player player;
     private boolean isDead = false;
+    private final int DAMAGE_TICK = 20;
+    private int tick;
 
     public Enemy(Point location, Player p) {
         super(location);
@@ -34,8 +35,15 @@ public class Enemy extends Entity {
     }
 
     public void damage(int damage) {
-        this.health -= damage;
-        if (this.health <= 0) {isDead = true;}
+            this.health -= damage;
+            if (this.health <= 0) {isDead = true;}
+    }
+
+    public void damagePlayer(){
+        if(tick > DAMAGE_TICK) {
+            this.player.damage(this.behaviour.getDamage()); //Takes the damage value from each mob type
+            tick = 0;
+        }
     }
 
     public boolean isDead() {return isDead;}
@@ -53,6 +61,7 @@ public class Enemy extends Entity {
      * Also checks to see if the mob has touched the player
      */
     public void move() {
+        tick ++;
         Point playerPoint = player.getLocation();
         Point potentialStep = this.behaviour.step(location, playerPoint);
         //potentialStep represents the move which will take place if there are no obstacle,
@@ -64,7 +73,7 @@ public class Enemy extends Entity {
         }
         canMove();
         if(collision(location,playerPoint)){
-            this.player.damage(this.behaviour.getDamage()); //Takes the damage value from each mob type
+            damagePlayer();
         }
 
         if (behaviour.getMob() instanceof MobShooter) {

@@ -49,8 +49,7 @@ public abstract class Entity implements Drawable {
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.black);
-        g.drawRect((int) location.getX(), (int) location.getY(), width, width);
+
     }
 
     public void setBox() {

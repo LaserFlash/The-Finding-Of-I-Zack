@@ -137,12 +137,6 @@ public class Player extends AbstractPlayer {
         setBox();
     }
 
-    public boolean vertDoor() {
-        if (location.getX() > GameSize.VERT_DOOR_START && location.getX() < GameSize.VERT_DOOR_END) {
-            if (location.getX()+width > GameSize.VERT_DOOR_START && location.getX()+width < GameSize.VERT_DOOR_END) {return true;}
-        }
-        return false;
-    }
 
     public void moveLeft() {
         int x = (int) location.getX()-speed;
@@ -190,9 +184,16 @@ public class Player extends AbstractPlayer {
         return false;
     }
 
+    public boolean vertDoor() {
+        if (location.getX() >= GameSize.VERT_DOOR_START && location.getX() <= GameSize.VERT_DOOR_END) {
+            if (location.getX()+width >= GameSize.VERT_DOOR_START && location.getX()+width <= GameSize.VERT_DOOR_END) {return true;}
+        }
+        return false;
+    }
+
     public boolean horzDoor() {
-        if (location.getY() > GameSize.HORZ_DOOR_START && location.getY() < GameSize.HORZ_DOOR_END) {
-            if (location.getY()+width > GameSize.HORZ_DOOR_START && location.getY()+width < GameSize.HORZ_DOOR_END) {return true;}
+        if (location.getY() >= GameSize.HORZ_DOOR_START && location.getY() <= GameSize.HORZ_DOOR_END) {
+            if (location.getY()+width >= GameSize.HORZ_DOOR_START && location.getY()+width <= GameSize.HORZ_DOOR_END) {return true;}
         }
         return false;
     }
