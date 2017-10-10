@@ -1,6 +1,5 @@
 package TheFindingOfIZack.Entities;
 
-import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.World.Rooms.Room;
@@ -8,6 +7,8 @@ import TheFindingOfIZack.World.Rooms.standardRoom;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Ben Allan
@@ -27,11 +28,11 @@ public class Player extends AbstractPlayer {
     private int firerate = 20;
     private int MIN_FIRERATE = 7;
 
-    private transient ArrayList<Projectile> projectiles;
+    private transient List<Projectile> projectiles;
 
     public Player(Point location) {
         super(location);
-        projectiles = new ArrayList<Projectile>();
+        projectiles = Collections.synchronizedList(new ArrayList<Projectile>());
     }
 
     public void setSpeed(int speed) {
@@ -349,7 +350,7 @@ public class Player extends AbstractPlayer {
         else {firerate -= 3;}
     }
 
-    public ArrayList<Projectile> getProjecctiles() {
+    public List<Projectile> getProjecctiles() {
         return projectiles;
     }
 

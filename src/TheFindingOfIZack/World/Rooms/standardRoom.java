@@ -8,6 +8,8 @@ import TheFindingOfIZack.Util.GameSize;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 
@@ -15,14 +17,14 @@ public class standardRoom extends Room{
 
     private ArrayList<Enemy> enemiesInRoom;
     private ArrayList<Enemy> deadEnemies;
-    private ArrayList<Entity> items;
+    private List<Entity> items;
 
 
     public standardRoom(){
         super();
         this.enemiesInRoom = new ArrayList<Enemy>();
         this.deadEnemies = new ArrayList<Enemy>();
-        this.items = new ArrayList<Entity>();
+        this.items = Collections.synchronizedList(new ArrayList<Entity>());
         this.isCleared = false;
     }
 
@@ -108,7 +110,7 @@ public class standardRoom extends Room{
 
     }
 
-    public ArrayList<Entity> getItems() {
+    public List<Entity> getItems() {
         return items;
     }
 

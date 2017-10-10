@@ -5,6 +5,7 @@ import TheFindingOfIZack.View.Drawable;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UnknownFormatConversionException;
 
 /**
@@ -74,13 +75,13 @@ public class Projectile extends Entity implements Drawable{
         return false;
     }
 
-    public void enemyCollision(ArrayList<Enemy> enemies) {
+    public void enemyCollision(List<Enemy> enemies) {
         for (Enemy e : enemies) {
             if (e.box.intersects(location.getX()+width/4, location.getY()+width/4, width/2, width/2)) {e.damage(damage); pop = true;}
         }
     }
 
-    public void entityCollision(ArrayList<Entity> entities) {
+    public void entityCollision(List<Entity> entities) {
         for (Entity entity : entities) {
 
             if (entity instanceof Rock) {

@@ -38,8 +38,8 @@ public class InventoryPanel extends JPanel{
         int maxHealth = model.getPlayer().getMaxHealth();
         int health = Math.max(model.getPlayer().getHealth(),0);
 
-        int maxArmour = model.getPlayer().getMaxArmour();
-        int armour = Math.max(model.getPlayer().getArmour(),0);
+        int maxArmour = model.getPlayer().getMaxArmour() * 4;
+        int armour = Math.max(model.getPlayer().getArmour(),0) * 4;
 
         g.drawImage(header,0,0,null);
         g.setColor(Color.GRAY);
