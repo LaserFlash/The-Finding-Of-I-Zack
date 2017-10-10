@@ -18,7 +18,7 @@ public abstract class ScreenPanel extends JPanel {
      */
     public ScreenPanel(){
         super();
-        this.setBackground(Color.DARK_GRAY);
+        this.setBackground(Color.BLACK);
     }
 
     /**
