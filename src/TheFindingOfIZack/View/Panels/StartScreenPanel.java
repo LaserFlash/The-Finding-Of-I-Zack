@@ -2,6 +2,7 @@ package TheFindingOfIZack.View.Panels;
 
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.Util.ImageLoader;
+import org.omg.CORBA.IMP_LIMIT;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -39,7 +40,7 @@ public class StartScreenPanel extends ScreenPanel {
         disabledButton = ImageLoader.loadIcon("/disabledButton.jpg");
         hoverButton = ImageLoader.loadIcon("/hoverButton.jpg");
 
-        startBG = ImageLoader.loadImage("/startBG.jpg");
+        startBG = ImageLoader.loadImage("/startBG.jpg").getScaledInstance(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT, Image.SCALE_DEFAULT);
         controls = ImageLoader.loadImage("/keys.png").getScaledInstance(330,150,Image.SCALE_DEFAULT);
     }
 
