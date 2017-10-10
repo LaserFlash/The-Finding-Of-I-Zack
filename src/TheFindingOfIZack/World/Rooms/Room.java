@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public abstract class Room implements Drawable {
 
     private static Image roomImage;
-    private ArrayList<Item> collectables;
+    protected ArrayList<Item> collectables;
     public transient Door northDoor;
     public transient Door eastDoor;
     public transient Door southDoor;
