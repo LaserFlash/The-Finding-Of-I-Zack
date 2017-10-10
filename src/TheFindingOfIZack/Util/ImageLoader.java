@@ -52,7 +52,7 @@ public class ImageLoader {
         };
 
         try {
-            img =  ImageIO.read(ImageLoader.class.getResource((resource))).getScaledInstance(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT,Image.SCALE_DEFAULT);
+            img =  ImageIO.read(ImageLoader.class.getResource((resource)));
         } catch (IOException e) {
             e.printStackTrace();
         }
