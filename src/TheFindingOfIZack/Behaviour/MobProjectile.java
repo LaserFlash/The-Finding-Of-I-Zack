@@ -9,7 +9,7 @@ import java.awt.*;
  * Created by gordontheo on 29/09/17.
  */
 public class MobProjectile extends Projectile implements Drawable {
-    private double speed = 6;
+    private double speed = 4;
     private double directionX;
     private double directionY;
     private double x;
@@ -24,22 +24,22 @@ public class MobProjectile extends Projectile implements Drawable {
         double a = h/speed;
         this.directionX = changeX/a;
         this.directionY = changeY/a;
-        this.x = location.getX();
-        this.y = location.getY();
+        this.x = location.getX()+20;
+        this.y = location.getY()+20;
+
     }
 
     @Override
     public void move(){
-        location.move((location.getX() + directionX),(location.getY() + directionY));
-        if (wallCollision()) {pop = true;}
+        x += directionX;
+        y += directionY;
+        //if (wallCollision()) {pop = true;}
     }
 
     @Override
     public void draw(Graphics g) {
-        System.out.println("Zibam a new projectile");//***************************************************************
-
+        move();
         int size = 10;
-
         g.setColor(Color.RED);
         g.fillOval((int)x, (int)y, size, size);
     }

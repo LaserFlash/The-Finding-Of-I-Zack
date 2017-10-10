@@ -9,10 +9,10 @@ import java.util.ArrayList;
  * Created by gordontheo on 29/09/17.
  */
 public class MobShooter extends Mob{
-    private final int PROJECTILE_TICK = 20;
-    private int tick = 0;
+    private final int PROJECTILE_TICK = 30;
+    private int tick = (int)(Math.random()*PROJECTILE_TICK);
     private int stopDistance = 200;
-    private transient ArrayList<MobProjectile> projectiles;
+    private transient ArrayList<MobProjectile> projectiles = new ArrayList<MobProjectile>();
 
     public MobShooter(){
         this.viewRange = 600;
@@ -29,6 +29,8 @@ public class MobShooter extends Mob{
      * @return new mob Point
      */
     public Point step(Point location, Point player){
+        tick++;
+        projectile(location,player);
         double range = distanceBetween(location,player);
         if (range < viewRange && range > stopDistance+60 || range < stopDistance) {
             double changeX = (player.getX() - location.getX());
@@ -45,7 +47,6 @@ public class MobShooter extends Mob{
             }
 
             location.setLocation((newX + location.getX()), (newY + location.getY()));
-            //projectile(location,player);
             }
         return location;
     }
@@ -72,9 +73,9 @@ public class MobShooter extends Mob{
     }
 
     private void projectile(Point location, Point player){
-        if(tick == 0){
+        if(tick > PROJECTILE_TICK){
             projectiles.add(new MobProjectile(location, player));
-            tick ++;
+            tick = 0;
         }
     }
 }
