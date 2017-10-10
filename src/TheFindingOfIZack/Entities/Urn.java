@@ -33,10 +33,9 @@ public class Urn extends Entity implements Savable{
         int random = (int) (Math.random()*100);
         if (random >= 50) {
             random = (int) (Math.random()*100);
-            if (random <= 25) {item = new Armour(p);}
-            else if (random <= 50) {item = new Weapon(p);}
-            else if (random <= 75) {item = new Potion(p);}
-            else {item = new Key(p);}
+            if (random <= 33) {item = new Armour(p);}
+            else if (random <= 66) {item = new Weapon(p);}
+            else {item = new Potion(p);}
             item.setLocation(location);
             item.setBox();
         }
