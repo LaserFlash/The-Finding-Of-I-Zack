@@ -23,12 +23,14 @@ import java.io.IOException;
  *  or exit
  */
 public class StartScreenPanel extends ScreenPanel {
+    /* Buttons displayed on StartScreenPanel */
     private final JButton newGame;
     private final JButton loadGame;
     private final JButton saveGame;
     private final JButton resumeGame;
     private final JButton exitGame;
 
+    /* Images used to customise buttons */
     private static final Icon normalButton;
     private static final Icon disabledButton;
     private static final Icon hoverButton;
@@ -56,21 +58,28 @@ public class StartScreenPanel extends ScreenPanel {
         this.add(loadGame);
 
         this.saveGame = buildButton("Save","saveGame");
-        this.saveGame.setEnabled(false);
+        this.saveGame.setEnabled(false);    //Initially disabled
         this.add(saveGame);
 
         this.resumeGame = buildButton("Resume","resumeGame");
-        this.resumeGame.setEnabled(false);
+        this.resumeGame.setEnabled(false);  //Initially disabled
         this.add(resumeGame);
 
         this.exitGame = buildButton("Exit","exitGame");
         this.add(exitGame);
 
-
         this.setVisible(true);
     }
 
+    /**
+     * Create a button with a given name and command
+     * Allows for consistent button appearance
+     * @param name  String displayed on the button
+     * @param command   String action command when button is used
+     * @return  The button created
+     */
     private JButton buildButton(String name,String command){
+
         JButton b = new JButton(name,normalButton);
         b.setHorizontalTextPosition(JButton.CENTER);
         b.setVerticalTextPosition(JButton.CENTER);
@@ -79,7 +88,6 @@ public class StartScreenPanel extends ScreenPanel {
         b.setForeground(Color.lightGray);
         b.setBorderPainted(false);
         b.setContentAreaFilled(false);
-
         b.setActionCommand(command);
 
         return b;
@@ -87,6 +95,7 @@ public class StartScreenPanel extends ScreenPanel {
 
     @Override
     public void addControllerForButtons(ActionListener controller) {
+        /* Give ActionListener to all buttons */
         newGame.addActionListener(controller);
         loadGame.addActionListener(controller);
         saveGame.addActionListener(controller);
@@ -100,7 +109,7 @@ public class StartScreenPanel extends ScreenPanel {
         g.drawImage(startBG, 0, 0, null);
         g.drawImage(controls,GameSize.WINDOW_WIDTH/2 - 330/2,GameSize.WINDOW_HEIGHT / 3 * 2,null);
     }
-
+    @Override
     public void enableOtherButtons(){
         this.resumeGame.setEnabled(true);
         this.saveGame.setEnabled(true);

@@ -16,7 +16,7 @@ public abstract class ScreenPanel extends JPanel {
     /**
      * Constructor setting default background colour for all ScreenPanels
      */
-    public ScreenPanel(){
+    ScreenPanel(){
         super();
         this.setBackground(Color.BLACK);
     }
@@ -27,10 +27,15 @@ public abstract class ScreenPanel extends JPanel {
      */
     public abstract void addControllerForButtons(ActionListener controller);
 
+    /**
+     * Enable any buttons that may have been disabled
+     */
+    public abstract void enableOtherButtons();
+
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(GameSize.WINDOW_WIDTH, GameSize.WINDOW_HEIGHT);
     }
 
-    public abstract void enableOtherButtons();
+
 }

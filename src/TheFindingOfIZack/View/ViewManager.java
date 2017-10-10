@@ -28,11 +28,13 @@ public class ViewManager extends View {
      */
     public ViewManager(Model model) {
         super("The Finding of I, Zack");
+        /* Set the default font for all UI elements */
         setUIFont (new javax.swing.plaf.FontUIResource(new Font("ComicSans", Font.BOLD, 18)));
         setPreferredSize(new Dimension(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT));
+
         this.model = model;
         this.setFocusable(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.startScreen = new StartScreenPanel();
         this.gameScreen = new GamePanel(this.model);
 
