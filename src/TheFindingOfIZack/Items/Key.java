@@ -18,7 +18,7 @@ public class Key extends Item {
 
     public Key(Player p) {
         super("key", p);
-        this.keyImage = ImageLoader.loadImage("/key.png");
+        this.keyImage = ImageLoader.loadImage("/doorKey.png");
     }
 
     @Override
