@@ -16,6 +16,8 @@ public class Urn extends Entity implements Savable{
 
     private static Image urnsImage;
 
+    private boolean destroyed = false;
+
     int health = 40;
 
     public Urn(Point location) {
@@ -25,6 +27,10 @@ public class Urn extends Entity implements Savable{
 
     public void damage(int damage) {
         this.health -= damage;
+        if (health < 0) {
+            health = 0;
+            destroyed = true;
+        }
     }
 
     @Override
@@ -70,6 +76,10 @@ public class Urn extends Entity implements Savable{
         finally {
             urnsImage = img;
         }
+    }
+
+    public boolean isDestroyed() {
+        return destroyed;
     }
 
 

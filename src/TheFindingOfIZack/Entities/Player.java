@@ -17,7 +17,7 @@ public class Player extends AbstractPlayer {
     private int armour = 0;
     private transient Room room;
     private int MAX_HEALTH = 100;
-    private int health = 50;
+    private int health = 100;
     private int speed = 5;
     private int key = 0;
     private int damage = 10;
@@ -61,9 +61,28 @@ public class Player extends AbstractPlayer {
             if (room instanceof standardRoom) {
                 standardRoom r = (standardRoom) room;
                 p.enemyCollision(r.getEnemies());
+                p.entityCollision(r.getItems());
+
+
+                ArrayList<Entity> destroyed = new ArrayList<Entity>();
+                for (Entity e : r.getItems()) {
+                    if (e instanceof Rock) {
+                        Rock rock = (Rock) e;
+                        if (rock.isDestroyed()) {destroyed.add(e);}
+                    }
+                    else if (e instanceof Urn) {
+                        Urn urn = (Urn) e;
+                        if (urn.isDestroyed()) {destroyed.add(e);}
+                    }
+                }
+                for (Entity e : destroyed) {
+                    r.getItems().remove(e);
+                }
+
             }
         }
         popProjectiles();
+
     }
 
     public void damage(int damage) {
@@ -94,6 +113,8 @@ public class Player extends AbstractPlayer {
             }
         }
 
+        if (checkCollision(x, y)) {return;}
+
         location.move(x, y);
         setBox();
     }
@@ -109,6 +130,8 @@ public class Player extends AbstractPlayer {
                 return;
             }
         }
+
+        if (checkCollision(x, y)) {return;}
 
         location.move(x, y);
         setBox();
@@ -133,6 +156,8 @@ public class Player extends AbstractPlayer {
             }
         }
 
+        if (checkCollision(x, y)) {return;}
+
         location.move(x, y);
         setBox();
     }
@@ -149,8 +174,20 @@ public class Player extends AbstractPlayer {
             }
         }
 
+        if (checkCollision(x, y)) {return;}
+
         location.move(x, y);
         setBox();
+    }
+
+    public boolean checkCollision(int x, int y) {
+        if (room instanceof standardRoom) {
+            standardRoom r = (standardRoom) room;
+            for (Entity e : r.getItems()) {
+                if (e.box.intersects(x, y, width, width)) {return true;}
+            }
+        }
+        return false;
     }
 
     public boolean horzDoor() {
