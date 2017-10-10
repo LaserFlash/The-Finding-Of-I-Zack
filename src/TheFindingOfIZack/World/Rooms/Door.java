@@ -18,7 +18,7 @@ public class Door implements Drawable, Savable {
 
     private  Image openDoorImage;
     private  Image closedDoorImage;
-    private static Image lockedDoorImage;
+    private  Image lockedDoorImage;
 
     private Room entry;
     private Room destination;
@@ -116,101 +116,33 @@ public class Door implements Drawable, Savable {
 
 
     public void initialiseOPenImage() {
-        Image img = new Image() {
-            @Override
-            public int getWidth(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public int getHeight(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public ImageProducer getSource() {
-                return null;
-            }
-
-            @Override
-            public Graphics getGraphics() {
-                return null;
-            }
-
-            @Override
-            public Object getProperty(String name, ImageObserver observer) {
-                return null;
-            }
-        };
-
-        try {
-            if(this.position == 0) {
-                img = ImageIO.read(ImageLoader.class.getResource(("/openDoorTop.png")));
-            }
-            if(this.position == 1) {
-                img = ImageIO.read(ImageLoader.class.getResource(("/openDoorLeft.png")));
-            }
-            if(this.position == 2) {
-                img = ImageIO.read(ImageLoader.class.getResource(("/openDoorDown.png")));
-            }
-            if(this.position == 3) {
-                img = ImageIO.read(ImageLoader.class.getResource(("/openDoorRight.png")));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(this.position == 0) {
+            openDoorImage = ImageLoader.loadImage("/openDoorTop.png");
         }
-        finally {
-            openDoorImage = img;
+        if(this.position == 1) {
+            openDoorImage = ImageLoader.loadImage("/openDoorLeft.png");
+        }
+        if(this.position == 2) {
+            openDoorImage = ImageLoader.loadImage("/openDoorDown.png");
+        }
+        if(this.position == 3) {
+            openDoorImage = ImageLoader.loadImage("/openDoorRight.png");
         }
     }
 
 
     public void initialiseClosedImage() {
-        Image img = new Image() {
-            @Override
-            public int getWidth(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public int getHeight(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public ImageProducer getSource() {
-                return null;
-            }
-
-            @Override
-            public Graphics getGraphics() {
-                return null;
-            }
-
-            @Override
-            public Object getProperty(String name, ImageObserver observer) {
-                return null;
-            }
-        };
-
-        try {
-            if(this.position == 0) {
-                img = ImageIO.read(ImageLoader.class.getResource(("/closedDoorTop.png")));
-            }
-            if(this.position == 1) {
-                img = ImageIO.read(ImageLoader.class.getResource(("/closedDoorRight.png")));
-            }
-            if(this.position == 2) {
-                img = ImageIO.read(ImageLoader.class.getResource(("/closedDoorDown.png")));
-            }
-            if(this.position == 3) {
-                img = ImageIO.read(ImageLoader.class.getResource(("/closedDoorLeft.png")));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(this.position == 0) {
+            closedDoorImage = ImageLoader.loadImage("/closedDoorTop.png");
         }
-        finally {
-            closedDoorImage = img;
+        if(this.position == 1) {
+            closedDoorImage = ImageLoader.loadImage("/closedDoorRight.png");
+        }
+        if(this.position == 2) {
+            closedDoorImage = ImageLoader.loadImage("/closedDoorDown.png");
+        }
+        if(this.position == 3) {
+            closedDoorImage = ImageLoader.loadImage("/closedDoorLeft.png");
         }
     }
 }
