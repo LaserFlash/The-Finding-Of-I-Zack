@@ -9,6 +9,8 @@ import java.util.ArrayList;
  * Created by gordontheo on 29/09/17.
  */
 public class MobShooter extends Mob{
+    private final int PROJECTILE_TICK = 20;
+    private int tick = 0;
     private int stopDistance = 200;
     private transient ArrayList<MobProjectile> projectiles;
 
@@ -43,7 +45,7 @@ public class MobShooter extends Mob{
             }
 
             location.setLocation((newX + location.getX()), (newY + location.getY()));
-            //projectiles.add(new MobProjectile(location, player));
+            //projectile(location,player);
             }
         return location;
     }
@@ -66,6 +68,13 @@ public class MobShooter extends Mob{
 
         for (MobProjectile p : temp) {
             projectiles.remove(p);
+        }
+    }
+
+    private void projectile(Point location, Point player){
+        if(tick == 0){
+            projectiles.add(new MobProjectile(location, player));
+            tick ++;
         }
     }
 }
