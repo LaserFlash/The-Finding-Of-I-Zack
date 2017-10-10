@@ -40,7 +40,7 @@ public class StartScreenPanel extends ScreenPanel {
         hoverButton = ImageLoader.loadIcon("/hoverButton.jpg");
 
         startBG = ImageLoader.loadImage("/startBG.jpg");
-        controls = ImageLoader.loadImage("/keys.jpg");
+        controls = ImageLoader.loadImage("/keys.png").getScaledInstance(330,150,Image.SCALE_DEFAULT);
     }
 
     /**

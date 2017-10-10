@@ -108,5 +108,4 @@ public class ViewManager extends View {
             }
         }
     }
-
 }
