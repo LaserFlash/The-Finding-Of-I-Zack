@@ -32,6 +32,7 @@ public class Armour extends Item {
     @Override
     public void update() {
         if (box.intersects(player.getLocation().getX(), player.getLocation().getY(), player.width, player.width)) {
+            if (player.getArmour() == player.getMaxArmour()) {return;}
             collected = true;
             player.addArmour(armour);
         }

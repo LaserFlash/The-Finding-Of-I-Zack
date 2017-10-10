@@ -26,6 +26,7 @@ public class Door implements Drawable, Savable {
     public static final int height = 50;
     public boolean isLocked;
     public boolean bossDoor;
+    public boolean needsKey;
 
 
 
@@ -36,9 +37,11 @@ public class Door implements Drawable, Savable {
         this.isLocked = true;
         if(destination instanceof bossRoom){
             this.bossDoor = true;
+            this.needsKey = true;
            this.lockedDoorImage = ImageLoader.loadImage("/lockedDoor.png");
         }else{
             this.bossDoor = false;
+            this.needsKey = false;
         }
         initialiseOPenImage();
         initialiseClosedImage();

@@ -2,6 +2,7 @@ package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.World.Rooms.Door;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.standardRoom;
 
@@ -212,6 +213,14 @@ public class Player extends AbstractPlayer {
     @Override
     public void moveSouth() {
         if (room.getSouthDoor().isLocked) {return;}
+        if (room.getSouthDoor().bossDoor && room.getSouthDoor().needsKey) {
+            if (this.key > 0) {
+                removekey();
+                room.getSouthDoor().needsKey = false;
+            }
+            else {return;}
+        }
+
         int x = (int) location.getX();
         int y = GameSize.TOP_WALL;
         room.removePlayer();
@@ -225,6 +234,14 @@ public class Player extends AbstractPlayer {
     @Override
     public void moveNorth() {
         if (room.getNorthDoor().isLocked) {return;}
+        if (room.getNorthDoor().bossDoor && room.getNorthDoor().needsKey) {
+            if (this.key > 0) {
+                removekey();
+                room.getNorthDoor().needsKey = false;
+            }
+            else {return;}
+        }
+
         int x = (int) location.getX();
         int y = GameSize.BOTTOM_WALL-width;
         room.removePlayer();
@@ -237,6 +254,14 @@ public class Player extends AbstractPlayer {
     @Override
     public void moveWest() {
         if (room.getWestDoor().isLocked) {return;}
+        if (room.getWestDoor().bossDoor && room.getWestDoor().needsKey) {
+            if (this.key > 0) {
+                removekey();
+                room.getWestDoor().needsKey = false;
+            }
+            else {return;}
+        }
+
         int x = GameSize.RIGHT_WALL-width;
         int y = (int) location.getY();
         room.removePlayer();
@@ -249,6 +274,14 @@ public class Player extends AbstractPlayer {
     @Override
     public void moveEast() {
         if (room.getEastDoor().isLocked) {return;}
+        if (room.getEastDoor().bossDoor && room.getEastDoor().needsKey) {
+            if (this.key > 0) {
+                removekey();
+                room.getEastDoor().needsKey = false;
+            }
+            else {return;}
+        }
+
         int x = GameSize.LEFT_WALL;
         int y = (int) location.getY();
         room.removePlayer();
@@ -258,6 +291,7 @@ public class Player extends AbstractPlayer {
         room.populateRoom(this);
         projectiles.clear();
     }
+
 
     private Point clonePoint() {
         int x = (int) location.getX();

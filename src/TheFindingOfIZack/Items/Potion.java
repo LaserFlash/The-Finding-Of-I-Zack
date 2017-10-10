@@ -31,6 +31,7 @@ public class Potion extends Item {
     @Override
     public void update() {
         if (box.intersects(player.getLocation().getX(), player.getLocation().getY(), player.width, player.width)) {
+            if (player.getHealth() == player.getMaxHealth()) {return;}
             collected = true;
             player.heal(health);
         }
