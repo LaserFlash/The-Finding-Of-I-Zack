@@ -8,7 +8,7 @@ import TheFindingOfIZack.World.Rooms.Room;
 
 
 public class MockModel implements Model {
-    private AbstractPlayer p = new AbstractPlayer(new Point(20, 20)) {
+    private AbstractPlayer p = new AbstractPlayer(new Point(50, 50)) {
 
         private Room r;
         @Override
