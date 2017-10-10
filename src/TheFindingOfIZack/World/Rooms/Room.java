@@ -2,6 +2,7 @@ package TheFindingOfIZack.World.Rooms;
 
 
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.View.Drawable;
@@ -11,6 +12,8 @@ import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Created by fieldryan on 19/09/17.
@@ -19,23 +22,42 @@ import java.io.IOException;
 public abstract class Room implements Drawable {
 
     private static Image roomImage;
-
+    private ArrayList<Item> collectables;
     public transient Door northDoor;
     public transient Door eastDoor;
     public transient Door southDoor;
     public transient Door westDoor;
     public boolean isCleared;
+    private Player player;
 
     public Room() {
+        this.collectables = new ArrayList<Item>();
+        this.player = null;
         this.northDoor = null;
         this.eastDoor = null;
         this.southDoor = null;
         this.westDoor = null;
-        this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameSize.GAME_WIDTH,GameSize.GAME_HEIGHT,Image.SCALE_DEFAULT);
+        initialiseImage();
+    }
+    public ArrayList<Item> getCollectables(){
+        return this.collectables;
     }
 
-    @Override
+    public void addPlayer(Player p){
+        this.player = p;
+    }
+
+    public Player getPlayer(){
+        return this.player;
+    }
+
+    public void removePlayer(){
+        this.player = null;
+    }
     public void draw(Graphics g){
+
+
+        g.drawImage(roomImage,0,0,null);
         if(this.westDoor!= null){
             this.westDoor.draw(g);
         }
@@ -48,8 +70,6 @@ public abstract class Room implements Drawable {
         if(this.eastDoor != null){
             this.eastDoor.draw(g);
         }
-
-        g.drawImage(roomImage,0,0,null);
 
     }
 
@@ -79,6 +99,49 @@ public abstract class Room implements Drawable {
 
     public abstract void populateRoom(Player p);
     public abstract void update();
+
+    public void initialiseImage() {
+        Image img = new Image() {
+            @Override
+            public int getWidth(ImageObserver observer) {
+                return 0;
+            }
+
+            @Override
+            public int getHeight(ImageObserver observer) {
+                return 0;
+            }
+
+            @Override
+            public ImageProducer getSource() {
+                return null;
+            }
+
+            @Override
+            public Graphics getGraphics() {
+                return null;
+            }
+
+            @Override
+            public Object getProperty(String name, ImageObserver observer) {
+                return null;
+            }
+        };
+
+        try {
+            img = ImageIO.read(ImageLoader.class.getResource(("/room.png")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            roomImage = img;
+        }
+    }
+
+
+
+
+
 
 
     public void addDoor(Door d, int n) {
