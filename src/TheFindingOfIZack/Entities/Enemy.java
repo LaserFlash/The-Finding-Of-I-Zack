@@ -3,6 +3,7 @@ package TheFindingOfIZack.Entities;
 import TheFindingOfIZack.Behaviour.MobEnemy;
 import TheFindingOfIZack.Behaviour.MobProjectile;
 import TheFindingOfIZack.Behaviour.MobShooter;
+import TheFindingOfIZack.World.Rooms.Room;
 import javafx.geometry.BoundingBox;
 
 import java.awt.*;
@@ -24,12 +25,13 @@ public class Enemy extends Entity {
     public Enemy(Point location, Player p) {
         super(location);
         this.player = p;
+        Room r = p.getRoom();
         int type = (int) (Math.random()*5);
         //int type = 1;
-        if (type>2) {this.behaviour = new MobEnemy("standard");}
-        else if (type==2) {this.behaviour = new MobEnemy("fast");}
-        else if (type==1) {this.behaviour = new MobEnemy("shooter");}
-        else {this.behaviour = new MobEnemy("slow");}
+        if (type>2) {this.behaviour = new MobEnemy("standard", r);}
+        else if (type==2) {this.behaviour = new MobEnemy("fast", r);}
+        else if (type==1) {this.behaviour = new MobEnemy("shooter", r);}
+        else {this.behaviour = new MobEnemy("slow", r);}
         this.health = behaviour.getHealth();
     }
 
@@ -124,6 +126,10 @@ public class Enemy extends Entity {
     public void drawProjectiles(MobShooter m, Graphics g){
         for(MobProjectile i : m.getProjectile()){
             i.draw(g);
+            if (collision(i.getLocation(),player.getLocation())){
+                i.pop();
+                damagePlayer();
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package TheFindingOfIZack.Behaviour;
 
 import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.World.Rooms.Room;
 
 /**
  * Created by gordontheo on 27/09/17.
@@ -12,7 +13,7 @@ public class MobEnemy {
     /**
      * @param type Constructor which takes a type and makes a new mob of this type
      */
-    public MobEnemy(String type) {
+    public MobEnemy(String type, Room room) {
         switch (type) {
             case "standard":
                 mob = new MobStandard();
