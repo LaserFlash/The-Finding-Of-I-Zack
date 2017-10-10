@@ -29,6 +29,7 @@ public class MobShooter extends Mob{
      * @return new mob Point
      */
     public Point step(Point location, Point player){
+        popProjectiles();
         tick++;
         projectile(location,player);
         double range = distanceBetween(location,player);

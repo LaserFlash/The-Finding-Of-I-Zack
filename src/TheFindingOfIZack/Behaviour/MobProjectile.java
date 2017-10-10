@@ -1,8 +1,10 @@
 package TheFindingOfIZack.Behaviour;
 
+import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Entities.Projectile;
 import TheFindingOfIZack.View.Drawable;
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.World.Rooms.Room;
+
 import java.awt.*;
 
 /**
@@ -12,8 +14,7 @@ public class MobProjectile extends Projectile implements Drawable {
     private double speed = 3;
     private double directionX;
     private double directionY;
-    private double x;
-    private double y;
+    private Room room =
 
     public MobProjectile(Point location, Point player){
         super(location, player);
@@ -24,16 +25,14 @@ public class MobProjectile extends Projectile implements Drawable {
         double a = h/speed;
         this.directionX = changeX/a;
         this.directionY = changeY/a;
-        this.x = location.getX()+20;
-        this.y = location.getY()+20;
-
+        this.location = new Point(location.getX()+20,location.getY()+20);
     }
 
     @Override
     public void move(){
-        x += directionX;
-        y += directionY;
-        //if (wallCollision()) {pop = true;}
+        this.location.move(location.getX()+directionX,location.getY()+directionY);
+        if (wallCollision()) {pop = true;}
+        if (enemyCollision()) {pop = true;}
     }
 
     @Override
@@ -41,6 +40,6 @@ public class MobProjectile extends Projectile implements Drawable {
         move();
         int size = 10;
         g.setColor(Color.GREEN);
-        g.fillOval((int)x, (int)y, size, size);
+        g.fillOval((int)location.getX(), (int)location.getY(), size, size);
     }
 }

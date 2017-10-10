@@ -4,9 +4,7 @@ import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.Drawable;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UnknownFormatConversionException;
 
 /**
  * Created by allanbenj1 on 29/09/17.
