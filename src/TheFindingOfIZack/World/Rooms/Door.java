@@ -16,8 +16,8 @@ import java.io.IOException;
  */
 public class Door implements Drawable, Savable {
 
-    private static Image openDoorImage;
-    private static Image closedDoorImage;
+    private  Image openDoorImage;
+    private  Image closedDoorImage;
     private static Image lockedDoorImage;
 
     private Room entry;
@@ -148,13 +148,13 @@ public class Door implements Drawable, Savable {
                 img = ImageIO.read(ImageLoader.class.getResource(("/openDoorTop.png")));
             }
             if(this.position == 1) {
-                img = ImageIO.read(ImageLoader.class.getResource(("/openDoorRight.png")));
+                img = ImageIO.read(ImageLoader.class.getResource(("/openDoorLeft.png")));
             }
             if(this.position == 2) {
                 img = ImageIO.read(ImageLoader.class.getResource(("/openDoorDown.png")));
             }
             if(this.position == 3) {
-                img = ImageIO.read(ImageLoader.class.getResource(("/openDoorLeft.png")));
+                img = ImageIO.read(ImageLoader.class.getResource(("/openDoorRight.png")));
             }
         } catch (IOException e) {
             e.printStackTrace();

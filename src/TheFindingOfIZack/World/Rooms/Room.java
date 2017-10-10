@@ -71,6 +71,10 @@ public abstract class Room implements Drawable {
             this.eastDoor.draw(g);
         }
 
+        for(Item i : this.collectables){
+            i.draw(g);
+        }
+
     }
 
     public Door getNorthDoor(){
