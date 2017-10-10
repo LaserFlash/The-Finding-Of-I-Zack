@@ -20,7 +20,7 @@ public class MobShooter extends Mob{
         this.viewRange = 600;
         this.speed = 3;
         this.health = 50;
-        this.damage = 0;
+        this.damage = 5;
     }
 
     @Override
