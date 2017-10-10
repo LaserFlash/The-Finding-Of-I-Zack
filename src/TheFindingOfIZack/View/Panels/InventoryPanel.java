@@ -1,5 +1,7 @@
 package TheFindingOfIZack.View.Panels;
 
+import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.World.Model;
 
 import javax.swing.*;
@@ -7,8 +9,17 @@ import java.awt.*;
 
 public class InventoryPanel extends JPanel{
 
-    private static final int PADDING = 20;
+    private static final int PADDING = 35;
+    private static final int BAR_PADDING = 20;
+    private static final int BAR_HEIGHT = 20;
+    private static final int ARC = 20;
+
+    private static final Image header;
     private Model model;
+
+    static {
+        header = ImageLoader.loadImage("/header.png").getScaledInstance(GameSize.GAME_WIDTH,GameSize.MENU_HEIGHT,Image.SCALE_DEFAULT);
+    }
 
     public InventoryPanel(Model m){
         super();
@@ -25,18 +36,23 @@ public class InventoryPanel extends JPanel{
 
     private void drawHealth(Graphics g){
         int maxHealth = model.getPlayer().getMaxHealth();
-        int health = model.getPlayer().getHealth();
+        int health = Math.max(model.getPlayer().getHealth(),0);
+
         int maxArmour = model.getPlayer().getMaxArmour();
-        int armour = model.getPlayer().getArmour();
+        int armour = Math.max(model.getPlayer().getArmour(),0);
 
-        g.setFont(new Font("ComicSans", Font.BOLD, 18));
-
+        g.drawImage(header,0,0,null);
+        g.setColor(Color.GRAY);
         g.drawString("Health:", PADDING,PADDING);
-        g.drawString("Armour:",PADDING,PADDING * 2);
+        g.fillRoundRect(PADDING + 100, BAR_PADDING, maxHealth,BAR_HEIGHT,ARC,ARC);
         g.setColor(Color.red);
-        g.drawString( health + "/" + maxHealth, PADDING + 100,PADDING);
-        g.setColor(Color.BLUE);
-        g.drawString(armour + "/" + maxArmour, PADDING + 100, PADDING * 2);
+        g.fillRoundRect(PADDING + 100, BAR_PADDING, health,BAR_HEIGHT,ARC,ARC);
+
+        g.setColor(Color.GRAY);
+        g.drawString("Armour:",PADDING,PADDING * 2);
+        g.fillRoundRect(PADDING + 100, BAR_PADDING + PADDING, maxArmour,BAR_HEIGHT,ARC,ARC);
+        g.setColor(Color.blue);
+        g.fillRoundRect(PADDING + 100, BAR_PADDING + PADDING, armour,BAR_HEIGHT,ARC,ARC);
     }
 
     private void drawPlayerItems(Graphics g){
