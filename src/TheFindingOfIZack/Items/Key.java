@@ -18,7 +18,7 @@ public class Key extends Item {
 
     public Key(Player p) {
         super("key", p);
-        initialiseImage();
+        this.keyImage = ImageLoader.loadImage("/key.png");
     }
 
     @Override
@@ -32,44 +32,4 @@ public class Key extends Item {
             player.addKey();
         }
     }
-
-    public void initialiseImage() {
-        Image img = new Image() {
-            @Override
-            public int getWidth(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public int getHeight(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public ImageProducer getSource() {
-                return null;
-            }
-
-            @Override
-            public Graphics getGraphics() {
-                return null;
-            }
-
-            @Override
-            public Object getProperty(String name, ImageObserver observer) {
-                return null;
-            }
-        };
-
-        try {
-            img = ImageIO.read(ImageLoader.class.getResource(("/doorKey.png"))).getScaledInstance(40, 40, Image.SCALE_DEFAULT);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-            keyImage = img;
-        }
-    }
-
-
 }

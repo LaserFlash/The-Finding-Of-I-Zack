@@ -25,7 +25,7 @@ public abstract class Room implements Drawable {
         this.southDoor = null;
         this.westDoor = null;
     }
-
+     @Override
     public void draw(Graphics g){
         if(this.westDoor!= null){
             this.westDoor.draw(g);
