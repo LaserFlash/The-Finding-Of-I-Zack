@@ -1,4 +1,4 @@
-package Tests.Mocks;
+package Mocks;
 
 import TheFindingOfIZack.Entities.AbstractPlayer;
 import TheFindingOfIZack.Entities.Player;

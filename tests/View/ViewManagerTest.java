@@ -1,12 +1,11 @@
-package Tests.View;
+package View;
 
+import Mocks.MockModel;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Model;
 import org.junit.Test;
-import Tests.Mocks.MockModel;
 
 import javax.swing.*;
-
 
 
 public class ViewManagerTest {

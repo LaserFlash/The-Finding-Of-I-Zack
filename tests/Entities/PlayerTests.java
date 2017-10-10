@@ -1,15 +1,9 @@
-package Tests.Entities;
+package Entities;
 
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Util.GameSize;
-import TheFindingOfIZack.World.Rooms.Door;
-import TheFindingOfIZack.World.Rooms.Room;
-import TheFindingOfIZack.World.Rooms.standardRoom;
-import org.junit.Test;
-
-import java.awt.*;
-
 import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.World.Rooms.standardRoom;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

@@ -1,4 +1,4 @@
-package Tests.View.Panels;
+package View.Panels;
 
 public class StartScreenPanelTest {
 }

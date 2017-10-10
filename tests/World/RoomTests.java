@@ -1,4 +1,4 @@
-package Tests.World;
+package World;
 
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.World.Rooms.Door;

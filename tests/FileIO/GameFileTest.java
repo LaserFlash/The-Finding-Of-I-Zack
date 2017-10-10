@@ -1,9 +1,7 @@
-package Tests.FileIO;
+package FileIO;
 
 import TheFindingOfIZack.FileIO.GameFile;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by woodjess3 on 27/09/17.
