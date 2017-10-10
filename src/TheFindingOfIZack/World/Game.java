@@ -78,12 +78,13 @@ public class Game extends Observable implements Model,Savable{
 
     @Override
     public void resumeGame(){
-
+        paused = false;
+        runGameLoop();
     }
 
     @Override
     public void pauseGame() {
-
+        paused = true;
     }
 
     public Level getCurrentLevel(){
