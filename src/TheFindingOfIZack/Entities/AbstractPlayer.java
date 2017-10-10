@@ -4,7 +4,7 @@ import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.World.Rooms.Room;
 
 public abstract class AbstractPlayer extends Entity implements Savable {
-    public AbstractPlayer(Point location){
+    protected AbstractPlayer(Point location){
         super(location);
     }
 
@@ -52,7 +52,7 @@ public abstract class AbstractPlayer extends Entity implements Savable {
 
     /**
      * Give the player a room it belongs to
-     * @param r
+     * @param r the Room to add
      */
     public abstract void setRoom(Room r);
 
@@ -63,21 +63,25 @@ public abstract class AbstractPlayer extends Entity implements Savable {
 
     /**
      * Get the current health of the player
-     * @return
+     * @return int value of health
      */
     public abstract int getHealth();
 
     /**
      * Get the current armour of the player
-     * @return
+     * @return int value of armour
      */
     public abstract int getArmour();
 
     /**
      * Get the max armour of the player
-     * @return
+     * @return in value of max armour
      */
     public abstract int getMaxArmour();
 
+    /**
+     * Check if the player has a key
+     * @return true if has key false otherwise
+     */
     public abstract boolean getKey();
 }
