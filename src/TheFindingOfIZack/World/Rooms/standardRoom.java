@@ -3,6 +3,7 @@ package TheFindingOfIZack.World.Rooms;
 
 import TheFindingOfIZack.Entities.*;
 import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameSize;
 
 import java.awt.*;
@@ -143,6 +144,9 @@ public class standardRoom extends Room{
         }
         for(Enemy e : enemiesInRoom){
             e.move();
+        }
+        for(Item i: getCollectables()){
+            i.update();
         }
 
     }
