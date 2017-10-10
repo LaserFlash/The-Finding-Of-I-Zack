@@ -91,19 +91,20 @@ public class standardRoom extends Room{
         int numRocks = (int) (Math.random() * 10) + 3;
         int numUrns = (int) (Math.random() * 3) + 1;
         int numEnemies = (int) (Math.random() * 3) + 1 ;
-        for(int i = 0; i < numRocks; i++){
+      for(int i = 0; i < numRocks; i++){
             items.add(new Rock(randomPoint()));
         }
 
         for(int i = 0; i < numUrns; i++){
             items.add(new Urn(randomPoint(), getPlayer()));
         }
-
+        enemiesInRoom.add(new Enemy(randomPoint(),p));
+        /**
         for(int i = 0; i < numEnemies; i++){
             enemiesInRoom.add(new Enemy(randomPoint(),p));
         }
 
-
+        **/
 
 
 
