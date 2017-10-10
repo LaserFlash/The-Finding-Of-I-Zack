@@ -57,7 +57,7 @@ public class Enemy extends Entity {
         Point potentialStep = this.behaviour.step(location, playerPoint);
         //potentialStep represents the move which will take place if there are no obstacle,
         // also checks if mob is currently touching player
-        if(canMove(potentialStep) && !collision(location,playerPoint)) {
+        if(!collision(location,playerPoint)) {
             this.location = potentialStep;
             this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.width, this.width);
             setBox();
