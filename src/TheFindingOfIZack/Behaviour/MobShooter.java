@@ -3,7 +3,6 @@ package TheFindingOfIZack.Behaviour;
 
 import TheFindingOfIZack.Entities.Point;
 
-
 import java.util.ArrayList;
 
 /**
