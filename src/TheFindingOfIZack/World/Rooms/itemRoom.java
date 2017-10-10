@@ -1,6 +1,7 @@
 package TheFindingOfIZack.World.Rooms;
 
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Items.Key;
 import TheFindingOfIZack.World.Rooms.Room;
 
@@ -21,7 +22,7 @@ public class itemRoom extends Room {
 
     @Override
     public void populateRoom(Player p) {
-        getCollectables().add(new Key(p));
+        this.collectables.add(new Key(p));
 
     }
 
@@ -41,6 +42,10 @@ public class itemRoom extends Room {
         }
         if(this.westDoor != null){
             this.westDoor.isLocked = false;
+        }
+
+        for (Item i : this.collectables) {
+            i.update();
         }
     }
 
