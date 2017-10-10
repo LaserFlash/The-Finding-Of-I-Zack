@@ -9,7 +9,7 @@ import java.awt.*;
  * Created by gordontheo on 29/09/17.
  */
 public class MobProjectile extends Projectile implements Drawable {
-    private double speed = 4;
+    private double speed = 3;
     private double directionX;
     private double directionY;
     private double x;
@@ -40,7 +40,7 @@ public class MobProjectile extends Projectile implements Drawable {
     public void draw(Graphics g) {
         move();
         int size = 10;
-        g.setColor(Color.RED);
+        g.setColor(Color.GREEN);
         g.fillOval((int)x, (int)y, size, size);
     }
 }
