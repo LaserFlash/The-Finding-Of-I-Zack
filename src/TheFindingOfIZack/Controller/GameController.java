@@ -62,11 +62,9 @@ public class GameController implements ActionListener, KeyListener {
                 {
                     this.game = CreateGameModel.newGame(this.view);
                     this.game.beginNewGame();
-                    this.game.pauseGame();
                     this.view.newGame(game);
                     this.view.enableOtherButtons();
                     this.view.goToGameView();
-                    this.game.resumeGame();
                 }
 
                 break;

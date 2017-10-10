@@ -327,6 +327,10 @@ public class Player extends AbstractPlayer {
         key--;
     }
 
+    public boolean getKey(){
+        return key > 0;
+    }
+
     public int getSpeed() {
         return this.speed;
     }
