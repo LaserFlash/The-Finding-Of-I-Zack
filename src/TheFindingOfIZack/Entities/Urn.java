@@ -23,7 +23,7 @@ public class Urn extends Entity implements Savable{
 
     private boolean destroyed = false;
 
-    int health = 20;
+    int health = 10;
 
     public Urn(Point location, Player p) {
         super(location);
