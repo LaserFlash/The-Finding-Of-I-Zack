@@ -29,6 +29,8 @@ public abstract class Item implements Drawable{
         this.player = p;
     }
 
+    public void update() {}
+
     public void setLocation(Point p) {
         this.location = p;
     }
