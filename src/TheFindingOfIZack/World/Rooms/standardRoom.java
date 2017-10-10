@@ -7,6 +7,7 @@ import TheFindingOfIZack.Util.GameSize;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class standardRoom extends Room{
@@ -22,14 +23,19 @@ public class standardRoom extends Room{
         this.deadEnemies = new ArrayList<Enemy>();
         this.items = new ArrayList<Entity>();
         this.isCleared = false;
-
-
     }
 
 
     private Point randomPoint(){
-        int x = (int)((Math.random() * GameSize.RIGHT_WALL - GameSize.LEFT_WALL + 40)  + GameSize.WALL_WIDTH - 40) ;
-        int y = (int)((Math.random() * GameSize.BOTTOM_WALL - GameSize.TOP_WALL + 40) + GameSize.WALL_WIDTH - 40) ;
+        Random r = new Random();
+
+        int left = GameSize.LEFT_WALL;  //low x boundary
+        int right = GameSize.RIGHT_WALL - Entity.width; //high x boundary, allowing for space after object
+        int top = GameSize.TOP_WALL;    //low y boundary
+        int bottom = GameSize.BOTTOM_WALL - Entity.width;   //high y boundary, allowing for space after object
+
+        int x = r.nextInt(right - left) + left;
+        int y = r.nextInt(bottom - top) + top;
 
         Point p = new Point(x,y);
         return p;
@@ -40,9 +46,7 @@ public class standardRoom extends Room{
             return;
         }
 
-
-
-        int numRocks = (int) (Math.random() * 5) + 1;
+        int numRocks = 20; //(int) (Math.random() * 5) + 1;
         int numUrns = (int) (Math.random() * 2) ;
         int numEnemies = (int) (Math.random() * 3) + 1 ;
         for(int i = 0; i < numRocks; i++){
