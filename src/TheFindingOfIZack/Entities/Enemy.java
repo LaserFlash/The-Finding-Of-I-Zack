@@ -1,7 +1,7 @@
 package TheFindingOfIZack.Entities;
 
-import TheFindingOfIZack.Behaviour.Mob;
 import TheFindingOfIZack.Behaviour.MobEnemy;
+import TheFindingOfIZack.Behaviour.MobProjectile;
 import TheFindingOfIZack.Behaviour.MobShooter;
 import javafx.geometry.BoundingBox;
 
@@ -26,7 +26,6 @@ public class Enemy extends Entity {
         this.player = p;
         int type = (int) (Math.random()*5);
         //int type = 1;
-        //System.out.println("Type = " + type);//*****************************************************************
         if (type>2) {this.behaviour = new MobEnemy("standard");}
         else if (type==2) {this.behaviour = new MobEnemy("fast");}
         else if (type==1) {this.behaviour = new MobEnemy("shooter");}
@@ -53,6 +52,10 @@ public class Enemy extends Entity {
         g.setColor(Color.RED);
         g.fillRect((int)location.getX(), (int)location.getY(), width, width);
         super.draw(g);
+        if (this.behaviour.getMob() instanceof MobShooter) {
+            MobShooter m = (MobShooter) behaviour.getMob();
+            drawProjectiles(m,g);
+        }
     }
 
     /**
@@ -74,10 +77,6 @@ public class Enemy extends Entity {
         canMove();
         if(collision(location,playerPoint)){
             damagePlayer();
-        }
-
-        if (behaviour.getMob() instanceof MobShooter) {
-            Mob m = (MobShooter) behaviour.getMob();
         }
     }
 
@@ -122,4 +121,9 @@ public class Enemy extends Entity {
         return false;
     }
 
+    public void drawProjectiles(MobShooter m, Graphics g){
+        for(MobProjectile i : m.getProjectile()){
+            i.draw(g);
+        }
+    }
 }
