@@ -3,15 +3,22 @@ package TheFindingOfIZack.World.Rooms;
 
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.View.Drawable;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.io.IOException;
 
 /**
  * Created by fieldryan on 19/09/17.
  * Interface for the general definition of a room
  */
 public abstract class Room implements Drawable {
+
+    private static Image roomImage;
 
     public transient Door northDoor;
     public transient Door eastDoor;
@@ -24,6 +31,7 @@ public abstract class Room implements Drawable {
         this.eastDoor = null;
         this.southDoor = null;
         this.westDoor = null;
+        initialiseImage();
     }
 
     public void draw(Graphics g){
@@ -39,8 +47,8 @@ public abstract class Room implements Drawable {
         if(this.eastDoor != null){
             this.eastDoor.draw(g);
         }
-        g.setColor(Color.black);
-        g.drawRect(GameSize.WALL_WIDTH,GameSize.WALL_WIDTH, GameSize.GAME_WIDTH - (2 * GameSize.WALL_WIDTH), GameSize.GAME_HEIGHT - (2 * GameSize.WALL_WIDTH));
+
+        g.drawImage(roomImage,0,0,null);
 
     }
 
@@ -70,6 +78,51 @@ public abstract class Room implements Drawable {
 
     public abstract void populateRoom(Player p);
     public abstract void update();
+
+    public void initialiseImage() {
+        Image img = new Image() {
+            @Override
+            public int getWidth(ImageObserver observer) {
+                return 0;
+            }
+
+            @Override
+            public int getHeight(ImageObserver observer) {
+                return 0;
+            }
+
+            @Override
+            public ImageProducer getSource() {
+                return null;
+            }
+
+            @Override
+            public Graphics getGraphics() {
+                return null;
+            }
+
+            @Override
+            public Object getProperty(String name, ImageObserver observer) {
+                return null;
+            }
+        };
+
+        try {
+            img = ImageIO.read(ImageLoader.class.getResource(("/room.png")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            roomImage = img;
+        }
+    }
+
+
+
+
+
+
+
     public void addDoor(Door d, int n) {
 
         if(this.northDoor == null && n == 0){
