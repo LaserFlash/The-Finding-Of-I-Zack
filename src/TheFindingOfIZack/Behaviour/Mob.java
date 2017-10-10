@@ -17,7 +17,7 @@ public abstract class Mob {
      * @param player point containing the players location
      * @return new mob Point
      */
-    /**public Point step(Point location, Point player){
+    public Point step(Point location, Point player){
         double changeX = (player.getX() - location.getX());
         double changeY = (player.getY() - location.getY());
 
@@ -29,29 +29,7 @@ public abstract class Mob {
         location.setLocation((newX + location.getX()),(newY + location.getY()));
 
         return location;
-    }*/
-
-
-    public Point step(Point location, Point player){
-        double changeX = (player.getX() - location.getX());
-        double changeY = (player.getY() - location.getY());
-
-        double h = Math.hypot(changeX,changeY);
-        h /= speed;
-
-        double a = speed / h;
-
-        double newX = speed/a;
-        double newY = speed/a;
-
-
-        location.setLocation((newX + location.getX()),(newY + location.getY()));
-
-        //System.out.println("x = " + newX + " y = " + newY);//*************************************************************
-
-        return location;
     }
-
 
     /**
      * Returns health

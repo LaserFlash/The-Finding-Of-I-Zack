@@ -4,7 +4,7 @@ import TheFindingOfIZack.Util.GameSize;
 import TheFindingOfIZack.View.Drawable;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by allanbenj1 on 29/09/17.
@@ -73,14 +73,25 @@ public class Projectile extends Entity implements Drawable{
         return false;
     }
 
-    public void enemyCollision(ArrayList<Enemy> enemies) {
+    public void enemyCollision(List<Enemy> enemies) {
         for (Enemy e : enemies) {
             if (e.box.intersects(location.getX()+width/4, location.getY()+width/4, width/2, width/2)) {e.damage(damage); pop = true;}
         }
     }
 
-    public void rockCollision(ArrayList<Rock> rocks) {
+    public void entityCollision(List<Entity> entities) {
+        for (Entity entity : entities) {
 
+            if (entity instanceof Rock) {
+                Rock r = (Rock) entity;
+                if (r.box.intersects(location.getX()+width/4, location.getY()+width/4, width/2, width/2)) {r.damage(damage); pop = true;}
+            }
+            else if (entity instanceof Urn) {
+                Urn u = (Urn) entity;
+                if (u.box.intersects(location.getX()+width/4, location.getY()+width/4, width/2, width/2)) {u.damage(damage); pop = true;}
+            }
+
+        }
     }
 
     public boolean getPopped() {

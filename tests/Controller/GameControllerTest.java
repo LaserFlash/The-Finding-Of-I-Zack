@@ -1,7 +1,7 @@
-package Tests.Controller;
+package Controller;
 
-import Tests.Mocks.MockModel;
-import Tests.Mocks.MockView;
+import Mocks.MockModel;
+import Mocks.MockView;
 import TheFindingOfIZack.Controller.GameController;
 import org.junit.Test;
 

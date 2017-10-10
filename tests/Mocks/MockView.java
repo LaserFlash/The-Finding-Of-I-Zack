@@ -1,8 +1,7 @@
-package Tests.Mocks;
+package Mocks;
 
 import TheFindingOfIZack.View.View;
 import TheFindingOfIZack.World.Model;
-
 
 import java.awt.event.ActionListener;
 import java.util.Observable;

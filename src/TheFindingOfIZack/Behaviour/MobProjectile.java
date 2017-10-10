@@ -1,19 +1,19 @@
 package TheFindingOfIZack.Behaviour;
 
+import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Entities.Projectile;
 import TheFindingOfIZack.View.Drawable;
-import TheFindingOfIZack.Entities.Point;
+
 import java.awt.*;
 
 /**
  * Created by gordontheo on 29/09/17.
  */
 public class MobProjectile extends Projectile implements Drawable {
-    private double speed = 6;
+    private double speed = 3;
     private double directionX;
     private double directionY;
-    private double x;
-    private double y;
+    //private Room room =
 
     public MobProjectile(Point location, Point player){
         super(location, player);
@@ -24,23 +24,25 @@ public class MobProjectile extends Projectile implements Drawable {
         double a = h/speed;
         this.directionX = changeX/a;
         this.directionY = changeY/a;
-        this.x = location.getX();
-        this.y = location.getY();
+        this.location = new Point(location.getX()+20,location.getY()+20);
+    }
+
+    public void pop(){
+        pop = true;
     }
 
     @Override
     public void move(){
-        location.move((location.getX() + directionX),(location.getY() + directionY));
+        this.location.move(location.getX()+directionX,location.getY()+directionY);
         if (wallCollision()) {pop = true;}
+        //if (enemyCollision()) {pop = true;}
     }
 
     @Override
     public void draw(Graphics g) {
-        System.out.println("Zibam a new projectile");//***************************************************************
-
+        move();
         int size = 10;
-
-        g.setColor(Color.RED);
-        g.fillOval((int)x, (int)y, size, size);
+        g.setColor(Color.GREEN);
+        g.fillOval((int)location.getX(), (int)location.getY(), size, size);
     }
 }

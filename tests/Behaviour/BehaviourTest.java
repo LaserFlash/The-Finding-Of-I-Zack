@@ -1,4 +1,4 @@
-package Tests.Behaviour;
+package Behaviour;
 
 import TheFindingOfIZack.Behaviour.MobEnemy;
 import org.junit.Test;

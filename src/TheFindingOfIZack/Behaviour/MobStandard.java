@@ -8,7 +8,7 @@ package TheFindingOfIZack.Behaviour;
 public class MobStandard extends Mob {
     MobStandard(){
         this.viewRange = 50;
-        this.speed = 2;
+        this.speed = 3;
         this.health = 50;
         this.damage = 10;
     }

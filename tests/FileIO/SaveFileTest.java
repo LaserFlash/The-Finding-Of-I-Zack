@@ -1,4 +1,4 @@
-package Tests.FileIO;
+package FileIO;
 
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Entities.Point;

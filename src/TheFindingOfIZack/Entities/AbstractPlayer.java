@@ -78,4 +78,6 @@ public abstract class AbstractPlayer extends Entity implements Savable {
      * @return
      */
     public abstract int getMaxArmour();
+
+    public abstract boolean getKey();
 }

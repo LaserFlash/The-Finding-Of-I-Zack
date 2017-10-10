@@ -1,4 +1,4 @@
-package Tests.World;
+package World;
 
 import org.junit.Test;
 

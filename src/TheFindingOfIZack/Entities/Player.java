@@ -1,12 +1,15 @@
 package TheFindingOfIZack.Entities;
 
-import TheFindingOfIZack.FileIO.Util.Savable;
+import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.World.Rooms.Door;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.standardRoom;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Ben Allan
@@ -26,11 +29,11 @@ public class Player extends AbstractPlayer {
     private int firerate = 20;
     private int MIN_FIRERATE = 7;
 
-    private transient ArrayList<Projectile> projectiles;
+    private transient List<Projectile> projectiles;
 
     public Player(Point location) {
         super(location);
-        projectiles = new ArrayList<Projectile>();
+        projectiles = Collections.synchronizedList(new ArrayList<Projectile>());
     }
 
     public void setSpeed(int speed) {
@@ -39,15 +42,15 @@ public class Player extends AbstractPlayer {
 
     @Override
     public void draw(Graphics g) {
-
-        for (Projectile p : projectiles) {
-            p.draw(g);
+        synchronized (projectiles) {
+            projectiles.forEach(p -> p.draw(g));
         }
 
         g.setColor(Color.CYAN);
         g.fillRect((int) location.getX(), (int) location.getY(), width, width);
         g.setColor(Color.MAGENTA);
         g.fillOval((int) location.getX()+4, (int) location.getY()+4, width-8, width-8);
+
         super.draw(g);
 
     }
@@ -60,9 +63,38 @@ public class Player extends AbstractPlayer {
             if (room instanceof standardRoom) {
                 standardRoom r = (standardRoom) room;
                 p.enemyCollision(r.getEnemies());
+                p.entityCollision(r.getItems());
+
+
+                ArrayList<Entity> destroyed = new ArrayList<Entity>();
+                for (Entity e : r.getItems()) {
+                    if (e instanceof Rock) {
+                        Rock rock = (Rock) e;
+                        if (rock.isDestroyed()) {destroyed.add(e);}
+                    }
+                    else if (e instanceof Urn) {
+                        Urn urn = (Urn) e;
+                        if (urn.isDestroyed()) {destroyed.add(e);}
+                    }
+                }
+                for (Entity e : destroyed) {
+                    r.getItems().remove(e);
+                }
+
             }
         }
         popProjectiles();
+
+        ArrayList<Item> collected = new ArrayList<Item>();
+        for (Item i : room.getCollectables()) {
+            if (i.isCollected()) {
+                collected.add(i);
+            }
+        }
+        for (Item i : collected) {
+            room.getCollectables().remove(i);
+        }
+
     }
 
     public void damage(int damage) {
@@ -93,6 +125,8 @@ public class Player extends AbstractPlayer {
             }
         }
 
+        if (checkCollision(x, y)) {return;}
+
         location.move(x, y);
         setBox();
     }
@@ -109,16 +143,12 @@ public class Player extends AbstractPlayer {
             }
         }
 
+        if (checkCollision(x, y)) {return;}
+
         location.move(x, y);
         setBox();
     }
 
-    public boolean vertDoor() {
-        if (location.getX() > GameSize.VERT_DOOR_START && location.getX() < GameSize.VERT_DOOR_END) {
-            if (location.getX()+width > GameSize.VERT_DOOR_START && location.getX()+width < GameSize.VERT_DOOR_END) {return true;}
-        }
-        return false;
-    }
 
     public void moveLeft() {
         int x = (int) location.getX()-speed;
@@ -131,6 +161,8 @@ public class Player extends AbstractPlayer {
                 return;
             }
         }
+
+        if (checkCollision(x, y)) {return;}
 
         location.move(x, y);
         setBox();
@@ -148,13 +180,32 @@ public class Player extends AbstractPlayer {
             }
         }
 
+        if (checkCollision(x, y)) {return;}
+
         location.move(x, y);
         setBox();
     }
 
+    public boolean checkCollision(int x, int y) {
+        if (room instanceof standardRoom) {
+            standardRoom r = (standardRoom) room;
+            for (Entity e : r.getItems()) {
+                if (e.box.intersects(x, y, width, width)) {return true;}
+            }
+        }
+        return false;
+    }
+
+    public boolean vertDoor() {
+        if (location.getX() >= GameSize.VERT_DOOR_START && location.getX() <= GameSize.VERT_DOOR_END) {
+            if (location.getX()+width >= GameSize.VERT_DOOR_START && location.getX()+width <= GameSize.VERT_DOOR_END) {return true;}
+        }
+        return false;
+    }
+
     public boolean horzDoor() {
-        if (location.getY() > GameSize.HORZ_DOOR_START && location.getY() < GameSize.HORZ_DOOR_END) {
-            if (location.getY()+width > GameSize.HORZ_DOOR_START && location.getY()+width < GameSize.HORZ_DOOR_END) {return true;}
+        if (location.getY() >= GameSize.HORZ_DOOR_START && location.getY() <= GameSize.HORZ_DOOR_END) {
+            if (location.getY()+width >= GameSize.HORZ_DOOR_START && location.getY()+width <= GameSize.HORZ_DOOR_END) {return true;}
         }
         return false;
     }
@@ -162,9 +213,19 @@ public class Player extends AbstractPlayer {
     @Override
     public void moveSouth() {
         if (room.getSouthDoor().isLocked) {return;}
+        if (room.getSouthDoor().bossDoor && room.getSouthDoor().needsKey) {
+            if (this.key > 0) {
+                removekey();
+                room.getSouthDoor().needsKey = false;
+            }
+            else {return;}
+        }
+
         int x = (int) location.getX();
         int y = GameSize.TOP_WALL;
+        room.removePlayer();
         room = room.getSouthDoor().getDestination();
+        room.addPlayer(this);
         location.move(x, y);
         room.populateRoom(this);
         projectiles.clear();
@@ -173,9 +234,19 @@ public class Player extends AbstractPlayer {
     @Override
     public void moveNorth() {
         if (room.getNorthDoor().isLocked) {return;}
+        if (room.getNorthDoor().bossDoor && room.getNorthDoor().needsKey) {
+            if (this.key > 0) {
+                removekey();
+                room.getNorthDoor().needsKey = false;
+            }
+            else {return;}
+        }
+
         int x = (int) location.getX();
         int y = GameSize.BOTTOM_WALL-width;
+        room.removePlayer();
         room = room.getNorthDoor().getDestination();
+        room.addPlayer(this);
         location.move(x, y);
         room.populateRoom(this);
         projectiles.clear();
@@ -183,9 +254,19 @@ public class Player extends AbstractPlayer {
     @Override
     public void moveWest() {
         if (room.getWestDoor().isLocked) {return;}
+        if (room.getWestDoor().bossDoor && room.getWestDoor().needsKey) {
+            if (this.key > 0) {
+                removekey();
+                room.getWestDoor().needsKey = false;
+            }
+            else {return;}
+        }
+
         int x = GameSize.RIGHT_WALL-width;
         int y = (int) location.getY();
+        room.removePlayer();
         room = room.getWestDoor().getDestination();
+        room.addPlayer(this);
         location.move(x, y);
         room.populateRoom(this);
         projectiles.clear();
@@ -193,13 +274,24 @@ public class Player extends AbstractPlayer {
     @Override
     public void moveEast() {
         if (room.getEastDoor().isLocked) {return;}
+        if (room.getEastDoor().bossDoor && room.getEastDoor().needsKey) {
+            if (this.key > 0) {
+                removekey();
+                room.getEastDoor().needsKey = false;
+            }
+            else {return;}
+        }
+
         int x = GameSize.LEFT_WALL;
         int y = (int) location.getY();
+        room.removePlayer();
         room = room.getEastDoor().getDestination();
+        room.addPlayer(this);
         location.move(x, y);
         room.populateRoom(this);
         projectiles.clear();
     }
+
 
     private Point clonePoint() {
         int x = (int) location.getX();
@@ -269,6 +361,10 @@ public class Player extends AbstractPlayer {
         key--;
     }
 
+    public boolean getKey(){
+        return key > 0;
+    }
+
     public int getSpeed() {
         return this.speed;
     }
@@ -292,7 +388,7 @@ public class Player extends AbstractPlayer {
         else {firerate -= 3;}
     }
 
-    public ArrayList<Projectile> getProjecctiles() {
+    public List<Projectile> getProjecctiles() {
         return projectiles;
     }
 
