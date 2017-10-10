@@ -8,7 +8,7 @@ import javafx.geometry.BoundingBox;
 
 import java.awt.*;
 
-import static TheFindingOfIZack.Util.GameSize.*;
+import static TheFindingOfIZack.Util.GameDimensions.*;
 
 /**
  * Created by Ben Allan

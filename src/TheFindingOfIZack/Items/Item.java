@@ -3,7 +3,7 @@ import TheFindingOfIZack.Entities.*;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.View.Drawable;
 import javafx.geometry.BoundingBox;
-import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.GameDimensions;
 
 
 import java.awt.*;
@@ -24,7 +24,7 @@ public abstract class Item implements Drawable{
 
     public Item(String type, Player p) {
         this.type = type;
-        location = new Point((GameSize.GAME_WIDTH/2)-(width/2), (GameSize.GAME_HEIGHT/2)-(width/2));
+        location = new Point((GameDimensions.GAME_WIDTH/2)-(width/2), (GameDimensions.GAME_HEIGHT/2)-(width/2));
         box = new BoundingBox(location.getX(), location.getY(), width, width);
         this.player = p;
     }

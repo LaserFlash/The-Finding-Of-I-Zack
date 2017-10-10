@@ -1,6 +1,6 @@
 package TheFindingOfIZack.View;
 
-import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.View.Panels.GamePanel;
 import TheFindingOfIZack.View.Panels.ScreenPanel;
 import TheFindingOfIZack.View.Panels.StartScreenPanel;
@@ -30,7 +30,7 @@ public class ViewManager extends View {
         super("The Finding of I, Zack");
         /* Set the default font for all UI elements */
         setUIFont (new javax.swing.plaf.FontUIResource(new Font("ComicSans", Font.BOLD, 18)));
-        setPreferredSize(new Dimension(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT));
+        setPreferredSize(new Dimension(GameDimensions.WINDOW_WIDTH, GameDimensions.WINDOW_HEIGHT));
 
         this.model = model;
         this.setFocusable(true);

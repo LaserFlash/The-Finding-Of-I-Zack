@@ -2,7 +2,7 @@ package Entities;
 
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Entities.Point;
-import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.World.Rooms.standardRoom;
 import org.junit.Test;
 
@@ -44,7 +44,7 @@ public class PlayerTests {
 
     /*@Test
     public void testLockedDoor() {
-        Player p = new Player(new Point(GameSize.VERT_DOOR_START, GameSize.TOP_WALL));
+        Player p = new Player(new Point(GameDimensions.VERT_DOOR_START, GameDimensions.TOP_WALL));
         standardRoom r1 = createRoom();
 
         Room r2 = createRoom();
@@ -64,7 +64,7 @@ public class PlayerTests {
 
     @Test
     public void testUnlockedDoor() {
-        Player p = new Player(new Point(GameSize.VERT_DOOR_START, GameSize.TOP_WALL));
+        Player p = new Player(new Point(GameDimensions.VERT_DOOR_START, GameDimensions.TOP_WALL));
         standardRoom r1 = createRoom();
 
         Room r2 = createRoom();
@@ -97,9 +97,9 @@ public class PlayerTests {
 
     @Test
     public void testBoundaries() {
-        Player p = new Player(new Point(GameSize.LEFT_WALL, GameSize.TOP_WALL));
+        Player p = new Player(new Point(GameDimensions.LEFT_WALL, GameDimensions.TOP_WALL));
         p.setRoom(createRoom());
-        Point point = new Point(GameSize.LEFT_WALL, GameSize.TOP_WALL);
+        Point point = new Point(GameDimensions.LEFT_WALL, GameDimensions.TOP_WALL);
 
         p.moveUp();
         assertTrue(p.getLocation().getY() == point.getY());
@@ -107,9 +107,9 @@ public class PlayerTests {
         p.moveLeft();
         assertTrue(p.getLocation().getX() == point.getX());
 
-        p = new Player(new Point(GameSize.RIGHT_WALL-p.width, GameSize.BOTTOM_WALL-p.width));
+        p = new Player(new Point(GameDimensions.RIGHT_WALL-p.width, GameDimensions.BOTTOM_WALL-p.width));
         p.setRoom(createRoom());
-        point = new Point(GameSize.RIGHT_WALL-p.width, GameSize.BOTTOM_WALL-p.width);
+        point = new Point(GameDimensions.RIGHT_WALL-p.width, GameDimensions.BOTTOM_WALL-p.width);
 
         p.moveDown();
         assertTrue(p.getLocation().getY() == point.getY());

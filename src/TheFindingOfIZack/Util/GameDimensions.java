@@ -1,6 +1,6 @@
 package TheFindingOfIZack.Util;
 
-public class GameSize {
+public class GameDimensions {
     public static final int PADDING = 100;
 
     public static final int WINDOW_WIDTH = 1000;

@@ -2,9 +2,6 @@ package TheFindingOfIZack.World.Rooms;
 
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.Util.Savable;
-import TheFindingOfIZack.Util.GameSize;
-
-import java.awt.*;
 
 /**
  * Created by fieldryan on 19/09/17.

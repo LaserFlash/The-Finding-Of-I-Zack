@@ -3,16 +3,11 @@ package TheFindingOfIZack.World.Rooms;
 
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Items.Item;
-import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.View.Drawable;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -37,7 +32,7 @@ public abstract class Room implements Drawable {
         this.eastDoor = null;
         this.southDoor = null;
         this.westDoor = null;
-        this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameSize.GAME_WIDTH,GameSize.GAME_HEIGHT,Image.SCALE_DEFAULT);
+        this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameDimensions.GAME_WIDTH, GameDimensions.GAME_HEIGHT,Image.SCALE_DEFAULT);
     }
     public ArrayList<Item> getCollectables(){
         return this.collectables;

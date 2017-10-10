@@ -9,7 +9,7 @@ import TheFindingOfIZack.World.Model;
 public class CreateGameModel {
 
     public static Model newGame(View v ){
-        Game g = new Game(new Player(new Point(GameSize.GAME_WIDTH /2 - 20,GameSize.GAME_HEIGHT/2 - 20)));
+        Game g = new Game(new Player(new Point(GameDimensions.GAME_WIDTH /2 - 20, GameDimensions.GAME_HEIGHT/2 - 20)));
         g.addObserver(v);
         return g;
     }

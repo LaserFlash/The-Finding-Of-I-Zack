@@ -1,19 +1,11 @@
 package TheFindingOfIZack.View.Panels;
 
-import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
-import org.omg.CORBA.IMP_LIMIT;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * The display intended for first landing
@@ -42,7 +34,7 @@ public class StartScreenPanel extends ScreenPanel {
         disabledButton = ImageLoader.loadIcon("/disabledButton.jpg");
         hoverButton = ImageLoader.loadIcon("/hoverButton.jpg");
 
-        startBG = ImageLoader.loadImage("/startBG.jpg").getScaledInstance(GameSize.WINDOW_WIDTH,GameSize.WINDOW_HEIGHT, Image.SCALE_DEFAULT);
+        startBG = ImageLoader.loadImage("/startBG.jpg").getScaledInstance(GameDimensions.WINDOW_WIDTH, GameDimensions.WINDOW_HEIGHT, Image.SCALE_DEFAULT);
         controls = ImageLoader.loadImage("/keys.png").getScaledInstance(330,150,Image.SCALE_DEFAULT);
     }
 
@@ -107,7 +99,7 @@ public class StartScreenPanel extends ScreenPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(startBG, 0, 0, null);
-        g.drawImage(controls,GameSize.WINDOW_WIDTH/2 - 330/2,GameSize.WINDOW_HEIGHT / 3 * 2,null);
+        g.drawImage(controls, GameDimensions.WINDOW_WIDTH/2 - 330/2, GameDimensions.WINDOW_HEIGHT / 3 * 2,null);
     }
     @Override
     public void enableOtherButtons(){

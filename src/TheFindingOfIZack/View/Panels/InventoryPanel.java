@@ -1,6 +1,6 @@
 package TheFindingOfIZack.View.Panels;
 
-import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.World.Model;
 
@@ -29,7 +29,7 @@ public class InventoryPanel extends JPanel{
     private Model model;
 
     static {
-        header = ImageLoader.loadImage("/header.png").getScaledInstance(GameSize.GAME_WIDTH,GameSize.MENU_HEIGHT,Image.SCALE_DEFAULT);
+        header = ImageLoader.loadImage("/header.png").getScaledInstance(GameDimensions.GAME_WIDTH, GameDimensions.MENU_HEIGHT,Image.SCALE_DEFAULT);
         healthImg = ImageLoader.loadImage("/potion.png");
         keyImg = ImageLoader.loadImage("/doorKey.png");
         armourImg = ImageLoader.loadImage("/armour.png");
@@ -75,7 +75,7 @@ public class InventoryPanel extends JPanel{
      */
     private void drawPlayerItems(Graphics g){
         if (model.getPlayer().getKey()){
-            g.drawImage(keyImg, GameSize.GAME_WIDTH - PADDING*4,BAR_PADDING * 2,null);
+            g.drawImage(keyImg, GameDimensions.GAME_WIDTH - PADDING*4,BAR_PADDING * 2,null);
         }
     }
 

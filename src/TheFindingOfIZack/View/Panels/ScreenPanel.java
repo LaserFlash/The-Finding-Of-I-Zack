@@ -1,7 +1,6 @@
 package TheFindingOfIZack.View.Panels;
 
-import TheFindingOfIZack.Util.GameSize;
-import TheFindingOfIZack.World.Game;
+import TheFindingOfIZack.Util.GameDimensions;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +33,7 @@ public abstract class ScreenPanel extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(GameSize.WINDOW_WIDTH, GameSize.WINDOW_HEIGHT);
+        return new Dimension(GameDimensions.WINDOW_WIDTH, GameDimensions.WINDOW_HEIGHT);
     }
 
 

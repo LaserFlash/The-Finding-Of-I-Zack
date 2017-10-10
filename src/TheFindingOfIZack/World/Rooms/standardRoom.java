@@ -4,7 +4,7 @@ package TheFindingOfIZack.World.Rooms;
 import TheFindingOfIZack.Entities.*;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Items.Item;
-import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.GameDimensions;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -32,10 +32,10 @@ public class standardRoom extends Room{
     private Point randomPoint(){
         Random r = new Random();
 
-        int left = GameSize.LEFT_WALL;  //low x boundary
-        int right = GameSize.RIGHT_WALL - Entity.width; //high x boundary, allowing for space after object
-        int top = GameSize.TOP_WALL;    //low y boundary
-        int bottom = GameSize.BOTTOM_WALL - Entity.width;   //high y boundary, allowing for space after object
+        int left = GameDimensions.LEFT_WALL;  //low x boundary
+        int right = GameDimensions.RIGHT_WALL - Entity.width; //high x boundary, allowing for space after object
+        int top = GameDimensions.TOP_WALL;    //low y boundary
+        int bottom = GameDimensions.BOTTOM_WALL - Entity.width;   //high y boundary, allowing for space after object
 
         int x = r.nextInt(right - left) + left;
         int y = r.nextInt(bottom - top) + top;
@@ -62,21 +62,21 @@ public class standardRoom extends Room{
      * @return  true if the door is not blocked false otherwise
      */
     private boolean checkPointBlockingDoor(int x, int y){
-        if (x >= GameSize.GAME_WIDTH/2 - Door.height/2 - Entity.width &&
-                x <= GameSize.GAME_WIDTH/2 + Door.height/2){     //potentially blocking north or south door
-            if (y >= GameSize.BOTTOM_WALL - Entity.width*2){  //Blocking south door
+        if (x >= GameDimensions.GAME_WIDTH/2 - Door.height/2 - Entity.width &&
+                x <= GameDimensions.GAME_WIDTH/2 + Door.height/2){     //potentially blocking north or south door
+            if (y >= GameDimensions.BOTTOM_WALL - Entity.width*2){  //Blocking south door
                 return false;
             }
-            else if (y <= GameSize.TOP_WALL + Entity.width){    //Blocking North door
+            else if (y <= GameDimensions.TOP_WALL + Entity.width){    //Blocking North door
                 return false;
             }
 
-        }else if(y >= GameSize.GAME_HEIGHT/2 - Door.height/2 - Entity.width &&
-                y <= GameSize.GAME_HEIGHT/2 + Door.height/2){     //potentially blocking east or west door
-            if (x <= GameSize.LEFT_WALL + Entity.width){
+        }else if(y >= GameDimensions.GAME_HEIGHT/2 - Door.height/2 - Entity.width &&
+                y <= GameDimensions.GAME_HEIGHT/2 + Door.height/2){     //potentially blocking east or west door
+            if (x <= GameDimensions.LEFT_WALL + Entity.width){
                 return false;
             }
-            else if(x >= GameSize.RIGHT_WALL - Entity.width*2){
+            else if(x >= GameDimensions.RIGHT_WALL - Entity.width*2){
                 return false;
             }
         }

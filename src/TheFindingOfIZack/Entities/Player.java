@@ -1,7 +1,7 @@
 package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.Items.Item;
-import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.standardRoom;
 
@@ -116,8 +116,8 @@ public class Player extends AbstractPlayer {
         int x = (int) location.getX();
         int y = (int) location.getY()-speed;
 
-        if (y < GameSize.TOP_WALL) {
-            y = GameSize.TOP_WALL;
+        if (y < GameDimensions.TOP_WALL) {
+            y = GameDimensions.TOP_WALL;
             if (room.hasDoor(0) && vertDoor()) {
                 moveNorth();
                 return;
@@ -134,8 +134,8 @@ public class Player extends AbstractPlayer {
         int x = (int) location.getX();
         int y = (int) location.getY()+speed;
 
-        if (y > GameSize.BOTTOM_WALL-width) {
-            y = GameSize.BOTTOM_WALL-width;
+        if (y > GameDimensions.BOTTOM_WALL-width) {
+            y = GameDimensions.BOTTOM_WALL-width;
             if (room.hasDoor(2) && vertDoor()) {
                 moveSouth();
                 return;
@@ -153,8 +153,8 @@ public class Player extends AbstractPlayer {
         int x = (int) location.getX()-speed;
         int y = (int) location.getY();
 
-        if (x < GameSize.LEFT_WALL) {
-            x = GameSize.LEFT_WALL;
+        if (x < GameDimensions.LEFT_WALL) {
+            x = GameDimensions.LEFT_WALL;
             if (room.hasDoor(3) && horzDoor()){
                 moveWest();
                 return;
@@ -171,8 +171,8 @@ public class Player extends AbstractPlayer {
         int x = (int) location.getX()+speed;
         int y = (int) location.getY();
 
-        if (x > GameSize.RIGHT_WALL-width) {
-            x = GameSize.RIGHT_WALL-width;
+        if (x > GameDimensions.RIGHT_WALL-width) {
+            x = GameDimensions.RIGHT_WALL-width;
             if (room.hasDoor(1) && horzDoor()) {
                 moveEast();
                 return;
@@ -196,15 +196,15 @@ public class Player extends AbstractPlayer {
     }
 
     public boolean vertDoor() {
-        if (location.getX() >= GameSize.VERT_DOOR_START && location.getX() <= GameSize.VERT_DOOR_END) {
-            if (location.getX()+width >= GameSize.VERT_DOOR_START && location.getX()+width <= GameSize.VERT_DOOR_END) {return true;}
+        if (location.getX() >= GameDimensions.VERT_DOOR_START && location.getX() <= GameDimensions.VERT_DOOR_END) {
+            if (location.getX()+width >= GameDimensions.VERT_DOOR_START && location.getX()+width <= GameDimensions.VERT_DOOR_END) {return true;}
         }
         return false;
     }
 
     public boolean horzDoor() {
-        if (location.getY() >= GameSize.HORZ_DOOR_START && location.getY() <= GameSize.HORZ_DOOR_END) {
-            if (location.getY()+width >= GameSize.HORZ_DOOR_START && location.getY()+width <= GameSize.HORZ_DOOR_END) {return true;}
+        if (location.getY() >= GameDimensions.HORZ_DOOR_START && location.getY() <= GameDimensions.HORZ_DOOR_END) {
+            if (location.getY()+width >= GameDimensions.HORZ_DOOR_START && location.getY()+width <= GameDimensions.HORZ_DOOR_END) {return true;}
         }
         return false;
     }
@@ -221,7 +221,7 @@ public class Player extends AbstractPlayer {
         }
 
         int x = (int) location.getX();
-        int y = GameSize.TOP_WALL;
+        int y = GameDimensions.TOP_WALL;
         room.removePlayer();
         room = room.getSouthDoor().getDestination();
         room.addPlayer(this);
@@ -242,7 +242,7 @@ public class Player extends AbstractPlayer {
         }
 
         int x = (int) location.getX();
-        int y = GameSize.BOTTOM_WALL-width;
+        int y = GameDimensions.BOTTOM_WALL-width;
         room.removePlayer();
         room = room.getNorthDoor().getDestination();
         room.addPlayer(this);
@@ -261,7 +261,7 @@ public class Player extends AbstractPlayer {
             else {return;}
         }
 
-        int x = GameSize.RIGHT_WALL-width;
+        int x = GameDimensions.RIGHT_WALL-width;
         int y = (int) location.getY();
         room.removePlayer();
         room = room.getWestDoor().getDestination();
@@ -281,7 +281,7 @@ public class Player extends AbstractPlayer {
             else {return;}
         }
 
-        int x = GameSize.LEFT_WALL;
+        int x = GameDimensions.LEFT_WALL;
         int y = (int) location.getY();
         room.removePlayer();
         room = room.getEastDoor().getDestination();

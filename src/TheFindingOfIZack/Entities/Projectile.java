@@ -1,6 +1,6 @@
 package TheFindingOfIZack.Entities;
 
-import TheFindingOfIZack.Util.GameSize;
+import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.View.Drawable;
 
 import java.awt.*;
@@ -57,16 +57,16 @@ public class Projectile extends Entity implements Drawable{
 
     public boolean wallCollision() {
 
-        if (location.getX()+width/4 < GameSize.LEFT_WALL) {
+        if (location.getX()+width/4 < GameDimensions.LEFT_WALL) {
             return true;
         }
-        else if (location.getY()+width/4 < GameSize.TOP_WALL) {
+        else if (location.getY()+width/4 < GameDimensions.TOP_WALL) {
             return true;
         }
-        else if (location.getX() + (3*width)/4 > GameSize.RIGHT_WALL) {
+        else if (location.getX() + (3*width)/4 > GameDimensions.RIGHT_WALL) {
             return true;
         }
-        else if (location.getY() + (3*width)/4 > GameSize.BOTTOM_WALL) {
+        else if (location.getY() + (3*width)/4 > GameDimensions.BOTTOM_WALL) {
             return true;
         }
 

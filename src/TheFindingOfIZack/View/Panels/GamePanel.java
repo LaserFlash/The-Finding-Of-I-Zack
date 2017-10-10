@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-import static TheFindingOfIZack.Util.GameSize.*;
+import static TheFindingOfIZack.Util.GameDimensions.*;
 
 /**
  * Panel indented to display the game
