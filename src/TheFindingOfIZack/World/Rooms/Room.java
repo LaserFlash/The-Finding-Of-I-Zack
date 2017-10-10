@@ -31,7 +31,7 @@ public abstract class Room implements Drawable {
         this.eastDoor = null;
         this.southDoor = null;
         this.westDoor = null;
-        this.roomImage = ImageLoader.loadImage("/room.png");
+        this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameSize.GAME_WIDTH,GameSize.GAME_HEIGHT,Image.SCALE_DEFAULT);
     }
     @Override
     public void draw(Graphics g){
