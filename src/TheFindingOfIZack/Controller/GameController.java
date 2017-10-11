@@ -115,6 +115,9 @@ public class GameController implements ActionListener, KeyListener {
         switch (e.getKeyCode()){
             case KeyEvent.VK_ESCAPE:
                 this.game.pauseGame();
+                if (game.isGameWon() || game.isGameLost()){
+                    this.view.disableOtherButtons();
+                }
                 this.view.goToMenuView();
                 break;
         }
