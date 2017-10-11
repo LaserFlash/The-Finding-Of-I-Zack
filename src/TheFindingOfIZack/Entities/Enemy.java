@@ -17,7 +17,8 @@ import static TheFindingOfIZack.Util.GameDimensions.*;
 public class Enemy extends Entity {
 
     protected MobEnemy behaviour;
-    int health;
+    protected int health;
+    protected int MAX_HEALTH;
     protected Player player;
     protected boolean isDead = false;
     private final int DAMAGE_TICK = 20;
@@ -41,6 +42,7 @@ public class Enemy extends Entity {
         }
 
         this.health = behaviour.getHealth();
+        this.MAX_HEALTH = behaviour.getHealth();
     }
 
     public void damage(int damage) {
@@ -66,6 +68,7 @@ public class Enemy extends Entity {
             MobShooter m = (MobShooter) behaviour.getMob();
             drawProjectiles(m,g);
         }
+
     }
 
     /**
