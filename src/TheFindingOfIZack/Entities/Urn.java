@@ -1,14 +1,13 @@
 package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.FileIO.Util.Savable;
-import TheFindingOfIZack.Items.*;
+import TheFindingOfIZack.Items.Armour;
+import TheFindingOfIZack.Items.Item;
+import TheFindingOfIZack.Items.Potion;
+import TheFindingOfIZack.Items.Weapon;
 import TheFindingOfIZack.Util.ImageLoader;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import java.io.IOException;
 
 /**
  * Created by allanbenj1 on 29/09/17.
@@ -29,7 +28,6 @@ public class Urn extends Entity implements Savable{
         super(location);
         this.p = p;
         this.urnsImage = ImageLoader.loadImage("/pot.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
-
         int random = (int) (Math.random()*100);
         if (random >= 25) {
             random = (int) (Math.random()*100);
