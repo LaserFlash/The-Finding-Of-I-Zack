@@ -32,7 +32,7 @@ public class InventoryPanel extends JPanel{
         header = ImageLoader.loadImage("/header.png").getScaledInstance(GameDimensions.GAME_WIDTH, GameDimensions.MENU_HEIGHT,Image.SCALE_DEFAULT);
         healthImg = ImageLoader.loadImage("/potion.png");
         keyImg = ImageLoader.loadImage("/doorKey.png");
-        armourImg = ImageLoader.loadImage("/armour.png");
+        armourImg = ImageLoader.loadImage("/armourIcon.png");
     }
 
     /**
