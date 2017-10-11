@@ -1,12 +1,10 @@
 package TheFindingOfIZack.Entities;
 
-import TheFindingOfIZack.Behaviour.MobShooter;
 import javafx.geometry.BoundingBox;
 
 import java.awt.*;
 
 import static TheFindingOfIZack.Util.GameDimensions.*;
-import static TheFindingOfIZack.Util.GameDimensions.RIGHT_WALL;
 
 /**
  * Created by allanbenj1 on 11/10/17.
@@ -16,7 +14,6 @@ public class Boss extends Enemy {
     /**
      * Stores the field for the size of the Boss
      */
-
     private int size = 120;
 
     /**
@@ -67,7 +64,7 @@ public class Boss extends Enemy {
     public void move() {
         tick ++;
         Point playerPoint = player.getLocation();
-        Point potentialStep = this.behaviour.step(location, playerPoint);
+        Point potentialStep = this.behaviour.step(location, playerPoint, r);
         //potentialStep represents the move which will take place if there are no obstacle,
         // also checks if mob is currently touching player
         if(!collision(location,playerPoint)) {

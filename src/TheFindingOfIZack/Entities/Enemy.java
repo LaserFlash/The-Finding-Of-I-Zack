@@ -17,16 +17,19 @@ import static TheFindingOfIZack.Util.GameDimensions.*;
 public class Enemy extends Entity {
 
     protected MobEnemy behaviour;
-    int health;
+    protected int health;
+    protected int MAX_HEALTH;
     protected Player player;
     protected boolean isDead = false;
     private final int DAMAGE_TICK = 20;
     protected int tick;
+    protected Room r;
+
 
     public Enemy(Point location, Player p) {
         super(location);
         this.player = p;
-        Room r = p.getRoom();
+        this.r = p.getRoom();
 
         if (this instanceof Boss) {
             this.behaviour = new MobEnemy("boss", r);
@@ -41,6 +44,7 @@ public class Enemy extends Entity {
         }
 
         this.health = behaviour.getHealth();
+        this.MAX_HEALTH = behaviour.getHealth();
     }
 
     public void damage(int damage) {
@@ -66,6 +70,7 @@ public class Enemy extends Entity {
             MobShooter m = (MobShooter) behaviour.getMob();
             drawProjectiles(m,g);
         }
+
     }
 
     /**
@@ -76,9 +81,10 @@ public class Enemy extends Entity {
     public void move() {
         tick ++;
         Point playerPoint = player.getLocation();
-        Point potentialStep = this.behaviour.step(location, playerPoint);
+        Point potentialStep = this.behaviour.step(location, playerPoint, r);
         //potentialStep represents the move which will take place if there are no obstacle,
         // also checks if mob is currently touching player
+        //entityCollision();*************************************************************************************************************************
         if(!collision(location,playerPoint)) {
             this.location = potentialStep;
             this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.width, this.width);
@@ -92,7 +98,7 @@ public class Enemy extends Entity {
 
 
     /**
-     * The Beginning of Theo's hostile takeover of the Enemy class
+     * Determines if the mob has collided with a wall
      */
     protected void canMove(){
         double x = location.getX();
