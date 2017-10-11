@@ -27,7 +27,7 @@ public class MobProjectile extends Projectile implements Drawable {
         double a = h/speed;
         this.directionX = changeX/a;
         this.directionY = changeY/a;
-        this.location = new Point(location.getX()+20,location.getY()+20);
+        this.location = new Point(location.getX()+10,location.getY()+10);
         this.room = room;
     }
 
