@@ -43,7 +43,7 @@ public class bossRoom extends Room{
         if(this.westDoor != null){
             this.westDoor.isLocked = false;
         }
-        boss.update();
+        boss.move();
 
     }
 
