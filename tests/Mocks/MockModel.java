@@ -174,4 +174,14 @@ public class MockModel implements Model {
     public void shootDown(boolean b) {
         sDown = b;
     }
+
+    @Override
+    public boolean isGameLost() {
+        return false;
+    }
+
+    @Override
+    public boolean isGameWon() {
+        return false;
+    }
 }

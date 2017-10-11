@@ -16,12 +16,12 @@ import static TheFindingOfIZack.Util.GameDimensions.*;
  */
 public class Enemy extends Entity {
 
-    private MobEnemy behaviour;
+    protected MobEnemy behaviour;
     int health;
-    private Player player;
-    private boolean isDead = false;
+    protected Player player;
+    protected boolean isDead = false;
     private final int DAMAGE_TICK = 20;
-    private int tick;
+    protected int tick;
 
     public Enemy(Point location, Player p) {
         super(location);
@@ -94,7 +94,7 @@ public class Enemy extends Entity {
     /**
      * The Beginning of Theo's hostile takeover of the Enemy class
      */
-    private void canMove(){
+    protected void canMove(){
         double x = location.getX();
         double y = location.getY();
         boolean top = false;
