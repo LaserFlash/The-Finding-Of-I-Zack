@@ -41,18 +41,40 @@ public class standardRoom extends Room{
         int y = r.nextInt(bottom - top) + top;
 
         boolean suitable = false;
-        while (!suitable) {
+        int attempts = 0;
+        int MAXATTEMPS = 10000;
+        while (!suitable && attempts < MAXATTEMPS) {
             //Check if point is blocking a door or potential door
             //TODO, add to abstract room and door to only check certain door locations
-            if (checkPointBlockingDoor(x,y)){
+            if (checkPointBlockingDoor(x,y) && checkPointNotOverlap(x,y)){
                 suitable = true;
                 continue;
             }
             x = r.nextInt(right - left) + left;
             y = r.nextInt(bottom - top) + top;
+            attempts++;
         }
-        Point p = new Point(x,y);
-        return p;
+        if (attempts >= MAXATTEMPS){
+            return null;
+        }
+        return new Point(x,y);
+    }
+
+    /**
+     * Check point will not create an entity that overlaps another
+     * @param x x position
+     * @param y y position
+     * @return  true if overlaps with another item or mob
+     */
+    private boolean checkPointNotOverlap(int x, int y) {
+
+        for (Entity i : items){
+            if (i.getBoundingBox().intersects(x,y,x+Entity.width,y+Entity.width)) return false;
+        }
+        for (Entity i : enemiesInRoom){
+            if (i.getBoundingBox().intersects(x,y,x+Entity.width,y+Entity.width)) return false;
+        }
+        return true;
     }
 
     /**
@@ -82,26 +104,34 @@ public class standardRoom extends Room{
         }
         return true;
     }
+
     @Override
-    public  void populateRoom(Player p){
+    public  void populateRoom(Player player){
         if(this.isCleared){
             return;
         }
 
         int numRocks = (int) (Math.random() * 10) + 3;
-        int numUrns = (int) (Math.random() * 3) + 1;
+        int numUrns =  (int) (Math.random() * 3) + 1;
         int numEnemies = (int) (Math.random() * 3) + 1 ;
-      for(int i = 0; i < numRocks; i++){
-            items.add(new Rock(randomPoint()));
+
+        for(int i = 0; i < numRocks; i++){
+            Point p = randomPoint();
+            if (p == null) continue;    //point not created for some reason
+            items.add(new Rock(p));
         }
 
         for(int i = 0; i < numUrns; i++){
-            items.add(new Urn(randomPoint(), getPlayer()));
+            Point p = randomPoint();
+            if (p == null) continue;    //point not created for some reason
+            items.add(new Urn(p, getPlayer()));
         }
 
 
         for(int i = 0; i < numEnemies; i++){
-            enemiesInRoom.add(new Enemy(randomPoint(),p));
+            Point p = randomPoint();
+            if (p == null) continue;    //point not created for some reason
+            enemiesInRoom.add(new Enemy(p,getPlayer()));
         }
 
 
@@ -148,7 +178,7 @@ public class standardRoom extends Room{
         for(Enemy e : enemiesInRoom){
             e.move();
         }
-        for(Item i: getCollectables()){
+        for(Item i: getCollectibles()){
             i.update();
         }
 
