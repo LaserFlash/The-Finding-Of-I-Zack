@@ -2,6 +2,7 @@ package TheFindingOfIZack.Behaviour;
 
 
 import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.World.Rooms.Room;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,12 +16,14 @@ public class MobShooter extends Mob{
     private int tick = (int)(Math.random()*PROJECTILE_TICK);
     private int stopDistance = 200;
     private transient List<MobProjectile> projectiles = Collections.synchronizedList(new ArrayList<MobProjectile>());
+    private Room room;
 
-    public MobShooter(){
+    public MobShooter(Room room){
         this.viewRange = 600;
         this.speed = 3;
         this.health = 50;
         this.damage = 5;
+        this.room = room;
     }
 
     @Override
@@ -66,7 +69,7 @@ public class MobShooter extends Mob{
 
     public void popProjectiles() {
         synchronized (projectiles) {
-            ArrayList<MobProjectile> temp = new ArrayList<MobProjectile>();
+            ArrayList<MobProjectile> temp = new ArrayList<>();
             for (MobProjectile p : projectiles) {
                 if (p.getPopped()) {
                     temp.add(p);
@@ -81,7 +84,7 @@ public class MobShooter extends Mob{
 
     private void projectile(Point location, Point player){
         if(tick > PROJECTILE_TICK){
-            projectiles.add(new MobProjectile(location, player));
+            projectiles.add(new MobProjectile(location, player, room));
             tick = 0;
         }
     }
