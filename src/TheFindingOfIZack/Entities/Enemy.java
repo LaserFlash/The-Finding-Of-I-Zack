@@ -71,6 +71,14 @@ public class Enemy extends Entity {
             drawProjectiles(m,g);
         }
 
+        double healthBar = ((double) health/(double) MAX_HEALTH) * (double) width;
+        if (healthBar < 0) {healthBar = 0;}
+
+        g.setColor(Color.green);
+        g.fillRect((int) location.getX(), (int) location.getY() - 8, (int) healthBar, 4);
+        g.setColor(Color.black);
+        g.drawRect((int) location.getX(), (int) location.getY() - 8, width, 4);
+
     }
 
     /**
