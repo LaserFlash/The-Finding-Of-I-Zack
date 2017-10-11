@@ -56,6 +56,10 @@ public abstract class Entity implements Drawable {
         this.box = new BoundingBox(location.getX(), location.getY(), width, width);
     }
 
+    public BoundingBox getBoundingBox(){
+        return box;
+    }
+
     private void outOfMapBoundsError(String str){
         System.err.print("Error: Entity " + str + " is out of map bounds \n");
     }
