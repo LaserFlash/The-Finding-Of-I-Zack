@@ -38,17 +38,36 @@ public abstract class Room implements Drawable {
         return this.collectables;
     }
 
+    /**
+     * adds a player to the room
+     * @param p player to add to the room
+     */
     public void addPlayer(Player p){
         this.player = p;
     }
 
+
+    /**
+     * gets the player that is currently in the room
+     * @return the current player in the room
+     */
     public Player getPlayer(){
         return this.player;
     }
 
+
+    /**
+     * removes the player from the room, should be used when the player exits a room
+     */
     public void removePlayer(){
         this.player = null;
     }
+
+
+    /**
+     * draws the room and everything within it
+     * @param g graphics object to draw on
+     */
     public void draw(Graphics g){
 
 
@@ -115,22 +134,31 @@ public abstract class Room implements Drawable {
         }
     }
 
+    /**
+     * checks if there is a door in the desired directions
+     * @param dir the desired direction with 0 being north and increasing clockwise
+     * @return true if there is a door in that direction or false if not
+     */
     public boolean hasDoor(int dir) {
+        //door south
         if(dir == 2){
             if(this.southDoor != null){
                 return true;
             }
         }
+        //door north
         if(dir == 0){
             if(this.northDoor != null){
                 return true;
             }
         }
+        //door east
         if(dir == 1){
             if(this.eastDoor != null){
                 return true;
             }
         }
+        //door west
         if(dir == 3){
             if(this.westDoor != null){
                 return true;
