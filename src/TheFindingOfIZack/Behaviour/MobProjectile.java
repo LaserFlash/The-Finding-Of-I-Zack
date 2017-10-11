@@ -12,11 +12,11 @@ import java.awt.*;
  * Created by gordontheo on 29/09/17.
  */
 public class MobProjectile extends Projectile implements Drawable {
-    private double speed = 3;
+    private double speed = 2;
     private double directionX;
     private double directionY;
     private Room room;
-    private int size = 10;
+    private int size = 20;
 
     public MobProjectile(Point location, Point player, Room room){
         super(location, player);

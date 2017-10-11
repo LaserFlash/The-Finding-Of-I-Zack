@@ -391,5 +391,9 @@ public class Player extends AbstractPlayer {
         return projectiles;
     }
 
+    public boolean isDead() {
+        return health <= 0;
+    }
+
 
 }
