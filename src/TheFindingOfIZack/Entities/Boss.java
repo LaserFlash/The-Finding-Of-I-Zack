@@ -47,7 +47,15 @@ public class Boss extends Enemy {
         double healthBar = ((double) health/(double) MAX_HEALTH) * (double) size;
         if (healthBar < 0) {healthBar = 0;}
 
-        g.setColor(Color.green);
+        double red = (((double)MAX_HEALTH-(double)health)/(double)MAX_HEALTH)*(double)255;
+        if (red < 0) {red = 0;}
+        else if (red > 255) {red = 255;}
+        double green = ((double)health/(double)MAX_HEALTH)*(double)255;
+        if (green < 0) {green = 0;}
+        else if (green > 255) {green = 255;}
+        Color c = new Color((int)red, (int) green, 0);
+
+        g.setColor(c);
         g.fillRect((int) location.getX(), (int) location.getY() - 8, (int) healthBar, 4);
         g.setColor(Color.black);
         g.drawRect((int) location.getX(), (int) location.getY() - 8, size, 4);
