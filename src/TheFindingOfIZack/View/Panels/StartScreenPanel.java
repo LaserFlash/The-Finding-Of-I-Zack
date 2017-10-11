@@ -106,4 +106,10 @@ public class StartScreenPanel extends ScreenPanel {
         this.resumeGame.setEnabled(true);
         this.saveGame.setEnabled(true);
     }
+
+    @Override
+    public void disableOtherButtons() {
+        saveGame.setEnabled(false);
+        resumeGame.setEnabled(false);
+    }
 }

@@ -1,6 +1,7 @@
 package TheFindingOfIZack.View;
 
 import TheFindingOfIZack.Util.GameDimensions;
+import TheFindingOfIZack.View.Panels.GameEndScreen;
 import TheFindingOfIZack.View.Panels.GamePanel;
 import TheFindingOfIZack.View.Panels.ScreenPanel;
 import TheFindingOfIZack.View.Panels.StartScreenPanel;
@@ -21,6 +22,7 @@ public class ViewManager extends View {
 
     private ScreenPanel startScreen;
     private ScreenPanel gameScreen;
+    private ScreenPanel endScreen;
 
     /**
      * Initialise the ViewManager.
@@ -38,6 +40,8 @@ public class ViewManager extends View {
         this.startScreen = new StartScreenPanel();
         this.gameScreen = new GamePanel(this.model);
 
+        this.endScreen = new GameEndScreen(new String[]{"Game Over"});
+
         this.add(this.startScreen);
         this.pack();
 
@@ -49,12 +53,13 @@ public class ViewManager extends View {
     public void update(Observable observable, Object o) {
         /* Check if game is won or lost */
         if (model.isGameLost()){
-
+            endScreen.changeText(new String[]{"You appear to have died","Game Over"});
+            goToEndView();
         }else if (model.isGameWon()){
-
-        }else {
-            gameScreen.repaint();
+            endScreen.changeText(new String[]{"Congrats you found Zack","It's you","Potentially"});
+            goToEndView();
         }
+        repaint();
     }
 
     @Override
@@ -66,18 +71,23 @@ public class ViewManager extends View {
     public void addControllerForButtons(ActionListener controller) {
         this.startScreen.addControllerForButtons(controller);
         this.gameScreen.addControllerForButtons(controller);
+        this.endScreen.addControllerForButtons(controller);
     }
+
+
 
     @Override
     public void goToGameView() {
         this.remove(startScreen);
         this.add(gameScreen);
+        this.remove(endScreen);
         this.repaint();
     }
 
     @Override
     public void goToMenuView() {
         this.remove(gameScreen);
+        this.remove(endScreen);
         this.add(startScreen);
         this.repaint();
     }
@@ -98,6 +108,19 @@ public class ViewManager extends View {
     public void enableOtherButtons() {
         this.startScreen.enableOtherButtons();
         this.gameScreen.enableOtherButtons();
+    }
+
+    @Override
+    public void disableOtherButtons() {
+        this.startScreen.disableOtherButtons();
+        this.gameScreen.disableOtherButtons();
+    }
+
+    private void goToEndView(){
+        this.remove(gameScreen);
+        this.remove(startScreen);
+        this.add(endScreen);
+        this.repaint();
     }
 
     /**

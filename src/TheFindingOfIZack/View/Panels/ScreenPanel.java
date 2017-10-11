@@ -36,5 +36,15 @@ public abstract class ScreenPanel extends JPanel {
         return new Dimension(GameDimensions.WINDOW_WIDTH, GameDimensions.WINDOW_HEIGHT);
     }
 
+    /**
+     * Disable buttons as indicated by implementation
+     */
+    public abstract void disableOtherButtons();
+
+    /**
+     * Change the primary text element
+     */
+    public void changeText(String[] text){}
+
 
 }

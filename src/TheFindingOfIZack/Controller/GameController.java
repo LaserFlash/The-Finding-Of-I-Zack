@@ -99,6 +99,11 @@ public class GameController implements ActionListener, KeyListener {
                 this.view.goToGameView();
                 break;
             }
+            case "returnMenu":{
+                this.view.disableOtherButtons();
+                this.view.goToMenuView();
+                break;
+            }
         }
     }
 

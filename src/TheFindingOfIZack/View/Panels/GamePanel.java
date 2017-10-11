@@ -42,6 +42,11 @@ public class GamePanel extends ScreenPanel {
     public void enableOtherButtons() {}
 
     @Override
+    public void disableOtherButtons() {
+
+    }
+
+    @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         /*

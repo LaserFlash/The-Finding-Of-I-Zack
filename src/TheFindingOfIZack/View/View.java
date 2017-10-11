@@ -22,7 +22,7 @@ public abstract class View extends JFrame implements Observer {
 
     /**
      * Link controllers that manage actions on buttons presses to be linked to the view and sub views
-     * @param controller
+     * @param controller controller being added
      */
     public abstract void addControllerForButtons(ActionListener controller);
 
@@ -48,4 +48,9 @@ public abstract class View extends JFrame implements Observer {
      * e.g. activate save button only after a game has been created / loaded
      */
     public abstract void enableOtherButtons();
+
+    /**
+     * Disable buttons that may need to be disabled
+     */
+    public abstract void disableOtherButtons();
 }

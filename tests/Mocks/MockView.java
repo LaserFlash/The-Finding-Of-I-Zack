@@ -49,6 +49,11 @@ public class MockView extends View{
     }
 
     @Override
+    public void disableOtherButtons() {
+
+    }
+
+    @Override
     public void update(Observable o, Object arg) {
 
     }
