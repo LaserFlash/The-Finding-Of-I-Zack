@@ -18,12 +18,11 @@ public class MobShooter extends Mob{
     private transient List<MobProjectile> projectiles = Collections.synchronizedList(new ArrayList<MobProjectile>());
     private Room room;
 
-    public MobShooter(Room room){
+    public MobShooter(){
         this.viewRange = 600;
         this.speed = 3;
         this.health = 50;
         this.damage = 5;
-        this.room = room;
     }
 
     @Override
@@ -33,7 +32,8 @@ public class MobShooter extends Mob{
      * @param player point containing the players location
      * @return new mob Point
      */
-    public Point step(Point location, Point player){
+    public Point step(Point location, Point player, Room r){
+        this.room = r;
         popProjectiles();
         tick++;
         projectile(location,player);

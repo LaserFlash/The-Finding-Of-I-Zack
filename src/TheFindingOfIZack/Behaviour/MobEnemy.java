@@ -25,7 +25,7 @@ public class MobEnemy {
                 mob = new MobSlow();
                 break;
             case "shooter":
-                mob = new MobShooter(room);
+                mob = new MobShooter();
                 break;
             case "boss":
                 mob = new MobBoss();
@@ -57,8 +57,8 @@ public class MobEnemy {
         System.err.print("Error: Invalid mob type " + str + "\n");
     }
 
-    public Point step(Point location, Point player){
-        return(mob.step(location,player));
+    public Point step(Point location, Point player, Room r){
+        return(mob.step(location,player,r));
     }
 
     public Mob getMob(){

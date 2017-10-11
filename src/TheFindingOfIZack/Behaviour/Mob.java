@@ -1,6 +1,14 @@
 package TheFindingOfIZack.Behaviour;
 
+import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Entities.Rock;
+import TheFindingOfIZack.World.Rooms.Room;
+import TheFindingOfIZack.World.Rooms.standardRoom;
+
+import java.util.List;
+
+import static TheFindingOfIZack.Entities.Entity.width;
 
 /**
  * Created by gordontheo on 27/09/17.
@@ -10,6 +18,9 @@ public abstract class Mob {
     protected int viewRange;
     protected int health;
     protected int damage;
+    protected int bounce = 0;
+    private Point tempDirection = null;
+    private Room r;
 
     /**
      * Shifts the mob's location
@@ -17,7 +28,14 @@ public abstract class Mob {
      * @param player point containing the players location
      * @return new mob Point
      */
-    public Point step(Point location, Point player){
+    public Point step(Point location, Point player, Room room){
+        bounce ++;
+        this.r = room;
+
+        if(tempDirection != null){
+            player = tempDirection;
+        }
+
         double changeX = (player.getX() - location.getX());
         double changeY = (player.getY() - location.getY());
 
@@ -26,9 +44,47 @@ public abstract class Mob {
         double newX = changeX/a;
         double newY = changeY/a;
 
+        entityCollision(location,newX,newY);
         location.setLocation((newX + location.getX()),(newY + location.getY()));
 
+
         return location;
+    }
+
+    public void entityCollision(Point location, double newX, double newY) {
+        if (r instanceof standardRoom) {
+            standardRoom room = (standardRoom) r;
+            List<Entity> entities = (room.getItems());
+            for (Entity entity : entities) {
+                if (entity instanceof Rock) {
+                    Rock r = (Rock) entity;
+                    int tempDistance = 500;
+
+                    double rx = r.getBoundingBox().getMinX();
+                    double ry = r.getBoundingBox().getMinY();
+                    double mx = location.getX()+newX;
+                    double my = location.getY()+newY;
+                    int w = width;
+
+                    if(mx<rx && my<ry && mx+w>rx && my+w>ry){   //Bottom right
+                        tempDirection =  new Point(location.getX()-tempDistance,location.getY()-tempDistance);
+                    }
+                    if(mx>rx && my>ry && mx<rx+w && my<ry+w){    //Top left
+                        tempDirection = new Point(location.getX()+tempDistance,location.getY()+tempDistance);
+                    }
+                    if(mx<rx && my>ry && mx+w>rx && my<ry+w){   //Top Right
+                        tempDirection = new Point(location.getX()-tempDistance,location.getY()+tempDistance);
+                    }
+                    if(mx>rx && my<ry && mx<rx+w && my+w>ry){   //Bottom left
+                        tempDirection = new Point(location.getX()+tempDistance,location.getY()-tempDistance);
+                    }
+                    if(tempDirection != null && bounce > 20){
+                        tempDirection = null;
+                        bounce = 0;
+                    }
+                }
+            }
+        }
     }
 
     /**
