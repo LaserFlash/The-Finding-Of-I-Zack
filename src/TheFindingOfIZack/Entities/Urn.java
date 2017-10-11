@@ -31,7 +31,7 @@ public class Urn extends Entity implements Savable{
         this.urnsImage = ImageLoader.loadImage("/pot.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
 
         int random = (int) (Math.random()*100);
-        if (random >= 50) {
+        if (random >= 25) {
             random = (int) (Math.random()*100);
             if (random <= 33) {item = new Armour(p);}
             else if (random <= 66) {item = new Weapon(p);}

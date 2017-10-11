@@ -3,6 +3,7 @@ package TheFindingOfIZack.Behaviour;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Entities.Projectile;
 import TheFindingOfIZack.View.Drawable;
+import javafx.geometry.BoundingBox;
 
 import java.awt.*;
 
@@ -13,6 +14,7 @@ public class MobProjectile extends Projectile implements Drawable {
     private double speed = 3;
     private double directionX;
     private double directionY;
+    private int size = 10;
     //private Room room =
 
     public MobProjectile(Point location, Point player){
@@ -35,14 +37,19 @@ public class MobProjectile extends Projectile implements Drawable {
     public void move(){
         this.location.move(location.getX()+directionX,location.getY()+directionY);
         if (wallCollision()) {pop = true;}
+        setBox();
         //if (enemyCollision()) {pop = true;}
     }
 
     @Override
     public void draw(Graphics g) {
         move();
-        int size = 10;
         g.setColor(Color.GREEN);
         g.fillOval((int)location.getX(), (int)location.getY(), size, size);
+    }
+
+    @Override
+    public void setBox() {
+        this.box = new BoundingBox(location.getX(), location.getY(), size, size);
     }
 }

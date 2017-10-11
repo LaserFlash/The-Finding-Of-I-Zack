@@ -99,12 +99,12 @@ public class standardRoom extends Room{
             items.add(new Urn(randomPoint(), getPlayer()));
         }
         enemiesInRoom.add(new Enemy(randomPoint(),p));
-        /**
+
         for(int i = 0; i < numEnemies; i++){
             enemiesInRoom.add(new Enemy(randomPoint(),p));
         }
 
-        **/
+
 
 
 
