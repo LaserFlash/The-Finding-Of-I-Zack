@@ -48,9 +48,13 @@ public class ViewManager extends View {
     @Override
     public void update(Observable observable, Object o) {
         /* Check if game is won or lost */
+        if (model.isGameLost()){
 
-        /* */
-        gameScreen.repaint();
+        }else if (model.isGameWon()){
+
+        }else {
+            gameScreen.repaint();
+        }
     }
 
     @Override

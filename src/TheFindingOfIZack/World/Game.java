@@ -32,8 +32,8 @@ public class Game extends Observable implements Model,Savable{
 
     private boolean paused = false;
 
-    private boolean isWon;
-    private boolean isLost;
+    private boolean isWon = false;
+    private boolean isLost = false;
 
 
     /**
@@ -109,7 +109,6 @@ public class Game extends Observable implements Model,Savable{
      * Move the player Up and trigger update of view
      */
     private void moveUp() {
-
         player.moveUp();
         drawGame();
     }
@@ -195,12 +194,12 @@ public class Game extends Observable implements Model,Savable{
 
     @Override
     public boolean isGameLost() {
-        return false;
+        return !running && isLost;
     }
 
     @Override
     public boolean isGameWon() {
-        return false;
+        return !running && isWon;
     }
 
     /**
@@ -250,16 +249,12 @@ public class Game extends Observable implements Model,Savable{
         player.update();
 
         checkDead();
-
-
     }
 
     private void checkDead(){
         if(player.isDead()){
             running = false;
             this.isLost = true;
-
-
         }
     }
 
