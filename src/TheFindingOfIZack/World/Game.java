@@ -32,12 +32,17 @@ public class Game extends Observable implements Model,Savable{
 
     private boolean paused = false;
 
+    private boolean isWon;
+    private boolean isLost;
+
 
     /**
      * Constructor for creating a brand new game from the beginning
      * @param p
      */
     public Game(Player p){
+        this.isLost = false;
+        this.isWon = false;
         this.player = p;
         this.frameCount = 0;
         this.north = false;
@@ -228,12 +233,24 @@ public class Game extends Observable implements Model,Savable{
      */
     public void updateGame(){
 
+
         checkMovement();
         checkShooting();
         player.getRoom().update();
         player.update();
 
+        checkDead();
 
+
+    }
+
+    private void checkDead(){
+        if(player.isDead()){
+            running = false;
+            this.isLost = true;
+
+
+        }
     }
 
     /**

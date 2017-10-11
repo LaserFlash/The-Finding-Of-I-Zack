@@ -1,12 +1,14 @@
 package TheFindingOfIZack.World.Rooms;
 
+import TheFindingOfIZack.Entities.Boss;
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.Point;
 
 import java.awt.*;
 
 public class bossRoom extends Room{
 
-
+    Boss boss;
 
     public bossRoom(){
         this.isCleared = true;
@@ -14,7 +16,14 @@ public class bossRoom extends Room{
 
     @Override
     public void populateRoom(Player p) {
+        this.boss = new Boss(new Point(100,100),p);
 
+    }
+
+
+    public void draw(Graphics g){
+        super.draw(g);
+        boss.draw(g);
     }
 
 
@@ -34,6 +43,8 @@ public class bossRoom extends Room{
         if(this.westDoor != null){
             this.westDoor.isLocked = false;
         }
+        boss.update();
+
     }
 
 }
