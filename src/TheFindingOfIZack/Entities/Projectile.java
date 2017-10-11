@@ -3,6 +3,7 @@ package TheFindingOfIZack.Entities;
 import TheFindingOfIZack.Behaviour.MobProjectile;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.View.Drawable;
+import javafx.geometry.BoundingBox;
 
 import java.awt.*;
 import java.util.List;
@@ -54,6 +55,11 @@ public class Projectile extends Entity implements Drawable{
 
         if (wallCollision()) {pop = true;}
 
+    }
+
+    @Override
+    public void setBox() {
+        this.box = new BoundingBox(location.getX()+width/4, location.getY()+width/4, width/2, width/2);
     }
 
     public boolean wallCollision() {
