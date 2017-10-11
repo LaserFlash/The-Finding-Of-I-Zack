@@ -27,6 +27,9 @@ public class MobEnemy {
             case "shooter":
                 mob = new MobShooter(room);
                 break;
+            case "boss":
+                mob = new MobBoss();
+                break;
             default: mobTypeError(type);
                 break;
         }
