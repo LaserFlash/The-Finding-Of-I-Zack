@@ -132,11 +132,13 @@ public class Enemy extends Entity {
     }
 
     public void drawProjectiles(MobShooter m, Graphics g){
-        for(MobProjectile i : m.getProjectile()){
-            i.draw(g);
-            if (collision(i.getLocation(),player.getLocation())){
-                i.pop();
-                damagePlayer();
+        synchronized (m.getProjectile()) {
+            for (MobProjectile i : m.getProjectile()) {
+                i.draw(g);
+                if (collision(i.getLocation(), player.getLocation())) {
+                    i.pop();
+                    damagePlayer();
+                }
             }
         }
     }
