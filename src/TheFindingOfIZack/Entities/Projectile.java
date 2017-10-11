@@ -1,6 +1,5 @@
 package TheFindingOfIZack.Entities;
 
-import TheFindingOfIZack.Behaviour.MobProjectile;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.View.Drawable;
 import javafx.geometry.BoundingBox;
