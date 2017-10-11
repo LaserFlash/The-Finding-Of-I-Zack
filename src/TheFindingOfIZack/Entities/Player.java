@@ -144,13 +144,13 @@ public class Player extends AbstractPlayer {
         Checks for any collected items in the room and removes them from the room
          */
         ArrayList<Item> collected = new ArrayList<Item>();
-        for (Item i : room.getCollectables()) {
+        for (Item i : room.getCollectibles()) {
             if (i.isCollected()) {
                 collected.add(i);
             }
         }
         for (Item i : collected) {
-            room.getCollectables().remove(i);
+            room.getCollectibles().remove(i);
         }
 
     }
@@ -548,4 +548,7 @@ public class Player extends AbstractPlayer {
     }
 
 
+    public int getSpeed() {
+        return speed;
+    }
 }

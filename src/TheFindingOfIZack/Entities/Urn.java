@@ -60,7 +60,7 @@ public class Urn extends Entity implements Savable{
             health = 0;
             destroyed = true;
             if (item != null) {
-                p.getRoom().getCollectables().add(item);
+                p.getRoom().getCollectibles().add(item);
             }
         }
     }

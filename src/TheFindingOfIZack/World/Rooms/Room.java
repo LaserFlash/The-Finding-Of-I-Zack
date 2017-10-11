@@ -7,8 +7,11 @@ import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.View.Drawable;
 
+
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by fieldryan on 19/09/17.
@@ -17,7 +20,7 @@ import java.util.ArrayList;
 public abstract class Room implements Drawable {
 
     private static Image roomImage;
-    protected ArrayList<Item> collectables;
+    protected List<Item> collectibles;
     public transient Door northDoor;
     public transient Door eastDoor;
     public transient Door southDoor;
@@ -26,7 +29,7 @@ public abstract class Room implements Drawable {
     private Player player;
 
     public Room() {
-        this.collectables = new ArrayList<Item>();
+        this.collectibles = Collections.synchronizedList(new ArrayList<Item>());
         this.player = null;
         this.northDoor = null;
         this.eastDoor = null;
@@ -34,8 +37,8 @@ public abstract class Room implements Drawable {
         this.westDoor = null;
         this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameDimensions.GAME_WIDTH, GameDimensions.GAME_HEIGHT,Image.SCALE_DEFAULT);
     }
-    public ArrayList<Item> getCollectables(){
-        return this.collectables;
+    public List<Item> getCollectibles(){
+        return this.collectibles;
     }
 
     /**
@@ -85,8 +88,10 @@ public abstract class Room implements Drawable {
             this.eastDoor.draw(g);
         }
 
-        for(Item i : this.collectables){
-            i.draw(g);
+        synchronized (this.collectibles) {
+            for (Item i : this.collectibles) {
+                i.draw(g);
+            }
         }
 
     }
