@@ -27,12 +27,19 @@ public class Enemy extends Entity {
         super(location);
         this.player = p;
         Room r = p.getRoom();
-        int type = (int) (Math.random()*5);
-        //int type = 1;
-        if (type>2) {this.behaviour = new MobEnemy("standard", r);}
-        else if (type==2) {this.behaviour = new MobEnemy("fast", r);}
-        else if (type==1) {this.behaviour = new MobEnemy("shooter", r);}
-        else {this.behaviour = new MobEnemy("slow", r);}
+
+        if (this instanceof Boss) {
+            this.behaviour = new MobEnemy("boss", r);
+        }
+        else {
+            int type = (int) (Math.random()*5);
+            //int type = 1;
+            if (type>2) {this.behaviour = new MobEnemy("standard", r);}
+            else if (type==2) {this.behaviour = new MobEnemy("fast", r);}
+            else if (type==1) {this.behaviour = new MobEnemy("shooter", r);}
+            else {this.behaviour = new MobEnemy("slow", r);}
+        }
+
         this.health = behaviour.getHealth();
     }
 
