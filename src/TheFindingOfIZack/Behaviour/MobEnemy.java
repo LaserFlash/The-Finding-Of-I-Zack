@@ -25,7 +25,7 @@ public class MobEnemy {
                 mob = new MobSlow();
                 break;
             case "shooter":
-                mob = new MobShooter();
+                mob = new MobShooter(room);
                 break;
             default: mobTypeError(type);
                 break;
