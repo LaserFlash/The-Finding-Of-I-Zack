@@ -14,27 +14,33 @@ import static TheFindingOfIZack.Util.GameDimensions.*;
  */
 public abstract class Entity implements Drawable {
 
+    /**
+     * Fields for location, bounding box, and width
+     */
+
     protected Point location;
     protected BoundingBox box;
 
     public static int width = 40;
 
-    protected Game world;
-
     public Entity(){
 
     }
 
+    /**
+     * Constructor for Entity
+     * @param location  the location of the entity
+     */
     public Entity(Point location) {
         this.location = location;
         this.box = new BoundingBox(location.getX(), location.getY(), width, width);
         outOfBounds();
     }
 
-    public void setWorld(Game g) {
-        this.world = g;
-    }
-
+    /**
+     * Returns the location of the entity
+     * @return  location
+     */
     public Point getLocation() {
         return this.location;
     }
@@ -48,18 +54,31 @@ public abstract class Entity implements Drawable {
         }
     }
 
-    public void draw(Graphics g) {
+    /**
+     * Draw method for entity
+     * @param g graphics object to draw on
+     */
+    public void draw(Graphics g) {}
 
-    }
-
+    /**
+     * Sets the bounding box
+     */
     public void setBox() {
         this.box = new BoundingBox(location.getX(), location.getY(), width, width);
     }
 
+    /**
+     * Returns the entity bounding box
+     * @return  box
+     */
     public BoundingBox getBoundingBox(){
         return box;
     }
 
+    /**
+     * Prints out error if an entity moves out of bounds
+     * @param str   the entity that has moved out of bounds
+     */
     private void outOfMapBoundsError(String str){
         System.err.print("Error: Entity " + str + " is out of map bounds \n");
     }

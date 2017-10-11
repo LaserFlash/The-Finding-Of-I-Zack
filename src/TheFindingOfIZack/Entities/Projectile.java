@@ -12,6 +12,10 @@ import java.util.List;
  */
 public class Projectile extends Entity implements Drawable{
 
+    /**
+     * Fields for damage, direction, speed, and if it is popped
+     */
+
     private int damage;
     private String direction;
 
@@ -19,14 +23,29 @@ public class Projectile extends Entity implements Drawable{
 
     private int speed = 10;
 
+    /**
+     * Constructor for Projectile
+     * @param damage    the damage the projectile does
+     * @param location  the location the projectile is
+     * @param direction the direction the projectile is travelling
+     */
     public Projectile(int damage, Point location, String direction) {
         super(location);
         this.damage = damage;
         this.direction = direction;
     }
 
+    /**
+     * Alternative constructor for MobProjectile
+     * @param location  location of the projectile
+     * @param player    the player that the projectile is aiming at
+     */
     public Projectile(Point location, Point player){}
 
+    /**
+     * Draws the projectile
+     * @param g graphics object to draw with
+     */
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.BLUE);
@@ -36,6 +55,10 @@ public class Projectile extends Entity implements Drawable{
         g.drawOval((int) location.getX()+width/4, (int) location.getY() + width/4, width/2, width/2);
     }
 
+    /**
+     * Moves the projectile along its current direction
+     * If the projectile collides with a wall, pop is set to true
+     */
     public void move() {
         int x, y;
         if (direction.equals("up") || direction.equals("down")) {
@@ -56,11 +79,18 @@ public class Projectile extends Entity implements Drawable{
 
     }
 
+    /**
+     * Sets the bounding box of the projectile to its new location
+     */
     @Override
     public void setBox() {
         this.box = new BoundingBox(location.getX()+width/4, location.getY()+width/4, width/2, width/2);
     }
 
+    /**
+     * Checks whether the projectile has hit a wall
+     * @return  true if the projectile has hit a wall
+     */
     public boolean wallCollision() {
 
         if (location.getX()+width/4 < GameDimensions.LEFT_WALL) {
@@ -79,12 +109,22 @@ public class Projectile extends Entity implements Drawable{
         return false;
     }
 
+    /**
+     * Checks whether the projectile has hit an enemy
+     * If so, the enemy is damaged and pop is set to true
+     * @param enemies   the list of enemies in the room
+     */
     public void enemyCollision(List<Enemy> enemies) {
         for (Enemy e : enemies) {
             if (e.box.intersects(location.getX()+width/4, location.getY()+width/4, width/2, width/2)) {e.damage(damage); pop = true;}
         }
     }
 
+    /**
+     * Checks whether the projectile has hit an obstacle
+     * If so, the obstacle is damaged and pop is set to true
+     * @param entities  the list of obstacles in the room
+     */
     public void entityCollision(List<Entity> entities) {
         for (Entity entity : entities) {
 
@@ -100,6 +140,10 @@ public class Projectile extends Entity implements Drawable{
         }
     }
 
+    /**
+     * Returns whether the projectile is popped or not
+     * @return  pop
+     */
     public boolean getPopped() {
         return this.pop;
     }

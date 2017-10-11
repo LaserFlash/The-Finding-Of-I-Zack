@@ -14,6 +14,10 @@ import java.awt.*;
  */
 public class Urn extends Entity implements Savable{
 
+    /**
+     * Fields to store Urn image, player, item, if it is destroyed
+     */
+
     private static Image urnsImage;
 
     private Player p;
@@ -24,6 +28,11 @@ public class Urn extends Entity implements Savable{
 
     int health = 15;
 
+    /**
+     * Constructor takes a Point and a player
+     * @param location  where the urn is
+     * @param p the player associated with the urn
+     */
     public Urn(Point location, Player p) {
         super(location);
         this.p = p;
@@ -40,6 +49,11 @@ public class Urn extends Entity implements Savable{
 
     }
 
+    /**
+     * Damages the urn
+     * If health <= 0 the urn is destroyed and the item is dropped (if the urn has an item)
+     * @param damage    the amount of damage done to the urn
+     */
     public void damage(int damage) {
         this.health -= damage;
         if (health < 0) {
@@ -51,12 +65,20 @@ public class Urn extends Entity implements Savable{
         }
     }
 
+    /**
+     * Draws the urn
+     * @param g the graphics object that draws the urn
+     */
     @Override
     public void draw(Graphics g) {
         g.drawImage(urnsImage, (int) location.getX(), (int) location.getY(), null);
 
     }
 
+    /**
+     * Returns whether the urn is destroyed
+     * @return  boolean destroyed
+     */
     public boolean isDestroyed() {
         return destroyed;
     }

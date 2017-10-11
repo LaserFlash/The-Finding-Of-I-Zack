@@ -11,20 +11,35 @@ import static TheFindingOfIZack.Util.GameDimensions.RIGHT_WALL;
 /**
  * Created by allanbenj1 on 11/10/17.
  */
-public class Boss extends Enemy{
+public class Boss extends Enemy {
+
+    /**
+     * Stores the field for the size of the Boss
+     */
 
     private int size = 120;
 
+    /**
+     * Constructor for the boss
+     * @param location  the location of the boss
+     * @param p the player associated with the boss
+     */
     public Boss(Point location, Player p) {
         super(location, p);
     }
 
+    /**
+     * Sets the bounding box for the boss
+     */
     @Override
     public void setBox() {
         this.box = new BoundingBox(location.getX(), location.getY(), size, size);
     }
 
-
+    /**
+     * draws the boss
+     * @param g the graphics object used to draw the boss
+     */
     @Override
     public void draw(Graphics g) {
         g.setColor(Color.RED);
@@ -34,12 +49,20 @@ public class Boss extends Enemy{
 
     }
 
+    /**
+     * Damages the boss
+     * @param damage    the amount of damage the boss receives
+     */
     @Override
     public void damage(int damage) {
         this.health -= damage;
         if (this.health <= 0) {isDead = true;}
     }
 
+    /**
+     * Moves the boss.
+     * This acts in a similar way to enemy however it has minor differences
+     */
     @Override
     public void move() {
         tick ++;
@@ -49,7 +72,7 @@ public class Boss extends Enemy{
         // also checks if mob is currently touching player
         if(!collision(location,playerPoint)) {
             this.location = potentialStep;
-            this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.width, this.width);
+            this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.size, this.size);
             setBox();
         }
         canMove();
@@ -58,6 +81,10 @@ public class Boss extends Enemy{
         }
     }
 
+    /**
+     * Checks whether the boss can move or not
+     * Also checks for wall collisions and fixes them
+     */
     @Override
     protected void canMove(){
         double x = location.getX();

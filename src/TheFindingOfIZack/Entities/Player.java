@@ -3,6 +3,7 @@ package TheFindingOfIZack.Entities;
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.World.Rooms.Room;
+import TheFindingOfIZack.World.Rooms.bossRoom;
 import TheFindingOfIZack.World.Rooms.standardRoom;
 
 import java.awt.*;
@@ -15,30 +16,58 @@ import java.util.List;
  */
 public class Player extends AbstractPlayer {
 
+    /**
+     *  Fields for storing armour information
+     */
     private int MAX_ARMOUR = 25;
     private int armour = 0;
+
+    /**
+     *  Field that stores what room the player is in
+     */
     private transient Room room;
+
+    /**
+     *  Fields that store health information
+     */
     private int MAX_HEALTH = 100;
     private int health = 100;
+
+    /**
+     *  Other fields for speed, number of keys, and damage
+     */
     private int speed = 5;
     private int key = 0;
     private int damage = 10;
 
+    /**
+     *  Fields for storing weapon information
+     */
     private int weaponTick = 0;
     private int firerate = 20;
     private int MIN_FIRERATE = 7;
 
+    /**
+     *  List of projectiles that the player has fired
+     */
     private transient List<Projectile> projectiles;
 
+    /**
+     *  Constructor takes a Point as a parameter
+     *  Uses the super type of Entity and initialises the projectile list
+     *
+     * @param location the location that the player starts at
+     */
     public Player(Point location) {
         super(location);
         projectiles = Collections.synchronizedList(new ArrayList<Projectile>());
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
+    /**
+     * Draws the player and player projectiles
+     *
+     * @param g the graphics object used to draw the player
+     */
     @Override
     public void draw(Graphics g) {
         synchronized (projectiles) {
@@ -54,17 +83,41 @@ public class Player extends AbstractPlayer {
 
     }
 
+    /**
+     *  Update method
+     *  Controls the weapon fire and calls update on all projectiles
+     *  It also checks whether items in the room have been destroyed and removes them from the room.
+     */
     public void update() {
+        /*
+        Checks whether the player can fire again and iterates weaponTick
+         */
         if (weaponTick == firerate) {weaponTick = 0;}
         else if (weaponTick != 0) {weaponTick++;}
         for (Projectile p : projectiles) {
             p.move();
+
+            /*
+            If the room is a boss room, the boss is added to an array and handed to the projectile to check for collisions
+             */
+            if (room instanceof bossRoom) {
+                bossRoom r = (bossRoom) room;
+                ArrayList<Enemy> boss = new ArrayList<Enemy>();
+                boss.add(r.getBoss());
+                p.enemyCollision(boss);
+            }
+
+            /*
+            If the room is a standard room, the projectiles check collisions with all enemies in the room.
+             */
             if (room instanceof standardRoom) {
                 standardRoom r = (standardRoom) room;
                 p.enemyCollision(r.getEnemies());
                 p.entityCollision(r.getItems());
 
-
+                /*
+                This checks whether the items in the room have been destroyed and removes them from the list
+                 */
                 ArrayList<Entity> destroyed = new ArrayList<Entity>();
                 for (Entity e : r.getItems()) {
                     if (e instanceof Rock) {
@@ -82,8 +135,14 @@ public class Player extends AbstractPlayer {
 
             }
         }
+        /*
+        calls popProjectiles method to remove any popped projectiles from the list
+         */
         popProjectiles();
 
+        /*
+        Checks for any collected items in the room and removes them from the room
+         */
         ArrayList<Item> collected = new ArrayList<Item>();
         for (Item i : room.getCollectables()) {
             if (i.isCollected()) {
@@ -96,11 +155,22 @@ public class Player extends AbstractPlayer {
 
     }
 
+
+    /**
+     *  Damages the player
+     *  If the player has armour, the amount of damage is reduced by the amount of armour
+     *  When armour absorbs damage it is damaged and its stat decreases by 1
+     *
+     * @param damage the amount of damage done to the player
+     */
     public void damage(int damage) {
         this.health -= (damage-armour);
         if (armour > 0) {armour--;}
     }
 
+    /**
+     *  Iterates through the projectiles in the projectiles list and removes any popped projectiles
+     */
     public void popProjectiles() {
         ArrayList<Projectile> temp = new ArrayList<Projectile>();
         for (Projectile p : projectiles) {
@@ -112,6 +182,11 @@ public class Player extends AbstractPlayer {
         }
     }
 
+    /**
+     *  Moves the player up by speed
+     *  If the player is at the top wall then the player doesn't move up
+     *  If the player is by a north door the player moves into the next room
+     */
     public void moveUp() {
         int x = (int) location.getX();
         int y = (int) location.getY()-speed;
@@ -130,6 +205,11 @@ public class Player extends AbstractPlayer {
         setBox();
     }
 
+    /**
+     *  Moves the player down by speed
+     *  If the player is at the bottom wall then the player doesn't move up
+     *  If the player is by a south door the player moves into the next room
+     */
     public void moveDown() {
         int x = (int) location.getX();
         int y = (int) location.getY()+speed;
@@ -148,7 +228,11 @@ public class Player extends AbstractPlayer {
         setBox();
     }
 
-
+    /**
+     *  Moves the player left by speed
+     *  If the player is at the left wall then the player doesn't move up
+     *  If the player is by a west door the player moves into the next room
+     */
     public void moveLeft() {
         int x = (int) location.getX()-speed;
         int y = (int) location.getY();
@@ -167,6 +251,11 @@ public class Player extends AbstractPlayer {
         setBox();
     }
 
+    /**
+     *  Moves the player right by speed
+     *  If the player is at the right wall then the player doesn't move up
+     *  If the player is by a east door the player moved into the next room
+     */
     public void moveRight() {
         int x = (int) location.getX()+speed;
         int y = (int) location.getY();
@@ -185,6 +274,13 @@ public class Player extends AbstractPlayer {
         setBox();
     }
 
+    /**
+     * Checks whether the player is colliding with an entity
+     *
+     * @param x target x value
+     * @param y target y value
+     * @return  true if the new point intersects with an entity
+     */
     public boolean checkCollision(int x, int y) {
         if (room instanceof standardRoom) {
             standardRoom r = (standardRoom) room;
@@ -195,6 +291,12 @@ public class Player extends AbstractPlayer {
         return false;
     }
 
+    /**
+     * Checks whether the player is within the boundaries of the vertical doors
+     * The vertical doors are the top and bottom doors
+     *
+     * @return  true if the player is within the boundaries of the vertical doors
+     */
     public boolean vertDoor() {
         if (location.getX() >= GameDimensions.VERT_DOOR_START && location.getX() <= GameDimensions.VERT_DOOR_END) {
             if (location.getX()+width >= GameDimensions.VERT_DOOR_START && location.getX()+width <= GameDimensions.VERT_DOOR_END) {return true;}
@@ -202,6 +304,12 @@ public class Player extends AbstractPlayer {
         return false;
     }
 
+    /**
+     * Checks whether the player is within the boundaries of the horizontal doors
+     * The horizontal doors are the left and right doors
+     *
+     * @return  true if the player is within the boundaries of the horizontal doors
+     */
     public boolean horzDoor() {
         if (location.getY() >= GameDimensions.HORZ_DOOR_START && location.getY() <= GameDimensions.HORZ_DOOR_END) {
             if (location.getY()+width >= GameDimensions.HORZ_DOOR_START && location.getY()+width <= GameDimensions.HORZ_DOOR_END) {return true;}
@@ -209,6 +317,12 @@ public class Player extends AbstractPlayer {
         return false;
     }
 
+    /**
+     * Moves the player into the room south of the current room
+     * If there is no south door or the door is locked the player cannot move south
+     * If the door leads to a boss room that hasn't been unlocked yet the player requires a key
+     * Once a boss door is unlocked it stays unlocked if the player wishes to return
+     */
     @Override
     public void moveSouth() {
         if (room.getSouthDoor().isLocked) {return;}
@@ -230,6 +344,12 @@ public class Player extends AbstractPlayer {
         projectiles.clear();
     }
 
+    /**
+     * Moves the player into the room north of the current room
+     * If there is no north door or the door is locked the player cannot move south
+     * If the door leads to a boss room that hasn't been unlocked yet the player requires a key
+     * Once a boss door is unlocked it stays unlocked if the player wishes to return
+     */
     @Override
     public void moveNorth() {
         if (room.getNorthDoor().isLocked) {return;}
@@ -250,6 +370,13 @@ public class Player extends AbstractPlayer {
         room.populateRoom(this);
         projectiles.clear();
     }
+
+    /**
+     * Moves the player into the room west of the current room
+     * If there is no west door or the door is locked the player cannot move south
+     * If the door leads to a boss room that hasn't been unlocked yet the player requires a key
+     * Once a boss door is unlocked it stays unlocked if the player wishes to return
+     */
     @Override
     public void moveWest() {
         if (room.getWestDoor().isLocked) {return;}
@@ -270,6 +397,13 @@ public class Player extends AbstractPlayer {
         room.populateRoom(this);
         projectiles.clear();
     }
+
+    /**
+     * Moves the player into the room east of the current room
+     * If there is no east door or the door is locked the player cannot move south
+     * If the door leads to a boss room that hasn't been unlocked yet the player requires a key
+     * Once a boss door is unlocked it stays unlocked if the player wishes to return
+     */
     @Override
     public void moveEast() {
         if (room.getEastDoor().isLocked) {return;}
@@ -291,13 +425,19 @@ public class Player extends AbstractPlayer {
         projectiles.clear();
     }
 
-
+    /**
+     * Clones the current location of the player
+     * @return  a clone of the players location
+     */
     private Point clonePoint() {
         int x = (int) location.getX();
         int y = (int) location.getY();
         return new Point(x, y);
     }
 
+    /**
+     * Creates a new projectile that moves up
+     */
     @Override
     public void shootUp() {
         if (weaponTick != 0) {return;}
@@ -305,6 +445,10 @@ public class Player extends AbstractPlayer {
         projectiles.add(p);
         weaponTick++;
     }
+
+    /**
+     * Creates a new projectile that moves down
+     */
     @Override
     public void shootDown() {
         if (weaponTick != 0) {return;}
@@ -312,6 +456,10 @@ public class Player extends AbstractPlayer {
         projectiles.add(p);
         weaponTick++;
     }
+
+    /**
+     * Creates a new projectile that moves left
+     */
     @Override
     public void shootLeft() {
         if (weaponTick != 0) {return;}
@@ -319,6 +467,10 @@ public class Player extends AbstractPlayer {
         projectiles.add(p);
         weaponTick++;
     }
+
+    /**
+     * Creates a new projectile that moves right
+     */
     @Override
     public void shootRight() {
         if (weaponTick != 0) {return;}
@@ -328,6 +480,9 @@ public class Player extends AbstractPlayer {
     }
 
 
+    /**
+     *  Getter and setters for player fields
+     */
 
 
     public int getMaxHealth() {
@@ -364,9 +519,6 @@ public class Player extends AbstractPlayer {
         return key > 0;
     }
 
-    public int getSpeed() {
-        return this.speed;
-    }
 
     public int getMaxArmour() {
         return MAX_ARMOUR;
