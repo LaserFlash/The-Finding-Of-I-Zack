@@ -47,4 +47,8 @@ public class bossRoom extends Room{
 
     }
 
+    public Boss getBoss(){
+        return this.boss;
+    }
+
 }
