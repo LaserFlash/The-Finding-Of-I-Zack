@@ -14,16 +14,20 @@ import java.awt.*;
 public class itemRoom extends Room {
 
 
-
+    private boolean populated;
 
     public itemRoom(){
-
+        this.populated = false;
     }
 
     @Override
     public void populateRoom(Player p) {
-        this.collectables.add(new Key(p));
+        if(populated){
+            return;
+        }
 
+        this.getCollectables().add(new Key(p));
+        this.populated = true;
     }
 
 
@@ -44,7 +48,7 @@ public class itemRoom extends Room {
             this.westDoor.isLocked = false;
         }
 
-        for (Item i : this.collectables) {
+        for (Item i : this.getCollectables()) {
             i.update();
         }
     }
