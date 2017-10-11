@@ -68,4 +68,16 @@ public interface Model {
      * @param b boolean indicating to start or stop
      */
     void shootDown(boolean b);
+
+    /**
+     * Check if the game has been lost
+     * @return  true if lost false otherwise
+     */
+    boolean isGameLost();
+
+    /**
+     * Check if the game has been won
+     * @return true if won false otherwise
+     */
+    boolean isGameWon();
 }

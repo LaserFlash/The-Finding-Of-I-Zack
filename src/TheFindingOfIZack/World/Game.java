@@ -188,6 +188,16 @@ public class Game extends Observable implements Model,Savable{
         this.shootsouth = b;
     }
 
+    @Override
+    public boolean isGameLost() {
+        return false;
+    }
+
+    @Override
+    public boolean isGameWon() {
+        return false;
+    }
+
     /**
      * Start or stop shooting in the left direction
      */
