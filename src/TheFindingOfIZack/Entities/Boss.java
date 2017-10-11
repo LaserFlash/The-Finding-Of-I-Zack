@@ -68,12 +68,12 @@ public class Boss extends Enemy{
         boolean right = false;
         if(y < TOP_WALL){top = true;}
         if(x < LEFT_WALL){left = true;}
-        if(y+width > BOTTOM_WALL){bottom = true;}
-        if(x+width > RIGHT_WALL){right = true;}
+        if(y+size > BOTTOM_WALL){bottom = true;}
+        if(x+size > RIGHT_WALL){right = true;}
         if(top){y = TOP_WALL;}
-        if(bottom){y = BOTTOM_WALL-width;}
+        if(bottom){y = BOTTOM_WALL-size;}
         if(left){x = LEFT_WALL;}
-        if(right){x = RIGHT_WALL-width;}
+        if(right){x = RIGHT_WALL-size;}
         location.move(x,y);
     }
 
