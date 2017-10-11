@@ -47,6 +47,9 @@ public class ViewManager extends View {
 
     @Override
     public void update(Observable observable, Object o) {
+        /* Check if game is won or lost */
+
+        /* */
         gameScreen.repaint();
     }
 

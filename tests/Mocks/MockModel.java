@@ -85,6 +85,11 @@ public class MockModel implements Model {
         public boolean getKey() {
             return false;
         }
+
+        @Override
+        public boolean isDead() {
+            return false;
+        }
     };
 
     public boolean sLeft = false;
@@ -168,5 +173,15 @@ public class MockModel implements Model {
     @Override
     public void shootDown(boolean b) {
         sDown = b;
+    }
+
+    @Override
+    public boolean isGameLost() {
+        return false;
+    }
+
+    @Override
+    public boolean isGameWon() {
+        return false;
     }
 }
