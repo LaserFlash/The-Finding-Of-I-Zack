@@ -84,7 +84,7 @@ public class Projectile extends Entity implements Drawable{
      */
     @Override
     public void setBox() {
-        this.box = new BoundingBox(location.getX()+width/4, location.getY()+width/4, width/2, width/2);
+        this.box = new BoundingBox(location.getX()-width/4, location.getY()-width/4, width/2, width/2);
     }
 
     /**

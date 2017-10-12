@@ -1,7 +1,6 @@
 package TheFindingOfIZack.Behaviour;
 
 import TheFindingOfIZack.Entities.Enemy;
-import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.bossRoom;
@@ -33,16 +32,16 @@ public class MobBoss extends Mob{
         double newX = changeX/a;
         double newY = changeY/a;
 
-        if(moveType == CHANGE_TYPE && room instanceof bossRoom){
+        if(moveType == CHANGE_TYPE || moveType == CHANGE_TYPE*2 && room instanceof bossRoom){
             bossRoom r = (bossRoom) room;
             Point mobPoint = new Point(location.getX()+50,location.getY()+50);
             r.setEnemiesInRoom(new Enemy(mobPoint,room.getPlayer()));
         }
-        if(moveType >  CHANGE_TYPE){
+        if(moveType >  CHANGE_TYPE*2){
             speed = MAX_SPEED/2;
             newX = -newX;
             newY = -newY;
-            if(moveType >  CHANGE_TYPE*2){
+            if(moveType >  CHANGE_TYPE*3){
                 moveType = 0;
                 speed = MAX_SPEED;
             }

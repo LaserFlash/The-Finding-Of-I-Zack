@@ -30,7 +30,7 @@ public class bossRoom extends Room{
     public void draw(Graphics g){
         super.draw(g);
         enemiesInRoom.forEach(e -> e.draw(g));
-        boss.draw(g);
+        if(boss != null){boss.draw(g);}
     }
 
 
