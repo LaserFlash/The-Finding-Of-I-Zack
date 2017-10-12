@@ -41,7 +41,7 @@ public class GameEndScreen  extends ScreenPanel{
         textLabels.add(textLabel);
         this.add(textLabel);
 
-        returnButton = new JButton("Return to Menu",normalButton);
+        returnButton = new JButton("Menu",normalButton);
         returnButton.setHorizontalTextPosition(JButton.CENTER);
         returnButton.setVerticalTextPosition(JButton.CENTER);
         returnButton.setDisabledIcon(disabledButton);
@@ -68,7 +68,7 @@ public class GameEndScreen  extends ScreenPanel{
 
     @Override
     public void changeText(String[] text){
-        textLabels.forEach(l -> this.remove(l));
+        textLabels.forEach(this::remove);
         textLabels.clear();
         this.remove(returnButton);
         for (String s: text){
@@ -76,9 +76,7 @@ public class GameEndScreen  extends ScreenPanel{
             setLabelFontSize(tmp);
             textLabels.add(tmp);
         }
-        textLabels.forEach( l -> {
-            this.add(l);
-        });
+        textLabels.forEach(this::add);
         this.add(Box.createRigidArea(new Dimension(5,50)));
         this.add(returnButton);
     }
