@@ -47,7 +47,6 @@ public abstract class Mob {
         entityCollision(location,newX,newY);
         location.setLocation((newX + location.getX()),(newY + location.getY()));
 
-
         return location;
     }
 
@@ -58,7 +57,6 @@ public abstract class Mob {
             for (Entity entity : entities) {
                 if (entity instanceof Rock) {
                     Rock r = (Rock) entity;
-                    int tempDistance = 500;
 
                     double rx = r.getBoundingBox().getMinX();
                     double ry = r.getBoundingBox().getMinY();
@@ -67,16 +65,16 @@ public abstract class Mob {
                     int w = width;
 
                     if(mx<rx && my<ry && mx+w>rx && my+w>ry){   //Bottom right
-                        tempDirection =  new Point(location.getX()-tempDistance,location.getY()-tempDistance);
+                        tempDirection =  new Point(location.getX()-tempDistance(),location.getY()-tempDistance());
                     }
                     if(mx>rx && my>ry && mx<rx+w && my<ry+w){    //Top left
-                        tempDirection = new Point(location.getX()+tempDistance,location.getY()+tempDistance);
+                        tempDirection = new Point(location.getX()+tempDistance(),location.getY()+tempDistance());
                     }
                     if(mx<rx && my>ry && mx+w>rx && my<ry+w){   //Top Right
-                        tempDirection = new Point(location.getX()-tempDistance,location.getY()+tempDistance);
+                        tempDirection = new Point(location.getX()-tempDistance(),location.getY()+tempDistance());
                     }
                     if(mx>rx && my<ry && mx<rx+w && my+w>ry){   //Bottom left
-                        tempDirection = new Point(location.getX()+tempDistance,location.getY()-tempDistance);
+                        tempDirection = new Point(location.getX()+tempDistance(),location.getY()-tempDistance());
                     }
                     if(tempDirection != null && bounce > 20){
                         tempDirection = null;
@@ -86,6 +84,15 @@ public abstract class Mob {
             }
         }
     }
+
+    /**
+     * Method for creating a random number used for moving round obstacles
+     * @return a random double between 100 and 500
+     */
+    private double tempDistance(){
+        return (Math.random()*500+100);
+    }
+
 
     /**
      * Returns health

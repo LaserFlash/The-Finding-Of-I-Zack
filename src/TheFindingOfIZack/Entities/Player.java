@@ -468,7 +468,6 @@ public class Player extends AbstractPlayer {
         Projectile p = new Projectile(this.damage, clonePoint(), "up");
         projectiles.add(p);
         weaponTick++;
-        System.out.println("Shooting up");
     }
 
     /**
@@ -480,7 +479,6 @@ public class Player extends AbstractPlayer {
         Projectile p = new Projectile(this.damage, clonePoint(), "down");
         projectiles.add(p);
         weaponTick++;
-        System.out.println("Shooting down");
     }
 
     /**
@@ -492,7 +490,6 @@ public class Player extends AbstractPlayer {
         Projectile p = new Projectile(this.damage, clonePoint(), "left");
         projectiles.add(p);
         weaponTick++;
-        System.out.println("Shooting left");
     }
 
     /**
@@ -504,7 +501,6 @@ public class Player extends AbstractPlayer {
         Projectile p = new Projectile(this.damage, clonePoint(), "right");
         projectiles.add(p);
         weaponTick++;
-        System.out.println("Shooting right");
     }
 
 
