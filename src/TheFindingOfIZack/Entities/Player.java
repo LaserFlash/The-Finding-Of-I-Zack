@@ -5,6 +5,7 @@ import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.bossRoom;
+import TheFindingOfIZack.World.Rooms.itemRoom;
 import TheFindingOfIZack.World.Rooms.standardRoom;
 
 import java.awt.*;
@@ -105,6 +106,23 @@ public class Player extends AbstractPlayer {
                 boss.add(r.getBoss());
                 p.enemyCollision(r.getEnemies());
                 p.enemyCollision(boss);
+            }
+
+            if (room instanceof itemRoom) {
+                itemRoom r = (itemRoom) room;
+
+                p.entityCollision(r.items);
+                ArrayList<Entity> destroyed = new ArrayList<Entity>();
+                for (Entity e : r.items) {
+
+                    if (e instanceof Urn) {
+                        Urn urn = (Urn) e;
+                        if (urn.isDestroyed()) {destroyed.add(e);}
+                    }
+                }
+                for (Entity e : destroyed) {
+                    r.items.remove(e);
+                }
             }
 
             /*
@@ -285,6 +303,12 @@ public class Player extends AbstractPlayer {
         if (room instanceof standardRoom) {
             standardRoom r = (standardRoom) room;
             for (Entity e : r.getItems()) {
+                if (e.box.intersects(x, y, width, width)) {return true;}
+            }
+        }
+        if (room instanceof itemRoom) {
+            itemRoom r = (itemRoom) room;
+            for (Entity e : r.items) {
                 if (e.box.intersects(x, y, width, width)) {return true;}
             }
         }
