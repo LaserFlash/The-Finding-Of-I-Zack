@@ -142,11 +142,10 @@ public class Enemy extends Entity {
         if(x < LEFT_WALL){left = true;}
         if(y+width > BOTTOM_WALL){bottom = true;}
         if(x+width > RIGHT_WALL){right = true;}
-        if((!top && bottom) || (!left && right)){
-            if(top){y = TOP_WALL;}
-            if(bottom){y = BOTTOM_WALL-width;}
-            if(left){x = LEFT_WALL;}
-            if(right){x = RIGHT_WALL-width;}}
+        if(top){y = TOP_WALL;}
+        if(bottom){y = BOTTOM_WALL-width;}
+        if(left){x = LEFT_WALL;}
+        if(right){x = RIGHT_WALL-width;}
         location.move(x,y);
     }
 
@@ -162,10 +161,10 @@ public class Enemy extends Entity {
         double my = mob.getY();
         int w = width;
 
-        if(mx<px && my<py && mx+w>px && my+w>py){return true;} //Top left
-        if(mx>px && my>py && mx<px+w && my<py+w){return true;} //Bottom Right
-        if(mx<px && my>py && mx+w>px && my<py+w){return true;} //Bottom left
-        if(mx>px && my<py && mx<px+w && my+w>py){return true;} //Top Right
+        if(mx<=px && my<=py && mx+w>=px && my+w>=py){return true;} //Top left
+        if(mx>=px && my>=py && mx<=px+w && my<=py+w){return true;} //Bottom Right
+        if(mx<=px && my>=py && mx+w>=px && my<=py+w){return true;} //Bottom left
+        if(mx>=px && my<=py && mx<=px+w && my+w>=py){return true;} //Top Right
         return false;
     }
 
