@@ -54,7 +54,7 @@ public class Player extends AbstractPlayer {
      */
     private transient List<Projectile> projectiles;
 
-    private Image playerImage;
+    private transient Image playerImage;
 
     /**
      *  Constructor takes a Point as a parameter

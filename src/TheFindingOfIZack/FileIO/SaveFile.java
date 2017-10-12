@@ -89,7 +89,7 @@ public class SaveFile extends GameFile {
             throw new InvalidFileException("Null Level Exception");
         try {
             obOut.writeObject(l);
-            System.out.printf(" Room Serialized data is saved in " + file.getName()  + EXTENSION + "\n");
+            System.out.printf("Level Serialized data is saved in " + file.getName()  + EXTENSION + "\n");
         }   catch(IOException i) {
             GameFile.fileError("Writing Room: " + i.getLocalizedMessage());
             throw new InvalidFileException("Writing Room " + i.getLocalizedMessage());
@@ -107,7 +107,7 @@ public class SaveFile extends GameFile {
             throw new InvalidFileException("Null Player Error");
         try {
             obOut.writeObject(p);
-            System.out.printf(" Player Serialized data is saved in " + file.getName() + EXTENSION + "\n");
+            System.out.printf("Player Serialized data is saved in " + file.getName() + EXTENSION + "\n");
         }   catch(IOException i) {
             fileError("Writing player" + i.getLocalizedMessage());
         }
@@ -126,7 +126,7 @@ public class SaveFile extends GameFile {
         }
         try {
             obOut.writeObject(r);
-            System.out.printf(" Room Serialized data is saved in " + file.getName() + EXTENSION + "\n");
+            System.out.printf("Room Serialized data is saved in " + file.getName() + EXTENSION + "\n");
         }   catch(IOException i) {
             fileError("Writing Room: " + i.getLocalizedMessage());
             throw new InvalidFileException("Writing Room:" + i.getLocalizedMessage());

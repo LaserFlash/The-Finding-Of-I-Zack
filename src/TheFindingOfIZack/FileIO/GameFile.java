@@ -110,32 +110,6 @@ public class GameFile {
         }
     }
 
-    public String readEntity(BufferedReader in){
-        if (isEOF(in))
-            fileError("EOF reached in readEntity");
-        return null;
-    }
-
-    public String readItem(BufferedReader in){
-        if (isEOF(in))
-        fileError("EOF reached in readItem");
-        return null;
-    }
-
-
-
-    public Level writeLevel(BufferedOutputStream out) {
-        return null;
-    }
-
-    public Room writeRoom(BufferedOutputStream out) {
-        return null;
-    }
-
-    public Entity writeEntity(BufferedOutputStream out) {
-        return null;
-    }
-
 
     /**
      *  This method returns true if the end of the file has been reached
