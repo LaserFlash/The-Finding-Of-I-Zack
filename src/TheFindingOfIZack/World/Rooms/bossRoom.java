@@ -30,7 +30,7 @@ public class bossRoom extends Room{
     public void draw(Graphics g){
         super.draw(g);
         enemiesInRoom.forEach(e -> e.draw(g));
-        boss.draw(g);
+        if(boss != null){boss.draw(g);}
     }
 
 
@@ -68,7 +68,6 @@ public class bossRoom extends Room{
     }
 
     public void setEnemiesInRoom(Enemy enemy){
-        System.out.println("There should be a new kid");//**************************************************************
         this.enemiesInRoom.add(enemy);
     }
 
