@@ -113,7 +113,7 @@ public class standardRoom extends Room{
 
         int numRocks = (int) (Math.random() * 10) + 3;
         int numUrns =  (int) (Math.random() * 3) + 1;
-        int numEnemies = 1;//(int) (Math.random() * 3) + 3 ;*************************************************************
+        int numEnemies = (int) (Math.random() * 3) + 3 ;
 
         for(int i = 0; i < numRocks; i++){
             Point p = randomPoint();
