@@ -68,14 +68,26 @@ public class bossRoom extends Room implements Savable {
 
     }
 
+    /**
+     * used to add enemies to the room after the initial population such as the boss spawning enemies
+     * @param enemy to be added
+     */
     public void setEnemiesInRoom(Enemy enemy){
         this.enemiesInRoom.add(enemy);
     }
 
+    /**
+     * gets the boss within the room
+     * @return the boss
+     */
     public Boss getBoss(){
         return this.boss;
     }
 
+    /**
+     * gets all enemies in the room that are not a boss
+     * @return enemies within the room
+     */
     public ArrayList<Enemy> getEnemies(){
         return this.enemiesInRoom;
     }

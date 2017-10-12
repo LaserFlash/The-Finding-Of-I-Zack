@@ -60,10 +60,18 @@ public class Door implements Drawable, Savable {
         initialiseClosedImage();
     }
 
+    /**
+     * gets the destination room of the door
+     * @return destination Room
+     */
     public Room getDestination(){
         return this.destination;
     }
 
+    /**
+     * gets the position that is opposite to the current one eg if this was north this returns south
+     * @return door that should be used in the destination room
+     */
     public Door getOpposite(){
         Door d;
         int w = 0;
@@ -82,12 +90,18 @@ public class Door implements Drawable, Savable {
         return d;
     }
 
+    /**
+     * gets the position of this door
+     * @return the position of this door
+     */
     public int getPosition(){
         return this.position;
     }
 
     @Override
     public void draw(Graphics g) {
+
+        // if the door is locked but is not a boss door
         if(this.isLocked && !this.bossDoor){
 
             g.setColor(Color.red);
@@ -109,6 +123,8 @@ public class Door implements Drawable, Savable {
                 //g.fillRect(GameDimensions.GAME_WIDTH - GameDimensions.WALL_WIDTH,GameDimensions.GAME_HEIGHT/2 - this.height/2,GameDimensions.WALL_WIDTH,height);
                 g.drawImage(closedDoorImage, GameDimensions.GAME_WIDTH - GameDimensions.WALL_WIDTH, GameDimensions.GAME_HEIGHT/2 - this.height/2,null);
             }
+
+         // if the door is not locked and is not a boss door
         }else if(!this.isLocked && !this.bossDoor){
             g.setColor(Color.green);
             if(this.position == 3){
@@ -125,10 +141,11 @@ public class Door implements Drawable, Savable {
                 //g.fillRect(GameDimensions.GAME_WIDTH/2 - height/2,0, height,GameDimensions.WALL_WIDTH);
                 g.drawImage(openDoorImage, GameDimensions.GAME_WIDTH/2 - height/2,0,null);
             }
-            if(this.position == 1){
+            if(this.position == 1) {
                 //g.fillRect(GameDimensions.GAME_WIDTH - GameDimensions.WALL_WIDTH,GameDimensions.GAME_HEIGHT/2 - this.height/2,GameDimensions.WALL_WIDTH,height);
-                g.drawImage(openDoorImage, GameDimensions.GAME_WIDTH - GameDimensions.WALL_WIDTH, GameDimensions.GAME_HEIGHT/2 - this.height/2,null);
+                g.drawImage(openDoorImage, GameDimensions.GAME_WIDTH - GameDimensions.WALL_WIDTH, GameDimensions.GAME_HEIGHT / 2 - this.height / 2, null);
             }
+         // if the door is a boss door and requires a key
         }else if(this.bossDoor){
             if(this.position == 2){
                 g.drawImage(lockedDoorImage, GameDimensions.GAME_WIDTH/2 - height/2, GameDimensions.GAME_HEIGHT - GameDimensions.WALL_WIDTH,null);
@@ -140,12 +157,17 @@ public class Door implements Drawable, Savable {
 
     }
 
+    /**
+     * should be called when a key is used to pen the door meaning a key is no longer needed
+     */
+    public void useKey(){
+        this.bossDoor = false;
+    }
 
 
 
 
-
-    public void initialiseOPenImage() {
+    private void initialiseOPenImage() {
         if(this.position == 0) {
             openDoorImage = ImageLoader.loadImage("/openDoorTop.png");
         }
@@ -160,7 +182,7 @@ public class Door implements Drawable, Savable {
         }
     }
 
-    public void initialiseClosedImage() {
+    private void initialiseClosedImage() {
         if(this.position == 0) {
             closedDoorImage = ImageLoader.loadImage("/closedDoorTop.png");
         }

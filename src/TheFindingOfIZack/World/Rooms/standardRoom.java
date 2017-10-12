@@ -136,6 +136,10 @@ public class standardRoom extends Room implements Savable{
         }
     }
 
+    /**
+     * gets all of the entities in the room that are not enemies
+     * @return list of non enemy entities
+     */
     public List<Entity> getItems() {
         return items;
     }
@@ -187,6 +191,10 @@ public class standardRoom extends Room implements Savable{
         }
     }
 
+    /**
+     * gets the enemies in the room
+     * @return a list of all enemies in the room
+     */
     public ArrayList<Enemy> getEnemies(){
         return this.enemiesInRoom;
     }
