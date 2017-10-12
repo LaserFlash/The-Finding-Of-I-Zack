@@ -125,6 +125,15 @@ public abstract class Room implements Drawable {
         return this.westDoor;
     }
 
+    public void setNorthDoor(Door d){ this.northDoor = d; }
+
+    public void setEastDoor(Door d) { this.eastDoor = d; }
+
+    public void setSouthDoor(Door d){ this.southDoor = d; }
+
+    public void setWestDoor(Door d){ this.westDoor = d; }
+
+
 
     /**
      * populates the room the first time the player enters it

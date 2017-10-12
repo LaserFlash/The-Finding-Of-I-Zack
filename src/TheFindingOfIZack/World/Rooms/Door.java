@@ -44,10 +44,12 @@ public class Door implements Drawable, Savable {
     }
 
     public Door(Door d){
+        if (d == null)
+            return;
         this.entry = d.entry;
         this.destination = d.destination;
         this.position = d.position;
-        this.isLocked = true;
+        this.isLocked = d.isLocked;
         if(destination instanceof bossRoom){
             this.bossDoor = true;
             this.needsKey = true;
