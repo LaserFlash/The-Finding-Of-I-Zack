@@ -21,6 +21,8 @@ public class InventoryPanel extends JPanel{
     private static final int BAR_HEIGHT = 20;
     private static final int ARC = 20;
 
+    private static final int BAR_WIDTH = 100;
+
     /* Images used to customise GUI */
     private static final Image header;
     private static final Image healthImg;
@@ -57,15 +59,17 @@ public class InventoryPanel extends JPanel{
      * @param g Graphic object to draw on
      */
     private void drawHealth(Graphics g){
-        int maxHealth = model.getPlayer().getMaxHealth();
-        int health = Math.max(model.getPlayer().getHealth(),0);
+        double maxHealth = model.getPlayer().getMaxHealth();
+        double health = Math.max(model.getPlayer().getHealth(),0);
+
+        int healthBar = (int) (health / maxHealth * BAR_WIDTH);
 
         g.drawImage(header,0,0,null);
         g.setColor(Color.GRAY);
         g.drawImage(healthImg,PADDING,BAR_PADDING,null);
-        g.fillRoundRect(PADDING*3, BAR_PADDING * 2, maxHealth,BAR_HEIGHT,ARC,ARC);
+        g.fillRoundRect(PADDING*3, BAR_PADDING * 2, BAR_WIDTH,BAR_HEIGHT,ARC,ARC);
         g.setColor(Color.red);
-        g.fillRoundRect(PADDING*3, BAR_PADDING * 2, health,BAR_HEIGHT,ARC,ARC);
+        g.fillRoundRect(PADDING*3, BAR_PADDING * 2, healthBar,BAR_HEIGHT,ARC,ARC);
     }
 
     /**
@@ -84,14 +88,16 @@ public class InventoryPanel extends JPanel{
      * @param g Graphic object to draw on
      */
     private void drawPlayerArmour(Graphics g){
-        int maxArmour = model.getPlayer().getMaxArmour() * 4;
-        int armour = Math.max(model.getPlayer().getArmour(),0) * 4;
+        double maxArmour = model.getPlayer().getMaxArmour() * 4;
+        double armour = Math.max(model.getPlayer().getArmour(),0) * 4;
+
+        int armourBar = (int) (armour / maxArmour * BAR_WIDTH);
 
         g.setColor(Color.GRAY);
         g.drawImage(armourImg, PADDING * 4 + model.getPlayer().getMaxHealth(),BAR_PADDING,null);
-        g.fillRoundRect(PADDING * 6 + model.getPlayer().getMaxHealth(), BAR_PADDING *2 , maxArmour,BAR_HEIGHT,ARC,ARC);
+        g.fillRoundRect(PADDING * 6 + model.getPlayer().getMaxHealth(), BAR_PADDING *2 , BAR_WIDTH,BAR_HEIGHT,ARC,ARC);
         g.setColor(Color.blue);
-        g.fillRoundRect(PADDING * 6 + model.getPlayer().getMaxHealth(), BAR_PADDING *2, armour,BAR_HEIGHT,ARC,ARC);
+        g.fillRoundRect(PADDING * 6 + model.getPlayer().getMaxHealth(), BAR_PADDING *2, armourBar,BAR_HEIGHT,ARC,ARC);
     }
 
 }
