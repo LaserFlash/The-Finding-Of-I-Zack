@@ -1,6 +1,7 @@
 package TheFindingOfIZack.Items;
 
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.ImageLoader;
 
 import javax.imageio.ImageIO;
@@ -13,9 +14,9 @@ import java.io.IOException;
 /**
  * Created by Ben Allan
  */
-public class Armour extends Item {
+public class Armour extends Item implements Savable {
 
-    private static Image armourImage;
+    private static transient Image armourImage;
 
     private int armour = 5;
 

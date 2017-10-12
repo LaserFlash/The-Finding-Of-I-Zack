@@ -118,8 +118,6 @@ public abstract class Room implements Drawable {
     public void setEastDoor(Door d){this.eastDoor = d;}
     public void setWestDoor(Door d){ this.westDoor = d;}
 
-
-
     public abstract void populateRoom(Player p);
     public abstract void update();
 

@@ -12,9 +12,9 @@ import java.awt.*;
  */
 public class Door implements Drawable, Savable {
 
-    private  Image openDoorImage;
-    private  Image closedDoorImage;
-    private  Image lockedDoorImage;
+    private transient Image openDoorImage;
+    private transient Image closedDoorImage;
+    private transient Image lockedDoorImage;
 
     private Room entry;
     private Room destination;
@@ -41,7 +41,23 @@ public class Door implements Drawable, Savable {
         }
         initialiseOPenImage();
         initialiseClosedImage();
+    }
 
+    public Door(Door d){
+        this.entry = d.entry;
+        this.destination = d.destination;
+        this.position = d.position;
+        this.isLocked = true;
+        if(destination instanceof bossRoom){
+            this.bossDoor = true;
+            this.needsKey = true;
+            this.lockedDoorImage = ImageLoader.loadImage("/lockedDoor.png");
+        }else{
+            this.bossDoor = false;
+            this.needsKey = false;
+        }
+        initialiseOPenImage();
+        initialiseClosedImage();
     }
 
     public Room getDestination(){

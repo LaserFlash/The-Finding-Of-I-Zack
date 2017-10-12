@@ -26,7 +26,7 @@ public class Enemy extends Entity {
     protected int tick;
     protected Room r;
 
-    protected Image enemyImage;
+    protected transient Image enemyImage;
 
 
     public Enemy(Point location, Player p) {

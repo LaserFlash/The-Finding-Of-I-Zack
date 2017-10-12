@@ -91,8 +91,8 @@ public class SaveFile extends GameFile {
             obOut.writeObject(l);
             System.out.printf("Level Serialized data is saved in " + file.getName()  + EXTENSION + "\n");
         }   catch(IOException i) {
-            GameFile.fileError("Writing Room: " + i.getLocalizedMessage());
-            throw new InvalidFileException("Writing Room " + i.getLocalizedMessage());
+            GameFile.fileError("Writing Level: " + i.getLocalizedMessage());
+            throw new InvalidFileException("Writing Level " + i.getLocalizedMessage());
         }
     }
 

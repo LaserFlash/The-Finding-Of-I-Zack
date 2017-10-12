@@ -1,9 +1,11 @@
 package TheFindingOfIZack.Entities;
 
+import TheFindingOfIZack.FileIO.Util.Savable;
+
 /**
  * Created by gordontheo on 4/10/17.
  */
-public class Point {
+public class Point implements Savable{
     private double x;
     private double y;
 

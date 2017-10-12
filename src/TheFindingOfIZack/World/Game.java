@@ -4,6 +4,7 @@ import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.World.Rooms.*;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 
@@ -61,7 +62,11 @@ public class Game extends Observable implements Model,Savable{
      *Constructor for loading a new game from a file
      * @param
      */
-    public Game(Game g, Player p, Level l, Room r){
+    public Game(Game g, Player p, Level l, Room r, ArrayList<Door> d){
+        r.setNorthDoor(d.get(0));
+        r.setEastDoor(d.get(1));
+        r.setSouthDoor(d.get(2));
+        r.setEastDoor(d.get(3));
         p.setRoom(r);
         this.player = p;
         this.currentLevel = l;

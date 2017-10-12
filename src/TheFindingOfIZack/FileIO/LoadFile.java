@@ -31,7 +31,7 @@ public class LoadFile extends GameFile{
      */
     public Game execute() throws InvalidFileException{
         ObjectInputStream obIn = null;
-        Game g;
+        Game game;
         boolean isValidFile = openFile(parent);
         if (!isValidFile)
             return null;
@@ -45,19 +45,20 @@ public class LoadFile extends GameFile{
         if (obIn == null)
             throw new InvalidFileException("Object Input is null");
 
-        g = readGame(obIn);
-        Player p = readPlayer(obIn);
-        Level l = readLevel(obIn);
-        Room r = readRoom(obIn);
+        game = readGame(obIn);
+        Player player = new Player(readPlayer(obIn));
+        Level level = readLevel(obIn);
+        Room room= readRoom(obIn);
+        ArrayList<Door> doors = readDoors(obIn);
         try {
             obIn.close();
         } catch (IOException e) {
             fileError("Failed to close object reader");
             throw new InvalidFileException("Failed to close object reader");
         }
-        g = new Game(g, p, l, r);
+        game = new Game(game, player, level, room, doors);
 
-        return g;
+        return game;
     }
 
     /**

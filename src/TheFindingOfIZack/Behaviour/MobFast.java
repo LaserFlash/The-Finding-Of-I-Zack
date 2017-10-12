@@ -1,9 +1,11 @@
 package TheFindingOfIZack.Behaviour;
 
+import TheFindingOfIZack.FileIO.Util.Savable;
+
 /**
  * Created by gordontheo on 19/09/17.
  */
-public class MobFast extends Mob {
+public class MobFast extends Mob implements Savable{
     MobFast(){
         this.viewRange = 40;
         this.speed = 4.5;

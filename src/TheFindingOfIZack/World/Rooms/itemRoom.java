@@ -4,6 +4,7 @@ import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Entities.Urn;
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Items.Key;
 import TheFindingOfIZack.Util.GameDimensions;
@@ -18,7 +19,7 @@ import java.util.Random;
  * Created by fieldryan on 19/09/17.
  *
  */
-public class itemRoom extends Room {
+public class itemRoom extends Room implements Savable {
 
 
     private boolean populated;

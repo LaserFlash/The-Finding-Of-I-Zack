@@ -4,11 +4,12 @@ import TheFindingOfIZack.Entities.Boss;
 import TheFindingOfIZack.Entities.Enemy;
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.FileIO.Util.Savable;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class bossRoom extends Room{
+public class bossRoom extends Room implements Savable {
 
     private Boss boss;
     private ArrayList<Enemy> enemiesInRoom;

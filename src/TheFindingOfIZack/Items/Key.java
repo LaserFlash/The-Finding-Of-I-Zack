@@ -1,6 +1,7 @@
 package TheFindingOfIZack.Items;
 
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.ImageLoader;
 
 import javax.imageio.ImageIO;
@@ -12,7 +13,7 @@ import java.io.IOException;
 /**
  * Created by allanbenj1 on 26/09/17.
  */
-public class Key extends Item {
+public class Key extends Item implements Savable {
 
     private static Image keyImage;
 

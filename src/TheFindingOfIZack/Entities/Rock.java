@@ -14,7 +14,7 @@ public class Rock extends Entity implements Savable {
      * Fields to store health, image, and if it is destroyed
      */
 
-    private static Image rocksImage;
+    private static transient Image rocksImage;
 
     private boolean destroyed = false;
 

@@ -8,6 +8,11 @@ public abstract class AbstractPlayer extends Entity implements Savable {
         super(location);
     }
 
+    public AbstractPlayer(Player p){
+        super(p);
+    }
+
+
     /**
      * Move the player to the south / down
      */

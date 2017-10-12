@@ -3,6 +3,7 @@ package TheFindingOfIZack.Behaviour;
 import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Entities.Rock;
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.standardRoom;
 
@@ -13,7 +14,7 @@ import static TheFindingOfIZack.Entities.Entity.width;
 /**
  * Created by gordontheo on 27/09/17.
  */
-public abstract class Mob {
+public abstract class Mob implements Savable {
     protected double speed;
     protected int viewRange;
     protected int health;

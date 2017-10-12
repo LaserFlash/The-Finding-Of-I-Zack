@@ -2,6 +2,7 @@ package TheFindingOfIZack.Behaviour;
 
 
 import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.World.Rooms.Room;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * Created by gordontheo on 29/09/17.
  */
-public class MobShooter extends Mob{
+public class MobShooter extends Mob implements Savable{
     private final int PROJECTILE_TICK = 30;
     private int tick = (int)(Math.random()*PROJECTILE_TICK);
     private int stopDistance = 200;

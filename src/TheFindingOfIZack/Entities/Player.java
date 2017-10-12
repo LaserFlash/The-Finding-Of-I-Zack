@@ -68,6 +68,21 @@ public class Player extends AbstractPlayer {
         this.playerImage = ImageLoader.loadImage("/iZack.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
     }
 
+    public Player(Player p){
+        super(p);
+        projectiles = Collections.synchronizedList(new ArrayList<Projectile>());
+        this.playerImage = ImageLoader.loadImage("/iZack.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
+        this.health = p.getHealth();
+        this.armour = p.getArmour();
+        this.room = p.getRoom();
+        this.health = p.getHealth();
+        this.speed = p.getSpeed();
+        this.key = (p.getKey())? 1:0;
+        this.damage = p.getDamage();
+        this.weaponTick = p.weaponTick;
+        this.firerate = p.firerate;
+    }
+
     /**
      * Draws the player and player projectiles
      *
@@ -519,7 +534,7 @@ public class Player extends AbstractPlayer {
 
     public void heal(int potion) {
         if (health+potion > MAX_HEALTH) {health = MAX_HEALTH;}
-        else {this.health = Math.max(this.health+potion,MAX_HEALTH);}
+        else {this.health += potion;}
     }
 
     public void setRoom(Room room) {
@@ -556,6 +571,8 @@ public class Player extends AbstractPlayer {
         if (armour+amount > MAX_ARMOUR) {armour = MAX_ARMOUR;}
         else {this.armour += amount;}
     }
+
+    public int getDamage(){ return damage; }
 
     public void weaponUpgrade() {
         damage += 5;

@@ -3,6 +3,7 @@ package TheFindingOfIZack.World.Rooms;
 
 import TheFindingOfIZack.Entities.*;
 import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameDimensions;
 
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 
-public class standardRoom extends Room{
+public class standardRoom extends Room implements Savable{
 
     private ArrayList<Enemy> enemiesInRoom;
     private ArrayList<Enemy> deadEnemies;
