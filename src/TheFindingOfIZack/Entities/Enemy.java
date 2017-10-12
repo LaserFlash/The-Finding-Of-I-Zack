@@ -139,13 +139,14 @@ public class Enemy extends Entity {
         boolean left = false;
         boolean right = false;
         if(y < TOP_WALL){top = true;}
-        else if(x < LEFT_WALL){left = true;}
-        else if(y+width > BOTTOM_WALL){bottom = true;}
-        else if(x+width > RIGHT_WALL){right = true;}
-        else if(top){y = TOP_WALL;}
-        else if(bottom){y = BOTTOM_WALL-width;}
-        else if(left){x = LEFT_WALL;}
-        else if(right){x = RIGHT_WALL-width;}
+        if(x < LEFT_WALL){left = true;}
+        if(y+width > BOTTOM_WALL){bottom = true;}
+        if(x+width > RIGHT_WALL){right = true;}
+        if((!top && bottom) || (!left && right)){
+            if(top){y = TOP_WALL;}
+            if(bottom){y = BOTTOM_WALL-width;}
+            if(left){x = LEFT_WALL;}
+            if(right){x = RIGHT_WALL-width;}}
         location.move(x,y);
     }
 
