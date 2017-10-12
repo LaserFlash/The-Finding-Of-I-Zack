@@ -68,7 +68,6 @@ public class bossRoom extends Room{
     }
 
     public void setEnemiesInRoom(Enemy enemy){
-        System.out.println("There should be a new kid");//**************************************************************
         this.enemiesInRoom.add(enemy);
     }
 
