@@ -519,7 +519,7 @@ public class Player extends AbstractPlayer {
 
     public void heal(int potion) {
         if (health+potion > MAX_HEALTH) {health = MAX_HEALTH;}
-        else {this.health += potion;}
+        else {this.health = Math.max(this.health+potion,MAX_HEALTH);}
     }
 
     public void setRoom(Room room) {
