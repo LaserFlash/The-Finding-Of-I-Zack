@@ -14,7 +14,7 @@ public class Boss extends Enemy {
     /**
      * Stores the field for the size of the Boss
      */
-    private int size = 120;
+    protected static int size = 120;
 
     /**
      * Constructor for the boss
@@ -39,10 +39,7 @@ public class Boss extends Enemy {
      */
     @Override
     public void draw(Graphics g) {
-        g.setColor(Color.RED);
-        g.fillRect((int)location.getX(), (int)location.getY(), size, size);
-        g.setColor(Color.black);
-        g.drawRect((int) location.getX(), (int) location.getY(), size, size);
+        g.drawImage(enemyImage, (int) location.getX(), (int) location.getY(), null);
 
         double healthBar = ((double) health/(double) MAX_HEALTH) * (double) size;
         if (healthBar < 0) {healthBar = 0;}

@@ -1,7 +1,9 @@
 package TheFindingOfIZack.Behaviour;
 
+import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Entities.Projectile;
+import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.View.Drawable;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.standardRoom;
@@ -29,6 +31,7 @@ public class MobProjectile extends Projectile implements Drawable {
         this.directionY = changeY/a;
         this.location = new Point(location.getX()+10,location.getY()+10);
         this.room = room;
+        this.projectileImage = ImageLoader.loadImage("/inkySackyChappy.png").getScaledInstance(Entity.width/2,Entity.width/2,Image.SCALE_DEFAULT);
     }
 
     public void pop(){
@@ -49,7 +52,6 @@ public class MobProjectile extends Projectile implements Drawable {
     @Override
     public void draw(Graphics g) {
         move();
-        g.setColor(Color.GREEN);
-        g.fillOval((int)location.getX(), (int)location.getY(), size, size);
+        g.drawImage(projectileImage, (int) location.getX() +size/2, (int) location.getY() + size/2, null);
     }
 }

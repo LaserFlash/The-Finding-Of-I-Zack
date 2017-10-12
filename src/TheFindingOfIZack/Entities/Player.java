@@ -2,6 +2,7 @@ package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameDimensions;
+import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.bossRoom;
 import TheFindingOfIZack.World.Rooms.standardRoom;
@@ -52,6 +53,8 @@ public class Player extends AbstractPlayer {
      */
     private transient List<Projectile> projectiles;
 
+    private Image playerImage;
+
     /**
      *  Constructor takes a Point as a parameter
      *  Uses the super type of Entity and initialises the projectile list
@@ -61,6 +64,7 @@ public class Player extends AbstractPlayer {
     public Player(Point location) {
         super(location);
         projectiles = Collections.synchronizedList(new ArrayList<Projectile>());
+        this.playerImage = ImageLoader.loadImage("/iZack.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
     }
 
     /**
@@ -74,12 +78,7 @@ public class Player extends AbstractPlayer {
             projectiles.forEach(p -> p.draw(g));
         }
 
-        g.setColor(Color.CYAN);
-        g.fillRect((int) location.getX(), (int) location.getY(), width, width);
-        g.setColor(Color.MAGENTA);
-        g.fillOval((int) location.getX()+4, (int) location.getY()+4, width-8, width-8);
-
-        super.draw(g);
+        g.drawImage(playerImage, (int) location.getX(), (int) location.getY(), null);
 
     }
 

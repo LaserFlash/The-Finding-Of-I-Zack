@@ -1,6 +1,7 @@
 package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.Util.GameDimensions;
+import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.View.Drawable;
 import javafx.geometry.BoundingBox;
 
@@ -23,6 +24,8 @@ public class Projectile extends Entity implements Drawable{
 
     private int speed = 10;
 
+    protected Image projectileImage;
+
     /**
      * Constructor for Projectile
      * @param damage    the damage the projectile does
@@ -33,6 +36,7 @@ public class Projectile extends Entity implements Drawable{
         super(location);
         this.damage = damage;
         this.direction = direction;
+        this.projectileImage = ImageLoader.loadImage("/zacksAttacks.png").getScaledInstance(Entity.width/2,Entity.width/2,Image.SCALE_DEFAULT);
     }
 
     /**
@@ -48,11 +52,7 @@ public class Projectile extends Entity implements Drawable{
      */
     @Override
     public void draw(Graphics g) {
-        g.setColor(Color.BLUE);
-        g.fillOval((int) location.getX()+width/4, (int) location.getY() + width/4, width/2, width/2);
-
-        g.setColor(Color.black);
-        g.drawOval((int) location.getX()+width/4, (int) location.getY() + width/4, width/2, width/2);
+        g.drawImage(projectileImage, (int) location.getX() + width/4, (int) location.getY() + width/4, null);
     }
 
     /**
