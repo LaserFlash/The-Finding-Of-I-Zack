@@ -96,33 +96,52 @@ public abstract class Room implements Drawable {
 
     }
 
+    /**
+     * returns the north door
+     * @return the north door
+     */
     public Door getNorthDoor(){
         return this.northDoor;
     }
+    /**
+     * returns the south door
+     * @return the south door
+     */
     public Door getSouthDoor(){
         return this.southDoor;
     }
+    /**
+     * returns the east door
+     * @return the east door
+     */
     public Door getEastDoor(){
         return this.eastDoor;
     }
+    /**
+     * returns the west door
+     * @return the west door
+     */
     public Door getWestDoor(){
         return this.westDoor;
     }
 
-    public void setNorthDoor(Door d){
-        this.northDoor = d;
-    }
-    public void setSouthDoor(Door d){
-        this.southDoor = d;
-    }
-    public void setEastDoor(Door d){this.eastDoor = d;}
-    public void setWestDoor(Door d){ this.westDoor = d;}
 
-
-
+    /**
+     * populates the room the first time the player enters it
+     * @param p the player entering the room
+     */
     public abstract void populateRoom(Player p);
+
+    /**
+     * should call the corresponding update method for everything within the room every tick
+     */
     public abstract void update();
 
+    /**
+     * adds a door to the room
+     * @param d the door to add
+     * @param n the position of the door 0 = north then increasing clockwise
+     */
     public void addDoor(Door d, int n) {
 
         if(this.northDoor == null && n == 0){
