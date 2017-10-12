@@ -6,6 +6,7 @@ import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Items.Potion;
 import TheFindingOfIZack.Items.Weapon;
 import TheFindingOfIZack.Util.ImageLoader;
+import TheFindingOfIZack.World.Rooms.itemRoom;
 
 import java.awt.*;
 
@@ -37,14 +38,23 @@ public class Urn extends Entity implements Savable{
         super(location);
         this.p = p;
         this.urnsImage = ImageLoader.loadImage("/pot.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
-        int random = (int) (Math.random()*100);
-        if (random >= 25) {
-            random = (int) (Math.random()*100);
-            if (random <= 33) {item = new Armour(p);}
-            else if (random <= 66) {item = new Weapon(p);}
-            else {item = new Potion(p);}
-            item.setLocation(location);
-            item.setBox();
+
+        if (p.getRoom() instanceof itemRoom) {
+            int random = (int) (Math.random()*100);
+            if (random <= 25) {item = new Potion(p);}
+            else if (random <= 66) {item = new Armour(p);}
+            else {item = new Weapon(p);}
+        }
+        else {
+            int random = (int) (Math.random()*100);
+            if (random >= 25) {
+                random = (int) (Math.random()*100);
+                if (random <= 33) {item = new Armour(p);}
+                else if (random <= 66) {item = new Weapon(p);}
+                else {item = new Potion(p);}
+                item.setLocation(location);
+                item.setBox();
+            }
         }
 
     }

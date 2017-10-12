@@ -91,7 +91,7 @@ public class Player extends AbstractPlayer {
         /*
         Checks whether the player can fire again and iterates weaponTick
          */
-        if (weaponTick == firerate) {weaponTick = 0;}
+        if (weaponTick >= firerate) {weaponTick = 0;}
         else if (weaponTick != 0) {weaponTick++;}
         for (Projectile p : projectiles) {
             p.move();
@@ -444,6 +444,7 @@ public class Player extends AbstractPlayer {
         Projectile p = new Projectile(this.damage, clonePoint(), "up");
         projectiles.add(p);
         weaponTick++;
+        System.out.println("Shooting up");
     }
 
     /**
@@ -455,6 +456,7 @@ public class Player extends AbstractPlayer {
         Projectile p = new Projectile(this.damage, clonePoint(), "down");
         projectiles.add(p);
         weaponTick++;
+        System.out.println("Shooting down");
     }
 
     /**
@@ -466,6 +468,7 @@ public class Player extends AbstractPlayer {
         Projectile p = new Projectile(this.damage, clonePoint(), "left");
         projectiles.add(p);
         weaponTick++;
+        System.out.println("Shooting left");
     }
 
     /**
@@ -477,6 +480,7 @@ public class Player extends AbstractPlayer {
         Projectile p = new Projectile(this.damage, clonePoint(), "right");
         projectiles.add(p);
         weaponTick++;
+        System.out.println("Shooting right");
     }
 
 
@@ -537,6 +541,7 @@ public class Player extends AbstractPlayer {
         damage += 5;
         if (firerate-3 < MIN_FIRERATE) {firerate = MIN_FIRERATE;}
         else {firerate -= 3;}
+        System.out.println(firerate);
     }
 
     public List<Projectile> getProjectiles() {
