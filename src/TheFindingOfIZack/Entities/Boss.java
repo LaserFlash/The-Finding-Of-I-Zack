@@ -44,16 +44,16 @@ public class Boss extends Enemy {
     public void draw(Graphics g) {
         g.drawImage(behaviour.getMob().getImage(), (int) location.getX(), (int) location.getY(), null);
 
-        double healthBar = ((double) health/(double) MAX_HEALTH) * (double) size;
+        double healthBar = (health/(double) MAX_HEALTH) * (double) size;
         if (healthBar < 0) {healthBar = 0;}
 
         double armourBar = ((double) armour/(double) MAX_ARMOUR) * (double) size;
         if (armourBar < 0) {armourBar = 0;}
 
-        double red = (((double)MAX_HEALTH-(double)health)/(double)MAX_HEALTH)*(double)255;
+        double red = (((double)MAX_HEALTH-health)/(double)MAX_HEALTH)*(double)255;
         if (red < 0) {red = 0;}
         else if (red > 255) {red = 255;}
-        double green = ((double)health/(double)MAX_HEALTH)*(double)255;
+        double green = (health/(double)MAX_HEALTH)*(double)255;
         if (green < 0) {green = 0;}
         else if (green > 255) {green = 255;}
         double blue = ((double)armour/(double)MAX_ARMOUR)*(double)255;
@@ -75,7 +75,7 @@ public class Boss extends Enemy {
      */
     @Override
     public void damage(int damage) {
-        if (damage < armour) {armour -= damage; return;}
+        if (damage <= armour) {armour -= damage; return;}
         else if (armour < damage) {health -= Math.abs(armour-damage); armour = 0; return;}
         this.health -= damage;
         if (this.health <= 0) {isDead = true;}
@@ -89,7 +89,7 @@ public class Boss extends Enemy {
     public void move() {
         tick ++;
         if(health < MAX_HEALTH){
-            health += 0.2;
+            health += 0.3;
             if (health > MAX_HEALTH){health = MAX_HEALTH;}
         }
         Point playerPoint = player.getLocation();
