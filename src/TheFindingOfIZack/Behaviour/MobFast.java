@@ -11,7 +11,7 @@ import java.awt.*;
  * Created by gordontheo on 19/09/17.
  */
 public class MobFast extends Mob implements Savable{
-
+    public static Image image;
     static {
         image = ImageLoader.loadImage("/kookyCrabbyKid.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
     }
@@ -27,5 +27,9 @@ public class MobFast extends Mob implements Savable{
     public String toString() {
         String string = "A fast mob. Damage = " + this.damage + " health = " + this.health + " speed = " + this.speed;
         return string;
+    }
+    @Override
+    public Image getImage() {
+        return image;
     }
 }

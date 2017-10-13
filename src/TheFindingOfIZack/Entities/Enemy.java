@@ -80,7 +80,7 @@ public class Enemy extends Entity {
             MobShooter m = (MobShooter) behaviour.getMob();
             drawProjectiles(m,g);
         }
-        g.drawImage(behaviour.getMob().image, (int) location.getX(), (int) location.getY(), null);
+        g.drawImage(behaviour.getMob().getImage(), (int) location.getX(), (int) location.getY(), null);
 
 
         double red = (((double)MAX_HEALTH-(double)health)/(double)MAX_HEALTH)*(double)255;

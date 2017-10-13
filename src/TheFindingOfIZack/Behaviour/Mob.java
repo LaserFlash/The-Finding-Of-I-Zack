@@ -24,7 +24,6 @@ public abstract class Mob implements Savable {
     private Point tempDirection = null;
     private Room r;
 
-    public static Image image;
 
     /**
      * Shifts the mob's location
@@ -128,4 +127,6 @@ public abstract class Mob implements Savable {
         double distance = Math.hypot(a.getX()-b.getX(), a.getY()-b.getY());
         return distance;
     }
+
+    public abstract Image getImage();
 }

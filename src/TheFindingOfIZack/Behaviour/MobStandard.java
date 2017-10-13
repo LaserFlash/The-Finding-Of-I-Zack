@@ -12,7 +12,7 @@ import java.awt.*;
  * After this it will follow the player at slow speed and cause damage if it touches
  */
 public class MobStandard extends Mob implements Savable {
-
+    public static Image image;
     static {
         image = ImageLoader.loadImage("/bothersomeBrittleStar.png").getScaledInstance(Entity.width,Entity.width, Image.SCALE_DEFAULT);
     }
@@ -27,5 +27,9 @@ public class MobStandard extends Mob implements Savable {
     public String toString() {
         String string = "A standard mob Damage = " + this.damage + " health = " + this.health + " speed = " + this.speed;
         return string;
+    }
+    @Override
+    public Image getImage() {
+        return image;
     }
 }

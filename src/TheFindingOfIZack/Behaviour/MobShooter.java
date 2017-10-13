@@ -21,7 +21,7 @@ public class MobShooter extends Mob implements Savable{
     private int stopDistance = 200;
     private List<MobProjectile> projectiles = Collections.synchronizedList(new ArrayList<MobProjectile>());
     private Room room;
-
+    public static Image image;
     static {
         image = ImageLoader.loadImage("/weeOctoBoi.png").getScaledInstance(Entity.width,Entity.width, Image.SCALE_DEFAULT);
     }
@@ -95,5 +95,10 @@ public class MobShooter extends Mob implements Savable{
             projectiles.add(new MobProjectile(location, player, room));
             tick = 0;
         }
+    }
+
+    @Override
+    public Image getImage() {
+        return image;
     }
 }

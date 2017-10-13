@@ -4,6 +4,8 @@ import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.World.Rooms.Room;
 
+import java.awt.*;
+
 /**
  * Created by gordontheo on 27/09/17.
  * This class is used to create new mobs and specify what type they are
@@ -65,4 +67,5 @@ public class MobEnemy implements Savable {
     public Mob getMob(){
         return mob;
     }
+
 }
