@@ -27,7 +27,7 @@ public class Player extends AbstractPlayer {
     /**
      *  Field that stores what room the player is in
      */
-    private Room room;
+    private transient Room room;
 
     /**
      *  Fields that store health information
@@ -56,6 +56,7 @@ public class Player extends AbstractPlayer {
     private transient List<Projectile> projectiles;
 
     private transient Image playerImage;
+    private boolean won;
 
     /**
      *  Constructor takes a Point as a parameter
@@ -82,6 +83,14 @@ public class Player extends AbstractPlayer {
         this.damage = p.getDamage();
         this.weaponTick = p.weaponTick;
         this.firerate = p.firerate;
+        this.won = false;
+    }
+
+    public void setWon(){
+        this.won = true;
+    }
+    public boolean hasWon(){
+        return this.won;
     }
 
     /**
