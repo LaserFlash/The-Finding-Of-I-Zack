@@ -4,6 +4,7 @@ package TheFindingOfIZack.World.Rooms;
 import TheFindingOfIZack.Entities.Enemy;
 import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
@@ -19,7 +20,7 @@ import java.util.List;
  * Created by fieldryan on 19/09/17.
  * Interface for the general definition of a room
  */
-public abstract class Room implements Drawable {
+public abstract class Room implements Drawable, Savable {
 
     private static Image roomImage;
 

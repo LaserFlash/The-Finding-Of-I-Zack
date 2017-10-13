@@ -67,7 +67,7 @@ public class Game extends Observable implements Model,Savable{
         r.setEastDoor(new Door(d.get(1)));
         r.setSouthDoor(new Door(d.get(2)));
         r.setWestDoor(new Door(d.get(3)));
-        // r.recreateBoundingBoxes();
+        r.recreateBoundingBoxes();
         p.setRoom(r);
         this.player = new Player(p);
         this.currentLevel = l;
