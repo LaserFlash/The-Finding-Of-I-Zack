@@ -16,17 +16,13 @@ import java.util.Random;
 
 public class standardRoom extends Room implements Savable{
 
-    private ArrayList<Enemy> enemiesInRoom;
-    private ArrayList<Enemy> deadEnemies;
-    private List<Entity> items;
-
 
     public standardRoom(){
         super();
-        this.enemiesInRoom = new ArrayList<Enemy>();
-        this.deadEnemies = new ArrayList<Enemy>();
-        this.items = Collections.synchronizedList(new ArrayList<Entity>());
-        this.isCleared = false;
+        enemiesInRoom = new ArrayList<Enemy>();
+        deadEnemies = new ArrayList<Enemy>();
+        items = Collections.synchronizedList(new ArrayList<Entity>());
+        isCleared = false;
     }
 
 
@@ -195,7 +191,7 @@ public class standardRoom extends Room implements Savable{
      * gets the enemies in the room
      * @return a list of all enemies in the room
      */
-    public ArrayList<Enemy> getEnemies(){
+    public List<Enemy> getEnemies(){
         return this.enemiesInRoom;
     }
 

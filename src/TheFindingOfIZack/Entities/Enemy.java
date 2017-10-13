@@ -67,18 +67,11 @@ public class Enemy extends Entity {
         this.MAX_HEALTH = behaviour.getHealth();
     }
 
-    /**
-     * Decreases mob's health
-     * @param damage the amount to decrease the health by
-     */
     public void damage(int damage) {
             this.health -= damage;
             if (this.health <= 0) {isDead = true;}
     }
 
-    /**
-     * Checks whether mob's damage tick is above the set value, damages player and resets tick
-     */
     public void damagePlayer(){
         if(tick > DAMAGE_TICK) {
             this.player.damage(this.behaviour.getDamage()); //Takes the damage value from each mob type
@@ -88,10 +81,6 @@ public class Enemy extends Entity {
 
     public boolean isDead() {return isDead;}
 
-    /**
-     * Draws mob's sprite and current health bar
-     * @param g graphics object to draw on
-     */
     @Override
     public void draw(Graphics g) {
         if (this.behaviour.getMob() instanceof MobShooter) {
@@ -140,7 +129,6 @@ public class Enemy extends Entity {
             damagePlayer();
         }
         canMove();
-
     }
 
 
@@ -184,12 +172,7 @@ public class Enemy extends Entity {
         return false;
     }
 
-    /**
-     * Takes a MobShooter and cycles through its list of projectiles
-     * @param m takes a MobShooter whose projectiles are going to be drawn
-     * @param g graphics object to draw on
-     */
-    private void drawProjectiles(MobShooter m, Graphics g){
+    public void drawProjectiles(MobShooter m, Graphics g){
         synchronized (m.getProjectile()) {
             for (MobProjectile i : m.getProjectile()) {
                 i.draw(g);

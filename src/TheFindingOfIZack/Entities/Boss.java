@@ -14,7 +14,7 @@ public class Boss extends Enemy {
     /**
      * Stores the field for the size of the Boss
      */
-    protected static int size = 120;
+    public static int size = 120;
 
     private int armour = 250;
     private int MAX_ARMOUR = 250;
@@ -42,7 +42,7 @@ public class Boss extends Enemy {
      */
     @Override
     public void draw(Graphics g) {
-        g.drawImage(enemyImage, (int) location.getX(), (int) location.getY(), null);
+        g.drawImage(behaviour.getMob().image, (int) location.getX(), (int) location.getY(), null);
 
         double healthBar = ((double) health/(double) MAX_HEALTH) * (double) size;
         if (healthBar < 0) {healthBar = 0;}

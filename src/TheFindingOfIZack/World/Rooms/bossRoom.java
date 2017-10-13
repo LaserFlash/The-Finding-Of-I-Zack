@@ -8,12 +8,11 @@ import TheFindingOfIZack.FileIO.Util.Savable;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class bossRoom extends Room implements Savable {
 
     private Boss boss;
-    private ArrayList<Enemy> enemiesInRoom;
-    private ArrayList<Enemy> deadEnemies;
 
     public bossRoom(){
         this.enemiesInRoom = new ArrayList<Enemy>();
@@ -88,7 +87,7 @@ public class bossRoom extends Room implements Savable {
      * gets all enemies in the room that are not a boss
      * @return enemies within the room
      */
-    public ArrayList<Enemy> getEnemies(){
+    public List<Enemy> getEnemies(){
         return this.enemiesInRoom;
     }
 }

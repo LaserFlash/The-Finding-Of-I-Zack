@@ -23,7 +23,7 @@ public class itemRoom extends Room implements Savable {
 
 
     private boolean populated;
-    public List<Entity> items;
+
 
     public itemRoom(){
         this.populated = false;

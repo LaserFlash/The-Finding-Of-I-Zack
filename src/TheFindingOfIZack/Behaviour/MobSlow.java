@@ -1,6 +1,10 @@
 package TheFindingOfIZack.Behaviour;
 
+import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.FileIO.Util.Savable;
+import TheFindingOfIZack.Util.ImageLoader;
+
+import java.awt.*;
 
 /**
  * Created by gordontheo on 19/09/17.
@@ -8,6 +12,10 @@ import TheFindingOfIZack.FileIO.Util.Savable;
  * After this it will follow the player at slow speed and cause damage if it touches
  */
 public class MobSlow extends Mob implements Savable{
+
+    static {
+        image = ImageLoader.loadImage("/painfulPointyPerson.png").getScaledInstance(Entity.width,Entity.width, Image.SCALE_DEFAULT);
+    }
     MobSlow(){
         this.viewRange = 200;
         this.speed = 2;

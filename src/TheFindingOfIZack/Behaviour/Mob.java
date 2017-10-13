@@ -7,6 +7,7 @@ import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.standardRoom;
 
+import java.awt.*;
 import java.util.List;
 
 import static TheFindingOfIZack.Entities.Entity.width;
@@ -22,6 +23,8 @@ public abstract class Mob implements Savable {
     protected int bounce = 0;
     private Point tempDirection = null;
     private Room r;
+
+    public transient static Image image;
 
     /**
      * Shifts the mob's location
