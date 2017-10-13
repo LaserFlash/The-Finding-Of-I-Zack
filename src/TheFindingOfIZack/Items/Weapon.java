@@ -32,7 +32,6 @@ public class Weapon extends Item implements Savable {
         if (box.intersects(player.getLocation().getX(), player.getLocation().getY(), player.width, player.width)) {
             collected = true;
             player.weaponUpgrade();
-            System.out.println("Weapon upgrade");
         }
     }
 
