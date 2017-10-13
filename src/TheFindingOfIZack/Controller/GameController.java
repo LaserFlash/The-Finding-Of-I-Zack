@@ -81,6 +81,7 @@ public class GameController implements ActionListener, KeyListener {
                     break; //No file was loaded successfully
                 }
                 this.view.newGame(game);
+                ((Game) game).addObserver(view);
                 this.view.enableOtherButtons();
                 this.view.goToGameView();
                 break;
