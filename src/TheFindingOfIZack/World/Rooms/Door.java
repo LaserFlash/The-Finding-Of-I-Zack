@@ -160,7 +160,7 @@ public class Door implements Drawable, Savable {
     }
 
     /**
-     * should be called when a key is used to pen the door meaning a key is no longer needed
+     * should be called when a key is used to open the door meaning a key is no longer needed
      */
     public void useKey(){
         this.bossDoor = false;

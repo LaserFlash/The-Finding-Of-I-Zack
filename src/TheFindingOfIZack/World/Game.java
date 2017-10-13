@@ -257,8 +257,14 @@ public class Game extends Observable implements Model,Savable{
         player.update();
 
         checkDead();
+        checkWon();
     }
-
+    private void checkWon(){
+        if(player.hasWon()){
+            running = false;
+            this.isWon = true;
+        }
+    }
     private void checkDead(){
         if(player.isDead()){
             running = false;

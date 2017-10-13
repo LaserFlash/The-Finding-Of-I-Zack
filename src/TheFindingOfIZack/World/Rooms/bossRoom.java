@@ -13,16 +13,18 @@ import java.util.List;
 public class bossRoom extends Room implements Savable {
 
     private Boss boss;
+    private Player player;
 
     public bossRoom(){
         this.enemiesInRoom = new ArrayList<Enemy>();
         this.deadEnemies = new ArrayList<Enemy>();
-        this.isCleared = true;
+        this.isCleared = false;
     }
 
     @Override
     public void populateRoom(Player p) {
         this.boss = new Boss(new Point(100,100),p);
+        this.player = p;
 
     }
 
@@ -37,20 +39,28 @@ public class bossRoom extends Room implements Savable {
 
     @Override
     public void update() {
-        this.isCleared = true;
-        if(this.northDoor != null){
-            this.northDoor.isLocked = false;
-        }
-        if(this.eastDoor != null){
-            this.eastDoor.isLocked = false;
-        }
-        if(this.southDoor != null){
-            this.southDoor.isLocked = false;
-        }
-        if(this.westDoor != null){
-            this.westDoor.isLocked = false;
+
+       if(boss != null){
+        if (boss.isDead()) {
+
+            this.boss = null;
+            this.isCleared = true;
+            player.setWon();
+            if (this.northDoor != null) {
+                this.northDoor.isLocked = false;
+            }
+            if (this.eastDoor != null) {
+                this.eastDoor.isLocked = false;
+            }
+            if (this.southDoor != null) {
+                this.southDoor.isLocked = false;
+            }
+            if (this.westDoor != null) {
+                this.westDoor.isLocked = false;
+            }
         }
 
+        }
         for(Enemy e : enemiesInRoom){
             if(e.isDead()){
                 this.deadEnemies.add(e);
@@ -63,7 +73,9 @@ public class bossRoom extends Room implements Savable {
         for(Enemy e : enemiesInRoom){
             e.move();
         }
-        boss.move();
+        if(boss != null) {
+            boss.move();
+        }
 
     }
 
