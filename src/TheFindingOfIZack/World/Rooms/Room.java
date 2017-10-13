@@ -1,6 +1,8 @@
 package TheFindingOfIZack.World.Rooms;
 
 
+import TheFindingOfIZack.Entities.Enemy;
+import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameDimensions;
@@ -20,11 +22,18 @@ import java.util.List;
 public abstract class Room implements Drawable {
 
     private static Image roomImage;
+
     protected List<Item> collectibles;
+
+    protected List<Enemy> enemiesInRoom;
+    protected List<Enemy> deadEnemies;
+    protected List<Entity> items;
+
     public transient Door northDoor;
     public transient Door eastDoor;
     public transient Door southDoor;
     public transient Door westDoor;
+
     public boolean isCleared;
     private Player player;
 
@@ -41,6 +50,15 @@ public abstract class Room implements Drawable {
         return this.collectibles;
     }
 
+    /**
+     * Recreate bounding boxes for things in the rooms
+     */
+    public void recreateBoundingBoxes(){
+        enemiesInRoom.forEach(e -> e.setBox());
+        deadEnemies.forEach(e -> e.setBox());
+        items.forEach(e -> e.setBox());
+        collectibles.forEach( e -> e.setBox());
+    }
     /**
      * adds a player to the room
      * @param p player to add to the room
