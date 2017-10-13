@@ -27,7 +27,7 @@ public abstract class Room implements Drawable {
 
     protected List<Enemy> enemiesInRoom;
     protected List<Enemy> deadEnemies;
-    protected List<Entity> items;
+    public List<Entity> items;
 
     public transient Door northDoor;
     public transient Door eastDoor;
