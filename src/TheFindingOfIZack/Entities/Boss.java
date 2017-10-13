@@ -75,7 +75,7 @@ public class Boss extends Enemy {
      */
     @Override
     public void damage(int damage) {
-        if (damage < armour) {armour -= damage; return;}
+        if (damage <= armour) {armour -= damage; return;}
         else if (armour < damage) {health -= Math.abs(armour-damage); armour = 0; return;}
         this.health -= damage;
         if (this.health <= 0) {isDead = true;}
