@@ -53,10 +53,10 @@ public class ViewManager extends View {
     public void update(Observable observable, Object o) {
         /* Check if game is won or lost */
         if (model.isGameLost()){
-            endScreen.changeText(new String[]{"You appear to have died","Game Over"});
+            endScreen.changeText(new String[]{"YOU APPEAR TO HAVE DIED","GAME OVER"});
             goToEndView();
         }else if (model.isGameWon()){
-            endScreen.changeText(new String[]{"Congrats you found Zack","It's you!",""});
+            endScreen.changeText(new String[]{"CONGRATULATIONS","YOU FOUND ZACK!","IT'S YOU!"});
             goToEndView();
         }
         repaint();
