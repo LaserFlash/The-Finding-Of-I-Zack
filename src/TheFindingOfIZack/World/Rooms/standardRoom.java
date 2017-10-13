@@ -181,10 +181,10 @@ public class standardRoom extends Room implements Savable{
 
     public void draw(Graphics g){
         super.draw(g);
-        enemiesInRoom.forEach( e -> e.draw(g));
         synchronized (items) {
             items.forEach(e -> e.draw(g));
         }
+        enemiesInRoom.forEach( e -> e.draw(g));
     }
 
     /**

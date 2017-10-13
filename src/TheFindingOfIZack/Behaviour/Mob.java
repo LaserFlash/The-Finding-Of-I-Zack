@@ -22,9 +22,8 @@ public abstract class Mob implements Savable {
     protected int damage;
     protected int bounce = 0;
     private Point tempDirection = null;
-    private Room r;
+    protected Room r;
 
-    public static Image image;
 
     /**
      * Shifts the mob's location
@@ -60,7 +59,7 @@ public abstract class Mob implements Savable {
      * @param newX  the projected horizontal speed
      * @param newY the projected vertical speed
      */
-    private void entityCollision(Point location, double newX, double newY) {
+    protected void entityCollision(Point location, double newX, double newY) {
         if (r instanceof standardRoom) {
             standardRoom room = (standardRoom) r;
             List<Entity> entities = (room.getItems());
@@ -128,4 +127,6 @@ public abstract class Mob implements Savable {
         double distance = Math.hypot(a.getX()-b.getX(), a.getY()-b.getY());
         return distance;
     }
+
+    public abstract Image getImage();
 }

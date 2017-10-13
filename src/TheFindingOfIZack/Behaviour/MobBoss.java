@@ -19,6 +19,7 @@ public class MobBoss extends Mob implements Savable{
     private final double MAX_SPEED = 4;
     private int moveType = 0;
 
+    private static Image image;
     static {
         image = ImageLoader.loadImage("/anEnemy.png").getScaledInstance(Boss.size,Boss.size, Image.SCALE_DEFAULT);;
     }
@@ -26,7 +27,7 @@ public class MobBoss extends Mob implements Savable{
     public MobBoss(){
         this.viewRange = 50;
         this.speed = MAX_SPEED;
-        this.health = 500;
+        this.health = 1000;
         this.damage = 20;
     }
 
@@ -59,6 +60,11 @@ public class MobBoss extends Mob implements Savable{
         location.setLocation((newX + location.getX()),(newY + location.getY()));
 
         return location;
+    }
+
+    @Override
+    public Image getImage() {
+        return image;
     }
 
 

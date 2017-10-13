@@ -12,7 +12,7 @@ import java.awt.*;
  * After this it will follow the player at slow speed and cause damage if it touches
  */
 public class MobSlow extends Mob implements Savable{
-
+    public static Image image;
     static {
         image = ImageLoader.loadImage("/painfulPointyPerson.png").getScaledInstance(Entity.width,Entity.width, Image.SCALE_DEFAULT);
     }
@@ -27,5 +27,9 @@ public class MobSlow extends Mob implements Savable{
     public String toString() {
         String string = "A slow mob Damage = " + this.damage + " health = " + this.health + " speed = " + this.speed;
         return string;
+    }
+    @Override
+    public Image getImage() {
+        return image;
     }
 }

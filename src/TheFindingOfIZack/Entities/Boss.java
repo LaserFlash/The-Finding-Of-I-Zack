@@ -16,8 +16,8 @@ public class Boss extends Enemy {
      */
     public static int size = 120;
 
-    private int armour = 250;
-    private int MAX_ARMOUR = 250;
+    private int armour = 500;
+    private int MAX_ARMOUR = 500;
 
     /**
      * Constructor for the boss
@@ -88,6 +88,10 @@ public class Boss extends Enemy {
     @Override
     public void move() {
         tick ++;
+        if(health < MAX_HEALTH){
+            health += 0.2;
+            if (health > MAX_HEALTH){health = MAX_HEALTH;}
+        }
         Point playerPoint = player.getLocation();
         Point potentialStep = this.behaviour.step(location, playerPoint, r);
         //potentialStep represents the move which will take place if there are no obstacle,
