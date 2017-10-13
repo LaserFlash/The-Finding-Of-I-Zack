@@ -54,7 +54,13 @@ public abstract class Mob implements Savable {
         return location;
     }
 
-    public void entityCollision(Point location, double newX, double newY) {
+    /**
+     * Tests if mob has collided with a rock and moves away to a random point in an attempt to move around the obstacle
+     * @param location  mob's current location
+     * @param newX  the projected horizontal speed
+     * @param newY the projected vertical speed
+     */
+    private void entityCollision(Point location, double newX, double newY) {
         if (r instanceof standardRoom) {
             standardRoom room = (standardRoom) r;
             List<Entity> entities = (room.getItems());
@@ -118,7 +124,7 @@ public abstract class Mob implements Savable {
      * @param b second Point
      * @return distance between the two inputs
      */
-    public double distanceBetween(Point a, Point b){
+    protected double distanceBetween(Point a, Point b){
         double distance = Math.hypot(a.getX()-b.getX(), a.getY()-b.getY());
         return distance;
     }

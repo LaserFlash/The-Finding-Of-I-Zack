@@ -26,7 +26,13 @@ public class Enemy extends Entity {
     protected int tick;
     protected Room r;
 
+    protected transient Image enemyImage;
 
+    /**
+     * constructor for Enemy, randomly assigns the enemies' type, assigns health and behaviour accordingly
+     * @param location where the mob is to be spawned
+     * @param p the player
+     */
     public Enemy(Point location, Player p) {
         super(location);
         this.player = p;
@@ -34,21 +40,26 @@ public class Enemy extends Entity {
 
         if (this instanceof Boss) {
             this.behaviour = new MobEnemy("boss", r);
+            this.enemyImage = ImageLoader.loadImage("/anEnemy.png").getScaledInstance(Boss.size,Boss.size,Image.SCALE_DEFAULT);
         }
         else {
             int type = (int) (Math.random()*5);
             //int type = 1;
             if (type>2) {
                 this.behaviour = new MobEnemy("standard", r);
+                this.enemyImage = ImageLoader.loadImage("/bothersomeBrittleStar.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
             }
             else if (type==2) {
                 this.behaviour = new MobEnemy("fast", r);
+                this.enemyImage = ImageLoader.loadImage("/kookyCrabbyKid.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
             }
             else if (type==1) {
                 this.behaviour = new MobEnemy("shooter", r);
+                this.enemyImage = ImageLoader.loadImage("/weeOctoBoi.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
             }
             else {
                 this.behaviour = new MobEnemy("slow", r);
+                this.enemyImage = ImageLoader.loadImage("/painfulPointyPerson.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
             }
         }
 
@@ -76,7 +87,7 @@ public class Enemy extends Entity {
             MobShooter m = (MobShooter) behaviour.getMob();
             drawProjectiles(m,g);
         }
-        g.drawImage(behaviour.getMob().image, (int) location.getX(), (int) location.getY(), null);
+        g.drawImage(enemyImage, (int) location.getX(), (int) location.getY(), null);
 
 
         double red = (((double)MAX_HEALTH-(double)health)/(double)MAX_HEALTH)*(double)255;
