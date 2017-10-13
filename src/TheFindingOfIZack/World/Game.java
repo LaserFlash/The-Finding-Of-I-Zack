@@ -62,7 +62,7 @@ public class Game extends Observable implements Model,Savable{
      *Constructor for loading a new game from a file
      * @param
      */
-    public Game(Game g, Player p, Level l, Room r, ArrayList<Door> d){
+    public Game(Game g, Player p, Level l, Room r, ArrayList<Door> d) {
         r.setNorthDoor(new Door(d.get(0)));
         r.setEastDoor(new Door(d.get(1)));
         r.setSouthDoor(new Door(d.get(2)));
@@ -77,6 +77,8 @@ public class Game extends Observable implements Model,Savable{
         this.south = g.south;
         this.west = g.west;
     }
+
+    public Level getLevel(){ return currentLevel; }
 
 
     /**
