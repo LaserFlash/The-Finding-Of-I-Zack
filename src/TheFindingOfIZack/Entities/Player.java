@@ -48,7 +48,7 @@ public class Player extends AbstractPlayer {
      */
     private int weaponTick = 0;
     private int firerate = 20;
-    private int MIN_FIRERATE = 5;
+    private int MIN_FIRERATE = 7;
 
     /**
      *  List of projectiles that the player has fired

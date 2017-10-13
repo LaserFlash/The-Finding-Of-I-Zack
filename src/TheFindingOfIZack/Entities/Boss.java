@@ -16,8 +16,8 @@ public class Boss extends Enemy {
      */
     public static int size = 120;
 
-    private int armour = 250;
-    private int MAX_ARMOUR = 250;
+    private int armour = 500;
+    private int MAX_ARMOUR = 500;
 
     /**
      * Constructor for the boss
