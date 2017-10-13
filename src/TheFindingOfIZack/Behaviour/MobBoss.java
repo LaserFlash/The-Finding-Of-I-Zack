@@ -27,7 +27,7 @@ public class MobBoss extends Mob implements Savable{
     public MobBoss(){
         this.viewRange = 50;
         this.speed = MAX_SPEED;
-        this.health = 500;
+        this.health = 1000;
         this.damage = 20;
     }
 

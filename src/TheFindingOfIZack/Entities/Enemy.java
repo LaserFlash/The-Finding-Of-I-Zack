@@ -18,7 +18,7 @@ import static TheFindingOfIZack.Util.GameDimensions.*;
 public class Enemy extends Entity {
 
     protected MobEnemy behaviour;
-    protected int health;
+    protected double health;
     protected int MAX_HEALTH;
     protected Player player;
     protected boolean isDead = false;
@@ -175,5 +175,9 @@ public class Enemy extends Entity {
                 }
             }
         }
+    }
+
+    public MobEnemy getType(){
+        return behaviour;
     }
 }

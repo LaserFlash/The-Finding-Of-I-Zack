@@ -71,6 +71,39 @@ public class MobShooter extends Mob implements Savable{
         return string;
     }
 
+    /**@Override
+    protected void entityCollision(Point location, double newX, double newY) {
+        if (r instanceof standardRoom) {
+            standardRoom room = (standardRoom) r;
+            List<Enemy> enemies = (room.getEnemies());
+            for (Enemy enemy : enemies) {
+                    double rx = enemy.getBoundingBox().getMinX();
+                    double ry = enemy.getBoundingBox().getMinY();
+                    double mx = location.getX()+newX;
+                    double my = location.getY()+newY;
+                    int w = width;
+
+                    if(mx<rx && my<ry && mx+w>rx && my+w>ry){   //Bottom right
+                        tempDirection =  new Point(location.getX()-tempDistance(),location.getY()-tempDistance());
+                    }
+                    if(mx>rx && my>ry && mx<rx+w && my<ry+w){    //Top left
+                        tempDirection = new Point(location.getX()+tempDistance(),location.getY()+tempDistance());
+                    }
+                    if(mx<rx && my>ry && mx+w>rx && my<ry+w){   //Top Right
+                        tempDirection = new Point(location.getX()-tempDistance(),location.getY()+tempDistance());
+                    }
+                    if(mx>rx && my<ry && mx<rx+w && my+w>ry){   //Bottom left
+                        tempDirection = new Point(location.getX()+tempDistance(),location.getY()-tempDistance());
+                    }
+                    if(tempDirection != null && bounce > 20){
+                        tempDirection = null;
+                        bounce = 0;
+                    }
+                }
+            }
+        }
+    }*/
+
     public  List<MobProjectile> getProjectile(){
         return projectiles;
     }
