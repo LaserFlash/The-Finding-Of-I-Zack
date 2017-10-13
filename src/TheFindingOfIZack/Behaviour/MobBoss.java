@@ -1,10 +1,14 @@
 package TheFindingOfIZack.Behaviour;
 
+import TheFindingOfIZack.Entities.Boss;
 import TheFindingOfIZack.Entities.Enemy;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
+import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.bossRoom;
+
+import java.awt.*;
 
 /**
  * Created by gordontheo on 11/10/17.
@@ -14,6 +18,10 @@ public class MobBoss extends Mob implements Savable{
     private final int CHANGE_TYPE = 100;
     private final double MAX_SPEED = 4;
     private int moveType = 0;
+
+    static {
+        image = ImageLoader.loadImage("/anEnemy.png").getScaledInstance(Boss.size,Boss.size, Image.SCALE_DEFAULT);;
+    }
 
     public MobBoss(){
         this.viewRange = 50;

@@ -14,7 +14,7 @@ public class Boss extends Enemy {
     /**
      * Stores the field for the size of the Boss
      */
-    protected static int size = 120;
+    public static int size = 120;
 
     /**
      * Constructor for the boss

@@ -1,10 +1,13 @@
 package TheFindingOfIZack.Behaviour;
 
 
+import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
+import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.World.Rooms.Room;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,6 +21,10 @@ public class MobShooter extends Mob implements Savable{
     private int stopDistance = 200;
     private transient List<MobProjectile> projectiles = Collections.synchronizedList(new ArrayList<MobProjectile>());
     private Room room;
+
+    static {
+        image = ImageLoader.loadImage("/weeOctoBoi.png").getScaledInstance(Entity.width,Entity.width, Image.SCALE_DEFAULT);
+    }
 
     public MobShooter(){
         this.viewRange = 600;
