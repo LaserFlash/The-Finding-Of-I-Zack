@@ -16,6 +16,9 @@ public class Boss extends Enemy {
      */
     public static int size = 120;
 
+    private int armour = 250;
+    private int MAX_ARMOUR = 250;
+
     /**
      * Constructor for the boss
      * @param location  the location of the boss
@@ -44,16 +47,23 @@ public class Boss extends Enemy {
         double healthBar = ((double) health/(double) MAX_HEALTH) * (double) size;
         if (healthBar < 0) {healthBar = 0;}
 
+        double armourBar = ((double) armour/(double) MAX_ARMOUR) * (double) size;
+        if (armourBar < 0) {armourBar = 0;}
+
         double red = (((double)MAX_HEALTH-(double)health)/(double)MAX_HEALTH)*(double)255;
         if (red < 0) {red = 0;}
         else if (red > 255) {red = 255;}
         double green = ((double)health/(double)MAX_HEALTH)*(double)255;
         if (green < 0) {green = 0;}
         else if (green > 255) {green = 255;}
-        Color c = new Color((int)red, (int) green, 0);
+        double blue = ((double)armour/(double)MAX_ARMOUR)*(double)255;
+        Color healthColor = new Color((int)red, (int) green, 0);
+        Color armourColor = new Color(0, 255-(int)blue, (int) blue);
 
-        g.setColor(c);
+        g.setColor(healthColor);
         g.fillRect((int) location.getX(), (int) location.getY() - 8, (int) healthBar, 4);
+        g.setColor(armourColor);
+        g.fillRect((int) location.getX(), (int) location.getY() - 8, (int) armourBar, 4);
         g.setColor(Color.black);
         g.drawRect((int) location.getX(), (int) location.getY() - 8, size, 4);
 
@@ -65,6 +75,8 @@ public class Boss extends Enemy {
      */
     @Override
     public void damage(int damage) {
+        if (damage < armour) {armour -= damage; return;}
+        else if (armour < damage) {health -= Math.abs(armour-damage); armour = 0; return;}
         this.health -= damage;
         if (this.health <= 0) {isDead = true;}
     }

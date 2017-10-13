@@ -46,6 +46,19 @@ public abstract class Room implements Drawable {
         this.westDoor = null;
         this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameDimensions.GAME_WIDTH, GameDimensions.GAME_HEIGHT,Image.SCALE_DEFAULT);
     }
+
+    public Room(Room r){
+        this.collectibles = Collections.synchronizedList(new ArrayList<Item>());
+        this.player = r.getPlayer();
+        this.northDoor = r.getNorthDoor();
+        this.eastDoor = r.getEastDoor();
+        this.southDoor = r.getSouthDoor();
+        this.westDoor = r.getWestDoor();
+        this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameDimensions.GAME_WIDTH, GameDimensions.GAME_HEIGHT,Image.SCALE_DEFAULT);
+        this.enemiesInRoom = r.enemiesInRoom;
+        this.deadEnemies = r.deadEnemies;
+    }
+
     public List<Item> getCollectibles(){
         return this.collectibles;
     }
