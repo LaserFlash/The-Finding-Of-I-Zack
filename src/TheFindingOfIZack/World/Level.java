@@ -19,6 +19,8 @@ public class Level implements Savable{
 
     }
 
+    public int size() { return rooms.size(); }
+
     public void addRoom(Room r){
     rooms.add(r);
     }
