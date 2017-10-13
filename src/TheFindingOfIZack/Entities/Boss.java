@@ -39,7 +39,7 @@ public class Boss extends Enemy {
      */
     @Override
     public void draw(Graphics g) {
-        g.drawImage(enemyImage, (int) location.getX(), (int) location.getY(), null);
+        g.drawImage(behaviour.getMob().image, (int) location.getX(), (int) location.getY(), null);
 
         double healthBar = ((double) health/(double) MAX_HEALTH) * (double) size;
         if (healthBar < 0) {healthBar = 0;}

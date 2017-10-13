@@ -24,7 +24,7 @@ public abstract class Mob implements Savable {
     private Point tempDirection = null;
     private Room r;
 
-    public static Image image;
+    public transient static Image image;
 
     /**
      * Shifts the mob's location

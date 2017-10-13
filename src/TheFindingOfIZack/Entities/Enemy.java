@@ -26,8 +26,6 @@ public class Enemy extends Entity {
     protected int tick;
     protected Room r;
 
-    protected transient Image enemyImage;
-
 
     public Enemy(Point location, Player p) {
         super(location);
@@ -78,7 +76,7 @@ public class Enemy extends Entity {
             MobShooter m = (MobShooter) behaviour.getMob();
             drawProjectiles(m,g);
         }
-        g.drawImage(enemyImage, (int) location.getX(), (int) location.getY(), null);
+        g.drawImage(behaviour.getMob().image, (int) location.getX(), (int) location.getY(), null);
 
 
         double red = (((double)MAX_HEALTH-(double)health)/(double)MAX_HEALTH)*(double)255;
