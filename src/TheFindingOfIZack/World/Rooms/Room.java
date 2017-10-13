@@ -56,8 +56,10 @@ public abstract class Room implements Drawable, Savable {
         this.southDoor = r.getSouthDoor();
         this.westDoor = r.getWestDoor();
         this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameDimensions.GAME_WIDTH, GameDimensions.GAME_HEIGHT,Image.SCALE_DEFAULT);
-        this.enemiesInRoom = r.enemiesInRoom;
-        this.deadEnemies = r.deadEnemies;
+        if (r.enemiesInRoom != null){
+            this.enemiesInRoom = r.enemiesInRoom;
+            this.deadEnemies = r.deadEnemies;
+        }
     }
 
     public List<Item> getCollectibles(){
@@ -68,10 +70,14 @@ public abstract class Room implements Drawable, Savable {
      * Recreate bounding boxes for things in the rooms
      */
     public void recreateBoundingBoxes(){
-        enemiesInRoom.forEach(e -> e.setBox());
-        deadEnemies.forEach(e -> e.setBox());
-        items.forEach(e -> e.setBox());
-        collectibles.forEach( e -> e.setBox());
+        if (enemiesInRoom != null)
+            enemiesInRoom.forEach(e -> e.setBox());
+        if (deadEnemies != null)
+            deadEnemies.forEach(e -> e.setBox());
+        if (items != null)
+            items.forEach(e -> e.setBox());
+        if (collectibles != null)
+            collectibles.forEach( e -> e.setBox());
     }
     /**
      * adds a player to the room
