@@ -25,6 +25,9 @@ public class standardRoom extends Room implements Savable{
         isCleared = false;
     }
 
+    public standardRoom(Room r){
+        super(r);
+    }
 
     private Point randomPoint(){
         Random r = new Random();

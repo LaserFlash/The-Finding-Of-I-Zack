@@ -27,7 +27,7 @@ public class Player extends AbstractPlayer {
     /**
      *  Field that stores what room the player is in
      */
-    private transient Room room;
+    private Room room;
 
     /**
      *  Fields that store health information
