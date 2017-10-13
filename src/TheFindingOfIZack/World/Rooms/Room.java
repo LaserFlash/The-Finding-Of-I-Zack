@@ -30,10 +30,10 @@ public abstract class Room implements Drawable, Savable {
     protected List<Enemy> deadEnemies;
     public List<Entity> items;
 
-    public transient Door northDoor;
-    public transient Door eastDoor;
-    public transient Door southDoor;
-    public transient Door westDoor;
+    public Door northDoor;
+    public Door eastDoor;
+    public Door southDoor;
+    public Door westDoor;
 
     public boolean isCleared;
     private Player player;
