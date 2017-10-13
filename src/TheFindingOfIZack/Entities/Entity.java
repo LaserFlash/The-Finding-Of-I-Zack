@@ -31,6 +31,7 @@ public abstract class Entity implements Drawable, Savable{
         p.location.getX();
         this.box = new BoundingBox(p.location.getX(), p.location.getY(), width, width);
         outOfBounds();
+        setBox();
     }
 
     /**

@@ -1,5 +1,6 @@
 package TheFindingOfIZack.Entities;
 
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.View.Drawable;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * Created by allanbenj1 on 29/09/17.
  */
-public class Projectile extends Entity implements Drawable{
+public class Projectile extends Entity implements Drawable, Savable{
 
     /**
      * Fields for damage, direction, speed, and if it is popped
@@ -24,7 +25,7 @@ public class Projectile extends Entity implements Drawable{
 
     private int speed = 10;
 
-    protected Image projectileImage;
+    protected transient Image projectileImage;
 
     /**
      * Constructor for Projectile

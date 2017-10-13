@@ -19,7 +19,7 @@ public class MobShooter extends Mob implements Savable{
     private final int PROJECTILE_TICK = 30;
     private int tick = (int)(Math.random()*PROJECTILE_TICK);
     private int stopDistance = 200;
-    private transient List<MobProjectile> projectiles = Collections.synchronizedList(new ArrayList<MobProjectile>());
+    private List<MobProjectile> projectiles = Collections.synchronizedList(new ArrayList<MobProjectile>());
     private Room room;
 
     static {

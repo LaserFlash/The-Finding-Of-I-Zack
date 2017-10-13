@@ -3,6 +3,7 @@ package TheFindingOfIZack.Behaviour;
 import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Entities.Projectile;
+import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.View.Drawable;
 import TheFindingOfIZack.World.Rooms.Room;
@@ -13,7 +14,7 @@ import java.awt.*;
 /**
  * Created by gordontheo on 29/09/17.
  */
-public class MobProjectile extends Projectile implements Drawable {
+public class MobProjectile extends Projectile implements Drawable, Savable {
     private double speed = 2;
     private double directionX;
     private double directionY;
