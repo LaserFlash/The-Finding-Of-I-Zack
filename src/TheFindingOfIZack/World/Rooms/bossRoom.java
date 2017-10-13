@@ -7,7 +7,6 @@ import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class bossRoom extends Room implements Savable {
@@ -16,8 +15,7 @@ public class bossRoom extends Room implements Savable {
     private Player player;
 
     public bossRoom(){
-        this.enemiesInRoom = new ArrayList<Enemy>();
-        this.deadEnemies = new ArrayList<Enemy>();
+        super();
         this.isCleared = false;
     }
 
@@ -42,8 +40,6 @@ public class bossRoom extends Room implements Savable {
 
 
         if (boss.isDead()) {
-
-
             this.isCleared = true;
             player.setWon();
             if (this.northDoor != null) {

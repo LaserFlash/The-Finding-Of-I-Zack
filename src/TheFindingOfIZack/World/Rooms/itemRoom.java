@@ -26,8 +26,8 @@ public class itemRoom extends Room implements Savable {
 
 
     public itemRoom(){
+        super();
         this.populated = false;
-        this.items = Collections.synchronizedList(new ArrayList<Entity>());
     }
 
     @Override

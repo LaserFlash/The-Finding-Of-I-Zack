@@ -19,9 +19,6 @@ public class standardRoom extends Room implements Savable{
 
     public standardRoom(){
         super();
-        enemiesInRoom = new ArrayList<Enemy>();
-        deadEnemies = new ArrayList<Enemy>();
-        items = Collections.synchronizedList(new ArrayList<Entity>());
         isCleared = false;
     }
 

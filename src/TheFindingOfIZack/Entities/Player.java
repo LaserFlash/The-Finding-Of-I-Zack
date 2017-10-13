@@ -136,9 +136,9 @@ public class Player extends AbstractPlayer {
             if (room instanceof itemRoom) {
                 itemRoom r = (itemRoom) room;
 
-                p.entityCollision(r.items);
+                p.entityCollision(r.getItems());
                 ArrayList<Entity> destroyed = new ArrayList<Entity>();
-                for (Entity e : r.items) {
+                for (Entity e : r.getItems()) {
 
                     if (e instanceof Urn) {
                         Urn urn = (Urn) e;
@@ -146,7 +146,7 @@ public class Player extends AbstractPlayer {
                     }
                 }
                 for (Entity e : destroyed) {
-                    r.items.remove(e);
+                    r.getItems().remove(e);
                 }
             }
 
@@ -337,7 +337,7 @@ public class Player extends AbstractPlayer {
         }
         if (room instanceof itemRoom) {
             itemRoom r = (itemRoom) room;
-            for (Entity e : r.items) {
+            for (Entity e : r.getItems()) {
                 if (e.box.intersects(x, y, width, width)) {return true;}
             }
         }

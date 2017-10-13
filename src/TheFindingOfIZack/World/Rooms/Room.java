@@ -27,27 +27,33 @@ public abstract class Room implements Drawable, Savable {
     private static Image roomImage;
 
     protected List<Item> collectibles;
-
     protected List<Enemy> enemiesInRoom;
     protected List<Enemy> deadEnemies;
-    public List<Entity> items;
 
-    public Door northDoor;
-    public Door eastDoor;
-    public Door southDoor;
-    public Door westDoor;
+    protected List<Entity> items;
+
+    protected Door northDoor;
+    protected Door eastDoor;
+    protected Door southDoor;
+    protected Door westDoor;
 
     public boolean isCleared;
+
     private Player player;
 
     public Room() {
+        this.enemiesInRoom = new ArrayList<>();
+        this.deadEnemies = new ArrayList<>();
+        this.items = Collections.synchronizedList(new ArrayList<Entity>());
         this.collectibles = Collections.synchronizedList(new ArrayList<Item>());
+
+        this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameDimensions.GAME_WIDTH, GameDimensions.GAME_HEIGHT,Image.SCALE_DEFAULT);
+
         this.player = null;
         this.northDoor = null;
         this.eastDoor = null;
         this.southDoor = null;
         this.westDoor = null;
-        this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameDimensions.GAME_WIDTH, GameDimensions.GAME_HEIGHT,Image.SCALE_DEFAULT);
     }
 
     public Room(Room r){
@@ -252,7 +258,6 @@ public abstract class Room implements Drawable, Savable {
         int MAXATTEMPS = 10000;
         while (!suitable && attempts < MAXATTEMPS) {
             //Check if point is blocking a door or potential door
-            //TODO, add to abstract room and door to only check certain door locations
             if (checkPointBlockingDoor(x,y) && checkPointNotOverlap(x,y)){
                 suitable = true;
                 continue;
@@ -312,4 +317,7 @@ public abstract class Room implements Drawable, Savable {
         return true;
     }
 
+    public List<Entity> getItems() {
+        return items;
+    }
 }

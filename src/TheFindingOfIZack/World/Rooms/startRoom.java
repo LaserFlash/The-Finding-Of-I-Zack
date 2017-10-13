@@ -8,12 +8,8 @@ import TheFindingOfIZack.FileIO.Util.Savable;
  */
 public class startRoom extends Room implements Savable{
 
-
-
-
     public startRoom(){
         super();
-
     }
 
     @Override
@@ -21,21 +17,18 @@ public class startRoom extends Room implements Savable{
 
     }
 
-
-
-
     public void update(){
-        if(this.northDoor != null){
-            this.northDoor.isLocked = false;
+        if(this.getNorthDoor() != null){
+            this.getNorthDoor().isLocked = false;
         }
-        if(this.eastDoor != null){
-            this.eastDoor.isLocked = false;
+        if(this.getEastDoor() != null){
+            this.getEastDoor().isLocked = false;
         }
-        if(this.southDoor != null){
-            this.southDoor.isLocked = false;
+        if(this.getSouthDoor() != null){
+            this.getSouthDoor().isLocked = false;
         }
-        if(this.westDoor != null){
-            this.westDoor.isLocked = false;
+        if(this.getWestDoor() != null){
+            this.getWestDoor().isLocked = false;
         }
 
     }
@@ -56,9 +49,5 @@ public class startRoom extends Room implements Savable{
         }
 
     }
-
-
-
-
 
 }
