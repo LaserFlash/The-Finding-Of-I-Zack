@@ -580,8 +580,8 @@ public class Player extends AbstractPlayer {
     public int getDamage(){ return damage; }
 
     public void weaponUpgrade() {
-        if (damage + 2 > MAX_DAMAGE) {damage = MAX_DAMAGE;}
-        else {damage += 2;}
+//        if (damage + 2 > MAX_DAMAGE) {damage = MAX_DAMAGE;}
+//        else {damage += 2;}
         if (firerate-3 < MIN_FIRERATE) {firerate = MIN_FIRERATE;}
         else {firerate -= 3;}
     }
