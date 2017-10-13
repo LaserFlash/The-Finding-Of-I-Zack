@@ -22,7 +22,7 @@ public abstract class Mob implements Savable {
     protected int damage;
     protected int bounce = 0;
     private Point tempDirection = null;
-    protected Room r;
+    protected Room room;
 
 
     /**
@@ -33,7 +33,7 @@ public abstract class Mob implements Savable {
      */
     public Point step(Point location, Point player, Room room){
         bounce ++;
-        this.r = room;
+        this.room = room;
 
         if(tempDirection != null){
             player = tempDirection;
@@ -60,15 +60,15 @@ public abstract class Mob implements Savable {
      * @param newY the projected vertical speed
      */
     protected void entityCollision(Point location, double newX, double newY) {
-        if (r instanceof standardRoom) {
-            standardRoom room = (standardRoom) r;
-            List<Entity> entities = (room.getItems());
+        if (room instanceof standardRoom) {
+            standardRoom r = (standardRoom) room;
+            List<Entity> entities = (r.getItems());
             for (Entity entity : entities) {
                 if (entity instanceof Rock) {
-                    Rock r = (Rock) entity;
+                    Rock room = (Rock) entity;
 
-                    double rx = r.getBoundingBox().getMinX();
-                    double ry = r.getBoundingBox().getMinY();
+                    double rx = room.getBoundingBox().getMinX();
+                    double ry = room.getBoundingBox().getMinY();
                     double mx = location.getX()+newX;
                     double my = location.getY()+newY;
                     int w = width;

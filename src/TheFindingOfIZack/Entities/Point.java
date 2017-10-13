@@ -27,6 +27,11 @@ public class Point implements Savable{
         this.y=y;
     }
 
+    public void setLocation(Point p){
+        this.x=p.getX();
+        this.y=p.getY();
+    }
+
     public void move(double x, double y){
         this.x=x;
         this.y=y;

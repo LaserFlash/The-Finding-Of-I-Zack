@@ -1,7 +1,6 @@
 package TheFindingOfIZack.Behaviour;
 
 
-import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.ImageLoader;
@@ -12,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static TheFindingOfIZack.Entities.Entity.width;
+
 /**
  * Created by gordontheo on 29/09/17.
  */
@@ -20,10 +21,9 @@ public class MobShooter extends Mob implements Savable{
     private int tick = (int)(Math.random()*PROJECTILE_TICK);
     private int stopDistance = 200;
     private List<MobProjectile> projectiles = Collections.synchronizedList(new ArrayList<MobProjectile>());
-    private Room room;
     public static Image image;
     static {
-        image = ImageLoader.loadImage("/weeOctoBoi.png").getScaledInstance(Entity.width,Entity.width, Image.SCALE_DEFAULT);
+        image = ImageLoader.loadImage("/weeOctoBoi.png").getScaledInstance(width, width, Image.SCALE_DEFAULT);
     }
 
     public MobShooter(){
@@ -70,39 +70,6 @@ public class MobShooter extends Mob implements Savable{
         String string = "A shooting mob Damage = " + this.damage + " health = " + this.health + " speed = " + this.speed;
         return string;
     }
-
-    /**@Override
-    protected void entityCollision(Point location, double newX, double newY) {
-        if (r instanceof standardRoom) {
-            standardRoom room = (standardRoom) r;
-            List<Enemy> enemies = (room.getEnemies());
-            for (Enemy enemy : enemies) {
-                    double rx = enemy.getBoundingBox().getMinX();
-                    double ry = enemy.getBoundingBox().getMinY();
-                    double mx = location.getX()+newX;
-                    double my = location.getY()+newY;
-                    int w = width;
-
-                    if(mx<rx && my<ry && mx+w>rx && my+w>ry){   //Bottom right
-                        tempDirection =  new Point(location.getX()-tempDistance(),location.getY()-tempDistance());
-                    }
-                    if(mx>rx && my>ry && mx<rx+w && my<ry+w){    //Top left
-                        tempDirection = new Point(location.getX()+tempDistance(),location.getY()+tempDistance());
-                    }
-                    if(mx<rx && my>ry && mx+w>rx && my<ry+w){   //Top Right
-                        tempDirection = new Point(location.getX()-tempDistance(),location.getY()+tempDistance());
-                    }
-                    if(mx>rx && my<ry && mx<rx+w && my+w>ry){   //Bottom left
-                        tempDirection = new Point(location.getX()+tempDistance(),location.getY()-tempDistance());
-                    }
-                    if(tempDirection != null && bounce > 20){
-                        tempDirection = null;
-                        bounce = 0;
-                    }
-                }
-            }
-        }
-    }*/
 
     public  List<MobProjectile> getProjectile(){
         return projectiles;
