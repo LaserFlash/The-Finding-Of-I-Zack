@@ -39,8 +39,8 @@ public class Enemy extends Entity {
             this.behaviour = new MobEnemy("boss", r);
         }
         else {
-            //int type = (int) (Math.random()*5);
-            int type = 1;
+            int type = (int) (Math.random()*5);
+            //int type = 1;
             if (type>2) {
                 this.behaviour = new MobEnemy("standard", r);
             }

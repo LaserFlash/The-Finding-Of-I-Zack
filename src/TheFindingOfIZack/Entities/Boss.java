@@ -62,8 +62,10 @@ public class Boss extends Enemy {
 
         g.setColor(healthColor);
         g.fillRect((int) location.getX(), (int) location.getY() - 8, (int) healthBar, 4);
-        g.setColor(armourColor);
-        g.fillRect((int) location.getX(), (int) location.getY() - 8, (int) armourBar, 4);
+        if (armour != 0) {
+            g.setColor(armourColor);
+            g.fillRect((int) location.getX(), (int) location.getY() - 8, (int) armourBar, 4);
+        }
         g.setColor(Color.black);
         g.drawRect((int) location.getX(), (int) location.getY() - 8, size, 4);
 
@@ -76,7 +78,7 @@ public class Boss extends Enemy {
     @Override
     public void damage(int damage) {
         if (damage <= armour) {armour -= damage; return;}
-        else if (armour < damage) {health -= Math.abs(armour-damage); armour = 0; return;}
+        else if (armour < damage && armour > 0) {health -= Math.abs(armour-damage); armour = 0; return;}
         this.health -= damage;
         if (this.health <= 0) {isDead = true;}
     }
