@@ -140,6 +140,7 @@ public class Enemy extends Entity {
             damagePlayer();
         }
         canMove();
+
     }
 
 
