@@ -56,7 +56,7 @@ public class ViewManager extends View {
             endScreen.changeText(new String[]{"You appear to have died","Game Over"});
             goToEndView();
         }else if (model.isGameWon()){
-            endScreen.changeText(new String[]{"Congrats you found Zack","It's you","Potentially"});
+            endScreen.changeText(new String[]{"Congrats you found Zack","It's you!s"});
             goToEndView();
         }
         repaint();
