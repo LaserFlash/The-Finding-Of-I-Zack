@@ -41,7 +41,7 @@ public class InventoryPanel extends JPanel{
      * Constructor for a InventoryPanel, requires the model it is representing
      * @param m Model that this panel is representing
      */
-    InventoryPanel(Model m){
+    public InventoryPanel(Model m){
         super();
         this.model = m;
     }
@@ -94,10 +94,14 @@ public class InventoryPanel extends JPanel{
         int armourBar = (int) (armour / maxArmour * BAR_WIDTH);
 
         g.setColor(Color.GRAY);
-        g.drawImage(armourImg, PADDING * 4 + model.getPlayer().getMaxHealth(),BAR_PADDING,null);
-        g.fillRoundRect(PADDING * 6 + model.getPlayer().getMaxHealth(), BAR_PADDING *2 , BAR_WIDTH,BAR_HEIGHT,ARC,ARC);
+        g.drawImage(armourImg, PADDING * 4 + BAR_WIDTH,BAR_PADDING,null);
+        g.fillRoundRect(PADDING * 6 + BAR_WIDTH, BAR_PADDING *2 , BAR_WIDTH,BAR_HEIGHT,ARC,ARC);
         g.setColor(Color.blue);
-        g.fillRoundRect(PADDING * 6 + model.getPlayer().getMaxHealth(), BAR_PADDING *2, armourBar,BAR_HEIGHT,ARC,ARC);
+        g.fillRoundRect(PADDING * 6 + BAR_WIDTH, BAR_PADDING *2, armourBar,BAR_HEIGHT,ARC,ARC);
     }
 
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(GameDimensions.GAME_WIDTH, GameDimensions.MENU_HEIGHT);
+    }
 }

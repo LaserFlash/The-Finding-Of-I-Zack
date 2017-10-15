@@ -3,11 +3,14 @@ package View;
 import Mocks.MockModel;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Model;
+import TheFindingOfIZack.World.Rooms.Room;
+import TheFindingOfIZack.World.Rooms.standardRoom;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import javax.swing.*;
+import javax.xml.stream.Location;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ViewManagerTest {
@@ -53,6 +56,24 @@ public class ViewManagerTest {
             v.showGUI();
             new Timer(2000, e-> v.enableOtherButtons()).start();
         });
+        Thread.sleep((3000));
+    }
+
+
+    /**
+     * Check end screen panel with default text
+     * @throws InterruptedException
+     */
+    @Test
+    public void testEndScreenDisplay() throws InterruptedException {
+        MockModel m = new MockModel();
+        SwingUtilities.invokeLater(()->{
+            ViewManager v = new ViewManager(m);
+            v.showGUI();
+            new Timer(1000, e-> v.goToEndView()).start();
+            new Timer(2000,e-> v.dispose()).start();
+        });
+
         Thread.sleep((3000));
     }
 
