@@ -57,6 +57,6 @@ public class IndividualPanelTests {
             new Timer(2000, e-> f.dispose()).start();
         });
 
-        Thread.sleep((3000));
+        Thread.sleep(3000);
     }
 }

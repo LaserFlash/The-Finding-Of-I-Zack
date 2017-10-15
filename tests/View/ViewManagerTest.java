@@ -3,16 +3,10 @@ package View;
 import Mocks.MockModel;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Model;
-import TheFindingOfIZack.World.Rooms.Room;
-import TheFindingOfIZack.World.Rooms.standardRoom;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import javax.swing.*;
-import javax.xml.stream.Location;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ViewManagerTest {
 
 
@@ -35,11 +29,11 @@ public class ViewManagerTest {
         SwingUtilities.invokeLater(()->{
             ViewManager v = new ViewManager(m);
             v.showGUI();
-            new Timer(1000,e-> v.goToGameView()).start();
-            new Timer(2000,e-> v.goToMenuView()).start();
-            new Timer(3000,e-> v.dispose()).start();
+            new Timer(500,e-> v.goToGameView()).start();
+            new Timer(1500,e-> v.goToMenuView()).start();
+            new Timer(2000,e-> v.dispose()).start();
         });
-        Thread.sleep(4000);
+        Thread.sleep(3000);
     }
 
     /**
@@ -54,29 +48,12 @@ public class ViewManagerTest {
         SwingUtilities.invokeLater(()->{
             ViewManager v = new ViewManager(m);
             v.showGUI();
-            new Timer(2000, e-> v.enableOtherButtons()).start();
+            new Timer(1000, e-> v.enableOtherButtons()).start();
+            new Timer(2000,e-> v.dispose()).start();
         });
-        Thread.sleep((3000));
+        Thread.sleep(3000);
     }
 
-    @Test
-    public void testDrawEntities() throws InterruptedException {
-        MockModel m = new MockModel();
-        standardRoom r = new standardRoom();
-        Player p = new Player(new Point(100,100));
-        r.addPlayer(p);
-        r.populateRoom(p);
-        SwingUtilities.invokeLater(()->{
-
-            ViewManager v = new ViewManager(m);
-            v.showGUI();
-            new Timer(1000,e-> v.goToGameView()).start();
-            new Timer(2000,e-> r.draw(v.getGraphics())).start();
-
-
-        });
-        Thread.sleep((3000));
-    }
 
     /**
      * Check end screen panel with default text
@@ -92,7 +69,7 @@ public class ViewManagerTest {
             new Timer(2000,e-> v.dispose()).start();
         });
 
-        Thread.sleep((3000));
+        Thread.sleep(3000);
     }
 
 
@@ -105,7 +82,7 @@ public class ViewManagerTest {
         SwingUtilities.invokeLater(()->{
             ViewManager v = new ViewManager(mock);
             v.showGUI();
-            new Timer(3000,e-> v.dispose()).start();
+            new Timer(2000,e-> v.dispose()).start();
         });
         Thread.sleep(3000);
     }
