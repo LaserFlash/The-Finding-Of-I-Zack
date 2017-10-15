@@ -209,7 +209,7 @@ public class Player extends AbstractPlayer {
     public void damage(int damage) {
         int hit;
         if (armour > damage) {hit = 0;}
-        else if (damage > armour) {hit = Math.abs(armour-damage);}
+        else if (damage > armour) {hit = Math.abs(armour-damage); armour = 0;}
         else {hit = damage;}
         this.health -= hit;
         if (armour > 0) {armour--;}
