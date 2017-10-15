@@ -1,5 +1,6 @@
 package TheFindingOfIZack.View.Panels;
 
+import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.World.Model;
 
 import javax.swing.*;
@@ -16,7 +17,7 @@ public class GameArea extends JPanel{
      * Constructor for the GameArea requires a reference to the model is represents
      * @param m Model being represented
      */
-    GameArea(Model m){
+    public GameArea(Model m){
         super();
         this.model = m;
     }
@@ -44,5 +45,10 @@ public class GameArea extends JPanel{
      */
     private void drawPlayer(Graphics g){
         model.getPlayer().draw(g);
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(GameDimensions.GAME_WIDTH, GameDimensions.GAME_HEIGHT);
     }
 }
