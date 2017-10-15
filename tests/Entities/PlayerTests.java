@@ -47,7 +47,7 @@ public class PlayerTests {
         Player p = new Player(new Point(GameDimensions.VERT_DOOR_START, GameDimensions.TOP_WALL));
         standardRoom r1 = createRoom();
 
-        Room r2 = createRoom();
+        standardRoom r2 = createRoom();
 
         Door d = new Door(r1, r2, 0);
 

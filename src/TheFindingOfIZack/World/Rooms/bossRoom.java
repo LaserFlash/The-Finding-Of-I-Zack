@@ -30,7 +30,7 @@ public class bossRoom extends Room implements Savable {
     public void draw(Graphics g){
         super.draw(g);
         enemiesInRoom.forEach(e -> e.draw(g));
-        if(!boss.isDead()){boss.draw(g);}
+        if(boss != null && !boss.isDead()){boss.draw(g);}
     }
 
 
