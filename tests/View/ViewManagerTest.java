@@ -59,53 +59,6 @@ public class ViewManagerTest {
         Thread.sleep((3000));
     }
 
-    /**
-     * check if  the objects in the room such as rocks and urns are drawn correctly
-     * @throws InterruptedException
-     */
-    @Test
-    public void testDrawEntities() throws InterruptedException {
-        MockModel m = new MockModel();
-        standardRoom r = new standardRoom();
-        Player p = new Player(new Point(100,100));
-        r.addPlayer(p);
-        r.populateRoom(p);
-        SwingUtilities.invokeLater(()->{
-
-            ViewManager v = new ViewManager(m);
-            v.showGUI();
-
-            new Timer(2000,e-> r.draw(v.getGraphics())).start();
-
-
-
-        });
-        Thread.sleep((3000));
-    }
-
-    /**
-     * checks that the boss is drawn correctly
-     * @throws InterruptedException
-     */
-    @Test
-    public void testDrawBoss() throws InterruptedException {
-        MockModel m = new MockModel();
-        bossRoom r = new bossRoom();
-        Player p = new Player(new Point(100,100));
-        r.addPlayer(p);
-        r.populateRoom(p);
-        SwingUtilities.invokeLater(()->{
-
-            ViewManager v = new ViewManager(m);
-            v.showGUI();
-
-            new Timer(2000,e-> r.draw(v.getGraphics())).start();
-
-
-
-        });
-        Thread.sleep((3000));
-    }
 
     /**
      * Check end screen panel with default text
