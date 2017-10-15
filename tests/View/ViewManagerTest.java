@@ -62,6 +62,10 @@ public class ViewManagerTest {
         Thread.sleep((3000));
     }
 
+    /**
+     * check if  the objects in the room such as rocks and urns are drawn correctly
+     * @throws InterruptedException
+     */
     @Test
     public void testDrawEntities() throws InterruptedException {
         MockModel m = new MockModel();
@@ -81,6 +85,11 @@ public class ViewManagerTest {
         });
         Thread.sleep((3000));
     }
+
+    /**
+     * checks that the boss is drawn correctly
+     * @throws InterruptedException
+     */
     @Test
     public void testDrawBoss() throws InterruptedException {
         MockModel m = new MockModel();
