@@ -35,11 +35,7 @@ public class GameEndScreen  extends ScreenPanel{
         this.setForeground(Color.red);
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 
-        JLabel textLabel = new JLabel(message[0]);
-        setLabelFontSize(textLabel);
-
-        textLabels.add(textLabel);
-        this.add(textLabel);
+        changeText(message);
 
         returnButton = new JButton("Menu",normalButton);
         returnButton.setHorizontalTextPosition(JButton.CENTER);
@@ -70,7 +66,7 @@ public class GameEndScreen  extends ScreenPanel{
     public void changeText(String[] text){
         textLabels.forEach(this::remove);
         textLabels.clear();
-        this.remove(returnButton);
+        if (this.returnButton != null) this.remove(returnButton);
         for (String s: text){
             JLabel tmp = new JLabel(s);
             setLabelFontSize(tmp);
@@ -78,7 +74,7 @@ public class GameEndScreen  extends ScreenPanel{
         }
         textLabels.forEach(this::add);
         this.add(Box.createRigidArea(new Dimension(5,50)));
-        this.add(returnButton);
+        if (this.returnButton != null) this.add(returnButton);
     }
 
     @Override

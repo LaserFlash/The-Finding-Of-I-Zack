@@ -49,6 +49,11 @@ public class MockView extends View{
     }
 
     @Override
+    public void goToEndView() {
+
+    }
+
+    @Override
     public void disableOtherButtons() {
 
     }

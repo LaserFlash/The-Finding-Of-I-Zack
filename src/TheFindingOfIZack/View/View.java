@@ -50,6 +50,11 @@ public abstract class View extends JFrame implements Observer {
     public abstract void enableOtherButtons();
 
     /**
+     *
+     */
+    public abstract void goToEndView();
+
+    /**
      * Disable buttons that may need to be disabled
      */
     public abstract void disableOtherButtons();
