@@ -11,6 +11,10 @@ import javax.swing.*;
 
 public class IndividualPanelTests {
 
+    /**
+     * Test display of GameEndScreen using the default "Game Over" text
+     * @throws InterruptedException
+     */
     @Test
     public void endScreenDefaultText() throws InterruptedException {
         JFrame f = new JFrame();
@@ -18,6 +22,10 @@ public class IndividualPanelTests {
         displayTestWindow(f);
     }
 
+    /**
+     * Test the behaviour when the GameEndScreen is given a long string
+     * @throws InterruptedException
+     */
     @Test
     public void endScreenLongText() throws InterruptedException {
         JFrame f = new JFrame();
@@ -25,6 +33,11 @@ public class IndividualPanelTests {
         displayTestWindow(f);
     }
 
+    /**
+     * Test the behaviour when the GameEndScreen is given a multi line input
+     * Each array entry is a new line
+     * @throws InterruptedException
+     */
     @Test
     public void endScreenMultipleLineText() throws InterruptedException {
         JFrame f = new JFrame();
@@ -32,7 +45,11 @@ public class IndividualPanelTests {
         displayTestWindow(f);
     }
 
-
+    /**
+     * Draw a empty room on the GameArea
+     * Should just be the room image
+     * @throws InterruptedException
+     */
     @Test
     public void drawGameArea() throws InterruptedException {
         GameArea a = new GameArea(new MockModel());
@@ -41,6 +58,11 @@ public class IndividualPanelTests {
         displayTestWindow(f);
     }
 
+    /**
+     * Draw the inventory panel,
+     * should draw the bg image and health and armour bars empty
+     * @throws InterruptedException
+     */
     @Test
     public void drawInventoryPanel() throws InterruptedException {
         InventoryPanel i = new InventoryPanel(new MockModel());
@@ -49,6 +71,11 @@ public class IndividualPanelTests {
         displayTestWindow(f);
     }
 
+    /**
+     * Show the test window for a few seconds
+     * @param f frame to show
+     * @throws InterruptedException
+     */
     private void displayTestWindow(JFrame f) throws InterruptedException {
 
         f.pack();
