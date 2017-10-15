@@ -56,6 +56,18 @@ public class ViewManagerTest {
         Thread.sleep((3000));
     }
 
+    @Test
+    public void testLooseScreenDisplay() throws InterruptedException {
+        MockModel m = new MockModel();
+        SwingUtilities.invokeLater(()->{
+            ViewManager v = new ViewManager(m);
+            v.showGUI();
+            new Timer(3000, e-> v.goToEndView());
+        });
+
+        Thread.sleep((3000));
+    }
+
 
     /**
      * Restrict the window to being displayed for 3 second period

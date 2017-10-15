@@ -116,7 +116,8 @@ public class ViewManager extends View {
         this.gameScreen.disableOtherButtons();
     }
 
-    private void goToEndView(){
+    @Override
+    public void goToEndView(){
         this.remove(gameScreen);
         this.remove(startScreen);
         this.add(endScreen);
