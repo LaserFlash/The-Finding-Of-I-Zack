@@ -51,18 +51,24 @@ public class ViewManagerTest {
         SwingUtilities.invokeLater(()->{
             ViewManager v = new ViewManager(m);
             v.showGUI();
-            new Timer(2000, e-> v.enableOtherButtons()).start();
+            new Timer(1000, e-> v.enableOtherButtons()).start();
+            new Timer(2000,e-> v.dispose()).start();
         });
         Thread.sleep((3000));
     }
 
+    /**
+     * Check end screen panel with default text
+     * @throws InterruptedException
+     */
     @Test
-    public void testLooseScreenDisplay() throws InterruptedException {
+    public void testEndScreenDisplay() throws InterruptedException {
         MockModel m = new MockModel();
         SwingUtilities.invokeLater(()->{
             ViewManager v = new ViewManager(m);
             v.showGUI();
-            new Timer(3000, e-> v.goToEndView());
+            new Timer(1000, e-> v.goToEndView()).start();
+            new Timer(2000,e-> v.dispose()).start();
         });
 
         Thread.sleep((3000));
