@@ -1,6 +1,9 @@
 package View;
 
+import Mocks.MockModel;
+import TheFindingOfIZack.View.Panels.GameArea;
 import TheFindingOfIZack.View.Panels.GameEndScreen;
+import TheFindingOfIZack.World.Game;
 import org.junit.Test;
 
 import javax.swing.*;
@@ -43,6 +46,23 @@ public class IndividualPanelTests {
 
         SwingUtilities.invokeLater(()->{
             f.setVisible(true);
+            new Timer(2000, e-> f.dispose()).start();
+        });
+
+        Thread.sleep((3000));
+    }
+
+
+    @Test
+    public void drawGameArea() throws InterruptedException {
+        GameArea a = new GameArea(new MockModel());
+        JFrame f = new JFrame();
+        f.add(a);
+        f.pack();
+
+        SwingUtilities.invokeLater(()->{
+            f.setVisible(true);
+            new Timer(1000,e-> a.repaint()).start();
             new Timer(2000, e-> f.dispose()).start();
         });
 
