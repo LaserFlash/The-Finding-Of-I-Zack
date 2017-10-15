@@ -41,13 +41,12 @@ public class Player extends AbstractPlayer {
     private int speed = 5;
     private int key = 0;
     private int damage = 10;
-    private int MAX_DAMAGE = 20;
 
     /**
      *  Fields for storing weapon information
      */
     private int weaponTick = 0;
-    private int firerate = 20;
+    private int fireRate = 20;
     private int MIN_FIRERATE = 7;
 
     /**
@@ -82,7 +81,7 @@ public class Player extends AbstractPlayer {
         this.key = (p.getKey())? 1:0;
         this.damage = p.getDamage();
         this.weaponTick = p.weaponTick;
-        this.firerate = p.firerate;
+        this.fireRate = p.fireRate;
         this.won = false;
     }
 
@@ -117,7 +116,7 @@ public class Player extends AbstractPlayer {
         /*
         Checks whether the player can fire again and iterates weaponTick
          */
-        if (weaponTick >= firerate) {weaponTick = 0;}
+        if (weaponTick >= fireRate) {weaponTick = 0;}
         else if (weaponTick != 0) {weaponTick++;}
         for (Projectile p : projectiles) {
             p.move();
@@ -381,7 +380,7 @@ public class Player extends AbstractPlayer {
         if (room.getSouthDoor().isLocked) {return;}
         if (room.getSouthDoor().bossDoor && room.getSouthDoor().needsKey) {
             if (this.key > 0) {
-                removekey();
+                removeKey();
                 room.getSouthDoor().useKey();
             }
             else {return;}
@@ -408,7 +407,7 @@ public class Player extends AbstractPlayer {
         if (room.getNorthDoor().isLocked) {return;}
         if (room.getNorthDoor().bossDoor && room.getNorthDoor().needsKey) {
             if (this.key > 0) {
-                removekey();
+                removeKey();
                 room.getNorthDoor().useKey();
             }
             else {return;}
@@ -435,7 +434,7 @@ public class Player extends AbstractPlayer {
         if (room.getWestDoor().isLocked) {return;}
         if (room.getWestDoor().bossDoor && room.getWestDoor().needsKey) {
             if (this.key > 0) {
-                removekey();
+                removeKey();
                 room.getWestDoor().useKey();
             }
             else {return;}
@@ -462,7 +461,7 @@ public class Player extends AbstractPlayer {
         if (room.getEastDoor().isLocked) {return;}
         if (room.getEastDoor().bossDoor && room.getEastDoor().needsKey) {
             if (this.key > 0) {
-                removekey();
+                removeKey();
                 room.getEastDoor().useKey();
             }
             else {return;}
@@ -564,7 +563,7 @@ public class Player extends AbstractPlayer {
         key++;
     }
 
-    public void removekey() {
+    public void removeKey() {
         key--;
     }
 
@@ -589,10 +588,18 @@ public class Player extends AbstractPlayer {
     public int getDamage(){ return damage; }
 
     public void weaponUpgrade() {
-//        if (damage + 2 > MAX_DAMAGE) {damage = MAX_DAMAGE;}
-//        else {damage += 2;}
-        if (firerate-3 < MIN_FIRERATE) {firerate = MIN_FIRERATE;}
-        else {firerate -= 3;}
+        if (fireRate -3 < MIN_FIRERATE) {
+            fireRate = MIN_FIRERATE;}
+        else {
+            fireRate -= 3;}
+    }
+
+    public int getFireRate() {
+        return fireRate;
+    }
+
+    public int getMinFireRate() {
+        return MIN_FIRERATE;
     }
 
     public List<Projectile> getProjectiles() {
