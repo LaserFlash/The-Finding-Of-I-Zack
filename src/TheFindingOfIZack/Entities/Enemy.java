@@ -96,9 +96,9 @@ public class Enemy extends Entity {
     public void move() {
         tick ++;
         Point playerPoint = player.getLocation();
+        wallCheck();
         location = this.behaviour.step(location, playerPoint, r);
         setBox();
-        wallCheck();
         if(collision(this.getBoundingBox())){
             damagePlayer();
         }
