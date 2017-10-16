@@ -9,6 +9,9 @@ import TheFindingOfIZack.World.Rooms.itemRoom;
 import TheFindingOfIZack.World.Rooms.standardRoom;
 import org.junit.Test;
 
+import javax.swing.*;
+import java.awt.*;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -17,7 +20,6 @@ import static org.junit.Assert.assertTrue;
  */
 public class PlayerTests {
 
-    private int health = 100;
     private int x = 100;
     private int y = 100;
     private Point location = new Point(x, y);
@@ -325,6 +327,23 @@ public class PlayerTests {
 
         p.removeKey();
         assertFalse(p.getKey());
+    }
+
+    @Test
+    public void testDrawPlayer() throws InterruptedException {
+        Player p = new Player(location);
+        SwingUtilities.invokeLater(()->{
+            JFrame f = new JFrame();
+            JPanel panel = new JPanel();
+            f.add(panel);
+            panel.setPreferredSize(new Dimension(GameDimensions.GAME_WIDTH,GameDimensions.GAME_HEIGHT));
+            f.pack();
+            f.setVisible(true);
+
+            new Timer(1000,e-> p.draw(panel.getGraphics())).start();
+            new Timer(3000,e -> f.dispose()).start();
+        });
+        Thread.sleep((3000));
     }
 
 }

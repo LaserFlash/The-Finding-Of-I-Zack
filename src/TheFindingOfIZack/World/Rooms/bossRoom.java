@@ -39,7 +39,7 @@ public class bossRoom extends Room implements Savable {
     public void update() {
 
 
-        if (boss.isDead()) {
+        if (boss.isDead() && enemiesInRoom.isEmpty()) {
             this.isCleared = true;
             player.setWon();
             if (this.northDoor != null) {
