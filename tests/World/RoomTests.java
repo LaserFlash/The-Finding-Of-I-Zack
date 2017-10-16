@@ -5,10 +5,7 @@ import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.View.ViewManager;
-import TheFindingOfIZack.World.Rooms.Door;
-import TheFindingOfIZack.World.Rooms.Room;
-import TheFindingOfIZack.World.Rooms.bossRoom;
-import TheFindingOfIZack.World.Rooms.standardRoom;
+import TheFindingOfIZack.World.Rooms.*;
 import org.junit.Test;
 
 import javax.swing.*;
@@ -39,7 +36,9 @@ public class RoomTests {
         assert(r.getWestDoor() == null);
 
     }
-
+    /**
+     * checks that a door to the north is added correctly
+     */
     @Test
     public void addNorthDoor(){
         Room r1 = new Room() {
@@ -73,7 +72,9 @@ public class RoomTests {
 
     }
 
-
+    /**
+     * checks that a door to the east is added correctly
+     */
     @Test
     public void addEastDoor(){
         Room r1 = new Room() {
@@ -106,7 +107,9 @@ public class RoomTests {
 
 
     }
-
+    /**
+     * checks that a door to the south is added correctly
+     */
     @Test
     public void addSouthDoor(){
         Room r1 = new Room() {
@@ -140,6 +143,9 @@ public class RoomTests {
 
     }
 
+    /**
+     * checks that a door to the west is added correctly
+     */
     @Test
     public void addWestDoor(){
         Room r1 = new Room() {
@@ -173,6 +179,9 @@ public class RoomTests {
 
     }
 
+    /**
+     * checks that east doors lead to a west door and vice versa
+     */
     @Test
     public void testHorizontalOpposite(){
         Room r1 = new Room() {
@@ -210,6 +219,10 @@ public class RoomTests {
         assert (r2.getWestDoor().getOpposite().getDestination() == r2);
 
     }
+
+    /**
+     * checks that north doors lead to a south door and vice versa
+     */
     @Test
     public void testVerticalOpposite(){
         Room r1 = new Room() {
@@ -249,11 +262,11 @@ public class RoomTests {
     }
 
     /**
-     * check if  the objects in the room such as rocks and urns are drawn correctly
+     * check if  the objects in a standard room such as rocks and urns are drawn  after population
      * @throws InterruptedException
      */
     @Test
-    public void testDrawEntities() throws InterruptedException {
+    public void testDrawStandardRoom() throws InterruptedException {
         standardRoom r = new standardRoom();
         Player p = new Player(new Point(100,100));
         r.addPlayer(p);
@@ -273,12 +286,11 @@ public class RoomTests {
     }
 
     /**
-     * checks that the boss is drawn correctly
+     * checks that the boss is drawn correctly after population
      * @throws InterruptedException
      */
     @Test
     public void testDrawBoss() throws InterruptedException {
-        MockModel m = new MockModel();
         bossRoom r = new bossRoom();
         Player p = new Player(new Point(100,100));
         r.addPlayer(p);
@@ -297,5 +309,65 @@ public class RoomTests {
         Thread.sleep((3000));
     }
 
+    /**
+     * checks that an item room is drawn correctly after population
+     * @throws InterruptedException
+     */
+    @Test
+    public void testDrawItemRoom() throws InterruptedException{
+        itemRoom r = new itemRoom();
+        Player p = new Player(new Point(100,100));
+        r.addPlayer(p);
+        r.populateRoom(p);
+
+        SwingUtilities.invokeLater(()->{
+            JFrame f = new JFrame();
+            JPanel panel = new JPanel();
+            f.add(panel);
+            panel.setPreferredSize(new Dimension(GameDimensions.GAME_WIDTH,GameDimensions.GAME_HEIGHT));
+            f.pack();
+            f.setVisible(true);
+
+            new Timer(1000,e-> r.draw(panel.getGraphics())).start();
+            new Timer(2000,e -> f.dispose()).start();
+        });
+        Thread.sleep((3000));
+
+    }
+
+    /**
+     * checks that doors are drawn correctly in all 4 positions
+     * @throws InterruptedException
+     */
+    @Test
+    public void testDoorsDraw() throws InterruptedException{
+        startRoom r = new startRoom();
+        startRoom r2 = new startRoom();
+        Door n = new Door(r,r2,0);
+        Door e = new Door(r,r2,1);
+        Door s = new Door(r,r2,2);
+        Door w = new Door(r,r2,3);
+
+        r.addDoor(n,0);
+        r.addDoor(e,1);
+        r.addDoor(s,2);
+        r.addDoor(w,3);
+
+        SwingUtilities.invokeLater(()->{
+            JFrame f = new JFrame();
+            JPanel panel = new JPanel();
+            f.add(panel);
+            panel.setPreferredSize(new Dimension(GameDimensions.GAME_WIDTH,GameDimensions.GAME_HEIGHT));
+            f.pack();
+            f.setVisible(true);
+
+            new Timer(1000,t-> r.draw(panel.getGraphics())).start();
+            new Timer(2000,t -> f.dispose()).start();
+        });
+        Thread.sleep((3000));
+
+
+
+    }
 
 }
