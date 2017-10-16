@@ -34,24 +34,16 @@ public class MobBoss extends Mob implements Savable{
     @Override
     public Point step(Point location, Point player, Room room){
         moveType ++;
+
         double changeX = (player.getX() - location.getX());
         double changeY = (player.getY() - location.getY());
 
-        double newX;
-        double newY;
-        double h;
-        double a;
-        if(changeX != 0 && changeY != 0) {
-            h = Math.hypot(changeX, changeY);
-            a = h / speed;
+        if(changeX == 0 && changeY == 0) return location;   //Prevent divide by 0 issues
 
-            newX = changeX / a;
-            newY = changeY / a;
-        }
-        else {
-            newX = 0;
-            newY = 0;
-        }
+        double h = Math.hypot(changeX, changeY);
+        double a = h / speed;
+        double newX = changeX / a;
+        double newY = changeY / a;
 
         if(moveType == CHANGE_TYPE || moveType == CHANGE_TYPE*2 && room instanceof bossRoom){
             bossRoom r = (bossRoom) room;

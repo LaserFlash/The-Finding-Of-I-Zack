@@ -50,24 +50,16 @@ public class MobShooter extends Mob implements Savable{
         projectile(location,player);
         double range = distanceBetween(location,player);
         if (range < viewRange && range > stopDistance+MOVE_BUFFER || range < stopDistance) {
+
             double changeX = (player.getX() - location.getX());
             double changeY = (player.getY() - location.getY());
 
-            double newX;
-            double newY;
-            double h;
-            double a;
-            if(changeX != 0 && changeY != 0) {
-                h = Math.hypot(changeX, changeY);
-                a = h / speed;
+            if(changeX == 0 && changeY == 0) return location;   //Prevent divide by 0 issues
 
-                newX = changeX / a;
-                newY = changeY / a;
-            }
-            else {
-                newX = 0;
-                newY = 0;
-            }
+            double h = Math.hypot(changeX, changeY);
+            double a = h / speed;
+            double newX = changeX / a;
+            double newY = changeY / a;
 
             if(range < stopDistance){
                 newX = -newX;
