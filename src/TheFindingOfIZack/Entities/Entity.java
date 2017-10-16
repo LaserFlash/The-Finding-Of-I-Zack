@@ -19,7 +19,7 @@ public abstract class Entity implements Drawable, Savable{
     protected Point location;
     protected transient BoundingBox box;
 
-    public static int width = 40;
+    public int width = 40;
 
     public Entity(){}
 

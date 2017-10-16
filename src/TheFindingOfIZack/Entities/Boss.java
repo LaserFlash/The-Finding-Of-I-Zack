@@ -24,6 +24,7 @@ public class Boss extends Enemy {
      */
     public Boss(Point location, Player p) {
         super(location, p);
+        width = 120;
     }
 
     /**
