@@ -97,25 +97,22 @@ public class Enemy extends Entity {
         tick ++;
         Point playerPoint = player.getLocation();
         Point potentialStep = this.behaviour.step(location, playerPoint, r);
-        //potentialStep represents the move which will take place if there are no obstacle,
-        // also checks if mob is currently touching player
-        //entityCollision();*************************************************************************************************************************
+
         if(!collision(this.getBoundingBox())) {
             this.location = potentialStep;
-            this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.width, this.width);
             setBox();
         }
         if(collision(this.getBoundingBox())){
             damagePlayer();
         }
-        canMove();
+        wallCheck();
     }
 
 
     /**
      * Determines if the mob has collided with a wall
      */
-    protected void canMove(){
+    protected void wallCheck(){
         double x = location.getX();
         double y = location.getY();
         if(y < TOP_WALL){y = TOP_WALL;}
