@@ -131,6 +131,8 @@ public class Enemy extends Entity {
     public void drawProjectiles(MobShooter m, Graphics g){
         synchronized (m.getProjectile()) {
             for (MobProjectile i : m.getProjectile()) {
+                i.move();
+                i.setBox();
                 i.draw(g);
                 if (collision(i.getBoundingBox())) {
                     i.pop();
