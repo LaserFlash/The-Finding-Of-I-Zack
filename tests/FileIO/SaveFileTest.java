@@ -1,10 +1,10 @@
 package FileIO;
 
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.FileIO.SaveFile;
 import TheFindingOfIZack.FileIO.Util.InvalidFileException;
 import TheFindingOfIZack.Util.GameDimensions;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.World.Game;
 import org.junit.Test;
 
