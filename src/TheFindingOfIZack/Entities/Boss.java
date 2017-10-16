@@ -44,10 +44,10 @@ public class Boss extends Enemy {
     public void draw(Graphics g) {
         g.drawImage(behaviour.getMob().getImage(), (int) location.getX(), (int) location.getY(), null);
 
-        double healthBar = (health/ MAX_HEALTH) * size;
+        double healthBar = (health/MAX_HEALTH) * size;
         if (healthBar < 0) {healthBar = 0;}
 
-        double armourBar = ( armour/ MAX_ARMOUR) * size;
+        double armourBar = (armour/MAX_ARMOUR) * size;
         if (armourBar < 0) {armourBar = 0;}
 
         double red = ((MAX_HEALTH-health)/MAX_HEALTH)*255;
