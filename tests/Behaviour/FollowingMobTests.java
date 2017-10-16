@@ -3,7 +3,8 @@ package Behaviour;
 import TheFindingOfIZack.Behaviour.MobEnemy;
 import TheFindingOfIZack.Behaviour.MobType;
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Entities.Point;
+
+import TheFindingOfIZack.Util.Point;
 import org.junit.Test;
 
 import java.math.BigDecimal;

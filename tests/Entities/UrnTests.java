@@ -1,12 +1,10 @@
 package Entities;
 
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Entities.Point;
-import TheFindingOfIZack.Entities.Rock;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.Entities.Urn;
 import TheFindingOfIZack.Items.Weapon;
 import TheFindingOfIZack.Util.GameDimensions;
-import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.standardRoom;
 import org.junit.Test;
 
