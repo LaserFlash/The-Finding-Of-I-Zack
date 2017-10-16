@@ -18,9 +18,9 @@ import static TheFindingOfIZack.Entities.Entity.width;
  */
 public class MobShooter extends Mob implements Savable{
     private final int PROJECTILE_TICK = 30;
-    private int tick = (int)(Math.random()*PROJECTILE_TICK);
+    private int tick;
     private int stopDistance = 200;
-    private List<MobProjectile> projectiles = Collections.synchronizedList(new ArrayList<MobProjectile>());
+    private List<MobProjectile> projectiles;
     public static Image image;
     static {
         image = ImageLoader.loadImage("/weeOctoBoi.png").getScaledInstance(width, width, Image.SCALE_DEFAULT);
@@ -31,6 +31,8 @@ public class MobShooter extends Mob implements Savable{
         this.speed = 3;
         this.health = 50;
         this.damage = 5;
+        this.projectiles = Collections.synchronizedList(new ArrayList<MobProjectile>());
+        this.tick = (int)(Math.random()*PROJECTILE_TICK);
     }
 
     @Override
