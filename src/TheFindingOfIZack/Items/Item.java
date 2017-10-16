@@ -30,6 +30,10 @@ public abstract class Item implements Drawable, Savable{
         this.player = p;
     }
 
+    public Point getLocation() {
+        return location;
+    }
+
     public void setBox() {
         this.box = new BoundingBox(location.getX(), location.getY(), width, width);
     }

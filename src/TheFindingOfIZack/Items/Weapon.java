@@ -1,6 +1,7 @@
 package TheFindingOfIZack.Items;
 
-import TheFindingOfIZack.Entities.Player;
+import TheFindingOfIZack.Entities.*;
+import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.ImageLoader;
 

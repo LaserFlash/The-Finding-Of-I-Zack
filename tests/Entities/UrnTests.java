@@ -4,6 +4,7 @@ import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Entities.Rock;
 import TheFindingOfIZack.Entities.Urn;
+import TheFindingOfIZack.Items.Weapon;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.standardRoom;
@@ -33,6 +34,20 @@ public class UrnTests {
         u.damage(u.getHealth());
         assertTrue(u.getHealth() == 0);
         assertTrue(u.isDestroyed());
+    }
+
+    @Test
+    public void testItemDrop() {
+        standardRoom r = new standardRoom();
+        p.setRoom(r);
+        Weapon i = new Weapon(p);
+        Urn u = new Urn(location, p);
+        u.setItem(i);
+        assertTrue(u.getItem() != null);
+
+        u.damage(u.getHealth());
+        assertTrue(u.isDestroyed());
+        assertTrue(!p.getRoom().getCollectibles().isEmpty());
     }
 
     @Test
