@@ -48,10 +48,31 @@ public class ViewManagerTest {
         SwingUtilities.invokeLater(()->{
             ViewManager v = new ViewManager(m);
             v.showGUI();
-            new Timer(2000, e-> v.enableOtherButtons()).start();
+            new Timer(1000, e-> v.enableOtherButtons()).start();
+            new Timer(2000, e-> v.dispose()).start();
         });
         Thread.sleep((3000));
     }
+
+    /**
+     * Check that the initial disabled buttons become disabled again
+     * Disabled buttons are:
+     *      Save
+     *      Resume
+     */
+    @Test
+    public void testDeactivateOtherButtons() throws InterruptedException {
+        MockModel m = new MockModel();
+        SwingUtilities.invokeLater(()->{
+            ViewManager v = new ViewManager(m);
+            v.showGUI();
+            v.enableOtherButtons();
+            new Timer(1000, e-> v.disableOtherButtons()).start();
+            new Timer(2000, e-> v.dispose()).start();
+        });
+        Thread.sleep((3000));
+    }
+
 
 
     /**
