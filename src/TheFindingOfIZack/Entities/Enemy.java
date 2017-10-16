@@ -111,6 +111,7 @@ public class Enemy extends Entity {
     protected void wallCheck(){
         double x = location.getX();
         double y = location.getY();
+
         if(y < TOP_WALL){y = TOP_WALL;}
         if(x < LEFT_WALL){x = LEFT_WALL;}
         if(y+width > BOTTOM_WALL){y = BOTTOM_WALL-width;}
