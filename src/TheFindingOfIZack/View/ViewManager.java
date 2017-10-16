@@ -114,6 +114,7 @@ public class ViewManager extends View {
     public void disableOtherButtons() {
         this.startScreen.disableOtherButtons();
         this.gameScreen.disableOtherButtons();
+        this.endScreen.disableOtherButtons();
     }
 
     @Override
