@@ -15,9 +15,8 @@ public class MobEnemy implements Savable {
     /**
      * Create a new Mob Enemy containing a type of mob
      * @param m enum indicating the mob type
-     * @param room  room the mob is in
      */
-    public MobEnemy(MobType m, Room room) {
+    public MobEnemy(MobType m) {
         if (m == null){ mobTypeError("Null mob"); return;}
         this.mob = m.constructMob();
     }
