@@ -41,7 +41,6 @@ public abstract class Mob implements Savable {
         double changeX = (player.getX() - location.getX());
         double changeY = (player.getY() - location.getY());
 
-
         double newX;
         double newY;
         double h;

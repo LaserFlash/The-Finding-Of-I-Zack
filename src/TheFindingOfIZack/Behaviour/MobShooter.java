@@ -53,10 +53,21 @@ public class MobShooter extends Mob implements Savable{
             double changeX = (player.getX() - location.getX());
             double changeY = (player.getY() - location.getY());
 
-            double h = Math.hypot(changeX, changeY);
-            double a = h / speed;
-            double newX = changeX / a;
-            double newY = changeY / a;
+            double newX;
+            double newY;
+            double h;
+            double a;
+            if(changeX != 0 && changeY != 0) {
+                h = Math.hypot(changeX, changeY);
+                a = h / speed;
+
+                newX = changeX / a;
+                newY = changeY / a;
+            }
+            else {
+                newX = 0;
+                newY = 0;
+            }
 
             if(range < stopDistance){
                 newX = -newX;
