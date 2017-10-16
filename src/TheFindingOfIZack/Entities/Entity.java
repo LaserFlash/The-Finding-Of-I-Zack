@@ -2,12 +2,9 @@ package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.View.Drawable;
-import TheFindingOfIZack.World.Game;
 import javafx.geometry.BoundingBox;
 
 import java.awt.*;
-
-import static TheFindingOfIZack.Util.GameDimensions.*;
 
 
 /**
@@ -29,7 +26,6 @@ public abstract class Entity implements Drawable, Savable{
     public Entity(Player p){
         this.location = p.location;
         setBox();
-        outOfBounds();
     }
 
     /**
@@ -39,7 +35,6 @@ public abstract class Entity implements Drawable, Savable{
     public Entity(Point location) {
         this.location = location;
         this.box = new BoundingBox(location.getX(), location.getY(), width, width);
-        outOfBounds();
     }
 
     /**
@@ -48,15 +43,6 @@ public abstract class Entity implements Drawable, Savable{
      */
     public Point getLocation() {
         return this.location;
-    }
-
-    public void outOfBounds(){
-        if (this.box.getMaxX() > RIGHT_WALL ||
-                this.box.getMinX() < LEFT_WALL ||
-                this.box.getMaxY() > BOTTOM_WALL ||
-                this.box.getMinY() < TOP_WALL){
-            outOfMapBoundsError(this.toString());
-        }
     }
 
     /**
@@ -79,13 +65,4 @@ public abstract class Entity implements Drawable, Savable{
     public BoundingBox getBoundingBox(){
         return box;
     }
-
-    /**
-     * Prints out error if an entity moves out of bounds
-     * @param str   the entity that has moved out of bounds
-     */
-    private void outOfMapBoundsError(String str){
-        System.err.print("Error: Entity " + str + " is out of map bounds \n");
-    }
-
 }
