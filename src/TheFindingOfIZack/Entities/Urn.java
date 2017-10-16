@@ -71,7 +71,7 @@ public class Urn extends Entity implements Savable{
      */
     public void damage(int damage) {
         this.health -= damage;
-        if (health < 0) {
+        if (health <= 0) {
             health = 0;
             destroyed = true;
             if (item != null) {
@@ -100,4 +100,11 @@ public class Urn extends Entity implements Savable{
     }
 
 
+    public int getHealth() {
+        return health;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 }

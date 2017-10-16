@@ -18,7 +18,7 @@ public class Rock extends Entity implements Savable {
 
     private boolean destroyed = false;
 
-    int health = 1000;
+    int health = 100;
 
     static {
         rocksImage = ImageLoader.loadImage("/rocks.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
@@ -38,7 +38,7 @@ public class Rock extends Entity implements Savable {
      */
     public void damage(int damage) {
         this.health -= damage;
-        if (health < 0) {
+        if (health <= 0) {
             health = 0;
             destroyed = true;
         }
@@ -62,4 +62,7 @@ public class Rock extends Entity implements Savable {
         return destroyed;
     }
 
+    public int getHealth() {
+        return health;
+    }
 }
