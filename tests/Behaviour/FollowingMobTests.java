@@ -1,6 +1,7 @@
 package Behaviour;
 
 import TheFindingOfIZack.Behaviour.MobEnemy;
+import TheFindingOfIZack.Behaviour.MobType;
 import TheFindingOfIZack.Entities.Player;
 import TheFindingOfIZack.Entities.Point;
 import org.junit.Test;
@@ -15,22 +16,22 @@ public class FollowingMobTests {
     public void createNewMob() throws Exception {
         MobEnemy test;
 
-        test = new MobEnemy("standard", null);
+        test = new MobEnemy(MobType.Standard, null);
         assert(test.getDamage() == 10);
         assert(test.getSpeed() == 3);
         assert(test.getHealth() == 50);
 
-        test = new MobEnemy("fast", null);
+        test = new MobEnemy(MobType.Fast, null);
         assert(test.getDamage() == 5);
         assert(test.getSpeed() == 4.5);
         assert(test.getHealth() == 20);
 
-        test = new MobEnemy("slow", null);
+        test = new MobEnemy(MobType.Slow, null);
         assert(test.getDamage() == 20);
         assert(test.getSpeed() == 2);
         assert(test.getHealth() == 100);
 
-        test = new MobEnemy("boss", null);
+        test = new MobEnemy(MobType.Boss, null);
         assert(test.getDamage() == 20);
         assert(test.getSpeed() == 4);
         assert(test.getHealth() == 1000);
@@ -43,19 +44,19 @@ public class FollowingMobTests {
         Point location;
         Point newlocation;
 
-        m = new MobEnemy("standard",null);
+        m = new MobEnemy(MobType.Standard,null);
         location = new Point(300,300);
         newlocation = m.step(location,p.getLocation(),p.getRoom());
         assertTrue(newlocation.getX() < 300 && newlocation.getY() < 300);
         assertTrue(round(Math.hypot(300 - newlocation.getX(), 300 - newlocation.getY()),2) == m.getSpeed());
 
-        m = new MobEnemy("fast",null);
+        m = new MobEnemy(MobType.Fast,null);
         location = new Point(300,300);
         newlocation = m.step(location,p.getLocation(),p.getRoom());
         assertTrue(newlocation.getX() < 300 && newlocation.getY() < 300);
         assertTrue(round(Math.hypot(300 - newlocation.getX(), 300 - newlocation.getY()),2) == m.getSpeed());
 
-        m = new MobEnemy("slow",null);
+        m = new MobEnemy(MobType.Slow,null);
         location = new Point(300,300);
         newlocation = m.step(location,p.getLocation(),p.getRoom());
         assertTrue(newlocation.getX() < 300 && newlocation.getY() < 300);

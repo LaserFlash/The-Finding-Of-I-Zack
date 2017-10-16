@@ -11,29 +11,15 @@ import TheFindingOfIZack.World.Rooms.Room;
 public class MobEnemy implements Savable {
     private Mob mob;
 
+
     /**
-     * @param type Constructor which takes a type and makes a new mob of this type
+     * Create a new Mob Enemy containing a type of mob
+     * @param m enum indicating the mob type
+     * @param room  room the mob is in
      */
-    public MobEnemy(String type, Room room) {
-        switch (type) {
-            case "standard":
-                mob = new MobStandard();
-                break;
-            case "fast":
-                mob = new MobFast();
-                break;
-            case "slow":
-                mob = new MobSlow();
-                break;
-            case "shooter":
-                mob = new MobShooter();
-                break;
-            case "boss":
-                mob = new MobBoss();
-                break;
-            default: mobTypeError(type);
-                break;
-        }
+    public MobEnemy(MobType m, Room room) {
+        if (m == null){ mobTypeError("Null mob"); return;}
+        this.mob = m.constructMob();
     }
 
     /**

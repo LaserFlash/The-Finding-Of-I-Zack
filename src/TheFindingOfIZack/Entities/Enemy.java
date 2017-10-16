@@ -3,6 +3,7 @@ package TheFindingOfIZack.Entities;
 import TheFindingOfIZack.Behaviour.MobEnemy;
 import TheFindingOfIZack.Behaviour.MobProjectile;
 import TheFindingOfIZack.Behaviour.MobShooter;
+import TheFindingOfIZack.Behaviour.MobType;
 import TheFindingOfIZack.World.Rooms.Room;
 import javafx.geometry.BoundingBox;
 
@@ -36,23 +37,10 @@ public class Enemy extends Entity {
         this.r = p.getRoom();
 
         if (this instanceof Boss) {
-            this.behaviour = new MobEnemy("boss", r);
+            this.behaviour = new MobEnemy(MobType.Boss, r);
         }
         else {
-            int type = (int) (Math.random()*5);
-            //int type = 1;
-            if (type>2) {
-                this.behaviour = new MobEnemy("standard", r);
-            }
-            else if (type==2) {
-                this.behaviour = new MobEnemy("fast", r);
-            }
-            else if (type==1) {
-                this.behaviour = new MobEnemy("shooter", r);
-            }
-            else {
-                this.behaviour = new MobEnemy("slow", r);
-            }
+            this.behaviour = new MobEnemy(MobType.generateRandomMob(),r);
         }
 
         this.health = behaviour.getHealth();
