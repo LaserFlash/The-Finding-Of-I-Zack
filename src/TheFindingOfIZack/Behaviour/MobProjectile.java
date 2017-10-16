@@ -20,6 +20,12 @@ public class MobProjectile extends Projectile implements Drawable, Savable {
     private double directionY;
     private Room room;
     private int size = 20;
+    private static Image projectileImage;
+
+    static {
+        projectileImage = ImageLoader.loadImage("/inkySackyChappy.png").getScaledInstance(Entity.width/2,Entity.width/2,Image.SCALE_DEFAULT);
+
+    }
 
     public MobProjectile(Point location, Point player, Room room){
         super(location, player);
@@ -32,7 +38,6 @@ public class MobProjectile extends Projectile implements Drawable, Savable {
         this.directionY = changeY/a;
         this.location = new Point(location.getX()+size/4,location.getY()+size/4);
         this.room = room;
-        this.projectileImage = ImageLoader.loadImage("/inkySackyChappy.png").getScaledInstance(Entity.width/2,Entity.width/2,Image.SCALE_DEFAULT);
     }
 
     public void pop(){

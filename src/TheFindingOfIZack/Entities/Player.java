@@ -69,11 +69,11 @@ public class Player extends AbstractPlayer {
      */
     public Player(Point location) {
         super(location);
+        projectiles = Collections.synchronizedList(new ArrayList<Projectile>());
     }
 
     public Player(Player p){
         super(p);
-        projectiles = Collections.synchronizedList(new ArrayList<Projectile>());
         this.health = p.getHealth();
         this.armour = p.getArmour();
         this.room = p.getRoom();
