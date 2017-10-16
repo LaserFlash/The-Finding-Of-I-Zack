@@ -41,13 +41,15 @@ public abstract class Room implements Drawable, Savable {
 
     private Player player;
 
+    static {
+        roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameDimensions.GAME_WIDTH, GameDimensions.GAME_HEIGHT,Image.SCALE_DEFAULT);
+    }
+
     public Room() {
         this.enemiesInRoom = new ArrayList<>();
         this.deadEnemies = new ArrayList<>();
         this.items = Collections.synchronizedList(new ArrayList<Entity>());
         this.collectibles = Collections.synchronizedList(new ArrayList<Item>());
-
-        this.roomImage = ImageLoader.loadImage("/room.png").getScaledInstance(GameDimensions.GAME_WIDTH, GameDimensions.GAME_HEIGHT,Image.SCALE_DEFAULT);
 
         this.player = null;
         this.northDoor = null;
