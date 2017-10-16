@@ -70,10 +70,10 @@ public class Enemy extends Entity {
         g.drawImage(behaviour.getMob().getImage(), (int) location.getX(), (int) location.getY(), null);
 
 
-        double red = (((double)MAX_HEALTH-(double)health)/(double)MAX_HEALTH)*(double)255;
+        double red = ((MAX_HEALTH-health)/MAX_HEALTH)*255;
         if (red < 0) {red = 0;}
         else if (red > 255) {red = 255;}
-        double green = ((double)health/(double)MAX_HEALTH)*(double)255;
+        double green = (health/MAX_HEALTH)*255;
         if (green < 0) {green = 0;}
         else if (green > 255) {green = 255;}
         Color c = new Color((int)red, (int) green, 0);

@@ -130,7 +130,7 @@ public class Player extends AbstractPlayer {
                 ArrayList<Enemy> boss = new ArrayList<Enemy>();
                 boss.add(r.getBoss());
                 p.enemyCollision(r.getEnemies());
-                p.enemyCollision(boss);
+                if (!r.getBoss().isDead()) {p.enemyCollision(boss);}
             }
 
             if (room instanceof itemRoom) {
