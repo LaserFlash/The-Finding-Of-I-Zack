@@ -59,7 +59,7 @@ public abstract class Room implements Drawable, Savable {
     }
 
     public Room(Room r){
-        this.collectibles = Collections.synchronizedList(new ArrayList<Item>());
+        this.collectibles = r.collectibles;
         this.player = r.getPlayer();
         this.northDoor = r.getNorthDoor();
         this.eastDoor = r.getEastDoor();
