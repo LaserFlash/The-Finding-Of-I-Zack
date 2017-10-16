@@ -3,6 +3,7 @@ package TheFindingOfIZack.Entities;
 import TheFindingOfIZack.Behaviour.MobEnemy;
 import TheFindingOfIZack.Behaviour.MobProjectile;
 import TheFindingOfIZack.Behaviour.MobShooter;
+import TheFindingOfIZack.Behaviour.MobType;
 import TheFindingOfIZack.World.Rooms.Room;
 import javafx.geometry.BoundingBox;
 
@@ -36,23 +37,10 @@ public class Enemy extends Entity {
         this.r = p.getRoom();
 
         if (this instanceof Boss) {
-            this.behaviour = new MobEnemy("boss", r);
+            this.behaviour = new MobEnemy(MobType.Boss);
         }
         else {
-            int type = (int) (Math.random()*5);
-            //int type = 1;
-            if (type>2) {
-                this.behaviour = new MobEnemy("standard", r);
-            }
-            else if (type==2) {
-                this.behaviour = new MobEnemy("fast", r);
-            }
-            else if (type==1) {
-                this.behaviour = new MobEnemy("shooter", r);
-            }
-            else {
-                this.behaviour = new MobEnemy("slow", r);
-            }
+            this.behaviour = new MobEnemy(MobType.generateRandomMob());
         }
 
         this.health = behaviour.getHealth();
@@ -82,10 +70,10 @@ public class Enemy extends Entity {
         g.drawImage(behaviour.getMob().getImage(), (int) location.getX(), (int) location.getY(), null);
 
 
-        double red = (((double)MAX_HEALTH-(double)health)/(double)MAX_HEALTH)*(double)255;
+        double red = ((MAX_HEALTH-health)/MAX_HEALTH)*255;
         if (red < 0) {red = 0;}
         else if (red > 255) {red = 255;}
-        double green = ((double)health/(double)MAX_HEALTH)*(double)255;
+        double green = (health/MAX_HEALTH)*255;
         if (green < 0) {green = 0;}
         else if (green > 255) {green = 255;}
         Color c = new Color((int)red, (int) green, 0);
