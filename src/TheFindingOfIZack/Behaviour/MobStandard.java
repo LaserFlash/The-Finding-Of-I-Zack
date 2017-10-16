@@ -6,6 +6,8 @@ import TheFindingOfIZack.Util.ImageLoader;
 
 import java.awt.*;
 
+import static TheFindingOfIZack.Entities.Entity.DEFAULT_WIDTH;
+
 /**
  * Created by gordontheo on 19/09/17.
  * The staple enemy, will remain still until the player enters its field of view.
@@ -14,7 +16,7 @@ import java.awt.*;
 public class MobStandard extends Mob implements Savable {
     public static Image image;
     static {
-        image = ImageLoader.loadImage("/bothersomeBrittleStar.png").getScaledInstance(Entity.width,Entity.width, Image.SCALE_DEFAULT);
+        image = ImageLoader.loadImage("/bothersomeBrittleStar.png").getScaledInstance(DEFAULT_WIDTH,DEFAULT_WIDTH, Image.SCALE_DEFAULT);
     }
     MobStandard(){
         this.viewRange = 50;

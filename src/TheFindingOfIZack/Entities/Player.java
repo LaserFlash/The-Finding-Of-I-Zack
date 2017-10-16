@@ -57,7 +57,7 @@ public class Player extends AbstractPlayer {
     private boolean won;
 
     static {
-        playerImage = ImageLoader.loadImage("/iZack.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
+        playerImage = ImageLoader.loadImage("/iZack.png").getScaledInstance(DEFAULT_WIDTH,DEFAULT_WIDTH,Image.SCALE_DEFAULT);
     }
 
     /**

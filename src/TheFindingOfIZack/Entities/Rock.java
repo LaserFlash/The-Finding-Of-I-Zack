@@ -21,7 +21,7 @@ public class Rock extends Entity implements Savable {
     int health = 100;
 
     static {
-        rocksImage = ImageLoader.loadImage("/rocks.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
+        rocksImage = ImageLoader.loadImage("/rocks.png").getScaledInstance(DEFAULT_WIDTH,DEFAULT_WIDTH,Image.SCALE_DEFAULT);
     }
 
     /**

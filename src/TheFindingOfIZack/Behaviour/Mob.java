@@ -9,7 +9,7 @@ import TheFindingOfIZack.World.Rooms.Room;
 import java.awt.*;
 import java.util.List;
 
-import static TheFindingOfIZack.Entities.Entity.width;
+import static TheFindingOfIZack.Entities.Entity.DEFAULT_WIDTH;
 
 /**
  * Created by gordontheo on 27/09/17.
@@ -79,7 +79,7 @@ public abstract class Mob implements Savable {
                     double ry = room.getBoundingBox().getMinY();
                     double mx = location.getX()+newX;
                     double my = location.getY()+newY;
-                    int w = width;
+                    int w = DEFAULT_WIDTH;
 
                     if(mx<rx && my<ry && mx+w>rx && my+w>ry){   //Bottom right
                         tempDirection =  new Point(location.getX()-tempDistance(),location.getY()-tempDistance());

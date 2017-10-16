@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static TheFindingOfIZack.Entities.Entity.width;
+import static TheFindingOfIZack.Entities.Entity.DEFAULT_WIDTH;
 
 /**
  * Created by gordontheo on 29/09/17.
@@ -24,7 +24,7 @@ public class MobShooter extends Mob implements Savable{
     private List<MobProjectile> projectiles;
     public static Image image;
     static {
-        image = ImageLoader.loadImage("/weeOctoBoi.png").getScaledInstance(width, width, Image.SCALE_DEFAULT);
+        image = ImageLoader.loadImage("/weeOctoBoi.png").getScaledInstance(DEFAULT_WIDTH, DEFAULT_WIDTH, Image.SCALE_DEFAULT);
     }
 
     public MobShooter(){

@@ -28,7 +28,7 @@ public class Projectile extends Entity implements Drawable, Savable{
     private static Image projectileImage;
 
     static {
-        projectileImage = ImageLoader.loadImage("/zacksAttacks.png").getScaledInstance(Entity.width/2,Entity.width/2,Image.SCALE_DEFAULT);
+        projectileImage = ImageLoader.loadImage("/zacksAttacks.png").getScaledInstance(DEFAULT_WIDTH/2,Entity.DEFAULT_WIDTH/2,Image.SCALE_DEFAULT);
     }
 
     /**

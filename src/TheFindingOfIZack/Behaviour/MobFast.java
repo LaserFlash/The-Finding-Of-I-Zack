@@ -7,13 +7,15 @@ import TheFindingOfIZack.Util.ImageLoader;
 
 import java.awt.*;
 
+import static TheFindingOfIZack.Entities.Entity.DEFAULT_WIDTH;
+
 /**
  * Created by gordontheo on 19/09/17.
  */
 public class MobFast extends Mob implements Savable{
     public static Image image;
     static {
-        image = ImageLoader.loadImage("/kookyCrabbyKid.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
+        image = ImageLoader.loadImage("/kookyCrabbyKid.png").getScaledInstance(DEFAULT_WIDTH,DEFAULT_WIDTH,Image.SCALE_DEFAULT);
     }
 
     MobFast(){

@@ -19,7 +19,7 @@ public class Enemy extends Entity {
 
     protected MobEnemy behaviour;
     protected double health;
-    protected int MAX_HEALTH;
+    protected double MAX_HEALTH;
     protected Player player;
     protected boolean isDead = false;
     private final int DAMAGE_TICK = 20;

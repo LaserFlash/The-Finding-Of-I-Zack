@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static TheFindingOfIZack.Entities.Entity.DEFAULT_WIDTH;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -42,11 +43,11 @@ public class ProjectileTests {
         p.move(); p.move();
         assertTrue(p.wallCollision());
 
-        p = new Projectile(10, new Point(GameDimensions.RIGHT_WALL- Entity.width, GameDimensions.TOP_WALL), "right");
+        p = new Projectile(10, new Point(GameDimensions.RIGHT_WALL- DEFAULT_WIDTH, GameDimensions.TOP_WALL), "right");
         p.move(); p.move();
         assertTrue(p.wallCollision());
 
-        p = new Projectile(10, new Point(GameDimensions.LEFT_WALL, GameDimensions.BOTTOM_WALL-Entity.width), "down");
+        p = new Projectile(10, new Point(GameDimensions.LEFT_WALL, GameDimensions.BOTTOM_WALL-DEFAULT_WIDTH), "down");
         p.move(); p.move();
         assertTrue(p.wallCollision());
     }

@@ -30,7 +30,7 @@ public class Urn extends Entity implements Savable{
     int health = 15;
 
     static {
-        urnsImage = ImageLoader.loadImage("/pot.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
+        urnsImage = ImageLoader.loadImage("/pot.png").getScaledInstance(DEFAULT_WIDTH,DEFAULT_WIDTH,Image.SCALE_DEFAULT);
     }
 
     /**

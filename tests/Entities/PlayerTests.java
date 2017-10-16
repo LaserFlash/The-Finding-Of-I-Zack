@@ -12,6 +12,7 @@ import org.junit.Test;
 import javax.swing.*;
 import java.awt.*;
 
+import static TheFindingOfIZack.Entities.Entity.DEFAULT_WIDTH;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -74,7 +75,7 @@ public class PlayerTests {
 
     @Test
     public void testLockedDoorEast() {
-        Player p = new Player(new Point(GameDimensions.RIGHT_WALL - Entity.width, GameDimensions.HORZ_DOOR_START));
+        Player p = new Player(new Point(GameDimensions.RIGHT_WALL - DEFAULT_WIDTH, GameDimensions.HORZ_DOOR_START));
 
         standardRoom r1 = createRoom();
         standardRoom r2 = createRoom();
@@ -93,7 +94,7 @@ public class PlayerTests {
 
     @Test
     public void testLockedDoorSouth() {
-        Player p = new Player(new Point(GameDimensions.VERT_DOOR_START, GameDimensions.BOTTOM_WALL - Entity.width));
+        Player p = new Player(new Point(GameDimensions.VERT_DOOR_START, GameDimensions.BOTTOM_WALL - DEFAULT_WIDTH));
         assertTrue(p!=null);
 
         standardRoom r1 = createRoom();
@@ -156,7 +157,7 @@ public class PlayerTests {
 
     @Test
     public void testUnlockedDoorEast() {
-        Player p = new Player(new Point(GameDimensions.RIGHT_WALL - Entity.width, GameDimensions.HORZ_DOOR_START));
+        Player p = new Player(new Point(GameDimensions.RIGHT_WALL - DEFAULT_WIDTH, GameDimensions.HORZ_DOOR_START));
         itemRoom r1 = new itemRoom();
 
         standardRoom r2 = createRoom();
@@ -178,7 +179,7 @@ public class PlayerTests {
 
     @Test
     public void testUnlockedDoorSouth() {
-        Player p = new Player(new Point(GameDimensions.VERT_DOOR_START, GameDimensions.BOTTOM_WALL - Entity.width));
+        Player p = new Player(new Point(GameDimensions.VERT_DOOR_START, GameDimensions.BOTTOM_WALL - DEFAULT_WIDTH));
         itemRoom r1 = new itemRoom();
 
         standardRoom r2 = createRoom();

@@ -18,6 +18,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import static TheFindingOfIZack.Entities.Entity.DEFAULT_WIDTH;
+
 /**
  * Created by fieldryan on 19/09/17.
  * Interface for the general definition of a room
@@ -265,9 +267,9 @@ public abstract class Room implements Drawable, Savable {
         Random r = new Random();
 
         int left = GameDimensions.LEFT_WALL;  //low x boundary
-        int right = GameDimensions.RIGHT_WALL - Entity.width; //high x boundary, allowing for space after object
+        int right = GameDimensions.RIGHT_WALL - DEFAULT_WIDTH; //high x boundary, allowing for space after object
         int top = GameDimensions.TOP_WALL;    //low y boundary
-        int bottom = GameDimensions.BOTTOM_WALL - Entity.width;   //high y boundary, allowing for space after object
+        int bottom = GameDimensions.BOTTOM_WALL - DEFAULT_WIDTH;   //high y boundary, allowing for space after object
 
         int x = r.nextInt(right - left) + left;
         int y = r.nextInt(bottom - top) + top;
@@ -298,21 +300,21 @@ public abstract class Room implements Drawable, Savable {
      * @return  true if the door is not blocked false otherwise
      */
     private boolean checkPointBlockingDoor(int x, int y){
-        if (x >= GameDimensions.GAME_WIDTH/2 - Door.height/2 - Entity.width &&
+        if (x >= GameDimensions.GAME_WIDTH/2 - Door.height/2 - DEFAULT_WIDTH &&
                 x <= GameDimensions.GAME_WIDTH/2 + Door.height/2){     //potentially blocking north or south door
-            if (y >= GameDimensions.BOTTOM_WALL - Entity.width*2){  //Blocking south door
+            if (y >= GameDimensions.BOTTOM_WALL - DEFAULT_WIDTH*2){  //Blocking south door
                 return false;
             }
-            else if (y <= GameDimensions.TOP_WALL + Entity.width){    //Blocking North door
+            else if (y <= GameDimensions.TOP_WALL + DEFAULT_WIDTH){    //Blocking North door
                 return false;
             }
 
-        }else if(y >= GameDimensions.GAME_HEIGHT/2 - Door.height/2 - Entity.width &&
+        }else if(y >= GameDimensions.GAME_HEIGHT/2 - Door.height/2 - DEFAULT_WIDTH &&
                 y <= GameDimensions.GAME_HEIGHT/2 + Door.height/2){     //potentially blocking east or west door
-            if (x <= GameDimensions.LEFT_WALL + Entity.width){
+            if (x <= GameDimensions.LEFT_WALL + DEFAULT_WIDTH){
                 return false;
             }
-            else if(x >= GameDimensions.RIGHT_WALL - Entity.width*2){
+            else if(x >= GameDimensions.RIGHT_WALL - DEFAULT_WIDTH*2){
                 return false;
             }
         }
@@ -328,10 +330,10 @@ public abstract class Room implements Drawable, Savable {
     private boolean checkPointNotOverlap(int x, int y) {
 
         for (Entity i : items){
-            if (i.getBoundingBox().intersects(x,y,x+Entity.width,y+Entity.width)) return false;
+            if (i.getBoundingBox().intersects(x,y,x+DEFAULT_WIDTH,y+DEFAULT_WIDTH)) return false;
         }
         for (Entity i : enemiesInRoom){
-            if (i.getBoundingBox().intersects(x,y,x+Entity.width,y+Entity.width)) return false;
+            if (i.getBoundingBox().intersects(x,y,x+DEFAULT_WIDTH,y+DEFAULT_WIDTH)) return false;
         }
         return true;
     }
