@@ -16,22 +16,22 @@ public class FollowingMobTests {
     public void createNewMob() throws Exception {
         MobEnemy test;
 
-        test = new MobEnemy(MobType.Standard, null);
+        test = new MobEnemy(MobType.Standard);
         assert(test.getDamage() == 10);
         assert(test.getSpeed() == 3);
         assert(test.getHealth() == 50);
 
-        test = new MobEnemy(MobType.Fast, null);
+        test = new MobEnemy(MobType.Fast);
         assert(test.getDamage() == 5);
         assert(test.getSpeed() == 4.5);
         assert(test.getHealth() == 20);
 
-        test = new MobEnemy(MobType.Slow, null);
+        test = new MobEnemy(MobType.Slow);
         assert(test.getDamage() == 20);
         assert(test.getSpeed() == 2);
         assert(test.getHealth() == 100);
 
-        test = new MobEnemy(MobType.Boss, null);
+        test = new MobEnemy(MobType.Boss);
         assert(test.getDamage() == 20);
         assert(test.getSpeed() == 4);
         assert(test.getHealth() == 1000);
@@ -44,19 +44,19 @@ public class FollowingMobTests {
         Point location;
         Point newlocation;
 
-        m = new MobEnemy(MobType.Standard,null);
+        m = new MobEnemy(MobType.Standard);
         location = new Point(300,300);
         newlocation = m.step(location,p.getLocation(),p.getRoom());
         assertTrue(newlocation.getX() < 300 && newlocation.getY() < 300);
         assertTrue(round(Math.hypot(300 - newlocation.getX(), 300 - newlocation.getY()),2) == m.getSpeed());
 
-        m = new MobEnemy(MobType.Fast,null);
+        m = new MobEnemy(MobType.Fast);
         location = new Point(300,300);
         newlocation = m.step(location,p.getLocation(),p.getRoom());
         assertTrue(newlocation.getX() < 300 && newlocation.getY() < 300);
         assertTrue(round(Math.hypot(300 - newlocation.getX(), 300 - newlocation.getY()),2) == m.getSpeed());
 
-        m = new MobEnemy(MobType.Slow,null);
+        m = new MobEnemy(MobType.Slow);
         location = new Point(300,300);
         newlocation = m.step(location,p.getLocation(),p.getRoom());
         assertTrue(newlocation.getX() < 300 && newlocation.getY() < 300);

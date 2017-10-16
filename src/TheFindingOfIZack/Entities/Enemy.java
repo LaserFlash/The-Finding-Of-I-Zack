@@ -37,10 +37,10 @@ public class Enemy extends Entity {
         this.r = p.getRoom();
 
         if (this instanceof Boss) {
-            this.behaviour = new MobEnemy(MobType.Boss, r);
+            this.behaviour = new MobEnemy(MobType.Boss);
         }
         else {
-            this.behaviour = new MobEnemy(MobType.generateRandomMob(),r);
+            this.behaviour = new MobEnemy(MobType.generateRandomMob());
         }
 
         this.health = behaviour.getHealth();
