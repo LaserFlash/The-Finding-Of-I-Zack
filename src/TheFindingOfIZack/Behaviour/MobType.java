@@ -33,8 +33,17 @@ public enum MobType {
     };
 
 
+    /**
+     * Create a mob of the type the enum represents
+     * @return  the created mob
+     */
     public abstract Mob constructMob();
 
+    /**
+     * Generate and return a MobType randomly
+     * Excludes Boss type
+     * @return
+     */
     public static MobType generateRandomMob(){
             int type = (int) (Math.random()*5);
             if (type>2)         return Standard;
