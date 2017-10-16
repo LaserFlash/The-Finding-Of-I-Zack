@@ -14,7 +14,6 @@ import java.awt.*;
  * Created by gordontheo on 29/09/17.
  */
 public class MobProjectile extends Projectile implements Drawable, Savable {
-    private double speed = 2;
     private double directionX;
     private double directionY;
     private Room room;
@@ -28,6 +27,7 @@ public class MobProjectile extends Projectile implements Drawable, Savable {
 
     public MobProjectile(Point location, Point player, Room room){
         super(location, player);
+        this.speed = 2;
 
         double changeX = (player.getX() - location.getX());
         double changeY = (player.getY() - location.getY());
@@ -48,7 +48,8 @@ public class MobProjectile extends Projectile implements Drawable, Savable {
     @Override
     public void move(){
         this.location.move(location.getX()+directionX,location.getY()+directionY);
-        if (wallCollision()) {pop = true;}
+        if (wallCollision()) {
+            pop = true;}
 
         if (room instanceof standardRoom) {
             standardRoom r = (standardRoom) room;

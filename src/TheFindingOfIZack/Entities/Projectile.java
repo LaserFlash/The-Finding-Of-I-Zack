@@ -24,7 +24,7 @@ public class Projectile extends Entity implements Drawable, Savable{
 
     protected boolean pop = false;
 
-    private double speed = 10;
+    protected double speed = 10;
 
     private static Image projectileImage;
 

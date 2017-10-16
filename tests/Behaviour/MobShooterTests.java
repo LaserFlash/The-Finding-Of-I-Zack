@@ -5,12 +5,14 @@ import TheFindingOfIZack.Behaviour.MobProjectile;
 import TheFindingOfIZack.Behaviour.MobShooter;
 import TheFindingOfIZack.Behaviour.MobType;
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Entities.Point;
+
+import TheFindingOfIZack.Util.Point;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -71,8 +73,25 @@ public class MobShooterTests {
         assertTrue(m.getProjectile().size() == 1);
         assertTrue(mp.getLocation().getX() == 355 && mp.getLocation().getY() == 355);
         mp.move();
-        System.out.println("x: " + Math.hypot(    (350 - mp.getLocation().getX()) ,   (350 - mp.getLocation().getY()) ));
-        assertTrue(round(Math.hypot(350 - mp.getLocation().getX(), 350 - mp.getLocation().getY()),2) == m.getSpeed());
+        assertTrue(round(Math.hypot(355 - mp.getLocation().getX(), 355 - mp.getLocation().getY()),2) == mp.getSpeed());
+    }
+
+    @Test
+    public void testPopProjectileWall(){
+        Player p = new Player(new Point(0,200));
+        MobShooter m = new MobShooter();
+        Point location = new Point(200,200);
+
+        for(int i=0;i<30;i++) {
+            m.step(location, p.getLocation(), null);
+        }
+        assertTrue(m.getProjectile().size() == 1);
+        MobProjectile mp = m.getProjectile().get(0);
+        for(int i=0;i<100;i++) {
+            mp.move();
+        }
+        m.popProjectiles();
+        assertTrue(m.getProjectile().isEmpty());
     }
 
     /**
