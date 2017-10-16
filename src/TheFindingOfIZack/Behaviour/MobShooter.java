@@ -18,6 +18,7 @@ import static TheFindingOfIZack.Entities.Entity.width;
  */
 public class MobShooter extends Mob implements Savable{
     private final int PROJECTILE_TICK = 30;
+    private final int MOVE_BUFFER = 60;
     private int tick;
     private int stopDistance = 200;
     private List<MobProjectile> projectiles;
@@ -48,7 +49,7 @@ public class MobShooter extends Mob implements Savable{
         tick++;
         projectile(location,player);
         double range = distanceBetween(location,player);
-        if (range < viewRange && range > stopDistance+60 || range < stopDistance) {
+        if (range < viewRange && range > stopDistance+MOVE_BUFFER || range < stopDistance) {
             double changeX = (player.getX() - location.getX());
             double changeY = (player.getY() - location.getY());
 
