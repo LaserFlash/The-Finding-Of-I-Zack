@@ -38,7 +38,7 @@ public class Projectile extends Entity implements Drawable, Savable{
      * @param location  the location the projectile is
      * @param direction the direction the projectile is travelling
      */
-    public Projectile(int damage, TheFindingOfIZack.Util.Point location, String direction) {
+    public Projectile(int damage, Point location, String direction) {
         super(location);
         this.damage = damage;
         this.direction = direction;

@@ -32,7 +32,7 @@ public class Enemy extends Entity {
      * @param location where the mob is to be spawned
      * @param p the player
      */
-    public Enemy(TheFindingOfIZack.Util.Point location, Player p) {
+    public Enemy(Point location, Player p) {
         super(location);
         this.player = p;
         this.r = p.getRoom();
