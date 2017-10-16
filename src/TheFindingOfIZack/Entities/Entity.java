@@ -38,6 +38,14 @@ public abstract class Entity implements Drawable, Savable{
     }
 
     /**
+     * Returns the location of the entity
+     * @return  location
+     */
+    public Point getLocation() {
+        return this.location;
+    }
+
+    /**
      * Draw method for entity
      * @param g graphics object to draw on
      */
