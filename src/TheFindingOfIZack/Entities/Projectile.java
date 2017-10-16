@@ -23,7 +23,7 @@ public class Projectile extends Entity implements Drawable, Savable{
 
     protected boolean pop = false;
 
-    private int speed = 10;
+    private double speed = 10;
 
     private static Image projectileImage;
 
@@ -64,16 +64,16 @@ public class Projectile extends Entity implements Drawable, Savable{
      * If the projectile collides with a wall, pop is set to true
      */
     public void move() {
-        int x, y;
+        double x, y;
         if (direction.equals("up") || direction.equals("down")) {
-            x = (int) location.getX();
-            if (direction.equals("up")) {y = (int) location.getY()-speed;}
-            else {y = (int) location.getY()+speed;}
+            x = location.getX();
+            if (direction.equals("up")) {y = location.getY()-speed;}
+            else {y = location.getY()+speed;}
         }
         else {
-            y = (int) location.getY();
-            if (direction.equals("left")) {x = (int) location.getX()-speed;}
-            else {x = (int) location.getX()+speed;}
+            y = location.getY();
+            if (direction.equals("left")) {x = location.getX()-speed;}
+            else {x = location.getX()+speed;}
         }
 
         location.move(x, y);
@@ -152,4 +152,5 @@ public class Projectile extends Entity implements Drawable, Savable{
         return this.pop;
     }
 
+    public double getSpeed(){return speed;}
 }
