@@ -4,8 +4,6 @@ import javafx.geometry.BoundingBox;
 
 import java.awt.*;
 
-import static TheFindingOfIZack.Util.GameDimensions.*;
-
 /**
  * Created by allanbenj1 on 11/10/17.
  */
@@ -103,7 +101,7 @@ public class Boss extends Enemy {
             this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.size, this.size);
             setBox();
         }
-        canMove();
+        wallCheck();
         if(collision(this.getBoundingBox())){
             damagePlayer();
         }
