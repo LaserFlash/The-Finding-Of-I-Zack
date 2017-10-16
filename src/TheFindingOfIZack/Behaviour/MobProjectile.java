@@ -38,6 +38,7 @@ public class MobProjectile extends Projectile implements Drawable, Savable {
         this.directionY = changeY/a;
         this.location = new Point(location.getX()+size/4,location.getY()+size/4);
         this.room = room;
+
     }
 
     public void pop(){
@@ -53,6 +54,7 @@ public class MobProjectile extends Projectile implements Drawable, Savable {
             standardRoom r = (standardRoom) room;
             entityCollision(r.getItems());
         }
+        setBox();
     }
 
     @Override
@@ -60,4 +62,5 @@ public class MobProjectile extends Projectile implements Drawable, Savable {
         move();
         g.drawImage(projectileImage, (int) location.getX() +size/2, (int) location.getY() + size/2, null);
     }
+
 }

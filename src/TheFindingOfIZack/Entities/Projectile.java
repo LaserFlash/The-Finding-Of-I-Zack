@@ -148,7 +148,7 @@ public class Projectile extends Entity implements Drawable, Savable{
      * Returns whether the projectile is popped or not
      * @return  pop
      */
-    public boolean getPopped() {
+    public boolean isDestroyed() {
         return this.pop;
     }
 

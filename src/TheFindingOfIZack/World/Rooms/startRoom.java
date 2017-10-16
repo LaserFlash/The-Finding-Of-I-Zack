@@ -31,6 +31,8 @@ public class startRoom extends Room implements Savable{
             this.getWestDoor().isLocked = false;
         }
 
+        checkCollected();
+
     }
 
     @Override

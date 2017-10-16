@@ -10,6 +10,11 @@ import TheFindingOfIZack.World.Rooms.Room;
 public class MockModel implements Model {
     private AbstractPlayer p = new AbstractPlayer(new Point(50, 50)) {
 
+        @Override
+        public boolean isDestroyed() {
+            return false;
+        }
+
         private Room r;
         @Override
         public void moveSouth() {
@@ -85,11 +90,7 @@ public class MockModel implements Model {
         public boolean getKey() {
             return false;
         }
-
-        @Override
-        public boolean isDead() {
-            return false;
-        }
+        
     };
 
     public boolean sLeft = false;

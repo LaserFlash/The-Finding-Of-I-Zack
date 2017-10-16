@@ -88,6 +88,11 @@ public class Enemy extends Entity {
 
     }
 
+    @Override
+    public boolean isDestroyed() {
+        return false;
+    }
+
     /**
      * Makes each mob run through its step method
      * Also checks for edge of map collisions
@@ -100,12 +105,12 @@ public class Enemy extends Entity {
         //potentialStep represents the move which will take place if there are no obstacle,
         // also checks if mob is currently touching player
         //entityCollision();*************************************************************************************************************************
-        if(!collision(location,playerPoint)) {
+        if(!collision(this.getBoundingBox())) {
             this.location = potentialStep;
             this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.width, this.width);
             setBox();
         }
-        if(collision(location,playerPoint)){
+        if(collision(this.getBoundingBox())){
             damagePlayer();
         }
         canMove();
@@ -118,18 +123,10 @@ public class Enemy extends Entity {
     protected void canMove(){
         double x = location.getX();
         double y = location.getY();
-        boolean top = false;
-        boolean bottom = false;
-        boolean left = false;
-        boolean right = false;
-        if(y < TOP_WALL){top = true;}
-        if(x < LEFT_WALL){left = true;}
-        if(y+width > BOTTOM_WALL){bottom = true;}
-        if(x+width > RIGHT_WALL){right = true;}
-        if(top){y = TOP_WALL;}
-        if(bottom){y = BOTTOM_WALL-width;}
-        if(left){x = LEFT_WALL;}
-        if(right){x = RIGHT_WALL-width;}
+        if(y < TOP_WALL){y = TOP_WALL;}
+        if(x < LEFT_WALL){x = LEFT_WALL;}
+        if(y+width > BOTTOM_WALL){y = BOTTOM_WALL-width;}
+        if(x+width > RIGHT_WALL){x = RIGHT_WALL-width;}
         location.move(x,y);
     }
 
@@ -138,25 +135,25 @@ public class Enemy extends Entity {
      * @param mob mob location
      * @param player player location
      */
-    public boolean collision(Point mob, Point player) {
-        double px = player.getX();
-        double py = player.getY();
-        double mx = mob.getX();
-        double my = mob.getY();
-        int w = width;
+    public boolean collision(BoundingBox b) {
+//        double px = player.getX();
+//        double py = player.getY();
+//        double mx = mob.getX();
+//        double my = mob.getY();
+//        int w = width;
 
-        if(mx<=px && my<=py && mx+w>=px && my+w>=py){return true;} //Top left
-        if(mx>=px && my>=py && mx<=px+w && my<=py+w){return true;} //Bottom Right
-        if(mx<=px && my>=py && mx+w>=px && my<=py+w){return true;} //Bottom left
-        if(mx>=px && my<=py && mx<=px+w && my+w>=py){return true;} //Top Right
-        return false;
+//        if(mx<=px && my<=py && mx+w>=px && my+w>=py){return true;} //Top left
+//        if(mx>=px && my>=py && mx<=px+w && my<=py+w){return true;} //Bottom Right
+//        if(mx<=px && my>=py && mx+w>=px && my<=py+w){return true;} //Bottom left
+//        if(mx>=px && my<=py && mx<=px+w && my+w>=py){return true;} //Top Right
+        return b.intersects(this.player.getBoundingBox());
     }
 
     public void drawProjectiles(MobShooter m, Graphics g){
         synchronized (m.getProjectile()) {
             for (MobProjectile i : m.getProjectile()) {
                 i.draw(g);
-                if (collision(i.getLocation(), player.getLocation())) {
+                if (collision(i.getBoundingBox())) {
                     i.pop();
                     damagePlayer();
                 }

@@ -79,5 +79,7 @@ public class itemRoom extends Room implements Savable {
             i.update();
         }
 
+        checkCollected();
+
     }
 }

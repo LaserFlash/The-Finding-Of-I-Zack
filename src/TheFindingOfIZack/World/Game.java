@@ -266,7 +266,7 @@ public class Game extends Observable implements Model,Savable{
         }
     }
     private void checkDead(){
-        if(player.isDead()){
+        if(player.isDestroyed()){
             running = false;
             this.isLost = true;
         }

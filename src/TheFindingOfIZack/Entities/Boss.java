@@ -44,19 +44,19 @@ public class Boss extends Enemy {
     public void draw(Graphics g) {
         g.drawImage(behaviour.getMob().getImage(), (int) location.getX(), (int) location.getY(), null);
 
-        double healthBar = (health/(double) MAX_HEALTH) * (double) size;
+        double healthBar = (health/ MAX_HEALTH) * size;
         if (healthBar < 0) {healthBar = 0;}
 
-        double armourBar = ((double) armour/(double) MAX_ARMOUR) * (double) size;
+        double armourBar = ( armour/ MAX_ARMOUR) * size;
         if (armourBar < 0) {armourBar = 0;}
 
-        double red = (((double)MAX_HEALTH-health)/(double)MAX_HEALTH)*(double)255;
+        double red = ((MAX_HEALTH-health)/MAX_HEALTH)*255;
         if (red < 0) {red = 0;}
         else if (red > 255) {red = 255;}
-        double green = (health/(double)MAX_HEALTH)*(double)255;
+        double green = (health/MAX_HEALTH)*255;
         if (green < 0) {green = 0;}
         else if (green > 255) {green = 255;}
-        double blue = ((double)armour/(double)MAX_ARMOUR)*(double)255;
+        double blue = (armour/MAX_ARMOUR)*255;
         Color healthColor = new Color((int)red, (int) green, 0);
         Color armourColor = new Color(0, 255-(int)blue, (int) blue);
 
@@ -98,38 +98,15 @@ public class Boss extends Enemy {
         Point potentialStep = this.behaviour.step(location, playerPoint, r);
         //potentialStep represents the move which will take place if there are no obstacle,
         // also checks if mob is currently touching player
-        if(!collision(location,playerPoint)) {
+        if(!collision(this.getBoundingBox())) {
             this.location = potentialStep;
             this.box = new BoundingBox(potentialStep.getX(), potentialStep.getY(), this.size, this.size);
             setBox();
         }
         canMove();
-        if(collision(location,playerPoint)){
+        if(collision(this.getBoundingBox())){
             damagePlayer();
         }
-    }
-
-    /**
-     * Checks whether the boss can move or not
-     * Also checks for wall collisions and fixes them
-     */
-    @Override
-    protected void canMove(){
-        double x = location.getX();
-        double y = location.getY();
-        boolean top = false;
-        boolean bottom = false;
-        boolean left = false;
-        boolean right = false;
-        if(y < TOP_WALL){top = true;}
-        if(x < LEFT_WALL){left = true;}
-        if(y+size > BOTTOM_WALL){bottom = true;}
-        if(x+size > RIGHT_WALL){right = true;}
-        if(top){y = TOP_WALL;}
-        if(bottom){y = BOTTOM_WALL-size;}
-        if(left){x = LEFT_WALL;}
-        if(right){x = RIGHT_WALL-size;}
-        location.move(x,y);
     }
 
 }

@@ -129,72 +129,24 @@ public class Player extends AbstractPlayer {
                 bossRoom r = (bossRoom) room;
                 ArrayList<Enemy> boss = new ArrayList<Enemy>();
                 boss.add(r.getBoss());
-                p.enemyCollision(r.getEnemies());
                 if (!r.getBoss().isDead()) {p.enemyCollision(boss);}
             }
 
-            if (room instanceof itemRoom) {
-                itemRoom r = (itemRoom) room;
+            p.enemyCollision(room.getEnemies());
+            p.entityCollision(room.getItems());
 
-                p.entityCollision(r.getItems());
-                ArrayList<Entity> destroyed = new ArrayList<Entity>();
-                for (Entity e : r.getItems()) {
-
-                    if (e instanceof Urn) {
-                        Urn urn = (Urn) e;
-                        if (urn.isDestroyed()) {destroyed.add(e);}
-                    }
-                }
-                for (Entity e : destroyed) {
-                    r.getItems().remove(e);
-                }
-            }
-
-            /*
-            If the room is a standard room, the projectiles check collisions with all enemies in the room.
-             */
-            if (room instanceof standardRoom) {
-                standardRoom r = (standardRoom) room;
-                p.enemyCollision(r.getEnemies());
-                p.entityCollision(r.getItems());
-
-                /*
-                This checks whether the items in the room have been destroyed and removes them from the list
-                 */
-                ArrayList<Entity> destroyed = new ArrayList<Entity>();
-                for (Entity e : r.getItems()) {
-                    if (e instanceof Rock) {
-                        Rock rock = (Rock) e;
-                        if (rock.isDestroyed()) {destroyed.add(e);}
-                    }
-                    else if (e instanceof Urn) {
-                        Urn urn = (Urn) e;
-                        if (urn.isDestroyed()) {destroyed.add(e);}
-                    }
-                }
-                for (Entity e : destroyed) {
-                    r.getItems().remove(e);
-                }
-
-            }
         }
+
+        ArrayList<Entity> destroyed = new ArrayList<Entity>();
+        for (Entity e : room.getItems()) {
+            if (e.isDestroyed()) {destroyed.add(e);}
+        }
+        for (Entity e : destroyed) {room.getItems().remove(e);}
+
         /*
         calls popProjectiles method to remove any popped projectiles from the list
          */
         popProjectiles();
-
-        /*
-        Checks for any collected items in the room and removes them from the room
-         */
-        ArrayList<Item> collected = new ArrayList<Item>();
-        for (Item i : room.getCollectibles()) {
-            if (i.isCollected()) {
-                collected.add(i);
-            }
-        }
-        for (Item i : collected) {
-            room.getCollectibles().remove(i);
-        }
 
     }
 
@@ -221,7 +173,7 @@ public class Player extends AbstractPlayer {
     public void popProjectiles() {
         ArrayList<Projectile> temp = new ArrayList<Projectile>();
         for (Projectile p : projectiles) {
-            if (p.getPopped()) {temp.add(p);}
+            if (p.isDestroyed()) {temp.add(p);}
         }
 
         for (Projectile p : temp) {
@@ -607,7 +559,8 @@ public class Player extends AbstractPlayer {
         return projectiles;
     }
 
-    public boolean isDead() {
+    @Override
+    public boolean isDestroyed() {
         return health <= 0;
     }
 
@@ -615,4 +568,5 @@ public class Player extends AbstractPlayer {
     public int getSpeed() {
         return speed;
     }
+
 }

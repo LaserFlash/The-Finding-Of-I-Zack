@@ -57,6 +57,7 @@ public class Rock extends Entity implements Savable {
      * Returns whether the rock is destroyed or not
      * @return  destroyed
      */
+    @Override
     public boolean isDestroyed() {
         return destroyed;
     }

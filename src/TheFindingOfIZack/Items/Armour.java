@@ -32,7 +32,7 @@ public class Armour extends Item implements Savable {
 
     @Override
     public void update() {
-        if (box.intersects(player.getLocation().getX(), player.getLocation().getY(), player.width, player.width)) {
+        if (box.intersects(player.getLocation().getX(), player.getLocation().getY(), player.width, player.width) && !collected) {
             if (player.getArmour() == player.getMaxArmour()) {return;}
             collected = true;
             player.addArmour(armour);

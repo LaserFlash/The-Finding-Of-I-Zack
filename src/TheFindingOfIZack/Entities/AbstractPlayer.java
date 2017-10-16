@@ -94,6 +94,6 @@ public abstract class AbstractPlayer extends Entity implements Savable {
      * Check if the player is dead
      * @return  true if dead
      */
-    public abstract boolean isDead();
+    public abstract boolean isDestroyed();
 
 }

@@ -76,6 +76,8 @@ public abstract class Room implements Drawable, Savable {
         return this.collectibles;
     }
 
+    public List<Enemy> getEnemies() {return this.enemiesInRoom;}
+
     /**
      * Recreate bounding boxes for things in the rooms
      */
@@ -189,6 +191,21 @@ public abstract class Room implements Drawable, Savable {
      * should call the corresponding update method for everything within the room every tick
      */
     public abstract void update();
+
+    /**
+     * Checks for any collected items in the room and removes them from the room
+     */
+    protected void checkCollected() {
+        ArrayList<Item> collected = new ArrayList<Item>();
+        for (Item i : this.collectibles) {
+            if (i.isCollected()) {
+                collected.add(i);
+            }
+        }
+        for (Item i : collected) {
+            this.collectibles.remove(i);
+        }
+    }
 
     /**
      * adds a door to the room

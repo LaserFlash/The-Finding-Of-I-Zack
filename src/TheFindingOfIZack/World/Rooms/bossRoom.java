@@ -38,39 +38,43 @@ public class bossRoom extends Room implements Savable {
     @Override
     public void update() {
 
+        synchronized (enemiesInRoom) {
+            if (boss.isDead() && enemiesInRoom.isEmpty()) {
+                this.isCleared = true;
+                player.setWon();
+                if (this.northDoor != null) {
+                    this.northDoor.isLocked = false;
+                }
+                if (this.eastDoor != null) {
+                    this.eastDoor.isLocked = false;
+                }
+                if (this.southDoor != null) {
+                    this.southDoor.isLocked = false;
+                }
+                if (this.westDoor != null) {
+                    this.westDoor.isLocked = false;
+                }
 
-        if (boss.isDead() && enemiesInRoom.isEmpty()) {
-            this.isCleared = true;
-            player.setWon();
-            if (this.northDoor != null) {
-                this.northDoor.isLocked = false;
-            }
-            if (this.eastDoor != null) {
-                this.eastDoor.isLocked = false;
-            }
-            if (this.southDoor != null) {
-                this.southDoor.isLocked = false;
-            }
-            if (this.westDoor != null) {
-                this.westDoor.isLocked = false;
-            }
 
-
-        }
-        for(Enemy e : enemiesInRoom){
-            if(e.isDead()){
-                this.deadEnemies.add(e);
             }
-        }
-        if(!enemiesInRoom.isEmpty()){
-        for(Enemy e : deadEnemies){
-            enemiesInRoom.remove(e);
-        }}
-        for(Enemy e : enemiesInRoom){
-            e.move();
-        }
+            for (Enemy e : enemiesInRoom) {
+                if (e.isDead()) {
+                    this.deadEnemies.add(e);
+                }
+            }
+            if (!enemiesInRoom.isEmpty()) {
+                for (Enemy e : deadEnemies) {
+                    enemiesInRoom.remove(e);
+                }
+            }
+            for (Enemy e : enemiesInRoom) {
+                e.move();
+            }
         if(!boss.isDead()) {
             boss.move();
+        }
+
+            checkCollected();
         }
 
     }
@@ -80,7 +84,9 @@ public class bossRoom extends Room implements Savable {
      * @param enemy to be added
      */
     public void setEnemiesInRoom(Enemy enemy){
-        this.enemiesInRoom.add(enemy);
+        synchronized (enemiesInRoom) {
+            this.enemiesInRoom.add(enemy);
+        }
     }
 
     /**

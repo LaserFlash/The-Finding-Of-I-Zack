@@ -65,4 +65,7 @@ public abstract class Entity implements Drawable, Savable{
     public BoundingBox getBoundingBox(){
         return box;
     }
+
+    public abstract boolean isDestroyed();
+
 }

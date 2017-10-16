@@ -94,6 +94,7 @@ public class Urn extends Entity implements Savable{
      * Returns whether the urn is destroyed
      * @return  boolean destroyed
      */
+    @Override
     public boolean isDestroyed() {
         return destroyed;
     }

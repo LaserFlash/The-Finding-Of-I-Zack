@@ -76,13 +76,13 @@ public abstract class Mob implements Savable {
                     if(mx<rx && my<ry && mx+w>rx && my+w>ry){   //Bottom right
                         tempDirection =  new Point(location.getX()-tempDistance(),location.getY()-tempDistance());
                     }
-                    if(mx>rx && my>ry && mx<rx+w && my<ry+w){    //Top left
+                    else if(mx>rx && my>ry && mx<rx+w && my<ry+w){    //Top left
                         tempDirection = new Point(location.getX()+tempDistance(),location.getY()+tempDistance());
                     }
-                    if(mx<rx && my>ry && mx+w>rx && my<ry+w){   //Top Right
+                    else if(mx<rx && my>ry && mx+w>rx && my<ry+w){   //Top Right
                         tempDirection = new Point(location.getX()-tempDistance(),location.getY()+tempDistance());
                     }
-                    if(mx>rx && my<ry && mx<rx+w && my+w>ry){   //Bottom left
+                    else if(mx>rx && my<ry && mx<rx+w && my+w>ry){   //Bottom left
                         tempDirection = new Point(location.getX()+tempDistance(),location.getY()-tempDistance());
                     }
                     if(tempDirection != null && bounce > 20){

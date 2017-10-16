@@ -82,7 +82,7 @@ public class MobShooter extends Mob implements Savable{
         synchronized (projectiles) {
             ArrayList<MobProjectile> temp = new ArrayList<>();
             for (MobProjectile p : projectiles) {
-                if (p.getPopped()) {
+                if (p.isDestroyed()) {
                     temp.add(p);
                 }
             }

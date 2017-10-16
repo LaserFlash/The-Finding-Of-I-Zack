@@ -101,6 +101,8 @@ public class standardRoom extends Room implements Savable{
             i.update();
         }
 
+        checkCollected();
+
     }
 
     public void draw(Graphics g){
