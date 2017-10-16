@@ -54,8 +54,12 @@ public class Player extends AbstractPlayer {
      */
     private transient List<Projectile> projectiles;
 
-    private transient Image playerImage;
+    private static Image playerImage;
     private boolean won;
+
+    static {
+        playerImage = ImageLoader.loadImage("/iZack.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
+    }
 
     /**
      *  Constructor takes a Point as a parameter
@@ -65,14 +69,11 @@ public class Player extends AbstractPlayer {
      */
     public Player(Point location) {
         super(location);
-        projectiles = Collections.synchronizedList(new ArrayList<Projectile>());
-        this.playerImage = ImageLoader.loadImage("/iZack.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
     }
 
     public Player(Player p){
         super(p);
         projectiles = Collections.synchronizedList(new ArrayList<Projectile>());
-        this.playerImage = ImageLoader.loadImage("/iZack.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
         this.health = p.getHealth();
         this.armour = p.getArmour();
         this.room = p.getRoom();

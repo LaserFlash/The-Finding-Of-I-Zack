@@ -14,11 +14,15 @@ public class Rock extends Entity implements Savable {
      * Fields to store health, image, and if it is destroyed
      */
 
-    private static transient Image rocksImage;
+    private static Image rocksImage;
 
     private boolean destroyed = false;
 
     int health = 1000;
+
+    static {
+        rocksImage = ImageLoader.loadImage("/rocks.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
+    }
 
     /**
      * Constructor for Rock
@@ -26,7 +30,6 @@ public class Rock extends Entity implements Savable {
      */
     public Rock(Point location) {
         super(location);
-        this.rocksImage = ImageLoader.loadImage("/rocks.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
     }
 
     /**

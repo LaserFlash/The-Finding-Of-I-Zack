@@ -25,7 +25,11 @@ public class Projectile extends Entity implements Drawable, Savable{
 
     private int speed = 10;
 
-    protected transient Image projectileImage;
+    protected static Image projectileImage;
+
+    static {
+        projectileImage = ImageLoader.loadImage("/zacksAttacks.png").getScaledInstance(Entity.width/2,Entity.width/2,Image.SCALE_DEFAULT);
+    }
 
     /**
      * Constructor for Projectile
@@ -37,7 +41,6 @@ public class Projectile extends Entity implements Drawable, Savable{
         super(location);
         this.damage = damage;
         this.direction = direction;
-        this.projectileImage = ImageLoader.loadImage("/zacksAttacks.png").getScaledInstance(Entity.width/2,Entity.width/2,Image.SCALE_DEFAULT);
     }
 
     /**

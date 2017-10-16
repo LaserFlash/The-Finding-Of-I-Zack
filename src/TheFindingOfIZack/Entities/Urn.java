@@ -29,6 +29,10 @@ public class Urn extends Entity implements Savable{
 
     int health = 15;
 
+    static {
+        urnsImage = ImageLoader.loadImage("/pot.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
+    }
+
     /**
      * Constructor takes a Point and a player
      * @param location  where the urn is
@@ -37,7 +41,6 @@ public class Urn extends Entity implements Savable{
     public Urn(Point location, Player p) {
         super(location);
         this.p = p;
-        this.urnsImage = ImageLoader.loadImage("/pot.png").getScaledInstance(Entity.width,Entity.width,Image.SCALE_DEFAULT);
 
         if (p.getRoom() instanceof itemRoom) {
             int random = (int) (Math.random()*100);

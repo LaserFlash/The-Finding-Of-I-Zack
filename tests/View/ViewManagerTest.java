@@ -3,16 +3,10 @@ package View;
 import Mocks.MockModel;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Model;
-import TheFindingOfIZack.World.Rooms.Room;
-import TheFindingOfIZack.World.Rooms.standardRoom;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
 import javax.swing.*;
-import javax.xml.stream.Location;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ViewManagerTest {
 
 
