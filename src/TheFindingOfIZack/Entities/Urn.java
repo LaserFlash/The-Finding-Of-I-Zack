@@ -6,6 +6,7 @@ import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Items.Potion;
 import TheFindingOfIZack.Items.Weapon;
 import TheFindingOfIZack.Util.ImageLoader;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.World.Rooms.itemRoom;
 
 import java.awt.*;

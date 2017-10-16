@@ -1,6 +1,7 @@
 package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.FileIO.Util.Savable;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.View.Drawable;
 import javafx.geometry.BoundingBox;
 
@@ -16,7 +17,7 @@ public abstract class Entity implements Drawable, Savable{
      * Fields for location, bounding box, and width
      */
 
-    protected Point location;
+    protected TheFindingOfIZack.Util.Point location;
     protected transient BoundingBox box;
 
     public static int DEFAULT_WIDTH = 40;
@@ -33,7 +34,7 @@ public abstract class Entity implements Drawable, Savable{
      * Constructor for Entity
      * @param location  the location of the entity
      */
-    public Entity(Point location) {
+    public Entity(TheFindingOfIZack.Util.Point location) {
         this.location = location;
         this.box = new BoundingBox(location.getX(), location.getY(), width, width);
     }

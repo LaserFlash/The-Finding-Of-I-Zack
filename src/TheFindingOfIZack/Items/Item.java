@@ -1,6 +1,6 @@
 package TheFindingOfIZack.Items;
 import TheFindingOfIZack.Entities.*;
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.View.Drawable;
 import javafx.geometry.BoundingBox;

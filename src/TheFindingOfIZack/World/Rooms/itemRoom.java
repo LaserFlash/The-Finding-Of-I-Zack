@@ -1,19 +1,13 @@
 package TheFindingOfIZack.World.Rooms;
 
-import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.Entities.Urn;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Items.Key;
-import TheFindingOfIZack.Util.GameDimensions;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
 
 /**
  * Created by fieldryan on 19/09/17.

@@ -4,6 +4,7 @@ import TheFindingOfIZack.Behaviour.MobEnemy;
 import TheFindingOfIZack.Behaviour.MobProjectile;
 import TheFindingOfIZack.Behaviour.MobShooter;
 import TheFindingOfIZack.Behaviour.MobType;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.World.Rooms.Room;
 import javafx.geometry.BoundingBox;
 
@@ -130,6 +131,8 @@ public class Enemy extends Entity {
     public void drawProjectiles(MobShooter m, Graphics g){
         synchronized (m.getProjectile()) {
             for (MobProjectile i : m.getProjectile()) {
+                i.move();
+                i.setBox();
                 i.draw(g);
                 if (collision(i.getBoundingBox())) {
                     i.pop();

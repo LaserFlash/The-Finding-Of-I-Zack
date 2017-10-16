@@ -2,6 +2,7 @@ package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.World.Rooms.Room;
 import TheFindingOfIZack.World.Rooms.bossRoom;
 import TheFindingOfIZack.World.Rooms.itemRoom;
@@ -433,7 +434,7 @@ public class Player extends AbstractPlayer {
      * Clones the current location of the player
      * @return  a clone of the players location
      */
-    private Point clonePoint() {
+    private TheFindingOfIZack.Util.Point clonePoint() {
         int x = (int) location.getX();
         int y = (int) location.getY();
         return new Point(x, y);

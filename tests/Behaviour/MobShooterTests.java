@@ -71,7 +71,7 @@ public class MobShooterTests {
         assertTrue(m.getProjectile().size() == 1);
         assertTrue(mp.getLocation().getX() == 355 && mp.getLocation().getY() == 355);
         mp.move();
-        System.out.println("x: " + round(Math.hypot(    (350 - mp.getLocation().getX()) ,   (350 - mp.getLocation().getY()) ), 2));
+        System.out.println("x: " + Math.hypot(    (350 - mp.getLocation().getX()) ,   (350 - mp.getLocation().getY()) ));
         assertTrue(round(Math.hypot(350 - mp.getLocation().getX(), 350 - mp.getLocation().getY()),2) == m.getSpeed());
     }
 

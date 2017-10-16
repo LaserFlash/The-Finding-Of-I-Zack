@@ -3,6 +3,7 @@ package TheFindingOfIZack.Entities;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.View.Drawable;
 import javafx.geometry.BoundingBox;
 
@@ -48,7 +49,7 @@ public class Projectile extends Entity implements Drawable, Savable{
      * @param location  location of the projectile
      * @param player    the player that the projectile is aiming at
      */
-    public Projectile(Point location, Point player){}
+    public Projectile(TheFindingOfIZack.Util.Point location, Point player){}
 
     /**
      * Draws the projectile
@@ -88,7 +89,7 @@ public class Projectile extends Entity implements Drawable, Savable{
      */
     @Override
     public void setBox() {
-        this.box = new BoundingBox(location.getX()-width/4, location.getY()-width/4, width/2, width/2);
+        this.box = new BoundingBox(location.getX()+width/4, location.getY()+width/4, width/2, width/2);
     }
 
     /**
@@ -120,7 +121,7 @@ public class Projectile extends Entity implements Drawable, Savable{
      */
     public void enemyCollision(List<Enemy> enemies) {
         for (Enemy e : enemies) {
-            if (e.box.intersects(location.getX()+width/4, location.getY()+width/4, width/2, width/2) && !pop) {e.damage(damage); pop = true;}
+            if (e.box.intersects(this.box) && !pop) {e.damage(damage); pop = true;}
         }
     }
 
@@ -134,11 +135,11 @@ public class Projectile extends Entity implements Drawable, Savable{
 
             if (entity instanceof Rock) {
                 Rock r = (Rock) entity;
-                if (r.box.intersects(location.getX()+width/4, location.getY()+width/4, width/2, width/2) && !pop) {r.damage(damage); pop = true;}
+                if (r.box.intersects(this.box) && !pop) {r.damage(damage); pop = true;}
             }
             else if (entity instanceof Urn) {
                 Urn u = (Urn) entity;
-                if (u.box.intersects(location.getX()+width/4, location.getY()+width/4, width/2, width/2) && !pop) {u.damage(damage); pop = true;}
+                if (u.box.intersects(this.box) && !pop) {u.damage(damage); pop = true;}
             }
 
         }

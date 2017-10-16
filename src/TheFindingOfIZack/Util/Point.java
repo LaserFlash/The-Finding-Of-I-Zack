@@ -1,4 +1,4 @@
-package TheFindingOfIZack.Entities;
+package TheFindingOfIZack.Util;
 
 import TheFindingOfIZack.FileIO.Util.Savable;
 

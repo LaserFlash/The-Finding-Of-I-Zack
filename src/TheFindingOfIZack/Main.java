@@ -2,7 +2,7 @@ package TheFindingOfIZack;
 
 import TheFindingOfIZack.Controller.GameController;
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;

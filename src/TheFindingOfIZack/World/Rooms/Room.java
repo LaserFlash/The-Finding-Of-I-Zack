@@ -4,7 +4,7 @@ package TheFindingOfIZack.World.Rooms;
 import TheFindingOfIZack.Entities.Enemy;
 import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameDimensions;

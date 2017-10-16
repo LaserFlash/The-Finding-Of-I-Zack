@@ -1,11 +1,9 @@
 package TheFindingOfIZack.Entities;
 
+import TheFindingOfIZack.Util.Point;
 import javafx.geometry.BoundingBox;
 
 import java.awt.*;
-
-import static TheFindingOfIZack.Util.GameDimensions.*;
-import static TheFindingOfIZack.Util.GameDimensions.RIGHT_WALL;
 
 /**
  * Created by allanbenj1 on 11/10/17.
@@ -25,7 +23,7 @@ public class Boss extends Enemy {
      * @param location  the location of the boss
      * @param p the player associated with the boss
      */
-    public Boss(Point location, Player p) {
+    public Boss(TheFindingOfIZack.Util.Point location, Player p) {
         super(location, p);
         width = 120;
     }
@@ -96,7 +94,7 @@ public class Boss extends Enemy {
             health += 0.3;
             if (health > MAX_HEALTH){health = MAX_HEALTH;}
         }
-        Point playerPoint = player.getLocation();
+        TheFindingOfIZack.Util.Point playerPoint = player.getLocation();
         Point potentialStep = this.behaviour.step(location, playerPoint, r);
         //potentialStep represents the move which will take place if there are no obstacle,
         // also checks if mob is currently touching player

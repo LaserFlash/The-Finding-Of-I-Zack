@@ -1,7 +1,7 @@
 package TheFindingOfIZack.Behaviour;
 
 
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.World.Rooms.Room;

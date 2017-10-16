@@ -1,6 +1,6 @@
 package TheFindingOfIZack.Behaviour;
 
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.Entities.Projectile;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.ImageLoader;
@@ -28,6 +28,7 @@ public class MobProjectile extends Projectile implements Drawable, Savable {
 
     public MobProjectile(Point location, Point player, Room room){
         super(location, player);
+
         double changeX = (player.getX() - location.getX());
         double changeY = (player.getY() - location.getY());
 
@@ -37,7 +38,7 @@ public class MobProjectile extends Projectile implements Drawable, Savable {
         this.directionY = changeY/a;
         this.location = new Point(location.getX()+size/4,location.getY()+size/4);
         this.room = room;
-
+        setBox();
     }
 
     public void pop(){
@@ -58,7 +59,6 @@ public class MobProjectile extends Projectile implements Drawable, Savable {
 
     @Override
     public void draw(Graphics g) {
-        move();
         g.drawImage(projectileImage, (int) location.getX() +size/2, (int) location.getY() + size/2, null);
     }
 
