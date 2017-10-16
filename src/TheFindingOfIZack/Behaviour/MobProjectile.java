@@ -1,6 +1,5 @@
 package TheFindingOfIZack.Behaviour;
 
-import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Entities.Projectile;
 import TheFindingOfIZack.FileIO.Util.Savable;
@@ -33,7 +32,7 @@ public class MobProjectile extends Projectile implements Drawable, Savable {
         double changeY = (player.getY() - location.getY());
 
         double h = Math.hypot(changeX,changeY);
-        double a = h/speed;
+        double a = h/this.speed;
         this.directionX = changeX/a;
         this.directionY = changeY/a;
         this.location = new Point(location.getX()+size/4,location.getY()+size/4);

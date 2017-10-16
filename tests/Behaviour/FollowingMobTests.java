@@ -17,24 +17,24 @@ public class FollowingMobTests {
         MobEnemy test;
 
         test = new MobEnemy(MobType.Standard);
-        assert(test.getDamage() == 10);
-        assert(test.getSpeed() == 3);
-        assert(test.getHealth() == 50);
+        assertTrue(test.getDamage() == 10);
+        assertTrue(test.getSpeed() == 3);
+        assertTrue(test.getHealth() == 50);
 
         test = new MobEnemy(MobType.Fast);
-        assert(test.getDamage() == 5);
-        assert(test.getSpeed() == 4.5);
-        assert(test.getHealth() == 20);
+        assertTrue(test.getDamage() == 5);
+        assertTrue(test.getSpeed() == 4.5);
+        assertTrue(test.getHealth() == 20);
 
         test = new MobEnemy(MobType.Slow);
-        assert(test.getDamage() == 20);
-        assert(test.getSpeed() == 2);
-        assert(test.getHealth() == 100);
+        assertTrue(test.getDamage() == 20);
+        assertTrue(test.getSpeed() == 2);
+        assertTrue(test.getHealth() == 100);
 
         test = new MobEnemy(MobType.Boss);
-        assert(test.getDamage() == 20);
-        assert(test.getSpeed() == 4);
-        assert(test.getHealth() == 1000);
+        assertTrue(test.getDamage() == 20);
+        assertTrue(test.getSpeed() == 4);
+        assertTrue(test.getHealth() == 1000);
     }
 
     @Test

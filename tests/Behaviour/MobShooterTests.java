@@ -20,9 +20,9 @@ public class MobShooterTests {
     @Test
     public void createNewShooter() {
         MobEnemy test = new MobEnemy(MobType.Shooter);
-        assert (test.getDamage() == 5);
-        assert (test.getSpeed() == 3);
-        assert (test.getHealth() == 50);
+        assertTrue (test.getDamage() == 5);
+        assertTrue (test.getSpeed() == 3);
+        assertTrue (test.getHealth() == 50);
     }
 
     @Test
@@ -68,8 +68,11 @@ public class MobShooterTests {
         }
         assertTrue(location.getX() == 350 && location.getY() == 350);
         MobProjectile mp = m.getProjectile().get(0);
-        assert(m.getProjectile().size() == 1);
-        assert(mp.getLocation().getX() == 355 && mp.getLocation().getY() == 355);
+        assertTrue(m.getProjectile().size() == 1);
+        assertTrue(mp.getLocation().getX() == 355 && mp.getLocation().getY() == 355);
+        mp.move();
+        System.out.println("x: " + round(Math.hypot(    (350 - mp.getLocation().getX()) ,   (350 - mp.getLocation().getY()) ), 2));
+        assertTrue(round(Math.hypot(350 - mp.getLocation().getX(), 350 - mp.getLocation().getY()),2) == m.getSpeed());
     }
 
     /**
