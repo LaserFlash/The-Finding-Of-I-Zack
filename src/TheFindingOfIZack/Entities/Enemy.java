@@ -120,20 +120,9 @@ public class Enemy extends Entity {
 
     /**
      * Determines if the player and any mob have collided
-     * @param mob mob location
-     * @param player player location
+     * @param b BoundingBox BondingBox of the Enemy
      */
     public boolean collision(BoundingBox b) {
-//        double px = player.getX();
-//        double py = player.getY();
-//        double mx = mob.getX();
-//        double my = mob.getY();
-//        int w = width;
-
-//        if(mx<=px && my<=py && mx+w>=px && my+w>=py){return true;} //Top left
-//        if(mx>=px && my>=py && mx<=px+w && my<=py+w){return true;} //Bottom Right
-//        if(mx<=px && my>=py && mx+w>=px && my<=py+w){return true;} //Bottom left
-//        if(mx>=px && my<=py && mx<=px+w && my+w>=py){return true;} //Top Right
         return b.intersects(this.player.getBoundingBox());
     }
 
