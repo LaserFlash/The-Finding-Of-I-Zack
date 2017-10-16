@@ -60,9 +60,7 @@ public abstract class Mob implements Savable {
      * @param newY the projected vertical speed
      */
     protected void entityCollision(Point location, double newX, double newY) {
-        if (room instanceof standardRoom) {
-            standardRoom r = (standardRoom) room;
-            List<Entity> entities = (r.getItems());
+            List<Entity> entities = room.getItems();
             for (Entity entity : entities) {
                 if (entity instanceof Rock) {
                     Rock room = (Rock) entity;
@@ -91,7 +89,6 @@ public abstract class Mob implements Savable {
                     }
                 }
             }
-        }
     }
 
     /**
