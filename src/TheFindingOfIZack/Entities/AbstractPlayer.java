@@ -1,6 +1,7 @@
 package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.FileIO.Util.Savable;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.World.Rooms.Room;
 
 public abstract class AbstractPlayer extends Entity implements Savable {

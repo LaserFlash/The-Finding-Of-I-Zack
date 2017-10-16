@@ -4,6 +4,7 @@ import TheFindingOfIZack.Behaviour.MobEnemy;
 import TheFindingOfIZack.Behaviour.MobProjectile;
 import TheFindingOfIZack.Behaviour.MobShooter;
 import TheFindingOfIZack.Behaviour.MobType;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.World.Rooms.Room;
 import javafx.geometry.BoundingBox;
 
@@ -31,7 +32,7 @@ public class Enemy extends Entity {
      * @param location where the mob is to be spawned
      * @param p the player
      */
-    public Enemy(Point location, Player p) {
+    public Enemy(TheFindingOfIZack.Util.Point location, Player p) {
         super(location);
         this.player = p;
         this.r = p.getRoom();

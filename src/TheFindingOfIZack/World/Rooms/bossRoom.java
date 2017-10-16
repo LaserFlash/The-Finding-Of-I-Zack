@@ -3,7 +3,7 @@ package TheFindingOfIZack.World.Rooms;
 import TheFindingOfIZack.Entities.Boss;
 import TheFindingOfIZack.Entities.Enemy;
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
 
 import java.awt.*;

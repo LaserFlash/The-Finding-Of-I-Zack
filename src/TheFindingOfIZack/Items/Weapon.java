@@ -1,15 +1,10 @@
 package TheFindingOfIZack.Items;
 
 import TheFindingOfIZack.Entities.*;
-import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.ImageLoader;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import java.io.IOException;
 
 /**
  * Created by Ben Allan

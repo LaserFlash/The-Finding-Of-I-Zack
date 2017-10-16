@@ -1,13 +1,10 @@
 package TheFindingOfIZack.FileIO;
 
-import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.FileIO.Util.Huffman;
 import TheFindingOfIZack.View.ViewManager;
 import TheFindingOfIZack.World.Game;
-import TheFindingOfIZack.World.Level;
-import TheFindingOfIZack.World.Rooms.Room;
 
 import javax.swing.*;
 import java.io.BufferedOutputStream;

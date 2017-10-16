@@ -3,6 +3,7 @@ package TheFindingOfIZack.Entities;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.View.Drawable;
 import javafx.geometry.BoundingBox;
 
@@ -37,7 +38,7 @@ public class Projectile extends Entity implements Drawable, Savable{
      * @param location  the location the projectile is
      * @param direction the direction the projectile is travelling
      */
-    public Projectile(int damage, Point location, String direction) {
+    public Projectile(int damage, TheFindingOfIZack.Util.Point location, String direction) {
         super(location);
         this.damage = damage;
         this.direction = direction;
@@ -48,7 +49,7 @@ public class Projectile extends Entity implements Drawable, Savable{
      * @param location  location of the projectile
      * @param player    the player that the projectile is aiming at
      */
-    public Projectile(Point location, Point player){}
+    public Projectile(TheFindingOfIZack.Util.Point location, Point player){}
 
     /**
      * Draws the projectile

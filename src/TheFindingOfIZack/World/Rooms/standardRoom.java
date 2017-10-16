@@ -2,7 +2,7 @@ package TheFindingOfIZack.World.Rooms;
 
 
 import TheFindingOfIZack.Entities.*;
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Items.Item;
 

@@ -2,6 +2,7 @@ package TheFindingOfIZack.Entities;
 
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Util.ImageLoader;
+import TheFindingOfIZack.Util.Point;
 
 import java.awt.*;
 
