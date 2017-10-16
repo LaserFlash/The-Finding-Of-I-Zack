@@ -30,7 +30,7 @@ public class bossRoom extends Room implements Savable {
     public void draw(Graphics g){
         super.draw(g);
         enemiesInRoom.forEach(e -> e.draw(g));
-        if(boss != null && !boss.isDead()){boss.draw(g);}
+        if(boss != null && !boss.isDestroyed()){boss.draw(g);}
     }
 
 
@@ -39,7 +39,7 @@ public class bossRoom extends Room implements Savable {
     public void update() {
 
         synchronized (enemiesInRoom) {
-            if (boss.isDead() && enemiesInRoom.isEmpty()) {
+            if (boss.isDestroyed() && enemiesInRoom.isEmpty()) {
                 this.isCleared = true;
                 player.setWon();
                 if (this.northDoor != null) {
@@ -58,7 +58,7 @@ public class bossRoom extends Room implements Savable {
 
             }
             for (Enemy e : enemiesInRoom) {
-                if (e.isDead()) {
+                if (e.isDestroyed()) {
                     this.deadEnemies.add(e);
                 }
             }
@@ -70,7 +70,7 @@ public class bossRoom extends Room implements Savable {
             for (Enemy e : enemiesInRoom) {
                 e.move();
             }
-        if(!boss.isDead()) {
+        if(!boss.isDestroyed()) {
             boss.move();
         }
 

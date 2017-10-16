@@ -5,13 +5,9 @@ import TheFindingOfIZack.Entities.*;
 import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.FileIO.Util.Savable;
 import TheFindingOfIZack.Items.Item;
-import TheFindingOfIZack.Util.GameDimensions;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 
 public class standardRoom extends Room implements Savable{
@@ -87,7 +83,7 @@ public class standardRoom extends Room implements Savable{
 
         }
         for(Enemy e : enemiesInRoom){
-            if(e.isDead()){
+            if(e.isDestroyed()){
                 this.deadEnemies.add(e);
             }
         }

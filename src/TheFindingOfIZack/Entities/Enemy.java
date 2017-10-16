@@ -58,8 +58,8 @@ public class Enemy extends Entity {
             tick = 0;
         }
     }
-
-    public boolean isDead() {return isDead;}
+    @Override
+    public boolean isDestroyed() {return isDead;}
 
     @Override
     public void draw(Graphics g) {
@@ -86,11 +86,6 @@ public class Enemy extends Entity {
         g.setColor(Color.black);
         g.drawRect((int) location.getX(), (int) location.getY() - 8, width, 4);
 
-    }
-
-    @Override
-    public boolean isDestroyed() {
-        return false;
     }
 
     /**

@@ -1,6 +1,5 @@
 package TheFindingOfIZack.Entities;
 
-import TheFindingOfIZack.Items.Item;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.Util.ImageLoader;
 import TheFindingOfIZack.World.Rooms.Room;
@@ -129,7 +128,7 @@ public class Player extends AbstractPlayer {
                 bossRoom r = (bossRoom) room;
                 ArrayList<Enemy> boss = new ArrayList<Enemy>();
                 boss.add(r.getBoss());
-                if (!r.getBoss().isDead()) {p.enemyCollision(boss);}
+                if (!r.getBoss().isDestroyed()) {p.enemyCollision(boss);}
             }
 
             p.enemyCollision(room.getEnemies());
