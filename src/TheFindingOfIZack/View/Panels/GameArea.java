@@ -9,6 +9,8 @@ import java.awt.*;
 /**
  * Panel representing the GameArea or the dungeon / play area
  * This is where the player, mobs and game world are drawn
+ * @author Bryn Bennett bennetbryn@ecs.vuw.ac.nz
+ *
  */
 public class GameArea extends JPanel{
     private Model model;

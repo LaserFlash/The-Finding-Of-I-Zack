@@ -15,6 +15,8 @@ import java.util.Observable;
 /**
  * Manage the view for the game.
  * Handles what needs to be drawn and the GUI
+ *
+ * @author Bryn Bennett bennetbryn@ecs.vuw.ac.nz
  */
 public class ViewManager extends View {
 

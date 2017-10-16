@@ -8,6 +8,8 @@ import java.util.Observer;
 
 /**
  * An abstract implementation of what a View needs to provide
+ *
+ * @author Bryn Bennett bennetbryn@ecs.vuw.ac.nz
  */
 public abstract class View extends JFrame implements Observer {
 

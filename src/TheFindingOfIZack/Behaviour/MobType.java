@@ -1,5 +1,10 @@
 package TheFindingOfIZack.Behaviour;
 
+/**
+ * Enum representation of different Mob Behaviours
+ * Allows for easy and standard behaviour creation
+ * @author Bryn Bennett bennetbryn@ecs.vuw.ac.nz
+ */
 public enum MobType {
     Fast {
         @Override

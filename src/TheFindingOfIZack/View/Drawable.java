@@ -4,6 +4,8 @@ import java.awt.*;
 
 /**
  *  This allows an object to be drawn by the view
+ *
+ *  @author Bryn Bennett bennetbryn@ecs.vuw.ac.nz
  */
 public interface Drawable {
 

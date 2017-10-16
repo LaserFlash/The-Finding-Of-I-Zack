@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 /**
  * Abstract representation of the main panel to form the game GUI
  * Can have it's own panels to form a more complex layout
+ *
+ * @author Bryn Bennett bennetbryn@ecs.vuw.ac.nz
  */
 public abstract class ScreenPanel extends JPanel {
 

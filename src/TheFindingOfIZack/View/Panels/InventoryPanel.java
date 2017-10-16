@@ -13,6 +13,8 @@ import java.awt.*;
  *  Health
  *  Armour
  *  Presence of Key in inventory
+ *
+ * @author Bryn Bennett bennetbryn@ecs.vuw.ac.nz
  */
 public class InventoryPanel extends JPanel{
 

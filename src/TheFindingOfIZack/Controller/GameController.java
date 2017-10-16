@@ -17,6 +17,7 @@ import java.awt.event.KeyListener;
 
 /**
  * Takes user input and converts to actions on the model
+ * @author Bryn Bennett bennetbryn@ecs.vuw.ac.nz
  */
 public class GameController implements ActionListener, KeyListener {
 

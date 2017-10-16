@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Panel that represents the end game screen
  * Indicates to player if they won or lost
+ * @author Bryn Bennett bennetbryn@ecs.vuw.ac.nz
  */
 public class GameEndScreen  extends ScreenPanel{
 

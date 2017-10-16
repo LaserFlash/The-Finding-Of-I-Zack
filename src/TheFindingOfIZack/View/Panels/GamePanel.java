@@ -12,6 +12,7 @@ import static TheFindingOfIZack.Util.GameDimensions.*;
 /**
  * Panel indented to display the game
  * Consists of other panels to structure layout
+ * @author Bryn Bennett bennetbryn@ecs.vuw.ac.nz
  */
 public class GamePanel extends ScreenPanel {
 

@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
  *  Start a new game
  *  Load a game
  *  or exit
+ *
+ * @author Bryn Bennett bennetbryn@ecs.vuw.ac.nz
  */
 public class StartScreenPanel extends ScreenPanel {
     /* Buttons displayed on StartScreenPanel */
