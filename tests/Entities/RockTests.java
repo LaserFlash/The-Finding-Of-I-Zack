@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Point;
+import TheFindingOfIZack.Util.Point;
 
 import static junit.framework.TestCase.assertTrue;
 
@@ -17,7 +17,7 @@ public class RockTests {
 
     private int x = 100;
     private int y = 100;
-    private TheFindingOfIZack.Entities.Point location = new TheFindingOfIZack.Entities.Point(x, y);
+    private Point location = new Point(x, y);
 
     @Test
     public void testRock() {

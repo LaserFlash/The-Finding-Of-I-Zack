@@ -2,7 +2,7 @@ package Mocks;
 
 import TheFindingOfIZack.Entities.AbstractPlayer;
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.World.Model;
 import TheFindingOfIZack.World.Rooms.Room;
 

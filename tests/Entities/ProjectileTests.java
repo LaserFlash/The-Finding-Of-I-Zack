@@ -1,7 +1,7 @@
 package Entities;
 
 import TheFindingOfIZack.Entities.*;
-import TheFindingOfIZack.Entities.Point;
+import TheFindingOfIZack.Util.Point;
 import TheFindingOfIZack.Util.GameDimensions;
 import org.junit.Test;
 

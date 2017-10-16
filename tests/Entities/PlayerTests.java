@@ -2,14 +2,15 @@ package Entities;
 
 import TheFindingOfIZack.Entities.Entity;
 import TheFindingOfIZack.Entities.Player;
-import TheFindingOfIZack.Entities.Point;
 import TheFindingOfIZack.Util.GameDimensions;
 import TheFindingOfIZack.World.Rooms.Door;
 import TheFindingOfIZack.World.Rooms.itemRoom;
 import TheFindingOfIZack.World.Rooms.standardRoom;
+import TheFindingOfIZack.Util.Point;
 import org.junit.Test;
 
 import javax.swing.*;
+
 import java.awt.*;
 
 import static TheFindingOfIZack.Entities.Entity.DEFAULT_WIDTH;
