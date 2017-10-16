@@ -4,6 +4,9 @@ import javafx.geometry.BoundingBox;
 
 import java.awt.*;
 
+import static TheFindingOfIZack.Util.GameDimensions.*;
+import static TheFindingOfIZack.Util.GameDimensions.RIGHT_WALL;
+
 /**
  * Created by allanbenj1 on 11/10/17.
  */
