@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_the-finding-of-i-zack.main" default="compile.module.the-finding-of-i-zack.main">
+  <dirname property="module.the-finding-of-i-zack.main.basedir" file="${ant.file.module_the-finding-of-i-zack.main}"/>
+  
+  <property name="module.jdk.home.the-finding-of-i-zack.main" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.the-finding-of-i-zack.main" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.the-finding-of-i-zack.main" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.the-finding-of-i-zack.main" value="-encoding UTF-8 -source 12 -target 12 ${compiler.args}"/>
+  
+  <property name="the-finding-of-i-zack.main.output.dir" value="${module.the-finding-of-i-zack.main.basedir}/../../out/production/classes"/>
+  <property name="the-finding-of-i-zack.main.testoutput.dir" value="${module.the-finding-of-i-zack.main.basedir}/../../out/production/classes"/>
+  
+  <path id="the-finding-of-i-zack.main.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="the-finding-of-i-zack.main.module.production.classpath">
+    <path refid="${module.jdk.classpath.the-finding-of-i-zack.main}"/>
+    <path refid="library.gradle:_org.openjfx:javafx-fxml:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-controls:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-controls:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-graphics:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-graphics:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-base:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-base:12.classpath"/>
+  </path>
+  
+  <path id="the-finding-of-i-zack.main.runtime.production.module.classpath">
+    <pathelement location="${the-finding-of-i-zack.main.output.dir}"/>
+    <path refid="library.gradle:_org.openjfx:javafx-fxml:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-controls:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-controls:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-graphics:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-graphics:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-base:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-base:12.classpath"/>
+  </path>
+  
+  <path id="the-finding-of-i-zack.main.module.classpath">
+    <path refid="${module.jdk.classpath.the-finding-of-i-zack.main}"/>
+    <pathelement location="${the-finding-of-i-zack.main.output.dir}"/>
+    <path refid="library.gradle:_org.openjfx:javafx-fxml:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-controls:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-controls:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-graphics:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-graphics:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-base:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-base:12.classpath"/>
+  </path>
+  
+  <path id="the-finding-of-i-zack.main.runtime.module.classpath">
+    <pathelement location="${the-finding-of-i-zack.main.output.dir}"/>
+    <path refid="library.gradle:_org.openjfx:javafx-fxml:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-controls:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-controls:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-graphics:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-graphics:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-base:win:12.classpath"/>
+    <path refid="library.gradle:_org.openjfx:javafx-base:12.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.the-finding-of-i-zack.main">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.the-finding-of-i-zack.main">
+    <patternset refid="excluded.from.module.the-finding-of-i-zack.main"/>
+  </patternset>
+  
+  <path id="the-finding-of-i-zack.main.module.sourcepath">
+    <dirset dir="${module.the-finding-of-i-zack.main.basedir}/../../src/main">
+      <include name="java"/>
+      <include name="resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.the-finding-of-i-zack.main" depends="compile.module.the-finding-of-i-zack.main.production,compile.module.the-finding-of-i-zack.main.tests" description="Compile module The-Finding-Of-I-Zack.main"/>
+  
+  <target name="compile.module.the-finding-of-i-zack.main.production" depends="register.custom.compilers" description="Compile module The-Finding-Of-I-Zack.main; production classes">
+    <mkdir dir="${the-finding-of-i-zack.main.output.dir}"/>
+    <javac2 destdir="${the-finding-of-i-zack.main.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.the-finding-of-i-zack.main}/javac">
+      <compilerarg line="${compiler.args.the-finding-of-i-zack.main}"/>
+      <bootclasspath refid="the-finding-of-i-zack.main.module.bootclasspath"/>
+      <classpath refid="the-finding-of-i-zack.main.module.production.classpath"/>
+      <src refid="the-finding-of-i-zack.main.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.the-finding-of-i-zack.main"/>
+    </javac2>
+    
+    <copy todir="${the-finding-of-i-zack.main.output.dir}">
+      <fileset dir="${module.the-finding-of-i-zack.main.basedir}/../../src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.the-finding-of-i-zack.main.basedir}/../../src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.the-finding-of-i-zack.main.tests" depends="register.custom.compilers,compile.module.the-finding-of-i-zack.main.production" description="compile module The-Finding-Of-I-Zack.main; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.the-finding-of-i-zack.main" description="cleanup module">
+    <delete dir="${the-finding-of-i-zack.main.output.dir}"/>
+    <delete dir="${the-finding-of-i-zack.main.testoutput.dir}"/>
+  </target>
+</project>
