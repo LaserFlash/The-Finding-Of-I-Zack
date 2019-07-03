@@ -422,52 +422,53 @@ public class Game extends Observable implements Model,Savable{
             double now = System.nanoTime();
             int updateCount = 0;
 
-
-            if (!paused)
+            //Do as many game updates as we need to, potentially playing catchup.
+            while( now - lastUpdateTime > TIME_BETWEEN_UPDATES && updateCount < MAX_UPDATES_BEFORE_RENDER )
             {
-                //Do as many game updates as we need to, potentially playing catchup.
-                while( now - lastUpdateTime > TIME_BETWEEN_UPDATES && updateCount < MAX_UPDATES_BEFORE_RENDER )
-                {
 
-                    updateGame();
-                    lastUpdateTime += TIME_BETWEEN_UPDATES;
-                    updateCount++;
-                }
+                updateGame();
+                lastUpdateTime += TIME_BETWEEN_UPDATES;
+                updateCount++;
+            }
 
-                //If for some reason an update takes forever, we don't want to do an insane number of catchups.
-                //If you were doing some sort of game that needed to keep EXACT time, you would get rid of this.
-                if ( now - lastUpdateTime > TIME_BETWEEN_UPDATES)
-                {
-                    lastUpdateTime = now - TIME_BETWEEN_UPDATES;
-                }
+            //If for some reason an update takes forever, we don't want to do an insane number of catchups.
+            //If you were doing some sort of game that needed to keep EXACT time, you would get rid of this.
+            if ( now - lastUpdateTime > TIME_BETWEEN_UPDATES)
+            {
+                lastUpdateTime = now - TIME_BETWEEN_UPDATES;
+            }
 
-                //Render. To do so, we need to calculate interpolation for a smooth render.
-                drawGame();
+            //Render. To do so, we need to calculate interpolation for a smooth render.
+            drawGame();
 
-                lastRenderTime = now;
+            lastRenderTime = now;
 
-                //Update the frames we got.
-                int thisSecond = (int) (lastUpdateTime / 1000000000);
-                if (thisSecond > lastSecondTime)
-                {
-                   // System.out.println("NEW SECOND " + thisSecond + " " + frameCount);
+            //Update the frames we got.
+            int thisSecond = (int) (lastUpdateTime / 1000000000);
+            if (thisSecond > lastSecondTime)
+            {
+               // System.out.println("NEW SECOND " + thisSecond + " " + frameCount);
 
-                    frameCount = 0;
-                    lastSecondTime = thisSecond;
-                }
+                frameCount = 0;
+                lastSecondTime = thisSecond;
+            }
 
-                //Yield until it has been at least the target time between renders. This saves the CPU from hogging.
-                while ( now - lastRenderTime < TARGET_TIME_BETWEEN_RENDERS && now - lastUpdateTime < TIME_BETWEEN_UPDATES)
-                {
-                    Thread.yield();
+            //Yield until it has been at least the target time between renders. This saves the CPU from hogging.
+            while ( now - lastRenderTime < TARGET_TIME_BETWEEN_RENDERS && now - lastUpdateTime < TIME_BETWEEN_UPDATES)
+            {
+                Thread.yield();
 
-                    //This stops the app from consuming all your CPU. It makes this slightly less accurate, but is worth it.
-                    //You can remove this line and it will still work (better), your CPU just climbs on certain OSes.
-                    //FYI on some OS's this can cause pretty bad stuttering. Scroll down and have a look at different peoples' solutions to this.
-                    try {Thread.sleep(1);} catch(Exception e) {}
+                //This stops the app from consuming all your CPU. It makes this slightly less accurate, but is worth it.
+                //You can remove this line and it will still work (better), your CPU just climbs on certain OSes.
+                //FYI on some OS's this can cause pretty bad stuttering. Scroll down and have a look at different peoples' solutions to this.
+                try {Thread.sleep(1);} catch(Exception e) {}
 
-                    now = System.nanoTime();
-                }
+                now = System.nanoTime();
+            }
+
+            /* Stop the game loop if pause*/
+            if(paused){
+                return;
             }
         }
     }
